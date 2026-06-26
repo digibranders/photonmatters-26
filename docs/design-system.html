@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PhotonMatters — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy-900:#0e1a2b; --navy-600:#45526a; --navy-500:#6b7888; --navy-200:#dde3ec;
+    --navy-100:#eef1f6; --navy-50:#f4f6fa; --paper:#fbfbfd; --white:#fff;
+    --blue-700:#115c97; --blue-600:#1574bd; --blue-500:#1f8edd; --blue-400:#41b8ee;
+    --blue-100:#d8ecfb; --blue-50:#eaf4fc; --amber-600:#d6920a; --amber-500:#faad1b; --amber-100:#fdeccb;
+    --line:rgba(14,26,43,.10); --line-strong:rgba(14,26,43,.16);
+    --gutter:clamp(1.25rem,.5rem + 3.2vw,2.5rem); --max:75rem;
+    --section:clamp(4rem,2.5rem + 7.5vw,7.5rem);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy-900);
+    line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased}
+  .wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+  section{padding-block:clamp(3rem,2rem+5vw,5rem);border-top:1px solid var(--line)}
+  h1{font-size:clamp(2.5rem,1.6rem+4.5vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  h2{font-size:clamp(1.6rem,1.2rem+1.8vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+  h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+  h4{font-size:1rem;font-weight:700}
+  p{color:var(--navy-600);max-width:66ch}
+  .eyebrow{display:inline-block;font-size:.8125rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--navy-500)}
+  .lede{font-size:clamp(1.125rem,1.05rem+.4vw,1.31rem);color:var(--navy-600)}
+  .grid{display:grid;gap:2rem}
+  .cols-2{grid-template-columns:repeat(2,1fr)} .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:880px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}}
+  .swatch{border-radius:16px;height:88px;display:flex;align-items:flex-end;padding:10px;color:#fff;font-size:.8rem;font-weight:600}
+  .swatch.dark-text{color:var(--navy-900)}
+  .meta{margin-top:8px;font-size:.8rem;color:var(--navy-500);font-weight:500}
+  .name{font-weight:700;font-size:.85rem;color:var(--navy-900)}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-500);font-weight:700}
+  td:first-child{font-weight:600;color:var(--navy-900);white-space:nowrap}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:var(--navy-100);padding:2px 6px;border-radius:6px;color:var(--blue-700)}
+  .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  @media(max-width:720px){.do-dont{grid-template-columns:1fr}}
+  .panel{background:var(--white);border-radius:16px;padding:1.5rem}
+  .panel.do{box-shadow:inset 3px 0 0 var(--blue-500)} .panel.dont{box-shadow:inset 3px 0 0 #d64545}
+  .panel ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem}
+  .panel li{font-size:.95rem;color:var(--navy-600);padding-left:1.25rem;position:relative}
+  .panel li::before{position:absolute;left:0;top:0}
+  .panel.do li::before{content:"✓";color:var(--blue-600);font-weight:800}
+  .panel.dont li::before{content:"✕";color:#d64545;font-weight:800}
+  .tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:10px;padding:12px 22px;font-size:1.0625rem}
+  .btn-p{background:var(--blue-500);color:#fff} .btn-s{border:1px solid var(--line-strong);color:var(--navy-900)}
+  .badge{display:inline-flex;border-radius:6px;padding:2px 8px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;background:var(--blue-50);color:var(--blue-700)}
+  .hero{padding-block:clamp(4rem,3rem+6vw,8rem);background:radial-gradient(60% 60% at 80% 0%,rgba(31,142,221,.14),transparent 70%)}
+  .type-row{display:flex;align-items:baseline;gap:24px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .type-row .role{width:120px;flex:none;font-size:.8rem;font-weight:700;color:var(--navy-500)}
+  .stepbox{height:64px;border-radius:12px;background:var(--navy-50);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--navy-500)}
+  .tells{counter-reset:t;list-style:none;display:grid;gap:.75rem;grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.tells{grid-template-columns:1fr}}
+  .tells li{counter-increment:t;position:relative;padding:14px 14px 14px 52px;background:var(--white);border-radius:12px;font-size:.95rem;color:var(--navy-600)}
+  .tells li::before{content:counter(t);position:absolute;left:14px;top:14px;width:26px;height:26px;border-radius:8px;background:var(--navy-900);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+  footer{padding-block:3rem;color:var(--navy-500);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Design System · v2 · 2026</span>
+    <h1 style="margin-top:1rem;max-width:18ch">PhotonMatters<br>Design&nbsp;System</h1>
+    <p class="lede" style="margin-top:1.5rem;max-width:60ch">
+      The reference for a <strong>premium, intentional</strong> interface — light canvas, deep
+      navy ink, one electric-blue accent, amber as a rare spark, and the colourful original logo
+      as the single pop of colour. Every rule here exists to avoid the generic “vibe-coded” look.
+    </p>
+    <div style="margin-top:2rem;display:flex;gap:12px;flex-wrap:wrap">
+      <span class="btn btn-p">Primary action →</span>
+      <span class="btn btn-s">Secondary</span>
+      <span class="badge">New</span>
+    </div>
+  </div>
+</header>
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Principles</span>
+    <h2 style="margin-top:.75rem">Premium, not vibe-coded</h2>
+    <p style="margin-top:1rem">
+      AI generators predict the median and apply every mechanism at once — bordered + shadowed +
+      rounded cards with a pill eyebrow on top, a purple gradient, Inter, and fade-in-everything.
+      Premium design is the deliberate refusal of the median: pick <em>one</em> mechanism per job,
+      define a finite token scale, and commit.
+    </p>
+    <h3 style="margin-top:2.5rem">The 10 fastest tells of a vibe-coded site</h3>
+    <ol class="tells" style="margin-top:1.25rem">
+      <li>Purple/indigo gradient on white as the hero.</li>
+      <li>Inter / system / Space Grotesk as the brand face.</li>
+      <li>An eyebrow or badge pill above <em>every</em> heading.</li>
+      <li>Uniform 3-column cards with rounded-square icon tiles.</li>
+      <li>Section padding equal to card padding.</li>
+      <li>Border + diffuse black shadow on the same resting card.</li>
+      <li>Pure greys (#808080 / #000 / #fff), zero saturation.</li>
+      <li>One global radius, everything over-rounded.</li>
+      <li>Fade-in-on-scroll on everything, 500ms+, default easing.</li>
+      <li>No focal point — every element equal weight.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- COLOR -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Foundations</span>
+    <h2 style="margin-top:.75rem">Colour</h2>
+    <p style="margin-top:1rem">Navy-tinted neutrals (never pure grey), <strong>one</strong> electric-blue accent reserved for
+      interactive/important elements, and amber used on under ~5% of any surface. No purple-on-white.</p>
+
+    <h3 style="margin-top:2.5rem">Neutrals — navy-tinted</h3>
+    <div class="grid cols-4" style="margin-top:1.25rem;gap:1.25rem">
+      <div><div class="swatch" style="background:#0e1a2b">#0E1A2B</div><div class="name">ink / text</div><div class="meta">navy-900</div></div>
+      <div><div class="swatch" style="background:#45526a">#45526A</div><div class="name">secondary</div><div class="meta">navy-600</div></div>
+      <div><div class="swatch" style="background:#6b7888">#6B7888</div><div class="name">muted</div><div class="meta">navy-500</div></div>
+      <div><div class="swatch dark-text" style="background:#f4f6fa">#F4F6FA</div><div class="name">sunken band</div><div class="meta">navy-50</div></div>
+      <div><div class="swatch dark-text" style="background:#fbfbfd;box-shadow:inset 0 0 0 1px var(--line)">#FBFBFD</div><div class="name">canvas</div><div class="meta">paper</div></div>
+      <div><div class="swatch dark-text" style="background:#ffffff;box-shadow:inset 0 0 0 1px var(--line)">#FFFFFF</div><div class="name">surface</div><div class="meta">white</div></div>
+      <div><div class="swatch dark-text" style="background:#dde3ec">#DDE3EC</div><div class="name">hairline ref</div><div class="meta">navy-200</div></div>
+      <div><div class="swatch" style="background:#16263b">#16263B</div><div class="name">ink-800</div><div class="meta">dark sections</div></div>
+    </div>
+
+    <h3 style="margin-top:2.5rem">Accent — electric blue (the one hue)</h3>
+    <div class="grid cols-4" style="margin-top:1.25rem;gap:1.25rem">
+      <div><div class="swatch" style="background:#115c97">#115C97</div><div class="name">press</div><div class="meta">blue-700</div></div>
+      <div><div class="swatch" style="background:#1574bd">#1574BD</div><div class="name">text / links (AA)</div><div class="meta">blue-600</div></div>
+      <div><div class="swatch" style="background:#1f8edd">#1F8EDD</div><div class="name">primary</div><div class="meta">blue-500</div></div>
+      <div><div class="swatch dark-text" style="background:#41b8ee">#41B8EE</div><div class="name">on-dark accent</div><div class="meta">blue-400</div></div>
+      <div><div class="swatch dark-text" style="background:#d8ecfb">#D8ECFB</div><div class="name">faint number</div><div class="meta">blue-100</div></div>
+      <div><div class="swatch dark-text" style="background:#eaf4fc">#EAF4FC</div><div class="name">icon tile / hover</div><div class="meta">blue-50</div></div>
+    </div>
+
+    <h3 style="margin-top:2.5rem">Spark — amber (rare)</h3>
+    <div class="grid cols-4" style="margin-top:1.25rem;gap:1.25rem">
+      <div><div class="swatch" style="background:#d6920a">#D6920A</div><div class="name">amber text</div><div class="meta">amber-600</div></div>
+      <div><div class="swatch dark-text" style="background:#faad1b">#FAAD1B</div><div class="name">spark</div><div class="meta">amber-500</div></div>
+      <div><div class="swatch dark-text" style="background:#fdeccb">#FDECCB</div><div class="name">badge tint</div><div class="meta">amber-100</div></div>
+    </div>
+
+    <div class="do-dont" style="margin-top:2.5rem">
+      <div class="panel do"><span class="tag" style="color:var(--blue-600)">Do</span><ul>
+        <li>Reserve blue for interactive / important elements.</li>
+        <li>Tinted neutrals carrying a cool navy bias.</li>
+        <li>Amber on a single CTA, badge or accent word — rarely.</li>
+        <li>Let the colourful logo be the page's pop of colour.</li>
+      </ul></div>
+      <div class="panel dont"><span class="tag" style="color:#d64545">Don't</span><ul>
+        <li>Purple/indigo gradient on white.</li>
+        <li>Pure grey #808080 / true #000 / #fff.</li>
+        <li>Two loud accents competing (the “purple + gold” look).</li>
+        <li>Colour every card / icon / heading.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Foundations</span>
+    <h2 style="margin-top:.75rem">Typography</h2>
+    <p style="margin-top:1rem">One family — <strong>Plus Jakarta Sans</strong> — carrying display character through weight
+      (800) and tight negative tracking, not a second face. Body capped at a 66ch measure. Fluid sizes via
+      <code>clamp()</code> between a 320px and 1280px viewport (Utopia method).</p>
+
+    <div style="margin-top:2rem">
+      <div class="type-row"><span class="role">Display · 800</span><span style="font-weight:800;font-size:clamp(2.75rem,1.55rem+6vw,5rem);letter-spacing:-.03em;line-height:1.04">Banking the unseen</span></div>
+      <div class="type-row"><span class="role">H1 · 800</span><span style="font-weight:800;font-size:clamp(2.25rem,1.55rem+3.5vw,3.5rem);letter-spacing:-.025em">AI-native lending</span></div>
+      <div class="type-row"><span class="role">H2 · 700</span><span style="font-weight:700;font-size:clamp(1.75rem,1.3rem+2.25vw,2.625rem);letter-spacing:-.02em">One modular core</span></div>
+      <div class="type-row"><span class="role">H3 · 700</span><span style="font-weight:700;font-size:1.5rem;letter-spacing:-.012em">Credit Scoring</span></div>
+      <div class="type-row"><span class="role">Body L · 400</span><span style="font-size:1.31rem;color:var(--navy-600)">Explainable AI scores for thin-file borrowers.</span></div>
+      <div class="type-row"><span class="role">Body · 400</span><span style="font-size:1.0625rem;color:var(--navy-600)">API-first, AI-native modules that run the journey end to end.</span></div>
+      <div class="type-row"><span class="role">Caption · 400</span><span style="font-size:.9375rem;color:var(--navy-500)">Photography · Pexels</span></div>
+      <div class="type-row"><span class="role">Label · 600</span><span class="eyebrow">Where we operate</span></div>
+    </div>
+    <div class="do-dont" style="margin-top:2rem">
+      <div class="panel do"><span class="tag" style="color:var(--blue-600)">Do</span><ul>
+        <li>Bigger heading → tighter tracking (−0.02 to −0.03em).</li>
+        <li>Labels get <em>positive</em> tracking (+0.08em) — they read as metadata.</li>
+        <li>≤3 weights; weight contrast at the extremes (400 / 800).</li>
+        <li>Body measure ≤ 66ch.</li>
+      </ul></div>
+      <div class="panel dont"><span class="tag" style="color:#d64545">Don't</span><ul>
+        <li>Ship Inter / Roboto / system as the brand face.</li>
+        <li>Pair adjacent weights (400 vs 600) for hierarchy.</li>
+        <li>Leave big headings at default (loose) tracking.</li>
+        <li>Full-bleed body lines.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- EYEBROWS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Verdict</span>
+    <h2 style="margin-top:.75rem">Do we need eyebrows above every heading? No.</h2>
+    <p style="margin-top:1rem">The eyebrow isn't slop — its <em>reflexive repetition</em> is. A pill/badge eyebrow stamped above
+      every section (and above the hero H1) is a top tell. We keep an eyebrow only when <strong>all</strong> hold:
+      (1) it categorises rather than decorates, (2) the headline is long or keyword-poor, (3) it's used on a few
+      sections, never all, and (4) something else is the section's focal point. Styled as subordinate metadata —
+      13px, weight 600, uppercase, positive tracking, muted — never a coloured pill.</p>
+    <p style="margin-top:1rem">In this build: heroes and product/section pages may carry one categorising eyebrow; the homepage content
+      sections drop them and let the headline carry the section.</p>
+  </div>
+</section>
+
+<!-- SPACING + LAYOUT -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Foundations</span>
+    <h2 style="margin-top:.75rem">Spacing, layout &amp; viewport</h2>
+    <p style="margin-top:1rem">8-pt grid (4-pt half-step). Section padding is fluid and always larger than card padding —
+      the single rule that fixes the most common “cramped, uniform” tell.</p>
+
+    <div class="grid cols-2" style="margin-top:2rem;gap:2.5rem">
+      <div>
+        <h3>Breakpoints (Tailwind-aligned)</h3>
+        <table style="margin-top:1rem">
+          <tr><th>Tier</th><th>Trigger</th><th>Reference width</th></tr>
+          <tr><td>Mobile</td><td>0–639</td><td>360 / 375 / 390</td></tr>
+          <tr><td>Tablet</td><td>≥ 768</td><td>768</td></tr>
+          <tr><td>Laptop</td><td>≥ 1024</td><td>1024</td></tr>
+          <tr><td>Desktop</td><td>≥ 1280</td><td>1280 / 1440</td></tr>
+          <tr><td>Large</td><td>≥ 1536</td><td>1536+</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Container &amp; gutters</h3>
+        <table style="margin-top:1rem">
+          <tr><th>Token</th><th>Value</th></tr>
+          <tr><td>Container max</td><td><code>1200px</code> (centred, margins absorb overflow)</td></tr>
+          <tr><td>Reading measure</td><td><code>66ch</code> (~640–720px)</td></tr>
+          <tr><td>Page gutter</td><td><code>clamp(20px, …, 40px)</code></td></tr>
+          <tr><td>Section pad</td><td><code>clamp(64px, …, 120px)</code></td></tr>
+          <tr><td>Section pad (lg)</td><td><code>clamp(80px, …, 160px)</code></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="margin-top:2.5rem">Hero height — never fixed <code>100vh</code></h3>
+    <p style="margin-top:.75rem">On mobile, <code>100vh</code> is taller than the visible area (address bar) and clips content. Use
+      <code>min-height: 100svh</code> with content-driven growth and fluid <code>padding-block</code>; cap on large
+      screens. Inner heroes here are type-forward with generous top padding to clear the fixed nav, not full-height.</p>
+
+    <h3 style="margin-top:2.5rem">8-pt spacing scale</h3>
+    <div class="grid cols-4" style="margin-top:1.25rem;gap:1rem">
+      <div class="stepbox">4</div><div class="stepbox">8</div><div class="stepbox">12</div><div class="stepbox">16</div>
+      <div class="stepbox">24</div><div class="stepbox">32</div><div class="stepbox">48</div><div class="stepbox">64</div>
+      <div class="stepbox">80</div><div class="stepbox">96</div><div class="stepbox">120</div><div class="stepbox">160</div>
+    </div>
+  </div>
+</section>
+
+<!-- RADIUS + ELEVATION + MOTION -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Foundations</span>
+    <h2 style="margin-top:.75rem">Radius, elevation &amp; motion</h2>
+    <div class="grid cols-3" style="margin-top:2rem;gap:2.5rem">
+      <div>
+        <h3>Radius — intentional, role-based</h3>
+        <table style="margin-top:1rem">
+          <tr><th>Role</th><th>Value</th></tr>
+          <tr><td>Inputs / controls</td><td>6px</td></tr>
+          <tr><td>Buttons</td><td>10px</td></tr>
+          <tr><td>Content cards</td><td>16px</td></tr>
+          <tr><td>Panels / media</td><td>24px</td></tr>
+          <tr><td>Tags / avatars only</td><td>full</td></tr>
+        </table>
+        <p style="margin-top:.75rem;font-size:.9rem">No global rounded-everything. Nested: inner = outer − padding.</p>
+      </div>
+      <div>
+        <h3>Elevation — flat by default</h3>
+        <p style="margin-top:1rem;font-size:.95rem">Resting cards have <strong>no border + no shadow</strong> — group with
+          tone and whitespace, or a hairline. Shadows exist <em>only</em> for floating overlays (menus, dialogs),
+          hue-tinted and layered, never flat black.</p>
+        <div style="margin-top:1.25rem;background:#fff;border-radius:16px;padding:1.25rem;box-shadow:0 1px 2px rgba(14,26,43,.06),0 12px 28px -8px rgba(14,26,43,.18)">Overlay shadow (dropdowns only)</div>
+      </div>
+      <div>
+        <h3>Motion — fast &amp; purposeful</h3>
+        <table style="margin-top:1rem">
+          <tr><th>Use</th><th>Spec</th></tr>
+          <tr><td>Entrance</td><td>fade-up 20px, 380ms, ease-out, 80ms stagger</td></tr>
+          <tr><td>Hover</td><td>≤200ms, transform/opacity/colour only</td></tr>
+          <tr><td>Easing</td><td><code>cubic-bezier(.16,1,.3,1)</code></td></tr>
+        </table>
+        <p style="margin-top:.75rem;font-size:.9rem">≤3–4 distinct animations per page. Never animate body text. Respect
+          <code>prefers-reduced-motion</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Components</span>
+    <h2 style="margin-top:.75rem">Core components</h2>
+
+    <div class="grid cols-2" style="margin-top:2rem;gap:2.5rem">
+      <div>
+        <h3>Buttons (10px radius, not pills)</h3>
+        <div style="margin-top:1rem;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <span class="btn btn-p">Primary →</span>
+          <span class="btn btn-s">Secondary</span>
+          <span style="color:var(--blue-600);font-weight:600">Link →</span>
+        </div>
+        <p style="margin-top:1rem;font-size:.9rem">≥44px tap target. Primary = solid blue. Secondary = hairline. No pill radius.</p>
+      </div>
+      <div>
+        <h3>Badge (squared, rare)</h3>
+        <div style="margin-top:1rem;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <span class="badge">New</span>
+          <span class="badge" style="background:#fdeccb;color:#d6920a">HQ</span>
+          <span class="badge" style="background:var(--navy-50);color:var(--navy-600)">Status</span>
+        </div>
+        <p style="margin-top:1rem;font-size:.9rem">6px radius squared chip, never a fully-rounded pill. One per viewport, status/category only.</p>
+      </div>
+      <div>
+        <h3>Cards — borderless</h3>
+        <div style="margin-top:1rem;background:#fff;border-radius:16px;padding:1.5rem">
+          <div style="width:40px;height:40px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;color:var(--blue-600);font-weight:800">◆</div>
+          <h4 style="margin-top:1rem">Credit Scoring</h4>
+          <p style="margin-top:.4rem;font-size:.9rem">Differentiated by surface tone and space — no border, no resting shadow.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Hairline grouping</h3>
+        <div style="margin-top:1rem">
+          <div style="border-top:1px solid var(--line);padding-top:14px"><span style="color:var(--blue-600);font-weight:700;font-size:.85rem">01</span><h4 style="margin-top:6px">Ingest data</h4></div>
+          <div style="border-top:1px solid var(--line);padding-top:14px;margin-top:14px"><span style="color:var(--blue-600);font-weight:700;font-size:.85rem">02</span><h4 style="margin-top:6px">Engineer features</h4></div>
+        </div>
+        <p style="margin-top:1rem;font-size:.9rem">Prefer a hairline + whitespace over a boxed card.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    PhotonMatters Design System · light premium direction · ink + electric blue + amber spark.<br>
+    Tokens live in <code>styles/tokens.css</code>; this document is the human reference.
+  </div>
+</footer>
+
+</body>
+</html>
