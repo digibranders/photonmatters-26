@@ -50,16 +50,27 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white">
-      <div className="container-site py-16">
+    <footer data-nav-theme="dark" className="relative overflow-hidden bg-ink text-white">
+      {/* Oversized brand watermark — eterna signature */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 w-full select-none overflow-hidden"
+      >
+        <span className="block whitespace-nowrap text-center font-extrabold leading-none tracking-tighter text-white/[0.03] text-[15vw]">
+          PHOTONMATTERS
+        </span>
+      </div>
+
+      <div className="container-site relative z-10 py-16">
         <div className="grid grid-cols-2 gap-10 border-b border-line-on-dark pb-12 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
             <Logo className="h-10" />
             <p className="mt-5 max-w-[320px] text-caption text-[color:var(--color-text-on-dark-muted)]">
               {SITE.blurb}
             </p>
-            <p className="mt-5 text-caption text-[color:var(--color-text-on-dark-muted)]">
-              {SITE.tagline}
+            <p className="mt-5 max-w-[320px] text-h3 font-medium leading-snug text-white">
+              Discover your{" "}
+              <span className="font-playfair text-[color:var(--blue-400)]">lending edge</span>.
             </p>
           </div>
           <FooterColumn title="Solutions" links={FOOTER_COLUMNS.solutions} />

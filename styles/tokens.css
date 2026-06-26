@@ -1,16 +1,16 @@
 /* ============================================================================
-   PhotonMatters — Design Tokens v2  (single source of truth)
+   PhotonMatters — Design Tokens v3  ("Eterna" — single source of truth)
    ----------------------------------------------------------------------------
-   Direction: "Light premium" — warm off-white canvas, deep navy ink, ONE
-   electric-blue accent, amber used rarely as a spark. The colourful original
-   logo is the page's one pop of colour.
+   Direction: ported from the brand revamp. White canvas, deep plum ink
+   (#1A1426), ONE electric-purple accent (#7E49F2), orchid (#E9A2F2) on dark,
+   and gold (#F2CB07) used rarely as a spark. The colourful original logo
+   remains the page's richest pop of colour.
 
-   Anti-vibe rules encoded here (see docs/design-system.html for the why):
-   • No card borders + drop shadows at rest — group with whitespace / hairlines.
-   • No fully-rounded "pill" badges — intentional radius scale, full only for
-     genuine tags/avatars.
-   • One accent hue; amber reserved (<5% of surface). No purple-on-white.
-   • Tinted neutrals (navy bias), never pure #000 / #fff / #808080.
+   Notes:
+   • Raw ramp names are retained (navy-* / blue-* / amber-*) but repointed to
+     the eterna hues, so every semantic token + var() reference flips at once.
+   • Large radii + pill buttons are part of the eterna language (see Button).
+   • Tinted neutrals (plum bias), never pure #000 / #808080.
    • Fluid type + space via clamp() (Utopia method, 320 → 1280 viewport).
    • Heroes use min-height:100svh, never fixed 100vh.
    ========================================================================== */
@@ -19,33 +19,33 @@
   /* ---------------------------------------------------------------------------
      1. RAW RAMPS  (reference only — components consume the semantic tokens)
      ------------------------------------------------------------------------- */
-  /* Navy-tinted neutral scale (cool, ~6-12% sat toward blue) */
-  --navy-950: #0a121f;
-  --navy-900: #0e1a2b;   /* ink — primary text */
-  --navy-800: #16263b;
-  --navy-700: #243549;
-  --navy-600: #45526a;   /* secondary text */
-  --navy-500: #6b7888;   /* muted text */
-  --navy-400: #98a3b3;
-  --navy-300: #c2cad6;
-  --navy-200: #dde3ec;
-  --navy-100: #eef1f6;
-  --navy-50:  #f4f6fa;   /* sunken / alt section */
-  --paper:    #fbfbfd;   /* canvas */
+  /* Plum-tinted neutral scale (warm, ~8-14% sat toward violet) */
+  --navy-950: #0f0a18;
+  --navy-900: #1a1426;   /* ink — primary text (eterna-3) */
+  --navy-800: #241c33;
+  --navy-700: #342847;
+  --navy-600: #5a5266;   /* secondary text */
+  --navy-500: #6b6675;   /* muted text */
+  --navy-400: #968f9e;
+  --navy-300: #c5bfce;
+  --navy-200: #e0daea;
+  --navy-100: #efeaf7;
+  --navy-50:  #f6f3ff;   /* sunken / alt section (faint lavender) */
+  --paper:    #ffffff;   /* canvas */
   --white:    #ffffff;
 
-  /* Electric blue — the single accent */
-  --blue-700: #115c97;
-  --blue-600: #1574bd;   /* accessible text/links on light */
-  --blue-500: #1f8edd;   /* primary accent */
-  --blue-400: #41b8ee;
-  --blue-100: #d8ecfb;
-  --blue-50:  #eaf4fc;
+  /* Electric purple — the single accent (eterna) */
+  --blue-700: #2b1a66;   /* press */
+  --blue-600: #38208c;   /* accessible text/links on light (eterna-4) */
+  --blue-500: #7e49f2;   /* primary accent (eterna-2) */
+  --blue-400: #e9a2f2;   /* orchid — accent text on dark (eterna-1) */
+  --blue-100: #e4d5ff;
+  --blue-50:  #f3f0ff;
 
-  /* Amber — rare spark accent only */
-  --amber-600: #d6920a;
-  --amber-500: #faad1b;
-  --amber-100: #fdeccb;
+  /* Gold — rare spark accent only (eterna-5) */
+  --amber-600: #b8970a;
+  --amber-500: #f2cb07;
+  --amber-100: #fcefb8;
 
   /* ---------------------------------------------------------------------------
      2. SEMANTIC TOKENS  (use THESE)
@@ -72,10 +72,10 @@
   --color-surface-sunken: var(--navy-50); /* alt section bands */
   --color-surface-inverse: var(--navy-900);
 
-  /* Hairlines (used sparingly, never as boxed cards) */
-  --color-line: rgba(14, 26, 43, 0.10);
-  --color-line-subtle: rgba(14, 26, 43, 0.06);
-  --color-line-strong: rgba(14, 26, 43, 0.16);
+  /* Hairlines — tinted with the purple accent (eterna border) */
+  --color-line: rgba(126, 73, 242, 0.15);
+  --color-line-subtle: rgba(126, 73, 242, 0.08);
+  --color-line-strong: rgba(126, 73, 242, 0.26);
   --color-line-on-dark: rgba(255, 255, 255, 0.12);
   --color-line-on-dark-subtle: rgba(255, 255, 255, 0.07);
 
@@ -152,7 +152,7 @@
   /* ---------------------------------------------------------------------------
      5. LAYOUT — container + fluid gutters
      ------------------------------------------------------------------------- */
-  --container-max: 75rem;   /* 1200px */
+  --container-max: 90rem;   /* 1440px */
   --container-narrow: 48rem; /* 768px reading column */
   --gutter: clamp(1.25rem, 0.5rem + 3.2vw, 2.5rem); /* 20 → 40 */
 
@@ -171,17 +171,17 @@
      7. ELEVATION — flat by default. Shadow ONLY for floating overlays.
         (Hue-tinted, layered — never a flat black drop shadow.)
      ------------------------------------------------------------------------- */
-  --shadow-overlay: 0 1px 2px rgba(14, 26, 43, 0.06),
-    0 12px 28px -8px rgba(14, 26, 43, 0.18);
-  --shadow-focus: 0 0 0 3px rgba(31, 142, 221, 0.32);
+  --shadow-overlay: 0 1px 2px rgba(26, 20, 38, 0.06),
+    0 12px 28px -8px rgba(26, 20, 38, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(126, 73, 242, 0.32);
 
   /* ---------------------------------------------------------------------------
      8. AMBIENT GRADIENT — one zone, analogous blue stops, felt not read
      ------------------------------------------------------------------------- */
   --ambient-blue: radial-gradient(
     60% 60% at 75% 0%,
-    rgba(31, 142, 221, 0.14),
-    rgba(31, 142, 221, 0) 70%
+    rgba(126, 73, 242, 0.16),
+    rgba(126, 73, 242, 0) 70%
   );
 
   /* ---------------------------------------------------------------------------

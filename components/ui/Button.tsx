@@ -9,17 +9,18 @@ type Tone = "light" | "dark";
 const base =
   "inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-colors duration-150 disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none";
 
-// Sizes meet a ≥44px tap target on md/lg.
+// Sizes meet a ≥44px tap target on md/lg. Pill radius is part of the eterna language.
 const sizes: Record<Size, string> = {
-  sm: "text-caption px-4 py-2 rounded-md min-h-[38px]",
-  md: "text-[1.0625rem] px-5 py-2.5 rounded-lg min-h-[44px]",
-  lg: "text-body-lg px-6 py-3 rounded-lg min-h-[52px]",
+  sm: "text-caption px-5 py-2 rounded-full min-h-[38px]",
+  md: "text-[1.0625rem] px-6 py-2.5 rounded-full min-h-[44px]",
+  lg: "text-body-lg px-8 py-3 rounded-full min-h-[52px]",
 };
 
 function variantClasses(variant: Variant, tone: Tone): string {
   switch (variant) {
     case "primary":
-      return "bg-primary text-white hover:bg-primary-hover active:bg-primary-press";
+      // Eterna tell: purple → gold on hover, with plum ink text on the gold.
+      return "bg-primary text-white shadow-lg shadow-[rgba(126,73,242,0.22)] hover:bg-accent hover:text-ink hover:shadow-[rgba(242,203,7,0.28)] active:bg-primary-press active:text-white";
     case "secondary":
       return tone === "dark"
         ? "border border-line-on-dark text-white hover:bg-white/[0.08]"

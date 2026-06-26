@@ -118,6 +118,8 @@ export interface Office {
   badge?: string;
   description: string;
   address?: string;
+  /** [longitude, latitude] — drives the global-presence map markers. */
+  coordinates: [number, number];
 }
 
 export const OFFICES: Office[] = [
@@ -127,24 +129,28 @@ export const OFFICES: Office[] = [
     badge: "HQ",
     description: "Headquarters — commercial, partnerships and Middle East delivery.",
     address: "Office 1701, Tower BB1, Mazaya Business Avenue, JLT, Dubai, UAE",
+    coordinates: [55.27, 25.2],
   },
   {
     country: "India",
     city: "Ahmedabad",
     description: "Engineering and product — the build heart of the platform.",
     address: "Engineering & delivery hub — the build heart of the platform.",
+    coordinates: [72.58, 23.03],
   },
   {
     country: "South Africa",
     city: "Johannesburg",
     description: "Africa hub — market delivery and operator partnerships.",
     address: "Africa market delivery & operator partnerships hub.",
+    coordinates: [28.04, -26.2],
   },
   {
     country: "USA",
     city: "New York",
     description: "Strategy and capital — investor relations and global partnerships.",
     address: "Strategy, capital & global partnerships office.",
+    coordinates: [-74.01, 40.71],
   },
 ];
 
@@ -181,6 +187,42 @@ export const PLATFORM_STATS: Stat[] = [
   { value: "8 wks", label: "From kickoff to go-live" },
   { value: "3", label: "Regions: Africa · India · ME" },
   { value: "99.9%", label: "Platform availability" },
+];
+
+export interface Testimonial {
+  /** Full quote, verbatim from the live site. */
+  quote: string;
+  /** Speaker role / title. */
+  role: string;
+  /** Anonymised company descriptor. */
+  company: string;
+  /** Short region/segment tag shown as a chip. */
+  region: string;
+}
+
+/** Client voices — verbatim from photonmatters.com. */
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "PhotonMatters transformed our lending operations. We launched Micro, Consumer, and Commercial products in under six weeks thanks to their flexible platform. More than just a tech vendor, they've proven to be a responsive, strategic partner we count on.",
+    role: "Chief Credit Officer",
+    company: "Zambia-based lending firm",
+    region: "Zambia",
+  },
+  {
+    quote:
+      "PhotonMatters scaled effortlessly with our B2B, B2C, and e-commerce lending. It's a world-class platform backed by a responsive, expert team — a true partner in global supply chain finance.",
+    role: "Business Manager",
+    company: "Enterprise SCF firm",
+    region: "Supply Chain Finance",
+  },
+  {
+    quote:
+      "PhotonMatters moves fast — and pushes you to move faster. Their platform adapted seamlessly to our complex products and aggressive growth. They didn't just meet expectations — they outpaced them.",
+    role: "CEO",
+    company: "Middle East lending firm",
+    region: "Middle East",
+  },
 ];
 
 /** Footer link columns. */

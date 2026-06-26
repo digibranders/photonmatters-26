@@ -84,14 +84,17 @@ export function Hero() {
       };
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-ink pt-20 text-white">
-      {/* Ambient brand glow */}
+    <section
+      data-nav-theme="dark"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-ink pt-20 text-white"
+    >
+      {/* Ambient brand glow — eterna purple/orchid */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(55% 50% at 78% 12%, rgba(31,142,221,0.32), transparent 62%), radial-gradient(40% 45% at 0% 100%, rgba(31,142,221,0.14), transparent 60%)",
+            "radial-gradient(55% 50% at 78% 12%, rgba(126,73,242,0.34), transparent 62%), radial-gradient(40% 45% at 0% 100%, rgba(233,162,242,0.16), transparent 60%)",
         }}
       />
 
@@ -114,25 +117,24 @@ export function Hero() {
       </div>
 
       <div className="container-site relative z-10 w-full">
-        <motion.div {...intro} className="max-w-[34rem] py-10 lg:py-0">
-          <p className="eyebrow mb-3 text-[color:var(--blue-400)]">Micro-finance, re-engineered</p>
-          <h1 className="text-display font-extrabold leading-[1.12] text-balance text-white">
+        <motion.div {...intro} className="max-w-[40rem] py-10 lg:py-0">
+          <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white">
             AI Powered Lending{" "}
-            <span className="font-playfair text-[color:var(--blue-400)]">reaching the last mile</span>
+            <span className="font-playfair font-light text-[color:var(--blue-400)]">reaching the last mile</span>
           </h1>
-          <p className="mt-6 max-w-[30rem] text-body-lg text-[color:var(--color-text-on-dark-muted)]">
+          <p className="mt-7 max-w-[32rem] text-body-lg text-[color:var(--color-text-on-dark-muted)]">
             The only AI-native platform that takes a bank, NBFC or telecom operator from zero
             to live lending in{" "}
             <span className="font-semibold text-white">8 weeks</span> — across Africa, India
             and the Middle East.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button href="/solutions" size="md" withArrow>
+            <Button href="/solutions" size="lg" withArrow>
               Explore solutions
             </Button>
             <Button
               href="/contact"
-              size="md"
+              size="lg"
               variant="secondary"
               tone="dark"
               className="!border-white/25 !bg-white/10 backdrop-blur-md hover:!bg-white/20"

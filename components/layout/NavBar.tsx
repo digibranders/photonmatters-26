@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/Button";
 
 const GsmIcon = getIcon(GSM.icon);
 
+type Theme = "dark" | "light";
+
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
@@ -20,20 +22,48 @@ function isActive(pathname: string, href: string): boolean {
 export function NavBar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  // Theme of the section currently behind the header. Seed from the route so
+  // the very first paint is right (homepage opens on a dark hero).
+  const [theme, setTheme] = useState<Theme>(pathname === "/" ? "dark" : "light");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
+  // Recompute scrolled + theme from the section sitting under the header line.
+  const sync = useCallback(() => {
+    const y = window.scrollY;
+    setScrolled(y > 24);
+    // Sample just below the header's top edge.
+    const checkpoint = y + 44;
+    let dark = false;
+    for (const el of document.querySelectorAll<HTMLElement>('[data-nav-theme="dark"]')) {
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      if (checkpoint >= top && checkpoint < bottom) {
+        dark = true;
+        break;
+      }
+    }
+    setTheme(dark ? "dark" : "light");
+  }, []);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    const raf = requestAnimationFrame(onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const raf = requestAnimationFrame(sync);
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
     };
-  }, []);
+  }, [sync]);
+
+  // Re-sample after navigations — different pages expose different sections.
+  useEffect(() => {
+    const raf = requestAnimationFrame(sync);
+    return () => cancelAnimationFrame(raf);
+  }, [pathname, sync]);
 
   // Close dropdown on outside click or Escape
   useEffect(() => {
@@ -65,22 +95,36 @@ export function NavBar() {
     });
   }, [pathname]);
 
+  const isDark = theme === "dark";
+  const atTop = !scrolled && !mobileOpen;
+
+  const headerClass = atTop
+    ? "bg-transparent border-transparent"
+    : isDark
+      ? "bg-ink/85 backdrop-blur-md border-b border-white/10"
+      : "bg-white/85 backdrop-blur-md border-b border-line";
+
   const linkClass = (active: boolean) =>
     cn(
-      "rounded-md px-3 py-2 text-caption font-medium text-white/80 transition-colors hover:text-white",
-      active && "text-white",
+      "rounded-full px-4 py-2 text-caption font-medium transition-colors",
+      isDark
+        ? "text-white/80 hover:bg-white/10 hover:text-white"
+        : "text-ink/70 hover:bg-ink/[0.06] hover:text-ink",
+      active && (isDark ? "bg-white/10 text-white" : "bg-ink/[0.06] text-ink"),
     );
+
+  const controlClass = isDark ? "text-white" : "text-ink";
 
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[var(--z-header)] border-b border-white/10 backdrop-blur-md transition-colors duration-300",
-        scrolled || mobileOpen ? "bg-ink/85" : "bg-ink/45",
+        "fixed inset-x-0 top-0 z-[var(--z-header)] transition-colors duration-300",
+        headerClass,
       )}
     >
       <div className="container-site flex h-[76px] items-center justify-between lg:h-[84px]">
         <Link href="/" aria-label="PhotonMatters home" className="shrink-0">
-          <Logo />
+          <Logo tone={isDark ? "onDark" : "onLight"} />
         </Link>
 
         {/* Desktop nav */}
@@ -104,7 +148,8 @@ export function NavBar() {
                     size={15}
                     aria-hidden
                     className={cn(
-                      "text-white/70 transition-transform duration-200",
+                      "transition-transform duration-200",
+                      isDark ? "text-white/70" : "text-ink/60",
                       dropdownOpen && "rotate-180",
                     )}
                   />
@@ -176,16 +221,25 @@ export function NavBar() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-md text-white lg:hidden"
+            className={cn(
+              "flex h-11 w-11 cursor-pointer items-center justify-center rounded-md lg:hidden",
+              controlClass,
+            )}
           >
             {mobileOpen ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
           </button>
         </div>
       </div>
 
-      {/* Mobile nav */}
+      {/* Mobile nav — solid panel matching the active theme */}
       {mobileOpen && (
-        <div id="mobile-nav" className="border-t border-white/10 bg-ink/95 backdrop-blur-md lg:hidden">
+        <div
+          id="mobile-nav"
+          className={cn(
+            "border-t backdrop-blur-md lg:hidden",
+            isDark ? "border-white/10 bg-ink/95" : "border-line bg-white/95",
+          )}
+        >
           <nav
             aria-label="Mobile navigation"
             className="container-site flex flex-col gap-1 py-4"
@@ -196,8 +250,11 @@ export function NavBar() {
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "rounded-md px-2 py-3 text-body font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white",
-                  isActive(pathname, item.href) && "text-white",
+                  "rounded-md px-2 py-3 text-body font-medium transition-colors",
+                  isDark
+                    ? "text-white/85 hover:bg-white/10 hover:text-white"
+                    : "text-ink/80 hover:bg-ink/[0.06] hover:text-ink",
+                  isActive(pathname, item.href) && (isDark ? "text-white" : "text-ink"),
                 )}
               >
                 {item.label}
@@ -206,7 +263,7 @@ export function NavBar() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-md px-2 py-3 text-body font-semibold text-[color:var(--blue-400)]"
+              className="mt-2 rounded-md px-2 py-3 text-body font-semibold text-primary-strong"
             >
               Book a demo →
             </Link>

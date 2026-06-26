@@ -2,14 +2,21 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 /**
- * Original PhotonMatters logo, used verbatim from the live site
- * (public/photonmatters-logo.svg — colourful molecule mark + gradient wordmark).
- * Default height is set for the navbar; pass a className to override (e.g. footer).
+ * PhotonMatters logo (colourful molecule mark + wordmark).
+ * - tone="onDark"  → white wordmark  (default; use over dark/transparent bars)
+ * - tone="onLight" → ink wordmark    (use over white/light bars)
+ * The molecule mark is colourful in both variants.
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  className,
+  tone = "onDark",
+}: {
+  className?: string;
+  tone?: "onDark" | "onLight";
+}) {
   return (
     <Image
-      src="/photonmatters-logo.svg"
+      src={tone === "onLight" ? "/photonmatters-logo-dark.svg" : "/photonmatters-logo.svg"}
       alt="PhotonMatters"
       width={354}
       height={113}
