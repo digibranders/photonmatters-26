@@ -23,7 +23,7 @@ const GlobalPresenceMap = dynamic(
 
 export function GlobalPresence() {
   return (
-    <section data-nav-theme="dark" className="section relative overflow-hidden bg-ink text-white">
+    <section data-nav-theme="dark" className="relative overflow-hidden bg-ink py-16 text-white md:py-20">
       {/* Vertical plum→violet→plum wash, mirrored from the revamp */}
       <div
         aria-hidden
@@ -52,7 +52,7 @@ export function GlobalPresence() {
 
         {/* Full-width map */}
         <Reveal>
-          <div className="mt-10 w-full px-2 sm:px-4">
+          <div className="container-site mt-10">
             <GlobalPresenceMap offices={OFFICES} />
           </div>
         </Reveal>

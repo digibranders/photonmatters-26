@@ -9,7 +9,7 @@ import type { Office } from "@/lib/site";
 
 // ─── Geometry ────────────────────────────────────────────────────────────────
 // viewBox space — the SVG scales fluidly to its container width.
-const W = 1200;
+const W = 1000;
 const H = 560;
 
 // Countries that host an office — rendered with a brighter purple fill.
@@ -45,15 +45,12 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
     // India), cropping the empty Pacific, East Asia and polar caps for a
     // cleaner, tighter map. Markers stay correct — same projection.
     const FOCUS = {
-      type: "Polygon",
+      type: "MultiPoint",
       coordinates: [
-        [
-          [-122, -40],
-          [92, -40],
-          [92, 56],
-          [-122, 56],
-          [-122, -40],
-        ],
+        [-168, -42],
+        [-168, 72],
+        [95, -42],
+        [95, 72],
       ],
     };
     const fit = project.fitExtent as unknown as (
