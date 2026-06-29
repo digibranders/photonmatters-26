@@ -29,6 +29,8 @@ export function NavBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const hoverTimeoutRef = useRef<any>(null);
 
   // Recompute scrolled + theme from the section sitting under the header line.
   const sync = useCallback(() => {
@@ -87,6 +89,15 @@ export function NavBar() {
     };
   }, [dropdownOpen]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current !== undefined) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Close mobile menu on route change — startTransition avoids setState-in-effect cascades
   useEffect(() => {
     startTransition(() => {
@@ -131,13 +142,23 @@ export function NavBar() {
         <nav aria-label="Main navigation" className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) =>
             item.label === "Solutions" ? (
-              <div key={item.href} ref={dropdownRef} className="relative">
+              <div
+                key={item.href}
+                ref={dropdownRef}
+                className="relative"
+                onMouseEnter={() => {
+                  if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+                  setDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  hoverTimeoutRef.current = setTimeout(() => setDropdownOpen(false), 150);
+                }}
+              >
                 <button
                   ref={triggerRef}
                   type="button"
                   aria-haspopup="true"
                   aria-expanded={dropdownOpen}
-                  onClick={() => setDropdownOpen((v) => !v)}
                   className={cn(
                     linkClass(isActive(pathname, item.href)),
                     "inline-flex cursor-pointer items-center gap-1",
@@ -159,7 +180,10 @@ export function NavBar() {
                   <div
                     role="menu"
                     aria-label="Solutions menu"
-                    className="absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 w-[320px] rounded-xl border border-line bg-surface p-2 shadow-[var(--shadow-overlay)]"
+                    className={cn(
+                      "absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 w-[320px] rounded-xl border p-2 shadow-[var(--shadow-overlay)]",
+                      isDark ? "border-white/10 bg-ink" : "border-line bg-surface"
+                    )}
                   >
                     {SOLUTIONS.map((s) => {
                       const Icon = getIcon(s.icon);
@@ -168,28 +192,41 @@ export function NavBar() {
                           key={s.slug}
                           href={`/solutions/${s.slug}`}
                           role="menuitem"
-                          className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors hover:bg-sunken"
+                          className={cn(
+                            "flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors",
+                            isDark
+                              ? "hover:bg-white/[0.08]"
+                              : "hover:bg-sunken"
+                          )}
                           onClick={() => setDropdownOpen(false)}
                         >
-                          <Icon size={18} className="shrink-0 text-primary" aria-hidden />
-                          <span className="text-caption font-medium text-ink">{s.name}</span>
+                          <Icon size={18} className={cn("shrink-0", isDark ? "text-[#7E49F2]" : "text-primary")} aria-hidden />
+                          <span className={cn("text-caption font-medium", isDark ? "text-white" : "text-ink")}>{s.name}</span>
                         </Link>
                       );
                     })}
-                    <div className="my-1.5 h-px bg-line" role="separator" />
+                    <div className={cn("my-1.5 h-px", isDark ? "bg-white/10" : "bg-line")} role="separator" />
                     <Link
                       href={GSM.href}
                       role="menuitem"
-                      className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors hover:bg-sunken"
+                      className={cn(
+                        "flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors",
+                        isDark
+                          ? "hover:bg-white/[0.08]"
+                          : "hover:bg-sunken"
+                      )}
                       onClick={() => setDropdownOpen(false)}
                     >
-                      <GsmIcon size={18} className="shrink-0 text-primary" aria-hidden />
-                      <span className="text-caption font-medium text-ink">{GSM.name}</span>
+                      <GsmIcon size={18} className={cn("shrink-0", isDark ? "text-[#7E49F2]" : "text-primary")} aria-hidden />
+                      <span className={cn("text-caption font-medium", isDark ? "text-white" : "text-ink")}>{GSM.name}</span>
                     </Link>
                     <Link
                       href="/solutions"
                       role="menuitem"
-                      className="flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2.5 text-caption font-semibold text-primary-strong transition-colors hover:bg-sunken"
+                      className={cn(
+                        "flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2.5 text-caption font-semibold transition-colors",
+                        isDark ? "text-[#7E49F2] hover:bg-white/[0.08]" : "text-primary-strong hover:bg-sunken"
+                      )}
                       onClick={() => setDropdownOpen(false)}
                     >
                       All solutions <ArrowRight size={14} aria-hidden />

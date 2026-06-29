@@ -12,7 +12,7 @@ import { MARKETS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Built for the institutions that move credit — banks, NBFCs and telecom operators across Africa, India and the Middle East.",
+    "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
 };
 
 interface ChecklistItem {
@@ -32,7 +32,7 @@ const BLOCKS: Block[] = [
   {
     eyebrow: "Banks",
     heading: "Digital-first credit, free of legacy core constraints.",
-    body: "Launch new lending products in weeks instead of quarters. PhotonMatters sits alongside your core, plugging the gaps in origination, scoring and collections without a multi-year migration — and with compliance built in from day one.",
+    body: "Launch new lending products in weeks instead of quarters. PhotonMatters sits alongside your core, plugging the gaps in origination, scoring and collections without a multi-year migration. Compliance is built in from day one.",
     checklist: [
       { text: "Core-agnostic integration with your existing systems" },
       { text: "8-week go-live from kickoff to production" },
@@ -58,7 +58,7 @@ const BLOCKS: Block[] = [
   {
     eyebrow: "Telecom Operators",
     heading: "Turn your subscriber base into a financial-services business.",
-    body: "Your subscribers already trust you with airtime and mobile money — extend that into credit. PhotonMatters layers lending, microloans and device financing onto your network, plus GSM Missed Call & Collect Call to engage every customer at zero cost.",
+    body: "Your subscribers already trust you with airtime and mobile money. Extend that into credit. PhotonMatters layers lending, microloans and device financing onto your network, plus GSM Missed Call & Collect Call to engage every customer at zero cost.",
     checklist: [
       { text: "Airtime & device financing for subscribers" },
       { text: "Microloans delivered entirely via mobile" },
@@ -125,7 +125,7 @@ export default function IndustriesPage() {
       <PageHero
         eyebrow="Who we serve"
         title="Built for the institutions that move credit."
-        subtitle="Banks, NBFCs and telecom operators run on PhotonMatters to launch, scale and collect credit — across Africa, India and the Middle East."
+        subtitle="Banks, NBFCs and telecom operators run on PhotonMatters to launch, scale and collect credit across Africa, India and the Middle East."
         image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Standard_Bank_Head_Office.jpg/1280px-Standard_Bank_Head_Office.jpg"
       />
 

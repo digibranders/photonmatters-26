@@ -11,7 +11,7 @@ import { SITE, OFFICES } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to PhotonMatters about building your next AI-native lending product — across Africa, India and the Middle East.",
+    "Talk to PhotonMatters about building your next AI-native lending product across Africa, India and the Middle East.",
 };
 
 function LinkedInGlyph({ size = 18, ...rest }: { size?: number } & React.SVGProps<SVGSVGElement>) {
@@ -34,7 +34,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Get in touch"
         title="Let’s build your next lending product."
-        subtitle="Tell us about your market and the credit journey you want to launch. We’ll come back fast — usually within one business day."
+        subtitle="Tell us about your market and the credit journey you want to launch. We’ll come back fast, usually within one business day."
       />
 
       {/* Form + details */}

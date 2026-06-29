@@ -22,8 +22,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.photonmatters.io"),
   title: {
-    default: "PhotonMatters — AI-Native Lending & Collections Platform",
-    template: "%s — PhotonMatters",
+    default: "PhotonMatters: AI-Native Lending & Collections Platform",
+    template: "%s | PhotonMatters",
   },
   description:
     "PhotonMatters is the AI-native lending and collections technology powering banks, NBFCs and telecom operators across Africa, India and the Middle East.",
