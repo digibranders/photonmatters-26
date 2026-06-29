@@ -98,12 +98,12 @@ export default async function SolutionDetailPage({
                   ))}
                 </div>
 
-                {/* Feature tiles — gradient marker, no numbers / checkmarks */}
+                {/* Feature tiles — typographic statements, no markers */}
                 <div className="grid gap-4 sm:grid-cols-2">
                   {overview.checklist.map((item) => (
                     <div
                       key={item.lead}
-                      className="group relative overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+                      className="group relative flex min-h-[7.5rem] flex-col justify-center overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
                       style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
                     >
                       <div
@@ -111,14 +111,11 @@ export default async function SolutionDetailPage({
                         className="pointer-events-none absolute -bottom-14 -right-14 h-44 w-44 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
                         style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
                       />
-                      <span
-                        aria-hidden
-                        className="relative z-10 block h-1.5 w-9 rounded-full"
-                        style={{ background: "linear-gradient(90deg, var(--blue-500), var(--blue-400))" }}
-                      />
-                      <p className="relative z-10 mt-4 text-body font-semibold text-ink">{item.lead}</p>
+                      <h3 className="relative z-10 text-h3 font-semibold leading-snug tracking-tight text-ink">
+                        {item.lead}
+                      </h3>
                       {item.text ? (
-                        <p className="relative z-10 mt-1.5 text-caption leading-relaxed text-secondary">
+                        <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">
                           {item.text}
                         </p>
                       ) : null}
