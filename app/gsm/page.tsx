@@ -9,9 +9,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stat } from "@/components/ui/Stat";
 
 export const metadata: Metadata = {
-  title: "GSM — Missed Call & Collect Call",
+  title: "GSM: Missed Call & Collect Call",
   description:
-    "Zero-cost, no-data Missed Call and Collect Call engagement rails for telecom operators — verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
+    "Zero-cost, no-data Missed Call and Collect Call engagement rails for telecom operators. Verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
 };
 
 const WHY_CHECKLIST = [
@@ -23,11 +23,11 @@ const WHY_CHECKLIST = [
 
 const MISSED_CALL = [
   { title: "Verification & opt-in", body: "Confirm a number or capture consent with a single missed call instead of a paid OTP SMS." },
-  { title: "Lead capture", body: "Print one number on packaging or billboards — every flash becomes a verified, callable lead." },
+  { title: "Lead capture", body: "Print one number on packaging or billboards. Every flash becomes a verified, callable lead." },
   { title: "Call-me-back", body: "Out-of-credit subscribers flash your line and an agent or IVR rings them back automatically." },
-  { title: "Repayment & top-up reminders", body: "Nudge subscribers to repay a loan or recharge — they reply free, you confirm intent instantly." },
-  { title: "Campaign response", body: "Measure pull from radio, TV and SMS blasts in real time — each missed call is a tracked response." },
-  { title: "Vote & poll", body: "Run free yes/no polls and contests with one number per option — no data, no cost to vote." },
+  { title: "Repayment & top-up reminders", body: "Nudge subscribers to repay a loan or recharge. They reply free, you confirm intent instantly." },
+  { title: "Campaign response", body: "Measure pull from radio, TV and SMS blasts in real time. Each missed call is a tracked response." },
+  { title: "Vote & poll", body: "Run free yes/no polls and contests with one number per option. No data, no cost to vote." },
 ];
 
 const COLLECT_CALL = [
@@ -35,14 +35,14 @@ const COLLECT_CALL = [
   { title: "Emergency call-back", body: "A subscriber with no balance can still reach a hotline or family contact in an emergency." },
   { title: "B2B reach", body: "Field agents and distributors stay connected to head office even when out of airtime." },
   { title: "Consent-gated billing", body: "The receiving party hears the cost and explicitly accepts before the call connects." },
-  { title: "Operator revenue share", body: "Every reverse-charge minute is billed and settled — a new ARPU line on idle prepaid lines." },
+  { title: "Operator revenue share", body: "Every reverse-charge minute is billed and settled. A new ARPU line on idle prepaid lines." },
   { title: "Collections outreach", body: "Borrowers without credit can still reach your recovery desk to arrange a repayment." },
 ];
 
 const STEPS = [
-  { n: "01", title: "Subscriber dials", body: "A subscriber flashes a dedicated number or starts a reverse-charge call — free, on any 2G handset." },
+  { n: "01", title: "Subscriber dials", body: "A subscriber flashes a dedicated number or starts a reverse-charge call. Free, on any 2G handset." },
   { n: "02", title: "Carrier triggers event", body: "The operator network signals the call to our gateway, which captures the number and campaign." },
-  { n: "03", title: "Action fires", body: "OTP, opt-in, reminder, call-back or reverse-charge connect — routed by the rule you configured." },
+  { n: "03", title: "Action fires", body: "OTP, opt-in, reminder, call-back or reverse-charge connect. Routed by the rule you configured." },
   { n: "04", title: "Logged & reconciled", body: "Every event is recorded for analytics, billing and campaign attribution in real time." },
 ];
 
@@ -103,7 +103,7 @@ export default function GsmPage() {
       <PageHero
         eyebrow="GSM · New division"
         title="Missed Call & Collect Call, for telecom operators."
-        subtitle="Zero-cost, no-data engagement rails that reach every subscriber — verification, opt-in, reminders and reverse-charge connectivity that work on any 2G handset, with no app and no data plan."
+        subtitle="Zero-cost, no-data engagement rails that reach every subscriber. Verification, opt-in, reminders and reverse-charge connectivity that work on any 2G handset, with no app and no data plan."
         image="https://images.pexels.com/photos/29488660/pexels-photo-29488660.jpeg?auto=compress&cs=tinysrgb&w=1280"
       />
 

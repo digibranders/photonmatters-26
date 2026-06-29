@@ -36,7 +36,7 @@ export function PageHero({ eyebrow, title, subtitle, image, imageAlt = "" }: Pag
           ) : null}
         </div>
         {image ? (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-[5/4]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-line lg:aspect-[5/4]">
             <Image
               src={image}
               alt={imageAlt}

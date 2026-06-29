@@ -1,5 +1,5 @@
 /* ============================================================================
-   Site-wide content & configuration — single source of truth.
+   Site-wide content & configuration  single source of truth.
    All values are verbatim from the PhotonMatters content inventory (Repo A).
    ========================================================================== */
 
@@ -49,7 +49,7 @@ export const SOLUTIONS: SolutionLink[] = [
     slug: "loan-management",
     name: "Loan Management",
     blurb:
-      "The full lifecycle from disbursement to closure — schedules, accruals, restructures and payoffs.",
+      "The full lifecycle from disbursement to closure, schedules, accruals, restructures and payoffs.",
     icon: "Wallet",
   },
   {
@@ -70,7 +70,7 @@ export const SOLUTIONS: SolutionLink[] = [
     slug: "reconciliation-ai",
     name: "Reconciliation AI",
     blurb:
-      "Auto-matches payments, ledgers and gateway settlements — flags breaks before they age.",
+      "Auto-matches payments, ledgers and gateway settlements  flags breaks before they age.",
     icon: "Scale",
   },
   {
@@ -94,7 +94,7 @@ export const GSM = {
   name: "GSM · Missed Call & Collect Call",
   shortName: "GSM",
   blurb:
-    "Zero-cost engagement for operators — verification, opt-in and reminders by missed & collect call.",
+    "Zero-cost engagement for operators  verification, opt-in and reminders by missed & collect call.",
   icon: "PhoneCall",
 } as const;
 
@@ -118,7 +118,7 @@ export interface Office {
   badge?: string;
   description: string;
   address?: string;
-  /** [longitude, latitude] — drives the global-presence map markers. */
+  /** [longitude, latitude]  drives the global-presence map markers. */
   coordinates: [number, number];
 }
 
@@ -127,28 +127,28 @@ export const OFFICES: Office[] = [
     country: "UAE",
     city: "Dubai",
     badge: "HQ",
-    description: "Headquarters — commercial, partnerships and Middle East delivery.",
+    description: "Headquarters  commercial, partnerships and Middle East delivery.",
     address: "Office 1701, Tower BB1, Mazaya Business Avenue, JLT, Dubai, UAE",
     coordinates: [55.27, 25.2],
   },
   {
     country: "India",
     city: "Ahmedabad",
-    description: "Engineering and product — the build heart of the platform.",
-    address: "Engineering & delivery hub — the build heart of the platform.",
+    description: "Engineering and product  the build heart of the platform.",
+    address: "Engineering & delivery hub  the build heart of the platform.",
     coordinates: [72.58, 23.03],
   },
   {
     country: "South Africa",
     city: "Johannesburg",
-    description: "Africa hub — market delivery and operator partnerships.",
+    description: "Africa hub  market delivery and operator partnerships.",
     address: "Africa market delivery & operator partnerships hub.",
     coordinates: [28.04, -26.2],
   },
   {
     country: "USA",
     city: "New York",
-    description: "Strategy and capital — investor relations and global partnerships.",
+    description: "Strategy and capital  investor relations and global partnerships.",
     address: "Strategy, capital & global partnerships office.",
     coordinates: [-74.01, 40.71],
   },
@@ -163,7 +163,7 @@ export const MARKETS: Market[] = [
   {
     name: "Africa",
     description:
-      "Our primary market — mobile-money native lending across West, East and Southern Africa.",
+      "Our primary market  mobile-money native lending across West, East and Southern Africa.",
   },
   {
     name: "India",
@@ -171,7 +171,7 @@ export const MARKETS: Market[] = [
   },
   {
     name: "Middle East & GCC",
-    description: "HQ in Dubai — Shariah-aware and digital lending for the Gulf.",
+    description: "HQ in Dubai  Shariah-aware and digital lending for the Gulf.",
   },
 ];
 
@@ -200,7 +200,7 @@ export interface Testimonial {
   region: string;
 }
 
-/** Client voices — verbatim from photonmatters.com. */
+/** Client voices  verbatim from photonmatters.com. */
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
@@ -211,14 +211,14 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "PhotonMatters scaled effortlessly with our B2B, B2C, and e-commerce lending. It's a world-class platform backed by a responsive, expert team — a true partner in global supply chain finance.",
+      "PhotonMatters scaled effortlessly with our B2B, B2C, and e-commerce lending. It's a world-class platform backed by a responsive, expert team  a true partner in global supply chain finance.",
     role: "Business Manager",
     company: "Enterprise SCF firm",
     region: "Supply Chain Finance",
   },
   {
     quote:
-      "PhotonMatters moves fast — and pushes you to move faster. Their platform adapted seamlessly to our complex products and aggressive growth. They didn't just meet expectations — they outpaced them.",
+      "PhotonMatters moves fast  and pushes you to move faster. Their platform adapted seamlessly to our complex products and aggressive growth. They didn't just meet expectations  they outpaced them.",
     role: "CEO",
     company: "Middle East lending firm",
     region: "Middle East",

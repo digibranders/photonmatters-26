@@ -11,15 +11,15 @@ import { SOLUTIONS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "The complete lending and collections stack — modular, API-first, AI-native modules for banks, NBFCs and telecom operators.",
+    "The complete lending and collections stack. Modular, API-first, AI-native modules for banks, NBFCs and telecom operators.",
 };
 
 const HUB_BLURBS: Record<string, string> = {
   "loan-origination": "Digital onboarding, KYC/AML and AI-assisted approvals across every product.",
-  "loan-management": "The full lifecycle from disbursement to closure — schedules, accruals and payoffs.",
+  "loan-management": "The full lifecycle from disbursement to closure. Schedules, accruals and payoffs.",
   "credit-scoring": "Explainable AI scores from bureau, telco, cashflow and alternative data.",
   "debt-collection": "AI-driven recovery that segments, prioritises and automates outreach.",
-  "reconciliation-ai": "Auto-matches payments, ledgers and settlements — flags breaks before they age.",
+  "reconciliation-ai": "Auto-matches payments, ledgers and settlements. Flags breaks before they age.",
   "collection-marketing-ai": "Behaviour-driven nudges and offers that turn reminders into repayments.",
   "campaign-management": "Design, target and automate lending campaigns across SMS, WhatsApp, email and voice.",
 };
@@ -33,7 +33,7 @@ const GSM_FEATURES = [
 const FIT_CARDS = [
   { title: "One connected data flow", body: "Data moves cleanly from origination → management → scoring → collections → reconciliation, with no batch handoffs or duplicate keying." },
   { title: "API-first by design", body: "Every module exposes clean REST APIs and webhooks, so it slots into your core, bureau, payment and channel systems." },
-  { title: "On-prem or cloud", body: "Deploy in your own data centre, your private cloud or ours — your data residency and compliance rules, your choice." },
+  { title: "On-prem or cloud", body: "Deploy in your own data centre, your private cloud or ours. Your data residency and compliance rules, your choice." },
   { title: "AI-native throughout", body: "Scoring, collections and reconciliation are driven by explainable models that learn from every loan across the stack." },
 ];
 
@@ -43,7 +43,7 @@ export default function SolutionsHubPage() {
       <PageHero
         eyebrow="The Platform"
         title="The complete lending & collections stack."
-        subtitle="Modular, API-first and AI-native. Run a single module or the full credit lifecycle — originate, manage, score, collect and reconcile — on-premises or in the cloud."
+        subtitle="Modular, API-first and AI-native. Run a single module or the full credit lifecycle: originate, manage, score, collect and reconcile. On-premises or in the cloud."
         image="https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg?auto=compress&cs=tinysrgb&w=1280"
       />
 
@@ -52,7 +52,7 @@ export default function SolutionsHubPage() {
         <div className="container-site">
           <SectionHeader
             title="Every module, one modular core."
-            subtitle="Seven AI-native products that cover the credit journey end to end — each available standalone or as part of the full stack."
+            subtitle="Seven AI-native products that cover the credit journey end to end. Each available standalone or as part of the full stack."
           />
           <div className="mt-14 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {SOLUTIONS.map((s, i) => {
@@ -91,7 +91,7 @@ export default function SolutionsHubPage() {
             </h2>
             <p className="measure mt-5 text-body-lg text-[color:var(--color-text-on-dark-muted)]">
               Zero-cost engagement built straight into the network. Verify subscribers, capture
-              opt-ins and deliver loan reminders with a missed call — and let customers reach you
+              opt-ins and deliver loan reminders with a missed call. Let customers reach you
               free of charge with collect call. Perfect for thin-airtime markets where every cedi
               counts.
             </p>

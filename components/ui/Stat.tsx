@@ -62,7 +62,7 @@ export function Stat({
   }, [inView, reduce, parsed]);
 
   return (
-    <div className={className}>
+    <div className={cn("text-center", className)}>
       <p
         ref={ref}
         aria-label={value}
