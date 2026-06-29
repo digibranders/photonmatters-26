@@ -9,11 +9,17 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { getIcon } from "@/lib/icons";
 import { SOLUTION_PAGES } from "@/lib/solutions-data";
-import type { SolutionSlug } from "@/lib/site";
+import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 
 /** Light gradient-clipped heading — eterna signature (ink → ink/60). */
 const HEADING_CLIP =
   "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+
+/** Resolve a cross-link's lucide icon name by slug. */
+const SOLUTION_ICON: Record<string, string> = {
+  ...Object.fromEntries(SOLUTIONS.map((s) => [s.slug, s.icon])),
+  gsm: GSM.icon,
+};
 
 export function generateStaticParams() {
   return Object.keys(SOLUTION_PAGES).map((slug) => ({ slug }));
@@ -295,24 +301,30 @@ export default async function SolutionDetailPage({
                   </div>
                 </div>
 
-                <div className="lg:pl-6">
-                  {cta.crossLinks.map((link) => (
-                    <Link
-                      key={link.slug}
-                      href={link.slug === "gsm" ? "/gsm" : `/solutions/${link.slug}`}
-                      className="group/btn flex items-center justify-between gap-4 border-t border-white/20 py-5 transition-colors last:border-b"
-                    >
-                      <div>
-                        <h3 className="text-body font-semibold text-white">{link.name}</h3>
-                        <p className="mt-1 text-caption text-white/70">{link.blurb}</p>
-                      </div>
-                      <ArrowRight
-                        size={18}
-                        className="shrink-0 text-white/80 transition-transform duration-200 group-hover/btn:translate-x-1"
-                        aria-hidden
-                      />
-                    </Link>
-                  ))}
+                <div className="flex flex-col gap-3">
+                  {cta.crossLinks.map((link) => {
+                    const Icon = getIcon(SOLUTION_ICON[link.slug] ?? "Sparkles");
+                    return (
+                      <Link
+                        key={link.slug}
+                        href={link.slug === "gsm" ? "/gsm" : `/solutions/${link.slug}`}
+                        className="group/card flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[0.14]"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                          <Icon size={19} aria-hidden />
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-body font-semibold text-white">{link.name}</h3>
+                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                        </div>
+                        <ArrowRight
+                          size={18}
+                          className="shrink-0 text-white/80 transition-transform duration-200 group-hover/card:translate-x-1"
+                          aria-hidden
+                        />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
