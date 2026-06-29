@@ -7,19 +7,18 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 const SLIDES = [
-  { src: "https://images.pexels.com/photos/36752223/pexels-photo-36752223.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Entrepreneur accessing credit on a mobile phone" },
-  { src: "https://images.pexels.com/photos/27814588/pexels-photo-27814588.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Market vendor in an emerging economy" },
-  { src: "https://images.pexels.com/photos/37529290/pexels-photo-37529290.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Mobile-money transaction in progress" },
-  { src: "https://images.pexels.com/photos/35064938/pexels-photo-35064938.jpeg?auto=compress&cs=tinysrgb&w=1600", alt: "Small-business owner reviewing finances on a phone" },
+  { src: "/hero/slide-market.webp", alt: "Smartphone showing an approved mobile-money loan on a West African market stall" },
+  { src: "/hero/slide-kiosk.webp", alt: "Card terminal and phone at a mobile-money kiosk at dusk" },
+  { src: "/hero/slide-shop.webp", alt: "Phone with a lending dashboard and card terminal on an Indian shop counter" },
 ];
 
-const HERO_STATS = [
-  { value: "8-week", label: "go-live" },
-  { value: "250k+", label: "requests / hr" },
-  { value: "3", label: "regions live" },
-];
+/* Navy scrim + grain — matched to the photonmatters reference hero (#07101f). */
+const SCRIM =
+  "linear-gradient(95deg, rgba(7,16,31,0.94) 0%, rgba(7,16,31,0.80) 35%, rgba(7,16,31,0.34) 66%, rgba(7,16,31,0.62) 100%), linear-gradient(180deg, rgba(7,16,31,0.55) 0%, rgba(7,16,31,0.12) 32%, rgba(7,16,31,0.92) 100%)";
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-function Slides({ active, priority }: { active: number; priority?: boolean }) {
+function Slides({ active }: { active: number }) {
   return (
     <>
       {SLIDES.map((slide, i) => (
@@ -35,8 +34,8 @@ function Slides({ active, priority }: { active: number; priority?: boolean }) {
             src={slide.src}
             alt={i === 0 ? slide.alt : ""}
             fill
-            priority={priority && i === 0}
-            sizes="(max-width: 1024px) 100vw, 55vw"
+            priority={i === 0}
+            sizes="100vw"
             className="object-cover"
           />
         </div>
@@ -86,43 +85,39 @@ export function Hero() {
   return (
     <section
       data-nav-theme="dark"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-ink pt-20 text-white"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-20 text-white"
+      style={{ backgroundColor: "#07101f" }}
     >
-      {/* Ambient brand glow — eterna purple/orchid */}
+      {/* Full-bleed image carousel */}
+      <div className="absolute inset-0 z-0">
+        <Slides active={active} />
+        {/* Navy scrim — dark on the left for the headline, image visible centre-right */}
+        <div aria-hidden className="absolute inset-0" style={{ background: SCRIM }} />
+        {/* Film grain */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-soft-light"
+          style={{ backgroundImage: GRAIN }}
+        />
+      </div>
+
+      {/* Ambient brand glow — subtle eterna purple/orchid over the navy */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(55% 50% at 78% 12%, rgba(126,73,242,0.34), transparent 62%), radial-gradient(40% 45% at 0% 100%, rgba(233,162,242,0.16), transparent 60%)",
+            "radial-gradient(50% 45% at 82% 14%, rgba(126,73,242,0.22), transparent 60%), radial-gradient(40% 45% at 0% 100%, rgba(233,162,242,0.10), transparent 60%)",
         }}
       />
 
-      {/* Desktop full-bleed image panel (bleeds to the right edge, fades into navy) */}
-      <div className="absolute inset-y-0 right-0 z-0 hidden w-[55vw] lg:block">
-        <Slides active={active} priority />
-        {/* fade the image into the navy on its left edge + subtle bottom scrim */}
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, var(--navy-900) 0%, rgba(14,26,43,0.55) 26%, rgba(14,26,43,0.10) 55%, transparent 100%), linear-gradient(0deg, rgba(14,26,43,0.45), transparent 40%)",
-          }}
-        />
-        {/* Progress */}
-        <div className="absolute bottom-9 right-10 xl:right-16">
-          <Progress active={active} onSelect={setActive} />
-        </div>
-      </div>
-
       <div className="container-site relative z-10 w-full">
         <motion.div {...intro} className="max-w-[40rem] py-10 lg:py-0">
-          <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white">
+          <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
             AI Powered Lending{" "}
             <span className="font-playfair font-light text-[color:var(--blue-400)]">reaching the last mile</span>
           </h1>
-          <p className="mt-7 max-w-[32rem] text-body-lg text-[color:var(--color-text-on-dark-muted)]">
+          <p className="mt-7 max-w-[32rem] text-body-lg text-[color:var(--color-text-on-dark-muted)] [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
             The only AI-native platform that takes a bank, NBFC or telecom operator from zero
             to live lending in{" "}
             <span className="font-semibold text-white">8 weeks</span> — across Africa, India
@@ -142,27 +137,14 @@ export function Hero() {
               Book a demo
             </Button>
           </div>
-
-          <dl className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
-            {HERO_STATS.map((s, i) => (
-              <div key={s.label} className={cn("flex items-baseline gap-2", i > 0 && "sm:border-l sm:border-white/15 sm:pl-6")}>
-                <dt className="text-h3 font-bold text-white">{s.value}</dt>
-                <dd className="text-caption text-[color:var(--color-text-on-dark-muted)]">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
-
-          {/* Mobile carousel */}
-          <div className="mt-10 lg:hidden">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-white/10">
-              <Slides active={active} />
-              <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(0deg, rgba(14,26,43,0.5), transparent 45%)" }} />
-              <div className="absolute bottom-4 left-4">
-                <Progress active={active} onSelect={setActive} />
-              </div>
-            </div>
-          </div>
         </motion.div>
+      </div>
+
+      {/* Progress */}
+      <div className="absolute bottom-9 left-0 right-0 z-10">
+        <div className="container-site">
+          <Progress active={active} onSelect={setActive} />
+        </div>
       </div>
     </section>
   );

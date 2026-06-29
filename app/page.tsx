@@ -46,7 +46,7 @@ const INDUSTRIES = [
   },
   {
     name: "Telecom Operators",
-    body: "Turn subscribers into a financial-services base — airtime to credit.",
+    body: "Turn subscribers into a financial-services base. Airtime to credit.",
     image:
       "https://images.pexels.com/photos/36359722/pexels-photo-36359722.jpeg?auto=compress&cs=tinysrgb&w=1100",
   },
@@ -78,7 +78,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="Solutions"
             title="One modular core for the entire credit lifecycle."
-            subtitle="API-first, AI-native modules that run the journey end to end — originate, manage, score, collect and reconcile — on-premises or in the cloud."
+            subtitle="API-first, AI-native modules that run the journey end to end: originate, manage, score, collect and reconcile. On-premises or in the cloud."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SOLUTIONS.map((s, i) => (
@@ -153,7 +153,7 @@ export default function HomePage() {
               tone="dark"
               eyebrow="AI Engine"
               title="AI that decides, explains, and gets smarter."
-              subtitle="Every loan is underwritten, priced, reconciled and collected by models that combine bureau, alternative and behavioural data — with full explainability for regulators and risk teams."
+              subtitle="Every loan is underwritten, priced, reconciled and collected by models that combine bureau, alternative and behavioural data. Full explainability for regulators and risk teams."
             />
             <div className="mt-8">
               <Button href="/solutions/credit-scoring" variant="link" tone="dark" withArrow>
@@ -262,8 +262,8 @@ export default function HomePage() {
           <Reveal>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-line">
               <Image
-                src="https://images.pexels.com/photos/27553169/pexels-photo-27553169.jpeg?auto=compress&cs=tinysrgb&w=1280"
-                alt="Street commerce in Accra, Ghana"
+                src="/hero/section-last-mile.webp"
+                alt="A first mobile-money loan approved on a phone at a bustling African market"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -277,9 +277,9 @@ export default function HomePage() {
               <span className="font-playfair text-primary-strong">locked out of finance</span>.
             </h2>
             <p className="measure mt-6 text-body-lg text-secondary">
-              Most of them are not unbankable — they are just unseen by legacy credit models built
+              Most of them are not unbankable. They&apos;re just unseen by legacy credit models built
               for paperwork and payslips. PhotonMatters reads the signals the old system ignores:
-              mobile usage, airtime, cashflow and repayment behaviour — so a first fair loan is
+              mobile usage, airtime, cashflow and repayment behaviour. A first fair loan is
               possible with nothing but a phone.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6">
