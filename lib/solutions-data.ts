@@ -70,6 +70,12 @@ export interface SolutionPage {
     body: string;
     crossLinks: CrossLink[];
   };
+  /** Optional interactive feature explorer ("What you can do"). */
+  featureShowcase?: {
+    eyebrow?: string;
+    heading: string;
+    items: { icon: string; title: string; body: string; visual: string }[];
+  };
 }
 
 export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
@@ -934,6 +940,42 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
           slug: "gsm",
           name: "GSM · Missed & Collect Call",
           blurb: "Zero-cost telecom channels for verification and opt-in.",
+        },
+      ],
+    },
+    featureShowcase: {
+      eyebrow: "Features",
+      heading: "What you can do.",
+      items: [
+        {
+          icon: "Target",
+          visual: "radar",
+          title: "Lifecycle-Based Targeting",
+          body: "Segment borrowers by behavior, credit score, tenure, and repayment patterns — and speak to them when it matters most.",
+        },
+        {
+          icon: "Send",
+          visual: "channels",
+          title: "Multi-Channel Automation",
+          body: "Run campaigns across email, SMS, WhatsApp, push notifications, and in-app — all from one place.",
+        },
+        {
+          icon: "Wand2",
+          visual: "offers",
+          title: "Personalized Offers That Convert",
+          body: "Deliver top-ups, pre-approved credit, EMI holidays, or rate drops — dynamically tailored to borrower profiles.",
+        },
+        {
+          icon: "FlaskConical",
+          visual: "ab",
+          title: "A/B Testing & Real-Time Optimization",
+          body: "Test messages, creatives, and channels — and optimize on the fly for higher ROI.",
+        },
+        {
+          icon: "BarChart3",
+          visual: "insights",
+          title: "Live Campaign Insights",
+          body: "Track engagement, conversions, and funnel performance with real-time analytics and a unified campaign dashboard.",
         },
       ],
     },

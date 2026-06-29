@@ -4,16 +4,27 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowRight, MapPin } from "lucide-react";
 import { SolutionHero } from "@/components/solutions/SolutionHero";
+import { FeatureShowcase } from "@/components/solutions/FeatureShowcase";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { getIcon } from "@/lib/icons";
 import { SOLUTION_PAGES } from "@/lib/solutions-data";
-import type { SolutionSlug } from "@/lib/site";
+import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 
 /** Light gradient-clipped heading — eterna signature (ink → ink/60). */
 const HEADING_CLIP =
   "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+
+/** Resolve a cross-link's lucide icon name by slug. */
+const SOLUTION_ICON: Record<string, string> = {
+  ...Object.fromEntries(SOLUTIONS.map((s) => [s.slug, s.icon])),
+  gsm: GSM.icon,
+};
+
+/** Fine film grain — adds premium texture on gradient surfaces. */
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export function generateStaticParams() {
   return Object.keys(SOLUTION_PAGES).map((slug) => ({ slug }));
@@ -39,7 +50,7 @@ export default async function SolutionDetailPage({
   const page = SOLUTION_PAGES[slug as SolutionSlug];
   if (!page) notFound();
 
-  const { hero, overview, capabilities, how, outcomes, cta } = page;
+  const { hero, overview, capabilities, how, outcomes, cta, featureShowcase } = page;
 
   return (
     <>
@@ -213,6 +224,23 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
+      {/* What you can do — interactive feature explorer (per-solution, optional) */}
+      {featureShowcase ? (
+        <FeatureShowcase
+          eyebrow={featureShowcase.eyebrow}
+          heading={featureShowcase.heading}
+          items={featureShowcase.items.map((it) => {
+            const Icon = getIcon(it.icon);
+            return {
+              title: it.title,
+              body: it.body,
+              visual: it.visual,
+              icon: <Icon size={20} aria-hidden />,
+            };
+          })}
+        />
+      ) : null}
+
       {/* Outcomes — dark band with ambient light + glass stat cards */}
       <section
         data-nav-theme="dark"
@@ -257,26 +285,38 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* CTA + cross-links — gradient finale (light canvas, distinct from the dark Outcomes band) */}
+      {/* CTA finale (v3, premium) — gradient card with a connected lifecycle pipeline */}
       <section className="section">
         <div className="container-site">
           <Reveal>
-            {/* Gradient CTA card — eterna signature (purple → deep purple) */}
             <div
-              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-16"
+              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 md:px-14 md:py-16"
               style={{
                 background:
-                  "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)",
+                  "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 48%, #8a55f5 100%)",
+                boxShadow:
+                  "inset 0 1px 0 rgba(255,255,255,0.22), 0 30px 80px -28px rgba(126,73,242,0.6)",
               }}
             >
-              {/* Soft orchid bloom for depth */}
+              {/* Soft orchid bloom + highlight bloom for depth */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(233,162,242,0.30)" }}
+                style={{ background: "rgba(233,162,242,0.32)" }}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-[35%] -left-[12%] h-[360px] w-[360px] rounded-full blur-[100px]"
+                style={{ background: "rgba(255,255,255,0.12)" }}
+              />
+              {/* Film grain */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-soft-light"
+                style={{ backgroundImage: GRAIN }}
               />
 
-              <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div className="relative z-10 grid gap-12 lg:grid-cols-2 lg:items-center">
                 <div>
                   <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
                   <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
@@ -295,24 +335,58 @@ export default async function SolutionDetailPage({
                   </div>
                 </div>
 
-                <div className="lg:pl-6">
-                  {cta.crossLinks.map((link) => (
-                    <Link
-                      key={link.slug}
-                      href={link.slug === "gsm" ? "/gsm" : `/solutions/${link.slug}`}
-                      className="group/btn flex items-center justify-between gap-4 border-t border-white/20 py-5 transition-colors last:border-b"
-                    >
-                      <div>
-                        <h3 className="text-body font-semibold text-white">{link.name}</h3>
-                        <p className="mt-1 text-caption text-white/70">{link.blurb}</p>
-                      </div>
-                      <ArrowRight
-                        size={18}
-                        className="shrink-0 text-white/80 transition-transform duration-200 group-hover/btn:translate-x-1"
-                        aria-hidden
-                      />
-                    </Link>
-                  ))}
+                {/* Connected lifecycle pipeline */}
+                <div className="relative">
+                  {cta.crossLinks.map((link, i) => {
+                    const Icon = getIcon(SOLUTION_ICON[link.slug] ?? "Sparkles");
+                    const last = i === cta.crossLinks.length - 1;
+                    return (
+                      <Link
+                        key={link.slug}
+                        href={link.slug === "gsm" ? "/gsm" : `/solutions/${link.slug}`}
+                        className="group/node relative flex gap-4 rounded-2xl p-3 transition-colors duration-300 hover:bg-white/[0.07]"
+                      >
+                        {/* Vertical gradient connector to the next node */}
+                        {!last ? (
+                          <span
+                            aria-hidden
+                            className="absolute left-[2.25rem] top-[3.75rem] -bottom-1 w-px"
+                            style={{
+                              background:
+                                "linear-gradient(to bottom, rgba(233,162,242,0.7), rgba(255,255,255,0.12))",
+                            }}
+                          />
+                        ) : null}
+                        {/* Station node */}
+                        <span
+                          className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover/node:scale-105"
+                          style={{
+                            background:
+                              "linear-gradient(150deg, rgba(255,255,255,0.32), rgba(255,255,255,0.06))",
+                            boxShadow:
+                              "inset 0 1px 0 rgba(255,255,255,0.55), 0 10px 26px -8px rgba(233,162,242,0.55)",
+                          }}
+                        >
+                          <span
+                            aria-hidden
+                            className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/25"
+                          />
+                          <Icon size={19} aria-hidden />
+                        </span>
+                        <div className="min-w-0 flex-1 pt-1.5">
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="text-body font-semibold text-white">{link.name}</span>
+                            <ArrowRight
+                              size={15}
+                              className="text-white/60 transition-all duration-200 group-hover/node:translate-x-1 group-hover/node:text-white"
+                              aria-hidden
+                            />
+                          </span>
+                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
