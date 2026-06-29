@@ -51,7 +51,7 @@ export function SolutionHero({ title, titleAccent, subtitle, image, imageAlt = "
 
       <div className="container-site relative z-10 w-full">
         <div className="max-w-[42rem] py-16 lg:py-20">
-          <h1 className="text-h1 font-extrabold tracking-tight text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
+          <h1 className="text-display font-medium leading-[1.05] tracking-tighter text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
             {title}
             {titleAccent ? (
               <>

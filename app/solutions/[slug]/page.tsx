@@ -7,7 +7,6 @@ import { SolutionHero } from "@/components/solutions/SolutionHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Stat } from "@/components/ui/Stat";
 import { getIcon } from "@/lib/icons";
 import { SOLUTION_PAGES } from "@/lib/solutions-data";
 import type { SolutionSlug } from "@/lib/site";
@@ -168,27 +167,46 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* How it works — connected stepper */}
+      {/* How it works — flow pipeline of connected step cards */}
       <section className="section">
         <div className="container-site">
-          <SectionHeader eyebrow={how.eyebrow} title={how.heading} />
-          <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeader title={how.eyebrow} />
+          <div className="mt-14 grid items-stretch gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {how.steps.map((step, i) => (
-              <Reveal key={step.n} index={i}>
-                <div className="relative">
-                  {/* Connector hairline to the next step (lg only) */}
-                  {i < how.steps.length - 1 ? (
-                    <span
-                      aria-hidden
-                      className="absolute left-12 top-6 hidden h-px w-[calc(100%-1rem)] bg-line lg:block"
-                    />
-                  ) : null}
-                  <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-line-strong bg-surface text-h3 font-extrabold tabular-nums text-primary-strong">
+              <Reveal key={step.n} index={i} className="relative">
+                <div
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+                  style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
+                >
+                  {/* Ghost numeral */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -right-1 -top-6 select-none text-[6rem] font-extrabold leading-none tabular-nums text-[color:var(--blue-100)] opacity-70"
+                  >
                     {step.n}
                   </span>
-                  <h3 className="mt-5 text-h3 font-bold text-ink">{step.title}</h3>
-                  <p className="mt-2 text-caption leading-relaxed text-secondary">{step.body}</p>
+                  {/* Corner bloom */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-14 -right-14 h-40 w-40 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+                  />
+                  <h3 className="relative z-10 mt-10 text-h3 font-bold text-ink">{step.title}</h3>
+                  <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">
+                    {step.body}
+                  </p>
                 </div>
+
+                {/* Gradient connector arrow to the next step (lg only) */}
+                {i < how.steps.length - 1 ? (
+                  <span
+                    aria-hidden
+                    className="absolute right-0 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-line bg-surface text-white shadow-[var(--shadow-overlay)] lg:flex"
+                    style={{ background: "linear-gradient(135deg, var(--blue-500), var(--blue-400))" }}
+                  >
+                    <ArrowRight size={16} strokeWidth={2.75} />
+                  </span>
+                ) : null}
               </Reveal>
             ))}
           </div>
@@ -213,12 +231,26 @@ export default async function SolutionDetailPage({
         </div>
         <div className="container-site relative">
           <SectionHeader tone="dark" eyebrow={outcomes.eyebrow} title={outcomes.heading} />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {outcomes.stats.map((s, i) => (
-              <Reveal key={s.label} index={i}>
-                <div className="h-full rounded-2xl border border-line-on-dark bg-white/[0.04] p-8 backdrop-blur-sm transition-colors duration-300 hover:border-[color:rgba(126,73,242,0.5)]">
-                  <Stat value={s.value} label={s.label} tone="dark" />
-                </div>
+              <Reveal key={s.label} index={i} className="relative">
+                {/* Gradient rail between columns */}
+                {i > 0 ? (
+                  <span
+                    aria-hidden
+                    className="absolute -left-5 top-0 hidden h-full w-px md:block"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, transparent, rgba(126,73,242,0.45) 25%, rgba(233,162,242,0.30) 75%, transparent)",
+                    }}
+                  />
+                ) : null}
+                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-transparent">
+                  {s.value}
+                </p>
+                <p className="mt-3 max-w-xs text-body leading-relaxed text-[color:var(--color-text-on-dark-muted)]">
+                  {s.label}
+                </p>
               </Reveal>
             ))}
           </div>

@@ -80,7 +80,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       "Digital loan origination with eKYC, OCR document capture, a configurable product builder and a decision engine that pulls bureau and alternative data — from application to disbursement in minutes.",
     hero: {
       eyebrow: "Solutions · Origination",
-      title: "Loan Origination",
+      title: "Loan",
+      titleAccent: "Origination",
       subtitle:
         "Take a borrower from application to disbursement in minutes — digital onboarding, eKYC, OCR capture and a rules engine that pulls bureau and alternative data to decide in real time.",
       image:
@@ -201,7 +202,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       "Full-lifecycle loan servicing  disbursement, repayment schedules and restructuring, interest and fee accruals, delinquency bucketing, multi-currency GL postings and borrower notifications.",
     hero: {
       eyebrow: "Solutions · Servicing",
-      title: "Loan Management",
+      title: "Loan",
+      titleAccent: "Management",
       subtitle:
         "Run every loan from disbursement to closure  schedules, restructures, accruals, delinquency buckets and multi-currency GL postings  on an engine that keeps your books accurate and your ops lean.",
       image:
