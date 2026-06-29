@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Mail, Phone, ArrowRight } from "lucide-react";
-import { PageHero } from "@/components/layout/PageHero";
+import { Mail, Phone, ArrowRight, Clock } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -28,79 +26,98 @@ const DETAILS = [
   { icon: LinkedInGlyph, label: "LinkedIn", value: "/company/photonmatters", href: SITE.linkedin },
 ];
 
+const PROOF = [
+  { value: "8 weeks", label: "Average go-live" },
+  { value: "250k+/hr", label: "Requests at peak" },
+  { value: "99.9%", label: "Platform uptime" },
+];
+
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Get in touch"
-        title={
-          <>
-            Let&apos;s build your next{" "}
-            <span className="font-playfair text-primary-strong">lending product</span>.
-          </>
-        }
-        subtitle="Tell us about your market and the credit journey you want to launch. We’ll come back fast, usually within one business day."
-      />
-
-      {/* Form + details */}
-      <section className="section">
-        <div className="container-site grid gap-12 lg:grid-cols-[1.3fr_1fr]">
+      {/* Premium contact card — dark info panel + form */}
+      <section className="relative overflow-hidden pb-[var(--section-y)] pt-32 lg:pt-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{ background: "var(--ambient-blue)" }}
+        />
+        <div className="container-site">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-6 shadow-[var(--shadow-overlay)] sm:p-8">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-70 blur-3xl"
-                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
-              />
-              <div className="relative z-10">
-                <ContactForm />
+            <div className="grid overflow-hidden rounded-[2.5rem] border border-line shadow-[0_1px_2px_rgba(26,20,38,0.04),0_40px_90px_-40px_rgba(26,20,38,0.5)] lg:grid-cols-2">
+              {/* Left — dark branded info panel */}
+              <div className="relative overflow-hidden bg-ink p-8 text-white sm:p-12 lg:p-14">
+                <div aria-hidden className="pointer-events-none absolute inset-0">
+                  <div className="absolute -left-[15%] -top-[15%] h-[420px] w-[420px] rounded-full blur-[90px]" style={{ background: "rgba(126,73,242,0.30)" }} />
+                  <div className="absolute -bottom-[20%] right-[5%] h-[320px] w-[320px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.16)" }} />
+                </div>
+
+                <div className="relative">
+                  <p className="eyebrow mb-4 !text-[color:var(--blue-400)]">Get in touch</p>
+                  <h1 className="text-balance bg-gradient-to-b from-white to-white/45 bg-clip-text pb-[0.18em] text-h1 font-bold text-transparent">
+                    Let&apos;s build your next{" "}
+                    <span className="font-playfair font-light text-[color:var(--blue-400)]">
+                      lending product
+                    </span>
+                    .
+                  </h1>
+                  <p className="mt-5 max-w-md text-body-lg text-[color:var(--color-text-on-dark-muted)]">
+                    Tell us about your market and the credit journey you want to launch — we&apos;ll
+                    come back fast, usually within one business day.
+                  </p>
+
+                  {/* Contact methods */}
+                  <div className="mt-9 space-y-3">
+                    {DETAILS.map((d) => (
+                      <a
+                        key={d.label}
+                        href={d.href}
+                        target={d.href.startsWith("http") ? "_blank" : undefined}
+                        rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="group/card flex items-center gap-4 rounded-2xl border border-line-on-dark bg-white/[0.04] p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[color:rgba(126,73,242,0.5)] hover:bg-white/[0.08]"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.08] text-[color:var(--blue-400)]">
+                          <d.icon size={18} aria-hidden />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-caption text-[color:var(--color-text-on-dark-muted)]">{d.label}</span>
+                          <span className="block truncate text-body font-semibold text-white">{d.value}</span>
+                        </span>
+                        <ArrowRight size={16} className="shrink-0 text-white/60 transition-transform duration-200 group-hover/card:translate-x-1" aria-hidden />
+                      </a>
+                    ))}
+                  </div>
+
+                  {/* Proof strip */}
+                  <dl className="mt-9 grid grid-cols-3 gap-4 border-t border-line-on-dark pt-7">
+                    {PROOF.map((p) => (
+                      <div key={p.label}>
+                        <dt className="text-h3 font-bold tabular-nums text-white">{p.value}</dt>
+                        <dd className="mt-1 text-caption text-[color:var(--color-text-on-dark-muted)]">{p.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
               </div>
-            </div>
-          </Reveal>
 
-          <Reveal delay={0.1}>
-            <h2 className="text-h3 font-bold text-ink">Reach us directly</h2>
-            <ul className="mt-5 space-y-3">
-              {DETAILS.map((d) => (
-                <li key={d.label}>
-                  <a
-                    href={d.href}
-                    target={d.href.startsWith("http") ? "_blank" : undefined}
-                    rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group/card flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_14px_30px_-16px_rgba(126,73,242,0.28)]"
-                  >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[color:var(--blue-50)] text-primary">
-                      <d.icon size={18} aria-hidden />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-caption text-muted">{d.label}</span>
-                      <span className="block truncate text-body font-semibold text-ink">{d.value}</span>
-                    </span>
-                    <ArrowRight
-                      size={16}
-                      className="shrink-0 text-primary transition-transform duration-200 group-hover/card:translate-x-1"
-                      aria-hidden
-                    />
+              {/* Right — form panel */}
+              <div className="bg-surface p-8 sm:p-12">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-h3 font-bold text-ink">Send us a message</h2>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--blue-50)] px-3 py-1 text-label font-semibold text-primary-strong">
+                    <Clock size={13} aria-hidden />
+                    ~1 business day
+                  </span>
+                </div>
+                <p className="mt-2 text-caption text-secondary">
+                  Prefer email? Reach us at{" "}
+                  <a href={`mailto:${SITE.email}`} className="font-semibold text-primary-strong hover:underline">
+                    {SITE.email}
                   </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="relative mt-6 overflow-hidden rounded-3xl bg-ink p-7 text-white">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-12 -top-16 h-56 w-56 rounded-full blur-[70px]"
-                style={{ background: "rgba(126,73,242,0.4)" }}
-              />
-              <div className="relative z-10">
-                <h2 className="text-h3 font-bold text-white">Prefer a demo?</h2>
-                <p className="mt-2 text-caption text-[color:var(--color-text-on-dark-muted)]">
-                  We’ll show you a live lending journey in 30 minutes.
+                  .
                 </p>
-                <div className="mt-5">
-                  <Button href={`mailto:${SITE.email}`} size="sm" withArrow>
-                    Book a demo
-                  </Button>
+                <div className="mt-7">
+                  <ContactForm />
                 </div>
               </div>
             </div>
