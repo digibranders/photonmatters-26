@@ -52,63 +52,75 @@ export default async function SolutionDetailPage({
         imageAlt={hero.title}
       />
 
-      {/* Overview — editorial overlap: duotone image with a content panel over its edge */}
-      <section className="section overflow-hidden">
+      {/* Overview — glass spotlight: cinematic image stage with a frosted content card */}
+      <section className="section">
         <div className="container-site">
           <Reveal>
-            <div className="grid items-stretch lg:grid-cols-12">
-              {/* Duotone image — right, tall */}
-              <figure className="relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-line sm:aspect-[16/10] lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:aspect-auto">
+            <div className="relative overflow-hidden rounded-[2rem] ring-1 ring-line">
+              {/* Cinematic image backdrop */}
+              <div aria-hidden className="absolute inset-0">
                 <Image
                   src={overview.image.src}
-                  alt={overview.image.caption}
+                  alt=""
                   fill
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover [filter:grayscale(1)_contrast(1.03)]"
+                  sizes="100vw"
+                  className="object-cover"
                 />
-                {/* Plum → purple → orchid duotone */}
                 <div
-                  aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(150deg, rgba(45,27,105,0.82) 0%, rgba(126,73,242,0.45) 55%, rgba(233,162,242,0.30) 100%)",
-                    mixBlendMode: "multiply",
+                      "linear-gradient(100deg, rgba(15,10,24,0.55) 0%, rgba(15,10,24,0.20) 48%, rgba(126,73,242,0.30) 100%), radial-gradient(70% 90% at 100% 0%, rgba(233,162,242,0.22), transparent 60%)",
                   }}
                 />
-                <figcaption className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-3.5 py-1.5 text-caption text-white backdrop-blur-md">
-                  <MapPin size={14} className="text-[color:var(--blue-400)]" aria-hidden />
-                  {overview.image.caption}
-                </figcaption>
-              </figure>
+              </div>
 
-              {/* Content panel — left, overlapping the image edge */}
-              <div className="relative z-10 -mt-10 mx-4 rounded-3xl border border-line bg-surface/95 p-8 shadow-[var(--shadow-overlay)] backdrop-blur-sm sm:mx-8 sm:p-10 lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:my-10 lg:p-12">
+              {/* Frosted glass content card */}
+              <div className="relative px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
                 <div
-                  aria-hidden
-                  className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full opacity-70 blur-2xl"
-                  style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
-                />
-                <p className="eyebrow mb-3">{overview.eyebrow}</p>
-                <h2 className={HEADING_CLIP}>{overview.heading}</h2>
-                {overview.paragraphs.map((p, i) => (
-                  <p key={i} className="relative z-10 mt-4 text-body text-secondary">
-                    {p}
-                  </p>
-                ))}
-
-                {/* Feature list — clean statements, no markers */}
-                <div className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
-                  {overview.checklist.map((item) => (
-                    <div key={item.lead}>
-                      <p className="text-body font-semibold text-ink">{item.lead}</p>
-                      {item.text ? (
-                        <p className="mt-1 text-caption leading-relaxed text-secondary">{item.text}</p>
-                      ) : null}
-                    </div>
+                  className="max-w-xl rounded-3xl border border-white/60 p-8 backdrop-blur-2xl sm:p-10"
+                  style={{
+                    background:
+                      "linear-gradient(160deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.72) 100%)",
+                    boxShadow:
+                      "inset 0 1px 0 0 rgba(255,255,255,0.9), inset 0 0 0 1px rgba(255,255,255,0.30), 0 2px 6px rgba(26,20,38,0.10), 0 22px 46px -14px rgba(26,20,38,0.40), 0 60px 110px -34px rgba(126,73,242,0.45)",
+                  }}
+                >
+                  <p className="eyebrow mb-3">{overview.eyebrow}</p>
+                  <h2 className={HEADING_CLIP}>{overview.heading}</h2>
+                  {overview.paragraphs.map((p, i) => (
+                    <p key={i} className="mt-4 text-body text-secondary">
+                      {p}
+                    </p>
                   ))}
+
+                  {/* Feature list — bullets with the brand arrow motif */}
+                  <div className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                    {overview.checklist.map((item) => (
+                      <div key={item.lead} className="flex items-start gap-2.5">
+                        <ArrowRight
+                          size={15}
+                          strokeWidth={2.5}
+                          className="mt-1 shrink-0 text-primary"
+                          aria-hidden
+                        />
+                        <div>
+                          <p className="text-body font-semibold leading-snug text-ink">{item.lead}</p>
+                          {item.text ? (
+                            <p className="mt-1 text-caption leading-relaxed text-secondary">{item.text}</p>
+                          ) : null}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+
+              {/* Caption chip over the image */}
+              <figcaption className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-3.5 py-1.5 text-caption text-white backdrop-blur-md">
+                <MapPin size={14} className="text-[color:var(--blue-400)]" aria-hidden />
+                {overview.image.caption}
+              </figcaption>
             </div>
           </Reveal>
         </div>
