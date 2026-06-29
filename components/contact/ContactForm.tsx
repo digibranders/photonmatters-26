@@ -10,7 +10,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const COUNTRIES = ["Africa", "India", "Middle East", "Other"];
 
 const fieldClass =
-  "w-full rounded-md border border-line-strong bg-surface px-4 py-3 text-body text-ink placeholder:text-muted transition-colors focus:border-primary";
+  "w-full rounded-xl border border-line bg-sunken px-4 py-3.5 text-body text-ink placeholder:text-muted outline-none transition-all duration-200 focus:border-[color:rgba(126,73,242,0.5)] focus:bg-surface focus:shadow-[0_0_0_4px_rgba(126,73,242,0.12)]";
 const labelClass = "mb-1.5 block text-caption font-semibold text-ink";
 
 export function ContactForm() {
@@ -94,10 +94,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-body-lg font-semibold text-white transition-colors duration-150 hover:bg-primary-hover disabled:opacity-60 sm:w-auto"
+        className="group/btn mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-body-lg font-semibold text-white shadow-lg shadow-[rgba(126,73,242,0.22)] transition-colors duration-150 hover:bg-accent hover:text-ink hover:shadow-[rgba(242,203,7,0.28)] disabled:opacity-60"
       >
         {status === "submitting" ? "Sending…" : "Send message"}
-        {status === "submitting" ? null : <ArrowRight size={18} aria-hidden />}
+        {status === "submitting" ? null : (
+          <ArrowRight size={18} aria-hidden className="transition-transform duration-150 group-hover/btn:translate-x-0.5" />
+        )}
       </button>
     </form>
   );
