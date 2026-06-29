@@ -2,73 +2,84 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
 interface SolutionHeroProps {
-  eyebrow: string;
-  title: React.ReactNode;
+  title: string;
+  /** Optional trailing fragment rendered as a Playfair orchid accent. */
+  titleAccent?: string;
   subtitle: React.ReactNode;
   image: string;
   imageAlt?: string;
 }
 
+/* Navy scrim + grain — matched to the home hero (#07101f). */
+const SCRIM =
+  "linear-gradient(95deg, rgba(7,16,31,0.94) 0%, rgba(7,16,31,0.80) 35%, rgba(7,16,31,0.34) 66%, rgba(7,16,31,0.62) 100%), linear-gradient(180deg, rgba(7,16,31,0.55) 0%, rgba(7,16,31,0.12) 32%, rgba(7,16,31,0.92) 100%)";
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+
 /**
- * Solution hero — a tinted lavender section with an ambient mesh, a category
- * pill, the headline, a single primary CTA, and the photo in a rounded panel.
- * Richer than the shared PageHero, but copy stays source-faithful.
+ * Dark, cinematic solution hero — full-bleed photo, navy scrim, grain and an
+ * eterna purple/orchid glow, echoing the home hero. The page's second section
+ * is light, giving a strong dark → light transition.
  */
-export function SolutionHero({ eyebrow, title, subtitle, image, imageAlt = "" }: SolutionHeroProps) {
+export function SolutionHero({ title, titleAccent, subtitle, image, imageAlt = "" }: SolutionHeroProps) {
   return (
     <section
-      className="relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, var(--color-surface-sunken) 0%, var(--color-surface-sunken) 45%, var(--color-surface-canvas) 100%)",
-      }}
+      data-nav-theme="dark"
+      className="relative flex min-h-[64svh] flex-col justify-center overflow-hidden pt-20 text-white"
+      style={{ backgroundColor: "#07101f" }}
     >
-      {/* Ambient eterna mesh */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      {/* Full-bleed image + scrim + grain */}
+      <div className="absolute inset-0 z-0">
+        <Image src={image} alt={imageAlt} fill priority sizes="100vw" className="object-cover" />
+        <div aria-hidden className="absolute inset-0" style={{ background: SCRIM }} />
         <div
-          className="absolute -right-[8%] -top-[12%] h-[520px] w-[520px] rounded-full blur-[120px]"
-          style={{ background: "rgba(126,73,242,0.18)" }}
-        />
-        <div
-          className="absolute -left-[10%] top-[38%] h-[420px] w-[420px] rounded-full blur-[120px]"
-          style={{ background: "rgba(233,162,242,0.12)" }}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-soft-light"
+          style={{ backgroundImage: GRAIN }}
         />
       </div>
 
-      <div className="container-site grid items-center gap-12 pt-32 pb-14 lg:grid-cols-[1.05fr_0.95fr] lg:pt-36 lg:pb-16">
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-label font-semibold uppercase tracking-[0.08em] text-primary-strong">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-            {eyebrow}
-          </span>
+      {/* Ambient brand glow — eterna purple/orchid over the navy */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "radial-gradient(50% 45% at 82% 14%, rgba(126,73,242,0.22), transparent 60%), radial-gradient(40% 45% at 0% 100%, rgba(233,162,242,0.10), transparent 60%)",
+        }}
+      />
 
-          <h1 className="mt-6 text-h1 font-extrabold text-balance text-ink">{title}</h1>
+      <div className="container-site relative z-10 w-full">
+        <div className="max-w-[42rem] py-16 lg:py-20">
+          <h1 className="text-h1 font-extrabold tracking-tight text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
+            {title}
+            {titleAccent ? (
+              <>
+                {" "}
+                <span className="font-playfair font-light text-[color:var(--blue-400)]">
+                  {titleAccent}
+                </span>
+              </>
+            ) : null}
+          </h1>
 
-          <p className="measure mt-6 text-body-lg text-secondary">{subtitle}</p>
+          <p className="mt-6 max-w-[34rem] text-body-lg text-[color:var(--color-text-on-dark-muted)] [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
+            {subtitle}
+          </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button href="/contact" size="lg" withArrow>
               Book a demo
             </Button>
-          </div>
-        </div>
-
-        <div className="relative">
-          {/* Corner bloom behind the panel */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-8 -top-8 h-72 w-72 rounded-full opacity-70 blur-3xl"
-            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.18), transparent 70%)" }}
-          />
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line lg:aspect-[5/4]">
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover"
-            />
+            <Button
+              href="#capabilities"
+              size="lg"
+              variant="secondary"
+              tone="dark"
+              className="!border-white/25 !bg-white/10 backdrop-blur-md hover:!bg-white/20"
+            >
+              Explore capabilities
+            </Button>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowRight, Check, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { SolutionHero } from "@/components/solutions/SolutionHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -45,86 +45,89 @@ export default async function SolutionDetailPage({
   return (
     <>
       <SolutionHero
-        eyebrow={hero.eyebrow}
-        title={
-          hero.titleAccent ? (
-            <>
-              {hero.title}{" "}
-              <span className="font-playfair text-primary-strong">{hero.titleAccent}</span>
-            </>
-          ) : (
-            hero.title
-          )
-        }
+        title={hero.title}
+        titleAccent={hero.titleAccent}
         subtitle={hero.subtitle}
         image={hero.image}
         imageAlt={hero.title}
       />
 
-      {/* Overview — two paired column-stacks: statement → image | lead → proof rail */}
-      <section className="pb-[var(--section-y)] pt-8">
-        <div className="container-site grid gap-x-12 gap-y-10 lg:grid-cols-12">
-          {/* Left: statement, then image directly beneath it */}
-          <div className="lg:col-span-7">
-            <Reveal>
-              <p className="eyebrow mb-4">{overview.eyebrow}</p>
-              <h2 className={HEADING_CLIP}>{overview.heading}</h2>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <figure className="relative mt-8 aspect-[16/10] overflow-hidden rounded-3xl ring-1 ring-line">
+      {/* Overview — bento mosaic: photo tile + intro tile + gradient-accent feature tiles */}
+      <section className="section">
+        <div className="container-site">
+          <Reveal>
+            <div className="grid gap-4 lg:grid-cols-12 lg:items-stretch">
+              {/* Photo tile — tall, left */}
+              <figure className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line lg:col-span-5 lg:aspect-auto">
                 <Image
                   src={overview.image.src}
                   alt={overview.image.caption}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   className="object-cover"
                 />
-                {/* Legibility + eterna tint */}
                 <div
                   aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(26,20,38,0.72) 0%, rgba(26,20,38,0.08) 45%, rgba(26,20,38,0) 72%), radial-gradient(60% 80% at 100% 0%, rgba(126,73,242,0.20), transparent 60%)",
+                      "linear-gradient(to top, rgba(26,20,38,0.74) 0%, rgba(26,20,38,0.10) 45%, rgba(26,20,38,0) 72%), radial-gradient(60% 80% at 100% 0%, rgba(126,73,242,0.22), transparent 60%)",
                   }}
                 />
-                <figcaption className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-4 py-2 text-caption text-white backdrop-blur-md">
+                <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-3.5 py-1.5 text-caption text-white backdrop-blur-md">
                   <MapPin size={14} className="text-[color:var(--blue-400)]" aria-hidden />
                   {overview.image.caption}
                 </figcaption>
               </figure>
-            </Reveal>
-          </div>
 
-          {/* Right: lead paragraphs, then the compact proof rail */}
-          <div className="lg:col-span-5">
-            <Reveal>
-              <div className="flex flex-col gap-4">
-                {overview.paragraphs.map((p, i) => (
-                  <p key={i} className="text-body text-secondary">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <ul className="mt-8 divide-y divide-line border-y border-line">
-                {overview.checklist.map((item) => (
-                  <li key={item.lead} className="flex items-start gap-4 py-5">
-                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[color:var(--blue-50)] text-primary">
-                      <Check size={17} strokeWidth={2.5} aria-hidden />
-                    </span>
-                    <div>
-                      <p className="text-body font-semibold text-ink">{item.lead}</p>
+              {/* Right column: intro tile + feature tiles */}
+              <div className="grid gap-4 lg:col-span-7">
+                {/* Intro tile */}
+                <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-7 sm:p-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-70 blur-2xl"
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+                  />
+                  <p className="eyebrow mb-3">{overview.eyebrow}</p>
+                  <h2 className={HEADING_CLIP}>{overview.heading}</h2>
+                  {overview.paragraphs.map((p, i) => (
+                    <p key={i} className="relative z-10 mt-4 text-body text-secondary">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Feature tiles — gradient marker, no numbers / checkmarks */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {overview.checklist.map((item) => (
+                    <div
+                      key={item.lead}
+                      className="group relative overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+                      style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
+                    >
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute -bottom-14 -right-14 h-44 w-44 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
+                        style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+                      />
+                      <span
+                        aria-hidden
+                        className="relative z-10 block h-1.5 w-9 rounded-full"
+                        style={{ background: "linear-gradient(90deg, var(--blue-500), var(--blue-400))" }}
+                      />
+                      <p className="relative z-10 mt-4 text-body font-semibold text-ink">{item.lead}</p>
                       {item.text ? (
-                        <p className="mt-0.5 text-caption leading-relaxed text-secondary">{item.text}</p>
+                        <p className="relative z-10 mt-1.5 text-caption leading-relaxed text-secondary">
+                          {item.text}
+                        </p>
                       ) : null}
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
