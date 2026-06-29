@@ -2,17 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Check, ArrowRight, PhoneMissed, PhoneForwarded, type LucideIcon } from "lucide-react";
-import { PageHero } from "@/components/layout/PageHero";
+import { HeroDark } from "@/components/layout/HeroDark";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Stat } from "@/components/ui/Stat";
+import { getIcon } from "@/lib/icons";
 
 export const metadata: Metadata = {
   title: "GSM: Missed Call & Collect Call",
   description:
     "Zero-cost, no-data Missed Call and Collect Call engagement rails for telecom operators. Verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
 };
+
+const HEADING_CLIP =
+  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
 
 const WHY_CHECKLIST = [
   "Reaches the data-light prepaid majority",
@@ -54,8 +57,8 @@ const OPERATOR_STATS = [
 ];
 
 const CROSS_LINKS = [
-  { href: "/solutions/campaign-management", name: "Campaign Management", blurb: "Orchestrate missed-call responses across SMS, voice and WhatsApp." },
-  { href: "/solutions/collection-marketing-ai", name: "Collection Marketing AI", blurb: "Turn free reminders into repayments with behaviour-driven nudges." },
+  { href: "/solutions/campaign-management", icon: "Megaphone", name: "Campaign Management", blurb: "Orchestrate missed-call responses across SMS, voice and WhatsApp." },
+  { href: "/solutions/collection-marketing-ai", icon: "BellRing", name: "Collection Marketing AI", blurb: "Turn free reminders into repayments with behaviour-driven nudges." },
 ];
 
 function ProductBlock({
@@ -74,21 +77,29 @@ function ProductBlock({
   return (
     <div>
       <div className="flex items-start gap-4">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-primary">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">
           <Icon size={22} aria-hidden />
         </span>
         <div>
           <span className="eyebrow mb-2">{eyebrow}</span>
-          <h2 className="text-h2 font-bold text-ink">{heading}</h2>
+          <h2 className={HEADING_CLIP}>{heading}</h2>
         </div>
       </div>
       <p className="measure mt-5 text-body-lg text-secondary">{subtitle}</p>
-      <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((c) => (
           <Reveal key={c.title}>
-            <div className="border-t border-line pt-5">
-              <h3 className="text-h3 font-bold text-ink">{c.title}</h3>
-              <p className="mt-2 text-caption leading-relaxed text-secondary">{c.body}</p>
+            <div
+              className="group relative h-full overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+              style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-14 -right-14 h-44 w-44 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+              />
+              <h3 className="relative z-10 text-h3 font-bold text-ink">{c.title}</h3>
+              <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">{c.body}</p>
             </div>
           </Reveal>
         ))}
@@ -100,20 +111,22 @@ function ProductBlock({
 export default function GsmPage() {
   return (
     <>
-      <PageHero
+      <HeroDark
         eyebrow="GSM · New division"
-        title="Missed Call & Collect Call, for telecom operators."
+        title="Missed Call & Collect Call,"
+        titleAccent="for telecom operators."
         subtitle="Zero-cost, no-data engagement rails that reach every subscriber. Verification, opt-in, reminders and reverse-charge connectivity that work on any 2G handset, with no app and no data plan."
-        image="https://images.pexels.com/photos/29488660/pexels-photo-29488660.jpeg?auto=compress&cs=tinysrgb&w=1280"
+        image="https://images.pexels.com/photos/29488660/pexels-photo-29488660.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        imageAlt="Telecom subscriber engagement"
+        primary={{ label: "Book a demo", href: "/contact" }}
+        secondary={{ label: "Explore solutions", href: "/solutions" }}
       />
 
       {/* Why it matters */}
       <section className="section">
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <h2 className="text-h2 font-bold text-balance text-ink">
-              In prepaid markets, the cheapest channel wins.
-            </h2>
+            <h2 className={HEADING_CLIP}>In prepaid markets, the cheapest channel wins.</h2>
             <p className="mt-5 text-body text-secondary">
               Across Africa, the vast majority of subscribers are prepaid and data-light. A megabyte
               costs more than a meal in some markets, so SMS gets ignored and apps never get
@@ -136,15 +149,22 @@ export default function GsmPage() {
             </ul>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image
-                src="https://images.pexels.com/photos/36096255/pexels-photo-36096255.jpeg?auto=compress&cs=tinysrgb&w=1280"
-                alt="Mobile-money vendor in West Africa"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+            <figure className="relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
               />
-            </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
+                <Image
+                  src="https://images.pexels.com/photos/36096255/pexels-photo-36096255.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                  alt="Mobile-money vendor in West Africa"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </figure>
           </Reveal>
         </div>
       </section>
@@ -173,77 +193,138 @@ export default function GsmPage() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — flow pipeline */}
       <section className="section bg-sunken">
         <div className="container-site">
-          <SectionHeader title="From a single dial to a fired action." />
-          <div className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeader eyebrow="How it works" title="From a single dial to a fired action." />
+          <div className="mt-14 grid items-stretch gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, i) => (
-              <Reveal key={step.n} index={i}>
-                <div>
-                  <span className="text-h2 font-extrabold text-[color:var(--blue-100)]">{step.n}</span>
-                  <h3 className="mt-2 text-h3 font-bold text-ink">{step.title}</h3>
-                  <p className="mt-2 text-caption leading-relaxed text-secondary">{step.body}</p>
+              <Reveal key={step.n} index={i} className="relative">
+                <div
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+                  style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
+                >
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -right-1 -top-6 select-none text-[6rem] font-extrabold leading-none tabular-nums text-[color:var(--blue-100)] opacity-70"
+                  >
+                    {step.n}
+                  </span>
+                  <h3 className="relative z-10 mt-10 text-h3 font-bold text-ink">{step.title}</h3>
+                  <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">{step.body}</p>
                 </div>
+                {i < STEPS.length - 1 ? (
+                  <span
+                    aria-hidden
+                    className="absolute right-0 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-line bg-surface text-white shadow-[var(--shadow-overlay)] lg:flex"
+                    style={{ background: "linear-gradient(135deg, var(--blue-500), var(--blue-400))" }}
+                  >
+                    <ArrowRight size={16} strokeWidth={2.75} />
+                  </span>
+                ) : null}
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why operators care */}
-      <section className="section-lg bg-ink text-white">
-        <div className="container-site">
-          <SectionHeader tone="dark" title="The lowest-friction channel you already own." />
-          <div className="mt-12 grid grid-cols-2 gap-x-10 gap-y-8 lg:grid-cols-4">
-            {OPERATOR_STATS.map((s) => (
-              <Reveal key={s.value}>
-                <div className="border-t border-line-on-dark pt-6">
-                  <Stat value={s.value} label={s.label} tone="dark" />
-                </div>
+      {/* Why operators care — dark gradient-rail showcase */}
+      <section
+        data-nav-theme="dark"
+        className="section relative overflow-hidden bg-ink text-white"
+      >
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-[8%] -top-[25%] h-[520px] w-[520px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.18)" }} />
+          <div className="absolute -bottom-[28%] -right-[8%] h-[460px] w-[460px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
+        </div>
+        <div className="container-site relative">
+          <SectionHeader tone="dark" eyebrow="Why operators care" title="The lowest-friction channel you already own." />
+          <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {OPERATOR_STATS.map((s, i) => (
+              <Reveal key={s.value} index={i} className="relative">
+                {i > 0 ? (
+                  <span
+                    aria-hidden
+                    className="absolute -left-5 top-0 hidden h-full w-px lg:block"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, transparent, rgba(126,73,242,0.45) 25%, rgba(233,162,242,0.30) 75%, transparent)",
+                    }}
+                  />
+                ) : null}
+                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-transparent">
+                  {s.value}
+                </p>
+                <p className="mt-2 text-body text-[color:var(--color-text-on-dark-muted)]">{s.label}</p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA + cross-links */}
+      {/* CTA + cross-links — gradient finale with glass cards */}
       <section className="section">
-        <div className="container-site grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h2 className="text-h2 font-bold text-balance text-ink">
-              Pair GSM rails with your lending campaigns.
-            </h2>
-            <p className="measure mt-5 text-body-lg text-secondary">
-              Combine missed-call opt-in and collect-call outreach with PhotonMatters campaign and
-              collections intelligence to drive response and recovery — without spending a cent of
-              subscriber data.
-            </p>
-            <div className="mt-8">
-              <Button href="/contact" size="lg" withArrow>
-                Book a demo
-              </Button>
-            </div>
-          </div>
-          <div>
-            {CROSS_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group/btn flex items-center justify-between gap-4 border-t border-line py-5 transition-colors last:border-b hover:text-primary-strong"
-              >
+        <div className="container-site">
+          <Reveal>
+            <div
+              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-16"
+              style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
+                style={{ background: "rgba(233,162,242,0.30)" }}
+              />
+              <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <h3 className="text-body font-semibold text-ink">{link.name}</h3>
-                  <p className="mt-1 text-caption text-secondary">{link.blurb}</p>
+                  <p className="eyebrow !text-white/70">Connect the channels</p>
+                  <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
+                    Pair GSM rails with your lending campaigns.
+                  </h2>
+                  <p className="measure mt-5 text-body-lg text-white/80">
+                    Combine missed-call opt-in and collect-call outreach with PhotonMatters campaign
+                    and collections intelligence to drive response and recovery — without spending a
+                    cent of subscriber data.
+                  </p>
+                  <div className="mt-8">
+                    <Button
+                      href="/contact"
+                      size="lg"
+                      withArrow
+                      className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                    >
+                      Book a demo
+                    </Button>
+                  </div>
                 </div>
-                <ArrowRight
-                  size={18}
-                  className="shrink-0 text-primary transition-transform duration-200 group-hover/btn:translate-x-1"
-                  aria-hidden
-                />
-              </Link>
-            ))}
-          </div>
+                <div className="flex flex-col gap-3">
+                  {CROSS_LINKS.map((link) => {
+                    const Icon = getIcon(link.icon);
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="group/card flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[0.14]"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                          <Icon size={19} aria-hidden />
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-body font-semibold text-white">{link.name}</h3>
+                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                        </div>
+                        <ArrowRight
+                          size={18}
+                          className="shrink-0 text-white/80 transition-transform duration-200 group-hover/card:translate-x-1"
+                          aria-hidden
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

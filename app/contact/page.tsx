@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -33,7 +33,12 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Get in touch"
-        title="Let’s build your next lending product."
+        title={
+          <>
+            Let&apos;s build your next{" "}
+            <span className="font-playfair text-primary-strong">lending product</span>.
+          </>
+        }
         subtitle="Tell us about your market and the credit journey you want to launch. We’ll come back fast, usually within one business day."
       />
 
@@ -41,61 +46,87 @@ export default function ContactPage() {
       <section className="section">
         <div className="container-site grid gap-12 lg:grid-cols-[1.3fr_1fr]">
           <Reveal>
-            <ContactForm />
+            <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-6 shadow-[var(--shadow-overlay)] sm:p-8">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-70 blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+              />
+              <div className="relative z-10">
+                <ContactForm />
+              </div>
+            </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h2 className="text-h3 font-bold text-ink">Reach us directly</h2>
-            <ul className="mt-5">
+            <ul className="mt-5 space-y-3">
               {DETAILS.map((d) => (
                 <li key={d.label}>
                   <a
                     href={d.href}
                     target={d.href.startsWith("http") ? "_blank" : undefined}
                     rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-4 border-t border-line py-4 transition-colors last:border-b hover:text-primary-strong"
+                    className="group/card flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_14px_30px_-16px_rgba(126,73,242,0.28)]"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-primary">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[color:var(--blue-50)] text-primary">
                       <d.icon size={18} aria-hidden />
                     </span>
-                    <span>
+                    <span className="min-w-0 flex-1">
                       <span className="block text-caption text-muted">{d.label}</span>
-                      <span className="block text-body font-semibold text-ink">{d.value}</span>
+                      <span className="block truncate text-body font-semibold text-ink">{d.value}</span>
                     </span>
+                    <ArrowRight
+                      size={16}
+                      className="shrink-0 text-primary transition-transform duration-200 group-hover/card:translate-x-1"
+                      aria-hidden
+                    />
                   </a>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 rounded-2xl bg-ink p-7 text-white">
-              <h2 className="text-h3 font-bold">Prefer a demo?</h2>
-              <p className="mt-2 text-caption text-[color:var(--color-text-on-dark-muted)]">
-                We’ll show you a live lending journey in 30 minutes.
-              </p>
-              <div className="mt-5">
-                <Button href={`mailto:${SITE.email}`} size="sm" withArrow>
-                  Book a demo
-                </Button>
+            <div className="relative mt-6 overflow-hidden rounded-3xl bg-ink p-7 text-white">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-12 -top-16 h-56 w-56 rounded-full blur-[70px]"
+                style={{ background: "rgba(126,73,242,0.4)" }}
+              />
+              <div className="relative z-10">
+                <h2 className="text-h3 font-bold text-white">Prefer a demo?</h2>
+                <p className="mt-2 text-caption text-[color:var(--color-text-on-dark-muted)]">
+                  We’ll show you a live lending journey in 30 minutes.
+                </p>
+                <div className="mt-5">
+                  <Button href={`mailto:${SITE.email}`} size="sm" withArrow>
+                    Book a demo
+                  </Button>
+                </div>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Offices */}
+      {/* Offices — premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
-          <SectionHeader title="Find us across three regions." />
-          <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeader eyebrow="Offices" title="Find us across three regions." />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {OFFICES.map((o, i) => (
               <Reveal key={o.country} index={i}>
-                <div className="border-t border-line pt-6">
-                  <div className="flex items-center gap-2">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-line bg-surface p-7">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-12 -right-12 h-44 w-44 rounded-full opacity-60 blur-2xl"
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                  />
+                  <div className="relative z-10 flex items-center gap-2">
                     <h3 className="text-h3 font-bold text-ink">{o.country}</h3>
                     {o.badge ? <Badge>{o.badge}</Badge> : null}
                   </div>
-                  <p className="mt-1 text-body font-medium text-primary-strong">{o.city}</p>
-                  <p className="mt-3 text-caption leading-relaxed text-secondary">{o.address}</p>
+                  <p className="relative z-10 mt-1 text-body font-medium text-primary-strong">{o.city}</p>
+                  <p className="relative z-10 mt-3 text-caption leading-relaxed text-secondary">{o.address}</p>
                 </div>
               </Reveal>
             ))}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { PageHero } from "@/components/layout/PageHero";
+import { HeroDark } from "@/components/layout/HeroDark";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description:
     "PhotonMatters is building AI-native lending technology to bank the people legacy systems forgot, across Africa, India and the Middle East.",
 };
+
+const HEADING_CLIP =
+  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+
+const CARD_BENTO =
+  "group relative h-full overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-8";
 
 const VALUES = [
   { title: "Built to Disrupt", body: "We challenge the assumptions baked into legacy credit. AI-native from the first line of code, we replace paperwork and gut-feel with explainable, data-driven decisions." },
@@ -23,22 +29,37 @@ const LEADERS = [
   { initials: "RA", name: "Rohit Ahuja", role: "Founder & CCO", bio: "25+ years in business development and IT consulting; ex-Accenture. MBA, Certified Cloud Practitioner." },
 ];
 
+function Bloom() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
+      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+    />
+  );
+}
+
 export default function AboutPage() {
   return (
     <>
-      <PageHero
+      <HeroDark
         eyebrow="Our story"
-        title="We’re banking the people the system forgot."
+        title="We’re banking the people the"
+        titleAccent="system forgot."
         subtitle="PhotonMatters is building AI-native lending technology for the institutions that move credit — banks, NBFCs and telecom operators — across Africa, India and the Middle East."
-        image="https://images.pexels.com/photos/30688593/pexels-photo-30688593.jpeg?auto=compress&cs=tinysrgb&w=1280"
+        image="https://images.pexels.com/photos/30688593/pexels-photo-30688593.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        imageAlt="Banking the people the system forgot"
+        primary={{ label: "Book a demo", href: "/contact" }}
+        secondary={{ label: "Our solutions", href: "/solutions" }}
       />
 
       {/* Mission */}
       <section className="section">
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <h2 className="text-h2 font-bold text-balance text-ink">
-              Unleashing a <span className="text-primary-strong">global revolution</span> in lending
+            <h2 className={HEADING_CLIP}>
+              Unleashing a{" "}
+              <span className="font-playfair text-primary-strong">global revolution</span> in lending
               technology.
             </h2>
             <p className="mt-5 text-body text-secondary">
@@ -55,29 +76,40 @@ export default function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image
-                src="https://images.pexels.com/photos/3894376/pexels-photo-3894376.jpeg?auto=compress&cs=tinysrgb&w=1280"
-                alt="Building human-centered credit, together"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+            <figure className="relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
               />
-            </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
+                <Image
+                  src="https://images.pexels.com/photos/3894376/pexels-photo-3894376.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                  alt="Building human-centered credit, together"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </figure>
           </Reveal>
         </div>
       </section>
 
-      {/* Values */}
+      {/* Values — bento */}
       <section className="section bg-sunken">
         <div className="container-site">
-          <SectionHeader title="Built to Disrupt. Engineered for Scale. Designed to Empower." />
-          <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-3">
+          <SectionHeader
+            eyebrow="What drives us"
+            title="Built to Disrupt. Engineered for Scale. Designed to Empower."
+          />
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} index={i}>
-                <div className="border-t border-line pt-6">
-                  <h3 className="text-h3 font-bold text-ink">{v.title}</h3>
-                  <p className="mt-3 text-body text-secondary">{v.body}</p>
+                <div className={CARD_BENTO} style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}>
+                  <Bloom />
+                  <h3 className="relative z-10 text-h3 font-bold text-ink">{v.title}</h3>
+                  <p className="relative z-10 mt-3 text-body text-secondary">{v.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -85,24 +117,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership */}
+      {/* Leadership — premium cards */}
       <section className="section">
         <div className="container-site">
-          <SectionHeader title="Founders who’ve spent decades building this." />
-          <div className="mt-12 grid gap-10 md:grid-cols-2">
+          <SectionHeader eyebrow="Leadership" title="Founders who’ve spent decades building this." />
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
             {LEADERS.map((l, i) => (
               <Reveal key={l.name} index={i}>
-                <div className="flex items-start gap-5">
-                  <span
-                    aria-hidden
-                    className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-50 text-h3 font-bold text-primary-strong"
-                  >
-                    {l.initials}
-                  </span>
-                  <div>
-                    <h3 className="text-h3 font-bold text-ink">{l.name}</h3>
-                    <p className="mt-0.5 text-caption font-semibold text-primary-strong">{l.role}</p>
-                    <p className="mt-3 text-body text-secondary">{l.bio}</p>
+                <div className={`${CARD_BENTO} bg-surface`}>
+                  <Bloom />
+                  <div className="relative z-10 flex items-start gap-5">
+                    <span
+                      aria-hidden
+                      className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-h3 font-bold text-primary-strong"
+                    >
+                      {l.initials}
+                    </span>
+                    <div>
+                      <h3 className="text-h3 font-bold text-ink">{l.name}</h3>
+                      <p className="mt-0.5 text-caption font-semibold text-primary-strong">{l.role}</p>
+                      <p className="mt-3 text-body text-secondary">{l.bio}</p>
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -111,16 +146,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Markets */}
+      {/* Markets — premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
-          <SectionHeader title="Born for emerging markets." />
-          <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
+          <SectionHeader
+            align="center"
+            eyebrow="Markets"
+            title={
+              <>
+                Born for{" "}
+                <span className="font-playfair text-primary-strong">emerging markets</span>
+              </>
+            }
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {MARKETS.map((m, i) => (
               <Reveal key={m.name} index={i}>
-                <div className="border-t border-line pt-6">
-                  <h3 className="text-h2 font-extrabold text-ink">{m.name}</h3>
-                  <p className="mt-3 text-body text-secondary">{m.description}</p>
+                <div className="relative h-full overflow-hidden rounded-[2rem] border border-line bg-surface p-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full opacity-60 blur-2xl"
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.14), transparent 70%)" }}
+                  />
+                  <h3 className="relative z-10 text-h3 font-bold text-primary-strong">{m.name}</h3>
+                  <p className="relative z-10 mt-3 text-body text-secondary">{m.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -128,14 +177,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global presence */}
-      <section className="section-lg bg-ink text-white">
-        <div className="container-site">
-          <SectionHeader tone="dark" title="Four offices. Three regions. One platform." />
-          <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Global presence — dark band with blooms + glass office cards */}
+      <section
+        data-nav-theme="dark"
+        className="section-lg relative overflow-hidden bg-ink text-white"
+      >
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-[8%] -top-[20%] h-[560px] w-[560px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.18)" }} />
+          <div className="absolute -bottom-[24%] -right-[8%] h-[460px] w-[460px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
+        </div>
+        <div className="container-site relative">
+          <SectionHeader tone="dark" eyebrow="Global presence" title="Four offices. Three regions. One platform." />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {OFFICES.map((o, i) => (
               <Reveal key={o.country} index={i}>
-                <div className="border-t border-line-on-dark pt-6">
+                <div className="h-full rounded-2xl border border-line-on-dark bg-white/[0.04] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-[color:rgba(126,73,242,0.5)]">
                   <div className="flex items-center gap-2">
                     <h3 className="text-h3 font-bold text-white">{o.country}</h3>
                     {o.badge ? <Badge tone="onDark">{o.badge}</Badge> : null}

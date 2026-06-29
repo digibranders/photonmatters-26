@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
-import { PageHero } from "@/components/layout/PageHero";
+import { HeroDark } from "@/components/layout/HeroDark";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Stat } from "@/components/ui/Stat";
 import { MARKETS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,6 +13,9 @@ export const metadata: Metadata = {
   description:
     "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
 };
+
+const HEADING_CLIP =
+  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
 
 interface ChecklistItem {
   text: string;
@@ -79,21 +81,28 @@ const INDUSTRY_STATS = [
 
 function FeatureBlock({ block, flip }: { block: Block; flip: boolean }) {
   return (
-    <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+    <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
       <Reveal className={flip ? "lg:order-2" : undefined}>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <Image
-            src={block.image}
-            alt={block.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
+        <figure className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
+            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
           />
-        </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
+            <Image
+              src={block.image}
+              alt={block.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </figure>
       </Reveal>
       <Reveal delay={0.1} className={flip ? "lg:order-1" : undefined}>
         <span className="eyebrow mb-4">{block.eyebrow}</span>
-        <h2 className="text-h2 font-bold text-balance text-ink">{block.heading}</h2>
+        <h2 className={HEADING_CLIP}>{block.heading}</h2>
         <p className="mt-5 text-body text-secondary">{block.body}</p>
         <ul className="mt-7 space-y-3">
           {block.checklist.map((item) => (
@@ -122,11 +131,15 @@ function FeatureBlock({ block, flip }: { block: Block; flip: boolean }) {
 export default function IndustriesPage() {
   return (
     <>
-      <PageHero
+      <HeroDark
         eyebrow="Who we serve"
-        title="Built for the institutions that move credit."
+        title="Built for the institutions that"
+        titleAccent="move credit."
         subtitle="Banks, NBFCs and telecom operators run on PhotonMatters to launch, scale and collect credit across Africa, India and the Middle East."
         image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Standard_Bank_Head_Office.jpg/1280px-Standard_Bank_Head_Office.jpg"
+        imageAlt="Institutions that move credit"
+        primary={{ label: "Book a demo", href: "/contact" }}
+        secondary={{ label: "Explore solutions", href: "/solutions" }}
       />
 
       <section className="section">
@@ -137,16 +150,30 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Markets */}
+      {/* Markets — premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
-          <SectionHeader title="Born for emerging markets." />
-          <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
+          <SectionHeader
+            align="center"
+            eyebrow="Markets"
+            title={
+              <>
+                Born for{" "}
+                <span className="font-playfair text-primary-strong">emerging markets</span>
+              </>
+            }
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {MARKETS.map((m, i) => (
               <Reveal key={m.name} index={i}>
-                <div className="border-t border-line pt-6">
-                  <h3 className="text-h2 font-extrabold text-ink">{m.name}</h3>
-                  <p className="mt-3 text-body text-secondary">{m.description}</p>
+                <div className="relative h-full overflow-hidden rounded-[2rem] border border-line bg-surface p-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full opacity-60 blur-2xl"
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.14), transparent 70%)" }}
+                  />
+                  <h3 className="relative z-10 text-h3 font-bold text-primary-strong">{m.name}</h3>
+                  <p className="relative z-10 mt-3 text-body text-secondary">{m.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -154,14 +181,37 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Stats strip */}
-      <section className="border-y border-line">
-        <div className="container-site grid grid-cols-2 gap-x-8 gap-y-10 py-14 lg:grid-cols-4">
-          {INDUSTRY_STATS.map((s, i) => (
-            <Reveal key={s.label} index={i}>
-              <Stat value={s.value} label={s.label} />
-            </Reveal>
-          ))}
+      {/* Stats — dark gradient-rail showcase */}
+      <section
+        data-nav-theme="dark"
+        className="section relative overflow-hidden bg-ink text-white"
+      >
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-[8%] -top-[30%] h-[520px] w-[520px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.18)" }} />
+          <div className="absolute -bottom-[30%] -right-[8%] h-[460px] w-[460px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
+        </div>
+        <div className="container-site relative">
+          <SectionHeader tone="dark" eyebrow="By the numbers" title="Built to run at national scale." />
+          <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {INDUSTRY_STATS.map((s, i) => (
+              <Reveal key={s.label} index={i} className="relative">
+                {i > 0 ? (
+                  <span
+                    aria-hidden
+                    className="absolute -left-5 top-0 hidden h-full w-px lg:block"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, transparent, rgba(126,73,242,0.45) 25%, rgba(233,162,242,0.30) 75%, transparent)",
+                    }}
+                  />
+                ) : null}
+                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.875rem,1.4rem+1.6vw,2.625rem)] font-bold leading-tight tracking-tight text-transparent">
+                  {s.value}
+                </p>
+                <p className="mt-2 text-body text-[color:var(--color-text-on-dark-muted)]">{s.label}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>
