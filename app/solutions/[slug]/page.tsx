@@ -52,72 +52,58 @@ export default async function SolutionDetailPage({
         imageAlt={hero.title}
       />
 
-      {/* Overview — bento mosaic: photo tile + intro tile + gradient-accent feature tiles */}
-      <section className="section">
+      {/* Overview — editorial overlap: duotone image with a content panel over its edge */}
+      <section className="section overflow-hidden">
         <div className="container-site">
           <Reveal>
-            <div className="grid gap-4 lg:grid-cols-12 lg:items-stretch">
-              {/* Photo tile — tall, left */}
-              <figure className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line lg:col-span-5 lg:aspect-auto">
+            <div className="grid items-stretch lg:grid-cols-12">
+              {/* Duotone image — right, tall */}
+              <figure className="relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-line sm:aspect-[16/10] lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:aspect-auto">
                 <Image
                   src={overview.image.src}
                   alt={overview.image.caption}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-cover [filter:grayscale(1)_contrast(1.03)]"
                 />
+                {/* Plum → purple → orchid duotone */}
                 <div
                   aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(26,20,38,0.74) 0%, rgba(26,20,38,0.10) 45%, rgba(26,20,38,0) 72%), radial-gradient(60% 80% at 100% 0%, rgba(126,73,242,0.22), transparent 60%)",
+                      "linear-gradient(150deg, rgba(45,27,105,0.82) 0%, rgba(126,73,242,0.45) 55%, rgba(233,162,242,0.30) 100%)",
+                    mixBlendMode: "multiply",
                   }}
                 />
-                <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-3.5 py-1.5 text-caption text-white backdrop-blur-md">
+                <figcaption className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/55 px-3.5 py-1.5 text-caption text-white backdrop-blur-md">
                   <MapPin size={14} className="text-[color:var(--blue-400)]" aria-hidden />
                   {overview.image.caption}
                 </figcaption>
               </figure>
 
-              {/* Right column: intro tile + feature tiles */}
-              <div className="grid gap-4 lg:col-span-7">
-                {/* Intro tile */}
-                <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-7 sm:p-8">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-70 blur-2xl"
-                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
-                  />
-                  <p className="eyebrow mb-3">{overview.eyebrow}</p>
-                  <h2 className={HEADING_CLIP}>{overview.heading}</h2>
-                  {overview.paragraphs.map((p, i) => (
-                    <p key={i} className="relative z-10 mt-4 text-body text-secondary">
-                      {p}
-                    </p>
-                  ))}
-                </div>
+              {/* Content panel — left, overlapping the image edge */}
+              <div className="relative z-10 -mt-10 mx-4 rounded-3xl border border-line bg-surface/95 p-8 shadow-[var(--shadow-overlay)] backdrop-blur-sm sm:mx-8 sm:p-10 lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:my-10 lg:p-12">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full opacity-70 blur-2xl"
+                  style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+                />
+                <p className="eyebrow mb-3">{overview.eyebrow}</p>
+                <h2 className={HEADING_CLIP}>{overview.heading}</h2>
+                {overview.paragraphs.map((p, i) => (
+                  <p key={i} className="relative z-10 mt-4 text-body text-secondary">
+                    {p}
+                  </p>
+                ))}
 
-                {/* Feature tiles — typographic statements, no markers */}
-                <div className="grid gap-4 sm:grid-cols-2">
+                {/* Feature list — clean statements, no markers */}
+                <div className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
                   {overview.checklist.map((item) => (
-                    <div
-                      key={item.lead}
-                      className="group relative flex min-h-[7.5rem] flex-col justify-center overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
-                      style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
-                    >
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute -bottom-14 -right-14 h-44 w-44 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
-                        style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
-                      />
-                      <h3 className="relative z-10 text-h3 font-semibold leading-snug tracking-tight text-ink">
-                        {item.lead}
-                      </h3>
+                    <div key={item.lead}>
+                      <p className="text-body font-semibold text-ink">{item.lead}</p>
                       {item.text ? (
-                        <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">
-                          {item.text}
-                        </p>
+                        <p className="mt-1 text-caption leading-relaxed text-secondary">{item.text}</p>
                       ) : null}
                     </div>
                   ))}
