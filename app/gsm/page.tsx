@@ -279,7 +279,10 @@ export default function GsmPage() {
                 <div>
                   <p className="eyebrow !text-white/70">Connect the channels</p>
                   <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
-                    Pair GSM rails with your lending campaigns.
+                    Pair GSM rails{" "}
+                    <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                      with your lending campaigns.
+                    </span>
                   </h2>
                   <p className="measure mt-5 text-body-lg text-white/80">
                     Combine missed-call opt-in and collect-call outreach with PhotonMatters campaign

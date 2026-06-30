@@ -71,6 +71,8 @@ export interface ProductPage {
   cta: {
     eyebrow: string;
     heading: string;
+    /** Trailing fragment of the heading rendered as a Playfair gold accent. */
+    headingAccent?: string;
     body: string;
     crossLinks: ProductCrossLink[];
   };
@@ -169,6 +171,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     cta: {
       eyebrow: "Get started",
       heading: "Launch micro-credit at scale.",
+      headingAccent: "at scale.",
       body: "Design, launch and manage your micro-lending programs your way — API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "consumer-retail-lending", name: "Consumer & Retail Lending", blurb: "Personal, BNPL, line of credit and durable financing." },
@@ -266,6 +269,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     cta: {
       eyebrow: "Get started",
       heading: "Embed lending into every journey.",
+      headingAccent: "into every journey.",
       body: "Design, launch and manage your consumer-credit products your way — API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "micro-lending", name: "Micro Lending", blurb: "High-volume, low-value lending, fully automated." },
@@ -374,6 +378,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     cta: {
       eyebrow: "Get started",
       heading: "Power commercial credit end to end.",
+      headingAccent: "end to end.",
       body: "Design, launch and manage your commercial-lending programs your way — API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "supply-chain-finance", name: "Supply Chain Finance", blurb: "Anchor-led financing across the supply chain." },
@@ -484,6 +489,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     cta: {
       eyebrow: "Get started",
       heading: "Digitize your supply-chain financing.",
+      headingAccent: "your supply-chain financing.",
       body: "Design, launch and manage anchor-led programs your way — API-first, AI-native and live in 6–8 weeks.",
       crossLinks: [
         { slug: "core-commercial-lending", name: "Core Commercial Lending", blurb: "Term loans, working capital and asset finance." },

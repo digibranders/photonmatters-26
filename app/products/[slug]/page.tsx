@@ -140,7 +140,16 @@ export default async function ProductDetailPage({
                 <div>
                   <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
                   <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
-                    {cta.heading}
+                    {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
+                      <>
+                        {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}
+                        <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                          {cta.headingAccent}
+                        </span>
+                      </>
+                    ) : (
+                      cta.heading
+                    )}
                   </h2>
                   <p className="measure mt-5 text-body-lg text-white/80">{cta.body}</p>
                   <div className="mt-8">
