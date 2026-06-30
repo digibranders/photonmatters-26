@@ -25,8 +25,18 @@ const VALUES = [
 ];
 
 const LEADERS = [
-  { initials: "TJ", name: "Tahseen Jamal", role: "Founder & CEO", bio: "23+ years in fintech and digital platforms. B.Tech, ISB MBA." },
-  { initials: "RA", name: "Rohit Ahuja", role: "Founder & CCO", bio: "25+ years in business development and IT consulting; ex-Accenture. MBA, Certified Cloud Practitioner." },
+  {
+    image: "/team/tahseen-jamal.png",
+    name: "Tahseen Jamal",
+    role: "Co-Founder & CEO",
+    bio: "23+ years in fintech and digital platforms. B.Tech, ISB MBA.",
+  },
+  {
+    image: "/team/rohit-ahuja.png",
+    name: "Rohit Ahuja",
+    role: "Co-Founder & CCO",
+    bio: "25+ years in business development and IT consulting; ex-Accenture. MBA, Certified Cloud Practitioner.",
+  },
 ];
 
 function Bloom() {
@@ -117,7 +127,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership — premium cards */}
+      {/* Leadership — founder cards with portraits */}
       <section className="section">
         <div className="container-site">
           <SectionHeader eyebrow="Leadership" title="Founders who’ve spent decades building this." />
@@ -126,19 +136,35 @@ export default function AboutPage() {
               <Reveal key={l.name} index={i}>
                 <div className={`${CARD_BENTO} bg-surface`}>
                   <Bloom />
-                  <div className="relative z-10 flex items-start gap-5">
-                    <span
-                      aria-hidden
-                      className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-h3 font-bold text-primary-strong"
-                    >
-                      {l.initials}
-                    </span>
+                  <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+                    {/* Portrait with eterna halo */}
+                    <div className="relative shrink-0">
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute -inset-3 rounded-full opacity-90 blur-xl"
+                        style={{
+                          background:
+                            "radial-gradient(circle, rgba(126,73,242,0.26), rgba(233,162,242,0.14) 55%, transparent 72%)",
+                        }}
+                      />
+                      <div className="relative h-28 w-28 overflow-hidden rounded-2xl bg-sunken ring-1 ring-line sm:h-32 sm:w-32">
+                        <Image
+                          src={l.image}
+                          alt={l.name}
+                          fill
+                          sizes="128px"
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
                     <div>
                       <h3 className="text-h3 font-bold text-ink">{l.name}</h3>
-                      <p className="mt-0.5 text-caption font-semibold text-primary-strong">{l.role}</p>
-                      <p className="mt-3 text-body text-secondary">{l.bio}</p>
+                      <span className="mt-2 inline-flex items-center rounded-full bg-[color:var(--blue-50)] px-3 py-1 text-caption font-semibold text-primary-strong">
+                        {l.role}
+                      </span>
                     </div>
                   </div>
+                  <p className="relative z-10 mt-5 text-body text-secondary">{l.bio}</p>
                 </div>
               </Reveal>
             ))}
