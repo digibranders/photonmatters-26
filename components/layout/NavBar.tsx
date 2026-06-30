@@ -5,14 +5,40 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { NAV, SOLUTIONS, GSM } from "@/lib/site";
+import { PRODUCT_LIST } from "@/lib/products-data";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 
-const GsmIcon = getIcon(GSM.icon);
-
 type Theme = "dark" | "light";
+
+interface DropdownItem {
+  href: string;
+  name: string;
+  icon: string;
+}
+interface DropdownConfig {
+  items: DropdownItem[];
+  allHref: string;
+  allLabel: string;
+}
+
+const DROPDOWNS: Record<string, DropdownConfig> = {
+  Solutions: {
+    items: [
+      ...SOLUTIONS.map((s) => ({ href: `/solutions/${s.slug}`, name: s.name, icon: s.icon })),
+      { href: GSM.href, name: GSM.name, icon: GSM.icon },
+    ],
+    allHref: "/solutions",
+    allLabel: "All solutions",
+  },
+  Products: {
+    items: PRODUCT_LIST.map((p) => ({ href: `/products/${p.slug}`, name: p.name, icon: p.icon })),
+    allHref: "/products",
+    allLabel: "All products",
+  },
+};
 
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
@@ -26,9 +52,7 @@ export function NavBar() {
   // the very first paint is right (homepage opens on a dark hero).
   const [theme, setTheme] = useState<Theme>(pathname === "/" ? "dark" : "light");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const hoverTimeoutRef = useRef<any>(null);
 
@@ -36,7 +60,6 @@ export function NavBar() {
   const sync = useCallback(() => {
     const y = window.scrollY;
     setScrolled(y > 24);
-    // Sample just below the header's top edge.
     const checkpoint = y + 44;
     let dark = false;
     for (const el of document.querySelectorAll<HTMLElement>('[data-nav-theme="dark"]')) {
@@ -61,25 +84,19 @@ export function NavBar() {
     };
   }, [sync]);
 
-  // Re-sample after navigations — different pages expose different sections.
   useEffect(() => {
     const raf = requestAnimationFrame(sync);
     return () => cancelAnimationFrame(raf);
   }, [pathname, sync]);
 
-  // Close dropdown on outside click or Escape
+  // Close any open dropdown on outside click or Escape
   useEffect(() => {
-    if (!dropdownOpen) return;
+    if (!openMenu) return;
     function handleOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
+      if (!(e.target as Element).closest("[data-nav-menu]")) setOpenMenu(null);
     }
     function handleEscape(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setDropdownOpen(false);
-        triggerRef.current?.focus();
-      }
+      if (e.key === "Escape") setOpenMenu(null);
     }
     document.addEventListener("mousedown", handleOutside);
     document.addEventListener("keydown", handleEscape);
@@ -87,22 +104,18 @@ export function NavBar() {
       document.removeEventListener("mousedown", handleOutside);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [dropdownOpen]);
+  }, [openMenu]);
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
-      if (hoverTimeoutRef.current !== undefined) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
+      if (hoverTimeoutRef.current !== undefined) clearTimeout(hoverTimeoutRef.current);
     };
   }, []);
 
-  // Close mobile menu on route change — startTransition avoids setState-in-effect cascades
   useEffect(() => {
     startTransition(() => {
       setMobileOpen(false);
-      setDropdownOpen(false);
+      setOpenMenu(null);
     });
   }, [pathname]);
 
@@ -140,110 +153,97 @@ export function NavBar() {
 
         {/* Desktop nav */}
         <nav aria-label="Main navigation" className="hidden items-center gap-0.5 lg:flex">
-          {NAV.map((item) =>
-            item.label === "Solutions" ? (
+          {NAV.map((item) => {
+            const menu = DROPDOWNS[item.label];
+            if (!menu) {
+              return (
+                <Link key={item.href} href={item.href} className={linkClass(isActive(pathname, item.href))}>
+                  {item.label}
+                </Link>
+              );
+            }
+            const open = openMenu === item.label;
+            return (
               <div
                 key={item.href}
-                ref={dropdownRef}
+                data-nav-menu
                 className="relative"
                 onMouseEnter={() => {
                   if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-                  setDropdownOpen(true);
+                  setOpenMenu(item.label);
                 }}
                 onMouseLeave={() => {
-                  hoverTimeoutRef.current = setTimeout(() => setDropdownOpen(false), 150);
+                  hoverTimeoutRef.current = setTimeout(
+                    () => setOpenMenu((m) => (m === item.label ? null : m)),
+                    150,
+                  );
                 }}
               >
                 <button
-                  ref={triggerRef}
                   type="button"
                   aria-haspopup="true"
-                  aria-expanded={dropdownOpen}
+                  aria-expanded={open}
                   className={cn(
                     linkClass(isActive(pathname, item.href)),
                     "inline-flex cursor-pointer items-center gap-1",
                   )}
                 >
-                  Solutions
+                  {item.label}
                   <ChevronDown
                     size={15}
                     aria-hidden
                     className={cn(
                       "transition-transform duration-200",
                       isDark ? "text-white/70" : "text-ink/60",
-                      dropdownOpen && "rotate-180",
+                      open && "rotate-180",
                     )}
                   />
                 </button>
 
-                {dropdownOpen && (
+                {open && (
                   <div
                     role="menu"
-                    aria-label="Solutions menu"
+                    aria-label={`${item.label} menu`}
                     className={cn(
-                      "absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 w-[320px] rounded-xl border p-2 shadow-[var(--shadow-overlay)]",
-                      isDark ? "border-white/10 bg-ink" : "border-line bg-surface"
+                      "absolute left-1/2 top-full z-10 mt-3 w-[320px] -translate-x-1/2 rounded-xl border p-2 shadow-[var(--shadow-overlay)]",
+                      isDark ? "border-white/10 bg-ink" : "border-line bg-surface",
                     )}
                   >
-                    {SOLUTIONS.map((s) => {
-                      const Icon = getIcon(s.icon);
+                    {menu.items.map((it) => {
+                      const Icon = getIcon(it.icon);
                       return (
                         <Link
-                          key={s.slug}
-                          href={`/solutions/${s.slug}`}
+                          key={it.href}
+                          href={it.href}
                           role="menuitem"
                           className={cn(
                             "flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors",
-                            isDark
-                              ? "hover:bg-white/[0.08]"
-                              : "hover:bg-sunken"
+                            isDark ? "hover:bg-white/[0.08]" : "hover:bg-sunken",
                           )}
-                          onClick={() => setDropdownOpen(false)}
+                          onClick={() => setOpenMenu(null)}
                         >
                           <Icon size={18} className={cn("shrink-0", isDark ? "text-[#7E49F2]" : "text-primary")} aria-hidden />
-                          <span className={cn("text-caption font-medium", isDark ? "text-white" : "text-ink")}>{s.name}</span>
+                          <span className={cn("text-caption font-medium", isDark ? "text-white" : "text-ink")}>{it.name}</span>
                         </Link>
                       );
                     })}
                     <div className={cn("my-1.5 h-px", isDark ? "bg-white/10" : "bg-line")} role="separator" />
                     <Link
-                      href={GSM.href}
-                      role="menuitem"
-                      className={cn(
-                        "flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 transition-colors",
-                        isDark
-                          ? "hover:bg-white/[0.08]"
-                          : "hover:bg-sunken"
-                      )}
-                      onClick={() => setDropdownOpen(false)}
-                    >
-                      <GsmIcon size={18} className={cn("shrink-0", isDark ? "text-[#7E49F2]" : "text-primary")} aria-hidden />
-                      <span className={cn("text-caption font-medium", isDark ? "text-white" : "text-ink")}>{GSM.name}</span>
-                    </Link>
-                    <Link
-                      href="/solutions"
+                      href={menu.allHref}
                       role="menuitem"
                       className={cn(
                         "flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2.5 text-caption font-semibold transition-colors",
-                        isDark ? "text-[#7E49F2] hover:bg-white/[0.08]" : "text-primary-strong hover:bg-sunken"
+                        isDark ? "text-[#7E49F2] hover:bg-white/[0.08]" : "text-primary-strong hover:bg-sunken",
                       )}
-                      onClick={() => setDropdownOpen(false)}
+                      onClick={() => setOpenMenu(null)}
                     >
-                      All solutions <ArrowRight size={14} aria-hidden />
+                      {menu.allLabel} <ArrowRight size={14} aria-hidden />
                     </Link>
                   </div>
                 )}
               </div>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={linkClass(isActive(pathname, item.href))}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -277,10 +277,7 @@ export function NavBar() {
             isDark ? "border-white/10 bg-ink/95" : "border-line bg-white/95",
           )}
         >
-          <nav
-            aria-label="Mobile navigation"
-            className="container-site flex flex-col gap-1 py-4"
-          >
+          <nav aria-label="Mobile navigation" className="container-site flex flex-col gap-1 py-4">
             {NAV.map((item) => (
               <Link
                 key={item.href}

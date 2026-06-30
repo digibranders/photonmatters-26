@@ -46,6 +46,15 @@ import {
   Route,
   Send,
   BarChart3,
+  // Product category icons
+  Repeat,
+  Wifi,
+  CreditCard,
+  HeartPulse,
+  Truck,
+  Handshake,
+  Boxes,
+  Briefcase,
   type LucideIcon,
 } from "lucide-react";
 
@@ -97,6 +106,14 @@ const ICONS: Record<string, LucideIcon> = {
   Route,
   Send,
   BarChart3,
+  Repeat,
+  Wifi,
+  CreditCard,
+  HeartPulse,
+  Truck,
+  Handshake,
+  Boxes,
+  Briefcase,
 };
 
 /** Resolve a Lucide icon by name, falling back to Sparkles if unknown. */

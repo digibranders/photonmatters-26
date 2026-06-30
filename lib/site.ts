@@ -107,6 +107,7 @@ export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Solutions", href: "/solutions" },
+  { label: "Products", href: "/products" },
   { label: "Industries", href: "/industries" },
   { label: "GSM", href: "/gsm" },
   { label: "Contact", href: "/contact" },
