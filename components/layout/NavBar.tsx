@@ -53,6 +53,7 @@ export function NavBar() {
   const [theme, setTheme] = useState<Theme>(pathname === "/" ? "dark" : "light");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const hoverTimeoutRef = useRef<any>(null);
 
@@ -116,6 +117,7 @@ export function NavBar() {
     startTransition(() => {
       setMobileOpen(false);
       setOpenMenu(null);
+      setMobileExpanded(null);
     });
   }, [pathname]);
 
@@ -257,7 +259,10 @@ export function NavBar() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => {
+              setMobileExpanded(null);
+              setMobileOpen((v) => !v);
+            }}
             className={cn(
               "flex h-11 w-11 cursor-pointer items-center justify-center rounded-md lg:hidden",
               controlClass,
@@ -278,22 +283,93 @@ export function NavBar() {
           )}
         >
           <nav aria-label="Mobile navigation" className="container-site flex flex-col gap-1 py-4">
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "rounded-md px-2 py-3 text-body font-medium transition-colors",
-                  isDark
-                    ? "text-white/85 hover:bg-white/10 hover:text-white"
-                    : "text-ink/80 hover:bg-ink/[0.06] hover:text-ink",
-                  isActive(pathname, item.href) && (isDark ? "text-white" : "text-ink"),
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV.map((item) => {
+              const menu = DROPDOWNS[item.label];
+              if (!menu) {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "rounded-md px-2 py-3 text-body font-medium transition-colors",
+                      isDark
+                        ? "text-white/85 hover:bg-white/10 hover:text-white"
+                        : "text-ink/80 hover:bg-ink/[0.06] hover:text-ink",
+                      isActive(pathname, item.href) && (isDark ? "text-white" : "text-ink"),
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              const expanded = mobileExpanded === item.label;
+              return (
+                <div key={item.href}>
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    onClick={() => setMobileExpanded((e) => (e === item.label ? null : item.label))}
+                    className={cn(
+                      "flex w-full items-center justify-between rounded-md px-2 py-3 text-body font-medium transition-colors",
+                      isDark
+                        ? "text-white/85 hover:bg-white/10 hover:text-white"
+                        : "text-ink/80 hover:bg-ink/[0.06] hover:text-ink",
+                      isActive(pathname, item.href) && (isDark ? "text-white" : "text-ink"),
+                    )}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={18}
+                      aria-hidden
+                      className={cn(
+                        "transition-transform duration-200",
+                        isDark ? "text-white/60" : "text-ink/50",
+                        expanded && "rotate-180",
+                      )}
+                    />
+                  </button>
+                  {expanded && (
+                    <div
+                      className={cn(
+                        "ml-3 mb-1 flex flex-col border-l pl-3",
+                        isDark ? "border-white/12" : "border-line",
+                      )}
+                    >
+                      {menu.items.map((it) => {
+                        const Icon = getIcon(it.icon);
+                        return (
+                          <Link
+                            key={it.href}
+                            href={it.href}
+                            onClick={() => setMobileOpen(false)}
+                            className={cn(
+                              "flex items-center gap-3 rounded-md px-2 py-2.5 text-caption font-medium transition-colors",
+                              isDark
+                                ? "text-white/75 hover:bg-white/[0.08] hover:text-white"
+                                : "text-secondary hover:bg-sunken hover:text-ink",
+                            )}
+                          >
+                            <Icon size={16} className={cn("shrink-0", isDark ? "text-[#7E49F2]" : "text-primary")} aria-hidden />
+                            {it.name}
+                          </Link>
+                        );
+                      })}
+                      <Link
+                        href={menu.allHref}
+                        onClick={() => setMobileOpen(false)}
+                        className={cn(
+                          "rounded-md px-2 py-2.5 text-caption font-semibold",
+                          isDark ? "text-[#7E49F2]" : "text-primary-strong",
+                        )}
+                      >
+                        {menu.allLabel} →
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
