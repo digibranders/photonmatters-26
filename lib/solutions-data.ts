@@ -67,6 +67,8 @@ export interface SolutionPage {
   cta: {
     eyebrow: string;
     heading: string;
+    /** Trailing fragment of the heading rendered as a Playfair gold accent. */
+    headingAccent?: string;
     body: string;
     crossLinks: CrossLink[];
   };
@@ -185,6 +187,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "Explore the lifecycle",
       heading: "Origination is the first step. We run the rest too.",
+      headingAccent: "We run the rest too.",
       body: "Pair origination with explainable scoring and full-lifecycle servicing to run the whole credit journey on one platform.",
       crossLinks: [
         {
@@ -307,6 +310,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "Connect the lifecycle",
       heading: "Service, recover and reconcile on one platform.",
+      headingAccent: "on one platform.",
       body: "Feed booked loans straight from origination, push delinquent accounts into collections, and keep the ledger square with reconciliation AI.",
       crossLinks: [
         {
@@ -436,6 +440,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "Put scoring to work",
       heading: "See explainable scoring on your data.",
+      headingAccent: "on your data.",
       body: "Bring a sample portfolio and we’ll show you the lift from alternative data and reason codes in a working demo.",
       crossLinks: [
         {
@@ -560,6 +565,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "Lift your recovery",
       heading: "See AI collections on your portfolio.",
+      headingAccent: "on your portfolio.",
       body: "Share a sample of your delinquent book and we’ll model the cure-rate and cost-to-collect impact in a working demo.",
       crossLinks: [
         {
@@ -683,6 +689,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "See it on your data",
       heading: "Reconcile a real settlement file with us.",
+      headingAccent: "with us.",
       body: "Bring a day of your bank, PSP and mobile-money files. We’ll show you what auto-matches, what breaks, and how much faster your close could be.",
       crossLinks: [
         {
@@ -806,6 +813,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "See the uplift",
       heading: "Run a self-cure pilot on your book.",
+      headingAccent: "on your book.",
       body: "We’ll set up a behaviour-driven journey against a holdout group and measure the incremental recovery  so the uplift is proven, not assumed.",
       crossLinks: [
         {
@@ -929,6 +937,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     cta: {
       eyebrow: "Get started",
       heading: "Plan your first multi-channel campaign with us.",
+      headingAccent: "with us.",
       body: "Tell us a segment and an offer. We’ll design the audience, the journey and the attribution model  and walk you through what to expect at launch.",
       crossLinks: [
         {
