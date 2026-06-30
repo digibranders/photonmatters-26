@@ -56,7 +56,7 @@ export function Footer() {
         aria-hidden
         className="pointer-events-none absolute bottom-0 left-0 w-full select-none overflow-hidden"
       >
-        <span className="block whitespace-nowrap text-center font-extrabold leading-none tracking-tighter text-white/[0.03] text-[15vw]">
+        <span className="block whitespace-nowrap text-center font-extrabold leading-none tracking-tighter text-white/[0.03] text-[10.5vw]">
           PHOTONMATTERS
         </span>
       </div>
