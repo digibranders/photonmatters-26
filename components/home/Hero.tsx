@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 const SLIDES = [
-  { src: "/hero/slide-market.webp", alt: "Smartphone showing an approved mobile-money loan on a West African market stall" },
-  { src: "/hero/slide-kiosk.webp", alt: "Card terminal and phone at a mobile-money kiosk at dusk" },
-  { src: "/hero/slide-shop-credit.webp", alt: "Smartphone showing an approved loan with a growth graph beside a card terminal on a merchant counter" },
+  { src: "/hero/slide-last-mile.webp", alt: "A first fair loan approved on a phone — light reaching the last mile" },
+  { src: "/hero/slide-platform.webp", alt: "The AI-powered PhotonMatters lending dashboard" },
+  { src: "/hero/slide-reach.webp", alt: "AI lending at scale across Africa, India and the Middle East" },
 ];
 
 /* Navy scrim + grain — matched to the photonmatters reference hero (#07101f). */

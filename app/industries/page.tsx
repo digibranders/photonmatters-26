@@ -41,7 +41,7 @@ const BLOCKS: Block[] = [
       { text: "Regulatory reporting & full audit trails" },
     ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Absa_Group_logo_on_exterior_of_head_office_building_in_Johannesburg%2C_South_Africa_%281%29.jpg/1280px-Absa_Group_logo_on_exterior_of_head_office_building_in_Johannesburg%2C_South_Africa_%281%29.jpg",
+      "/industries/banks.webp",
     alt: "Modern banking headquarters",
   },
   {
@@ -54,7 +54,7 @@ const BLOCKS: Block[] = [
       { text: "AI collections to protect the book" },
     ],
     image:
-      "https://images.pexels.com/photos/9301316/pexels-photo-9301316.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "/industries/nbfcs.webp",
     alt: "Lending team at work",
   },
   {
@@ -67,7 +67,7 @@ const BLOCKS: Block[] = [
       { text: "Missed Call & Collect Call engagement", href: "/gsm" },
     ],
     image:
-      "https://images.pexels.com/photos/12478756/pexels-photo-12478756.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "/industries/telecom.webp",
     alt: "Mobile-money vendor",
   },
 ];
@@ -136,7 +136,7 @@ export default function IndustriesPage() {
         title="Built for the institutions that"
         titleAccent="move credit."
         subtitle="Banks, NBFCs and telecom operators run on PhotonMatters to launch, scale and collect credit across Africa, India and the Middle East."
-        image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Standard_Bank_Head_Office.jpg/1280px-Standard_Bank_Head_Office.jpg"
+        image="/industries/hero.webp"
         imageAlt="Institutions that move credit"
         primary={{ label: "Book a demo", href: "/contact" }}
         secondary={{ label: "Explore solutions", href: "/solutions" }}

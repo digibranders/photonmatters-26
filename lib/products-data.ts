@@ -94,7 +94,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       subtitle:
         "Built for speed and scale, our microfinance engine handles high-volume, low-value lending with seamless automation.",
       image:
-        "https://images.pexels.com/photos/36096255/pexels-photo-36096255.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/products/micro.webp",
     },
     explorer: {
       eyebrow: "Product menu",
@@ -195,7 +195,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       subtitle:
         "Power every use case — from daily needs to life's big moments — with PhotonMatters' agile lending suite, built for real-time approvals, embedded delivery and intelligent decisioning.",
       image:
-        "https://images.pexels.com/photos/9489091/pexels-photo-9489091.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/products/consumer.webp",
     },
     explorer: {
       eyebrow: "Product menu",
@@ -293,7 +293,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       subtitle:
         "Structured credit for businesses — term loans, working capital, overdrafts, invoice and asset finance — with AI/ML scoring, embedded compliance and real-time monitoring.",
       image:
-        "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/products/commercial.webp",
     },
     explorer: {
       eyebrow: "Product menu",

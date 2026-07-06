@@ -93,7 +93,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "Take a borrower from application to disbursement in minutes — digital onboarding, eKYC, OCR capture and a rules engine that pulls bureau and alternative data to decide in real time.",
       image:
-        "https://images.pexels.com/photos/4908621/pexels-photo-4908621.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/loan-origination-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
@@ -109,7 +109,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Offer generation with e-sign" },
       ],
       image: {
-        src: "https://images.pexels.com/photos/33763153/pexels-photo-33763153.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/loan-origination-overview.webp",
         caption: "Onboarding session · Lagos, Nigeria",
       },
     },
@@ -216,7 +216,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "Run every loan from disbursement to closure  schedules, restructures, accruals, delinquency buckets and multi-currency GL postings  on an engine that keeps your books accurate and your ops lean.",
       image:
-        "https://images.pexels.com/photos/7640793/pexels-photo-7640793.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/loan-management-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
@@ -232,7 +232,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Automated borrower notifications" },
       ],
       image: {
-        src: "https://images.pexels.com/photos/6077545/pexels-photo-6077545.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/loan-management-overview.webp",
         caption: "Servicing team at work",
       },
     },
@@ -344,7 +344,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "Explainable AI scoring that combines bureau, telco, cashflow and behavioural data to extend fair credit to thin-file and unbanked borrowers  with reason codes regulators can audit.",
       image:
-        "https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/credit-scoring-hero.webp",
     },
     overview: {
       eyebrow: "The Overview",
@@ -360,7 +360,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Champion/challenger", text: "test and promote models against live traffic." },
       ],
       image: {
-        src: "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/credit-scoring-overview.webp",
         caption: "Risk analytics in production",
       },
     },
@@ -469,7 +469,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "AI-driven collections that segment every account by propensity to pay, choose the right strategy, and engage borrowers across SMS, WhatsApp, voice and agents  so the right action reaches the right account at the right time.",
       image:
-        "https://images.pexels.com/photos/9487235/pexels-photo-9487235.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/debt-collection-hero.webp",
     },
     overview: {
       eyebrow: "The Overview",
@@ -485,7 +485,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Live dashboards", text: "recovery, cure and cost-to-collect at a glance." },
       ],
       image: {
-        src: "https://images.pexels.com/photos/8681899/pexels-photo-8681899.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/debt-collection-overview.webp",
         caption: "Collections agent at work",
       },
     },
@@ -594,7 +594,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "AI auto-reconciliation that matches payments, ledgers and gateway settlements at scale  flagging breaks before they age and turning month-end into a non-event.",
       image:
-        "https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/reconciliation-ai-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
@@ -609,7 +609,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Fewer leakages", text: "every break is aged, owned and resolved with a full audit trail." },
       ],
       image: {
-        src: "https://images.pexels.com/photos/106344/pexels-photo-106344.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/reconciliation-ai-overview.webp",
         caption: "Continuous, AI-driven reconciliation",
       },
     },
@@ -718,7 +718,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "Behaviour-driven nudges that reach the right borrower, on the right channel, at the right moment  so more of them self-cure before an agent ever has to call.",
       image:
-        "https://images.pexels.com/photos/37274979/pexels-photo-37274979.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/collection-marketing-ai-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
@@ -733,7 +733,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Lower collection cost", text: "automated nudges cost a fraction of agent calls and field visits." },
       ],
       image: {
-        src: "https://images.pexels.com/photos/139387/pexels-photo-139387.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/collection-marketing-ai-overview.webp",
         caption: "Self-cure, one nudge at a time · Kano",
       },
     },
@@ -842,7 +842,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       subtitle:
         "One console to build audiences, orchestrate journeys across SMS, WhatsApp, email, voice and missed call  and prove the ROI of every send.",
       image:
-        "https://images.pexels.com/photos/9489091/pexels-photo-9489091.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "/solutions/campaign-management-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
@@ -857,7 +857,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Measurable ROI", text: "attribution links each campaign to applications, disbursals and repayments." },
       ],
       image: {
-        src: "https://images.pexels.com/photos/9487241/pexels-photo-9487241.jpeg?auto=compress&cs=tinysrgb&w=1280",
+        src: "/solutions/campaign-management-overview.webp",
         caption: "Campaign planning · Lagos",
       },
     },
