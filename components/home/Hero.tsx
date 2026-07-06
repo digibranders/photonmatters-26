@@ -54,11 +54,16 @@ function Progress({ active, onSelect }: { active: number; onSelect: (i: number) 
           aria-label={`Show slide ${i + 1}`}
           aria-current={i === active}
           onClick={() => onSelect(i)}
-          className={cn(
-            "h-1 rounded-full transition-all duration-300",
-            i === active ? "w-10 bg-white" : "w-5 bg-white/35 hover:bg-white/60",
-          )}
-        />
+          className="group/dot flex items-center py-2.5"
+        >
+          {/* Thin visual bar inside a ≥24px hit area for comfortable tapping. */}
+          <span
+            className={cn(
+              "block h-1 rounded-full transition-all duration-300",
+              i === active ? "w-10 bg-white" : "w-5 bg-white/35 group-hover/dot:bg-white/60",
+            )}
+          />
+        </button>
       ))}
     </div>
   );
