@@ -44,7 +44,7 @@ export default function SolutionsHubPage() {
         title="The complete lending &"
         titleAccent="collections stack."
         subtitle="Modular, API-first and AI-native. Run a single module or the full credit lifecycle: originate, manage, score, collect and reconcile. On-premises or in the cloud."
-        image="https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/solutions/hub.webp"
         imageAlt="The complete lending and collections platform"
         primary={{ label: "Book a demo", href: "/contact" }}
       />

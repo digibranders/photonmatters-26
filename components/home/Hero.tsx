@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 const SLIDES = [
-  { src: "/hero/slide-market.webp", alt: "Smartphone showing an approved mobile-money loan on a West African market stall" },
-  { src: "/hero/slide-kiosk.webp", alt: "Card terminal and phone at a mobile-money kiosk at dusk" },
-  { src: "/hero/slide-shop-credit.webp", alt: "Smartphone showing an approved loan with a growth graph beside a card terminal on a merchant counter" },
+  { src: "/hero/slide-last-mile.webp", alt: "A first fair loan approved on a phone — light reaching the last mile" },
+  { src: "/hero/slide-platform.webp", alt: "The AI-powered PhotonMatters lending dashboard" },
+  { src: "/hero/slide-reach.webp", alt: "AI lending at scale across Africa, India and the Middle East" },
 ];
 
 /* Navy scrim + grain — matched to the photonmatters reference hero (#07101f). */
@@ -54,11 +54,16 @@ function Progress({ active, onSelect }: { active: number; onSelect: (i: number) 
           aria-label={`Show slide ${i + 1}`}
           aria-current={i === active}
           onClick={() => onSelect(i)}
-          className={cn(
-            "h-1 rounded-full transition-all duration-300",
-            i === active ? "w-10 bg-white" : "w-5 bg-white/35 hover:bg-white/60",
-          )}
-        />
+          className="group/dot flex items-center py-2.5"
+        >
+          {/* Thin visual bar inside a ≥24px hit area for comfortable tapping. */}
+          <span
+            className={cn(
+              "block h-1 rounded-full transition-all duration-300",
+              i === active ? "w-10 bg-white" : "w-5 bg-white/35 group-hover/dot:bg-white/60",
+            )}
+          />
+        </button>
       ))}
     </div>
   );

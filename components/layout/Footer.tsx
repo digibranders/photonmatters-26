@@ -14,7 +14,7 @@ function FooterColumn({
       <h3 className="mb-4 text-label font-semibold uppercase tracking-[0.08em] text-[color:var(--color-text-on-dark-muted)]">
         {title}
       </h3>
-      <ul className="space-y-2.5">
+      <ul className="space-y-1">
         {links.map((l) => (
           <li key={l.label}>
             <FooterLink href={l.href}>{l.label}</FooterLink>
@@ -28,7 +28,7 @@ function FooterColumn({
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   const external = /^(https?:|mailto:|tel:)/.test(href);
   const classes =
-    "text-caption text-[color:var(--color-text-on-dark)] opacity-80 transition-opacity hover:opacity-100";
+    "inline-block py-1 text-caption text-[color:var(--color-text-on-dark)] opacity-80 transition-opacity hover:opacity-100";
   if (external) {
     return (
       <a

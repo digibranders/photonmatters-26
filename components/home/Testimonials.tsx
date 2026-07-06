@@ -113,7 +113,7 @@ export function Testimonials() {
                 type="button"
                 onClick={() => goTo(i)}
                 aria-label={`Show testimonial ${i + 1}`}
-                className="group/tick py-2"
+                className="group/tick flex items-center py-2.5"
               >
                 <span
                   className={cn(

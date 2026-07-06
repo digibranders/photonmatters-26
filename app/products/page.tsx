@@ -22,7 +22,7 @@ export default function ProductsHubPage() {
         title="Lending reimagined for every"
         titleAccent="market, every need."
         subtitle="The platform adapts to diverse lending markets — from street vendors to fintechs. Design, launch and manage lending products built for your market, your customers and your growth."
-        image="https://images.pexels.com/photos/30688593/pexels-photo-30688593.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/products/hub.webp"
         imageAlt="Lending for every market and every need"
         primary={{ label: "Book a demo", href: "/contact" }}
         secondary={{ label: "See solutions", href: "/solutions" }}

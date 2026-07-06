@@ -116,7 +116,7 @@ export default function GsmPage() {
         title="Missed Call & Collect Call,"
         titleAccent="for telecom operators."
         subtitle="Zero-cost, no-data engagement rails that reach every subscriber. Verification, opt-in, reminders and reverse-charge connectivity that work on any 2G handset, with no app and no data plan."
-        image="https://images.pexels.com/photos/29488660/pexels-photo-29488660.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/gsm/hero.webp"
         imageAlt="Telecom subscriber engagement"
         primary={{ label: "Book a demo", href: "/contact" }}
         secondary={{ label: "Explore solutions", href: "/solutions" }}
@@ -157,7 +157,7 @@ export default function GsmPage() {
               />
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
                 <Image
-                  src="https://images.pexels.com/photos/36096255/pexels-photo-36096255.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                  src="/gsm/why.webp"
                   alt="Mobile-money vendor in West Africa"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

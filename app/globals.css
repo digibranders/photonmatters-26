@@ -68,6 +68,19 @@
     scroll-behavior: smooth;
   }
 
+  /* Root horizontal-overflow guard. Decorative ambient blooms/glows are
+     intentionally positioned to bleed past their box (e.g. -right-8 behind a
+     figure); where no section clips them they would add a few px of page width
+     and a horizontal scrollbar on narrow viewports. `overflow-x: clip` removes
+     the off-screen tail without creating a scroll container, so the visible
+     glow, smooth scrolling, anchor scroll-margin and the fixed header all stay
+     intact. (Only clips the inline axis — block scrolling remains on the
+     viewport.) */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--color-surface-canvas);
     color: var(--color-text-primary);

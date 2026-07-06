@@ -36,19 +36,19 @@ const INDUSTRIES = [
     name: "Banks",
     body: "Launch digital-first credit without legacy core constraints.",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nedbank_regional_office_in_Cape_Town%2C_South_Africa.jpg/1280px-Nedbank_regional_office_in_Cape_Town%2C_South_Africa.jpg",
+      "/home/ind-banks.webp",
   },
   {
     name: "NBFCs & Lenders",
     body: "Scale alternative lending with configurable, compliant rails.",
     image:
-      "https://images.pexels.com/photos/7654401/pexels-photo-7654401.jpeg?auto=compress&cs=tinysrgb&w=1100",
+      "/home/ind-nbfcs.webp",
   },
   {
     name: "Telecom Operators",
     body: "Turn subscribers into a financial-services base. Airtime to credit.",
     image:
-      "https://images.pexels.com/photos/36359722/pexels-photo-36359722.jpeg?auto=compress&cs=tinysrgb&w=1100",
+      "/home/ind-telecom.webp",
   },
 ];
 
