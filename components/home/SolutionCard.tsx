@@ -11,7 +11,7 @@ interface SolutionCardProps {
 }
 
 /**
- * Light "premium" solution card — modelled on the revamp's ProductLines bento.
+ * Light "premium" solution card: modelled on the revamp's ProductLines bento.
  * Icon chip fills the top-left, a quiet uppercase label sits opposite it, and
  * the body flows top-down so there is no dead space. A soft corner bloom adds
  * the eterna texture on hover.
@@ -22,7 +22,7 @@ export function SolutionCard({ href, icon: Icon, name, blurb, tag }: SolutionCar
       href={href}
       className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
     >
-      {/* Corner bloom — eterna bento accent */}
+      {/* Corner bloom: eterna bento accent */}
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover/card:scale-110"

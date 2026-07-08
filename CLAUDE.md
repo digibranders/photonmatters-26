@@ -1,4 +1,4 @@
-# PhotonMatters Website — Project Instructions
+# PhotonMatters Website: Project Instructions
 
 ## Preview viewport
 
@@ -7,7 +7,7 @@ design target for the site; mobile/tablet are secondary.
 
 - Before taking any preview screenshot or verifying a change, set the viewport to
   desktop with `preview_resize` using **explicit dimensions** `width: 1440, height: 900`.
-  Do **not** use `preset: "desktop"` — it resets to the window's native (often narrow)
+  Do **not** use `preset: "desktop"`, it resets to the window's native (often narrow)
   size instead of emulating a wide desktop viewport.
 - Do **not** capture or reason about layout at mobile/tablet widths unless the user
   explicitly asks to check responsive behavior.
@@ -18,13 +18,13 @@ design target for the site; mobile/tablet are secondary.
 
 **Branch model**
 
-- **`development`** — the only branch for day-to-day local work. All coding,
+- **`development`**: the only branch for day-to-day local work. All coding,
   commits, and experimentation happen here.
-- **`main`** — production only. Code reaches `main` exclusively by merging
+- **`main`**: production only. Code reaches `main` exclusively by merging
   `development` → `main` when a release is ready for prod.
 - **No standalone feature branches.** Do all work on `development`. If short-lived
   branches are ever needed, branch from `development`, merge back into it, and delete
-  them — never let them linger.
+  them, never let them linger.
 
 **Rules for the agent**
 
@@ -39,7 +39,7 @@ design target for the site; mobile/tablet are secondary.
   triggers a **production** deploy; nothing else auto-deploys.
 - This is enforced in [`vercel.json`](vercel.json) via `git.deploymentEnabled`
   (`main: true`, `development: false`). Any future branch must also be added there as
-  `false`, or — to cover all branches at once — set the Vercel dashboard
+  `false`, or, to cover all branches at once, set the Vercel dashboard
   **Settings → Git → Ignored Build Step** to:
   `bash -c '[ "$VERCEL_GIT_COMMIT_REF" = "main" ] && exit 1 || exit 0'`
   (exit 1 = build, exit 0 = skip), and set **Production Branch = `main`**.

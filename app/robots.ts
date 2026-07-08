@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
       {
-        // Block AI training crawlers — allow search indexing (Googlebot) separately
+        // Block AI training crawlers: allow search indexing (Googlebot) separately
         userAgent: ["GPTBot", "Google-Extended", "Bytespider", "CCBot"],
         disallow: "/",
       },

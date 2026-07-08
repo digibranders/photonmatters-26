@@ -6,7 +6,7 @@ interface RevealProps {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  /** Stagger position — multiplies the base 80ms delay. */
+  /** Stagger position: multiplies the base 80ms delay. */
   index?: number;
   /** Extra delay in seconds. */
   delay?: number;

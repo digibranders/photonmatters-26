@@ -50,7 +50,7 @@ export default async function ProductDetailPage({
         secondary={{ label: "All products", href: "/products" }}
       />
 
-      {/* Product menu — interactive explorer */}
+      {/* Product menu: interactive explorer */}
       <ProductExplorer
         eyebrow={explorer.eyebrow}
         heading={explorer.heading}
@@ -65,7 +65,7 @@ export default async function ProductDetailPage({
         })}
       />
 
-      {/* Specialized extras — bento (optional) */}
+      {/* Specialized extras: bento (optional) */}
       {extras ? (
         <section className="pb-12 pt-[var(--section-y)] sm:pb-16">
           <div className="container-site">
@@ -95,7 +95,7 @@ export default async function ProductDetailPage({
         </section>
       ) : null}
 
-      {/* Why PhotonMatters — dark icon grid (optional) */}
+      {/* Why PhotonMatters: dark icon grid (optional) */}
       {why ? (
         <section data-nav-theme="dark" className="section relative overflow-hidden bg-ink text-white">
           <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -123,7 +123,7 @@ export default async function ProductDetailPage({
         </section>
       ) : null}
 
-      {/* CTA finale — gradient card with glass cross-links */}
+      {/* CTA finale: gradient card with glass cross-links */}
       <section className="pb-[var(--section-y)] pt-10">
         <div className="container-site">
           <Reveal>

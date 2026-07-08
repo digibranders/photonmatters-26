@@ -9,7 +9,7 @@ const tones: Record<BadgeTone, string> = {
   onDark: "bg-white/10 text-white",
 };
 
-/** Minimal squared status label — not a pill. Use only for genuine status/category. */
+/** Minimal squared status label: not a pill. Use only for genuine status/category. */
 export function Badge({
   children,
   tone = "brand",

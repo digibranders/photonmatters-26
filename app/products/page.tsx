@@ -11,7 +11,7 @@ import { PRODUCT_LIST } from "@/lib/products-data";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Lending reimagined for every market and every need — design, launch and manage micro, consumer, commercial and supply-chain lending products on one AI-native platform.",
+    "Lending reimagined for every market and every need: design, launch and manage micro, consumer, commercial and supply-chain lending products on one AI-native platform.",
 };
 
 export default function ProductsHubPage() {
@@ -21,7 +21,7 @@ export default function ProductsHubPage() {
         eyebrow="The Products"
         title="Lending reimagined for every"
         titleAccent="market, every need."
-        subtitle="The platform adapts to diverse lending markets — from street vendors to fintechs. Design, launch and manage lending products built for your market, your customers and your growth."
+        subtitle="The platform adapts to diverse lending markets: from street vendors to fintechs. Design, launch and manage lending products built for your market, your customers and your growth."
         image="/products/hub.webp"
         imageAlt="Lending for every market and every need"
         primary={{ label: "Book a demo", href: "/contact" }}
@@ -34,7 +34,7 @@ export default function ProductsHubPage() {
           <SectionHeader
             eyebrow="Products"
             title="Four product families, one platform."
-            subtitle="Micro and consumer credit for everyday needs, commercial and supply-chain finance for industry — each available standalone or as part of the full stack."
+            subtitle="Micro and consumer credit for everyday needs, commercial and supply-chain finance for industry, each available standalone or as part of the full stack."
           />
           <div className="mt-14 grid gap-5 md:grid-cols-2">
             {PRODUCT_LIST.map((p, i) => {
@@ -67,7 +67,7 @@ export default function ProductsHubPage() {
         </div>
       </section>
 
-      {/* Closing — gradient CTA finale */}
+      {/* Closing: gradient CTA finale */}
       <section className="section">
         <div className="container-site">
           <Reveal>
@@ -87,7 +87,7 @@ export default function ProductsHubPage() {
                   <span className="font-playfair font-light text-[color:var(--amber-500)]">possibilities</span>.
                 </h2>
                 <p className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
-                  Because no matter the borrower, every loan begins with belief — and ends in
+                  Because no matter the borrower, every loan begins with belief, and ends in
                   progress.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

@@ -74,7 +74,7 @@
      and a horizontal scrollbar on narrow viewports. `overflow-x: clip` removes
      the off-screen tail without creating a scroll container, so the visible
      glow, smooth scrolling, anchor scroll-margin and the fixed header all stay
-     intact. (Only clips the inline axis — block scrolling remains on the
+     intact. (Only clips the inline axis: block scrolling remains on the
      viewport.) */
   html,
   body {
@@ -114,7 +114,7 @@
 }
 
 /* ============================================================================
-   Type role classes — size + line-height + tracking per role
+   Type role classes: size + line-height + tracking per role
    ========================================================================== */
 @layer components {
   .text-display {
@@ -171,7 +171,7 @@
     padding-block: var(--section-y-lg);
   }
 
-  /* Serif italic accent — apply to 1–2 words inside a heading only.
+  /* Serif italic accent: apply to 1–2 words inside a heading only.
      - weight 500 (not 400) so it holds visual mass next to Jakarta 700–800.
      - tracking-normal resets the negative display tracking that grotesque type needs
        but Playfair's optical spacing doesn't want. */
@@ -182,7 +182,7 @@
     letter-spacing: 0;
   }
 
-  /* Eyebrow — subordinate metadata. Positive tracking marks it as a label,
+  /* Eyebrow: subordinate metadata. Positive tracking marks it as a label,
      the opposite of the negative-tracked display headings. Use sparingly. */
   .eyebrow {
     display: inline-block;
@@ -202,7 +202,7 @@
 }
 
 /* ============================================================================
-   Global-presence map — marker pulse rings (used by GlobalPresenceMap)
+   Global-presence map: marker pulse rings (used by GlobalPresenceMap)
    ========================================================================== */
 @keyframes gpPulse {
   0% {
@@ -228,5 +228,46 @@
   .gp-svg-pulse {
     animation: none;
     opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   How-it-works journey rail: a soft light pulse that flows along the
+   connector line (horizontal on desktop, vertical on mobile). The gradient
+   carries a bright band; sweeping its background-position moves the light.
+   ========================================================================== */
+@keyframes railFlowX {
+  0% {
+    background-position: 220% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes railFlowY {
+  0% {
+    background-position: 0 220%;
+  }
+  100% {
+    background-position: 0 -120%;
+  }
+}
+
+.rail-flow-x {
+  background-size: 220% 100%;
+  animation: railFlowX 3.4s linear infinite;
+}
+
+.rail-flow-y {
+  background-size: 100% 220%;
+  animation: railFlowY 3.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail-flow-x,
+  .rail-flow-y {
+    animation: none;
+    background-size: 100% 100%;
   }
 }

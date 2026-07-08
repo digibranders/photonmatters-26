@@ -8,11 +8,11 @@ import worldTopo from "@/lib/world-110m.json";
 import type { Office } from "@/lib/site";
 
 // ─── Geometry ────────────────────────────────────────────────────────────────
-// viewBox space — the SVG scales fluidly to its container width.
+// viewBox space: the SVG scales fluidly to its container width.
 const W = 1000;
 const H = 560;
 
-// Countries that host an office — rendered with a brighter purple fill.
+// Countries that host an office: rendered with a brighter purple fill.
 const OFFICE_COUNTRIES = new Set([
   "United States of America",
   "United Arab Emirates",
@@ -43,7 +43,7 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
     const project = geoNaturalEarth1();
     // Zoom to the band that holds every office (Americas → Atlantic → Africa →
     // India), cropping the empty Pacific, East Asia and polar caps for a
-    // cleaner, tighter map. Markers stay correct — same projection.
+    // cleaner, tighter map. Markers stay correct: same projection.
     const FOCUS = {
       type: "MultiPoint",
       coordinates: [
@@ -149,7 +149,7 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
         })}
       </svg>
 
-      {/* Tooltip — positioned over the hovered pin (percentages track the fluid SVG) */}
+      {/* Tooltip: positioned over the hovered pin (percentages track the fluid SVG) */}
       {hover &&
         (() => {
           const p = project(hover.coordinates);

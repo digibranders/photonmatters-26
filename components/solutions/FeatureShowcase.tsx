@@ -26,7 +26,7 @@ const HEADING_CLIP =
   "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
 
 /**
- * Interactive "What you can do" explorer — story-progress tabs paired with a
+ * Interactive "What you can do" explorer: story-progress tabs paired with a
  * dark product panel that plays a bespoke animated visual per feature.
  */
 export function FeatureShowcase({ eyebrow, heading, items }: FeatureShowcaseProps) {

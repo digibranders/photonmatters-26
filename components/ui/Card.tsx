@@ -6,10 +6,10 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   surface?: Surface;
   /** Render a 1px hairline border (use on light surfaces where cards need separation). */
   bordered?: boolean;
-  /** Subtle hover — bg shift + 2px lift. Never applies a heavy drop-shadow. */
+  /** Subtle hover: bg shift + 2px lift. Never applies a heavy drop-shadow. */
   interactive?: boolean;
   tone?: "light" | "dark";
-  /** Padding variant — default is p-6 (24px). */
+  /** Padding variant: default is p-6 (24px). */
   padding?: "sm" | "md" | "lg";
 }
 

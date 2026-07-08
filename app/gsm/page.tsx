@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Check, ArrowRight, PhoneMissed, PhoneForwarded, type LucideIcon } from "lucide-react";
 import { HeroDark } from "@/components/layout/HeroDark";
+import { HowFlow } from "@/components/solutions/HowFlow";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -43,10 +44,10 @@ const COLLECT_CALL = [
 ];
 
 const STEPS = [
-  { n: "01", title: "Subscriber dials", body: "A subscriber flashes a dedicated number or starts a reverse-charge call. Free, on any 2G handset." },
-  { n: "02", title: "Carrier triggers event", body: "The operator network signals the call to our gateway, which captures the number and campaign." },
-  { n: "03", title: "Action fires", body: "OTP, opt-in, reminder, call-back or reverse-charge connect. Routed by the rule you configured." },
-  { n: "04", title: "Logged & reconciled", body: "Every event is recorded for analytics, billing and campaign attribution in real time." },
+  { n: "01", title: "Subscriber dials", icon: "PhoneCall", body: "A subscriber flashes a dedicated number or starts a reverse-charge call. Free, on any 2G handset." },
+  { n: "02", title: "Carrier triggers event", icon: "RadioTower", body: "The operator network signals the call to our gateway, which captures the number and campaign." },
+  { n: "03", title: "Action fires", icon: "Zap", body: "OTP, opt-in, reminder, call-back or reverse-charge connect. Routed by the rule you configured." },
+  { n: "04", title: "Logged & reconciled", icon: "FileCheck", body: "Every event is recorded for analytics, billing and campaign attribution in real time." },
 ];
 
 const OPERATOR_STATS = [
@@ -76,14 +77,12 @@ function ProductBlock({
 }) {
   return (
     <div>
-      <div className="flex items-start gap-4">
+      <span className="eyebrow mb-3 block">{eyebrow}</span>
+      <div className="flex items-center gap-4">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">
           <Icon size={22} aria-hidden />
         </span>
-        <div>
-          <span className="eyebrow mb-2">{eyebrow}</span>
-          <h2 className={HEADING_CLIP}>{heading}</h2>
-        </div>
+        <h2 className={HEADING_CLIP}>{heading}</h2>
       </div>
       <p className="measure mt-5 text-body-lg text-secondary">{subtitle}</p>
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -130,13 +129,13 @@ export default function GsmPage() {
             <p className="mt-5 text-body text-secondary">
               Across Africa, the vast majority of subscribers are prepaid and data-light. A megabyte
               costs more than a meal in some markets, so SMS gets ignored and apps never get
-              installed. But a missed call costs nothing — and everyone already knows how to “flash”
+              installed. But a missed call costs nothing, and everyone already knows how to “flash”
               a number to be called back.
             </p>
             <p className="mt-4 text-body text-secondary">
               PhotonMatters turns that universal behaviour into a programmable engagement layer. A
               subscriber dials and hangs up, or accepts a reverse charge, and your platform fires the
-              right action: verify, opt in, remind, or connect. No data, no app, no friction — the
+              right action: verify, opt in, remind, or connect. No data, no app, no friction, the
               entire prepaid base becomes reachable.
             </p>
             <ul className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -175,7 +174,7 @@ export default function GsmPage() {
             icon={PhoneMissed}
             eyebrow="Product · 01"
             heading="Missed Call Service"
-            subtitle="Zero-cost subscriber engagement. A subscriber rings a dedicated number and hangs up — the call never connects, nothing is charged, and your gateway fires the action you’ve configured."
+            subtitle="Zero-cost subscriber engagement. A subscriber rings a dedicated number and hangs up, the call never connects, nothing is charged, and your gateway fires the action you’ve configured."
             cards={MISSED_CALL}
           />
         </div>
@@ -193,42 +192,15 @@ export default function GsmPage() {
         </div>
       </section>
 
-      {/* How it works — flow pipeline */}
-      <section className="section bg-sunken">
-        <div className="container-site">
-          <SectionHeader eyebrow="How it works" title="From a single dial to a fired action." />
-          <div className="mt-14 grid items-stretch gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((step, i) => (
-              <Reveal key={step.n} index={i} className="relative">
-                <div
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
-                  style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
-                >
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-1 -top-6 select-none text-[6rem] font-extrabold leading-none tabular-nums text-[color:var(--blue-100)] opacity-70"
-                  >
-                    {step.n}
-                  </span>
-                  <h3 className="relative z-10 mt-10 text-h3 font-bold text-ink">{step.title}</h3>
-                  <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">{step.body}</p>
-                </div>
-                {i < STEPS.length - 1 ? (
-                  <span
-                    aria-hidden
-                    className="absolute right-0 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-line bg-surface text-white shadow-[var(--shadow-overlay)] lg:flex"
-                    style={{ background: "linear-gradient(135deg, var(--blue-500), var(--blue-400))" }}
-                  >
-                    <ArrowRight size={16} strokeWidth={2.75} />
-                  </span>
-                ) : null}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* How it works: journey rail: steps connected on one gradient line */}
+      <HowFlow
+        className="bg-sunken"
+        eyebrow="How it works"
+        title="From a single dial to a fired action."
+        steps={STEPS}
+      />
 
-      {/* Why operators care — dark gradient-rail showcase */}
+      {/* Why operators care: dark gradient-rail showcase */}
       <section
         data-nav-theme="dark"
         className="section relative overflow-hidden bg-ink text-white"
@@ -262,7 +234,7 @@ export default function GsmPage() {
         </div>
       </section>
 
-      {/* CTA + cross-links — gradient finale with glass cards */}
+      {/* CTA + cross-links: gradient finale with glass cards */}
       <section className="section">
         <div className="container-site">
           <Reveal>
@@ -286,7 +258,7 @@ export default function GsmPage() {
                   </h2>
                   <p className="measure mt-5 text-body-lg text-white/80">
                     Combine missed-call opt-in and collect-call outreach with PhotonMatters campaign
-                    and collections intelligence to drive response and recovery — without spending a
+                    and collections intelligence to drive response and recovery, without spending a
                     cent of subscriber data.
                   </p>
                   <div className="mt-8">

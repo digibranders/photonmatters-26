@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stat } from "@/components/ui/Stat";
 import { getIcon } from "@/lib/icons";
-import { SOLUTIONS, GSM, PLATFORM_STATS, MARKETS } from "@/lib/site";
+import { SOLUTIONS, GSM, MARKETS } from "@/lib/site";
 
 const GsmIcon = getIcon(GSM.icon);
 
@@ -57,21 +57,6 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* ── Stats band ─────────────────────────────────────────────────────── */}
-      <section className="border-b border-line bg-surface py-10">
-        <div className="container-site grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-0">
-          {PLATFORM_STATS.map((s, i) => (
-            <Reveal
-              key={s.label}
-              index={i}
-              className={`lg:px-6 ${i === 0 ? "lg:pl-0" : "lg:border-l lg:border-line"}`}
-            >
-              <Stat value={s.value} label={s.label} size="sm" />
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* ── Solutions ──────────────────────────────────────────────────────── */}
       <section className="section bg-sunken">
         <div className="container-site">
@@ -92,7 +77,7 @@ export default function HomePage() {
                 />
               </Reveal>
             ))}
-            {/* GSM — new division, dark image variant */}
+            {/* GSM: new division, dark image variant */}
             <Reveal index={1}>
               <SolutionCard
                 href={GSM.href}
@@ -102,7 +87,7 @@ export default function HomePage() {
                 tag="New"
               />
             </Reveal>
-            {/* Dark CTA card — pinned as the grid's final item */}
+            {/* Dark CTA card: pinned as the grid's final item */}
             <Reveal index={2}>
               <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-ink p-8 text-white">
                 {/* Ambient purple/orchid blooms */}
@@ -136,13 +121,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── AI band — dark ─────────────────────────────────────────────────── */}
+      {/* ── AI band: dark ─────────────────────────────────────────────────── */}
       <section
         data-nav-theme="dark"
         className="section-lg relative overflow-hidden text-white"
         style={{ backgroundColor: "#1A1426" }}
       >
-        {/* Eterna ambient blobs — mirrored from revamp Solution.tsx */}
+        {/* Eterna ambient blobs: mirrored from revamp Solution.tsx */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -left-[10%] -top-[20%] h-[600px] w-[600px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.20)" }} />
           <div className="absolute -bottom-[20%] -right-[10%] h-[500px] w-[500px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
@@ -235,7 +220,7 @@ export default function HomePage() {
                   href="/industries"
                   className="group/card relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] cursor-pointer"
                 >
-                  {/* Corner bloom — eterna bento accent */}
+                  {/* Corner bloom: eterna bento accent */}
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full opacity-60 blur-2xl transition-transform duration-700 group-hover/card:scale-110"
@@ -253,7 +238,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Testimonials — client voices ───────────────────────────────────── */}
+      {/* ── Testimonials: client voices ───────────────────────────────────── */}
       <Testimonials />
 
       {/* ── Human impact ───────────────────────────────────────────────────── */}

@@ -51,7 +51,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 export function Footer() {
   return (
     <footer data-nav-theme="dark" className="relative overflow-hidden bg-ink text-white">
-      {/* Oversized brand watermark — eterna signature */}
+      {/* Oversized brand watermark: eterna signature */}
       <div
         aria-hidden
         className="pointer-events-none absolute bottom-0 left-0 w-full select-none overflow-hidden"

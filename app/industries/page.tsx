@@ -150,7 +150,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Markets — premium cards */}
+      {/* Markets: premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
           <SectionHeader
@@ -181,7 +181,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Stats — dark gradient-rail showcase */}
+      {/* Stats: dark gradient-rail showcase */}
       <section
         data-nav-theme="dark"
         className="section relative overflow-hidden bg-ink text-white"

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 
 interface SectionHeaderProps {
-  /** Use sparingly — only when it categorises, never above every section. */
+  /** Use sparingly: only when it categorises, never above every section. */
   eyebrow?: string;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -35,7 +35,7 @@ export function SectionHeader({
           {eyebrow}
         </span>
       ) : null}
-      {/* Gradient-clipped heading — eterna signature (ink→ink/60 on light,
+      {/* Gradient-clipped heading: eterna signature (ink→ink/60 on light,
           white→white/40 on dark). Accent <span>s keep their own colour. */}
       <h2
         className={cn(

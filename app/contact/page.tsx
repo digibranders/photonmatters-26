@@ -35,7 +35,7 @@ const PROOF = [
 export default function ContactPage() {
   return (
     <>
-      {/* Premium contact card — dark info panel + form */}
+      {/* Premium contact card: dark info panel + form */}
       <section className="relative overflow-hidden pb-[var(--section-y)] pt-32 lg:pt-36">
         <div
           aria-hidden
@@ -45,7 +45,7 @@ export default function ContactPage() {
         <div className="container-site">
           <Reveal>
             <div className="grid overflow-hidden rounded-[2.5rem] border border-line shadow-[0_1px_2px_rgba(26,20,38,0.04),0_40px_90px_-40px_rgba(26,20,38,0.5)] lg:grid-cols-2">
-              {/* Left — dark branded info panel */}
+              {/* Left: dark branded info panel */}
               <div className="relative overflow-hidden bg-ink p-8 text-white sm:p-12 lg:p-14">
                 <div aria-hidden className="pointer-events-none absolute inset-0">
                   <div className="absolute -left-[15%] -top-[15%] h-[420px] w-[420px] rounded-full blur-[90px]" style={{ background: "rgba(126,73,242,0.30)" }} />
@@ -62,7 +62,7 @@ export default function ContactPage() {
                     .
                   </h1>
                   <p className="mt-5 max-w-md text-body-lg text-[color:var(--color-text-on-dark-muted)]">
-                    Tell us about your market and the credit journey you want to launch — we&apos;ll
+                    Tell us about your market and the credit journey you want to launch, we&apos;ll
                     come back fast, usually within one business day.
                   </p>
 
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Right — form panel */}
+              {/* Right: form panel */}
               <div className="bg-surface p-8 sm:p-12">
                 <div className="flex items-center justify-between gap-3">
                   <h2 className="text-h3 font-bold text-ink">Send us a message</h2>
@@ -125,7 +125,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Offices — premium cards */}
+      {/* Offices: premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
           <SectionHeader eyebrow="Offices" title="Find us across three regions." />

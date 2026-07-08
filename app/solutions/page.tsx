@@ -49,7 +49,7 @@ export default function SolutionsHubPage() {
         primary={{ label: "Book a demo", href: "/contact" }}
       />
 
-      {/* Solutions grid — bento */}
+      {/* Solutions grid: bento */}
       <section className="section bg-sunken">
         <div className="container-site">
           <SectionHeader
@@ -72,7 +72,7 @@ export default function SolutionsHubPage() {
         </div>
       </section>
 
-      {/* GSM band — dark with ambient blooms + glass cards */}
+      {/* GSM band: dark with ambient blooms + glass cards */}
       <section
         data-nav-theme="dark"
         className="section-lg relative overflow-hidden text-white"
@@ -95,7 +95,7 @@ export default function SolutionsHubPage() {
                   </span>
                 </>
               }
-              subtitle="Zero-cost engagement built straight into the network. Verify subscribers, capture opt-ins and deliver loan reminders with a missed call — and let customers reach you free of charge with collect call. Perfect for thin-airtime markets where every cedi counts."
+              subtitle="Zero-cost engagement built straight into the network. Verify subscribers, capture opt-ins and deliver loan reminders with a missed call, and let customers reach you free of charge with collect call. Perfect for thin-airtime markets where every cedi counts."
             />
             <div className="mt-8">
               <Button href="/gsm" size="lg" withArrow>
@@ -124,7 +124,7 @@ export default function SolutionsHubPage() {
         </div>
       </section>
 
-      {/* How it fits — bento */}
+      {/* How it fits: bento */}
       <section className="section">
         <div className="container-site">
           <SectionHeader
@@ -153,7 +153,7 @@ export default function SolutionsHubPage() {
         </div>
       </section>
 
-      {/* Closing — gradient CTA finale */}
+      {/* Closing: gradient CTA finale */}
       <section className="section">
         <div className="container-site">
           <Reveal>

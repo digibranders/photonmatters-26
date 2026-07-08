@@ -9,7 +9,7 @@ import { TESTIMONIALS } from "@/lib/site";
 const ROTATE_MS = 6500;
 
 /**
- * Client-voices showcase — a dark editorial band with a tactile "deck" of
+ * Client-voices showcase: a dark editorial band with a tactile "deck" of
  * glass testimonial cards. The active quote sits on an elevated glass card
  * with two cards peeking behind it; prev/next controls advance the deck.
  * Auto-rotates, pausing on hover/focus and for prefers-reduced-motion.
@@ -65,7 +65,7 @@ export function Testimonials() {
       </div>
 
       <div className="container-site relative grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16">
-        {/* ── Left rail — heading + controls ─────────────────────────────── */}
+        {/* ── Left rail: heading + controls ─────────────────────────────── */}
         <div>
           <span className="eyebrow mb-4 !text-[color:var(--blue-400)]">Client voices</span>
           <h2 className="text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-white to-white/45">
@@ -126,7 +126,7 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* ── Right stage — card deck ────────────────────────────────────── */}
+        {/* ── Right stage: card deck ────────────────────────────────────── */}
         <div className="relative min-h-[24rem] sm:min-h-[22rem]">
           {/* Peeking deck cards */}
           <div aria-hidden className="absolute inset-0 translate-x-3 translate-y-4 scale-[0.97] rounded-[2rem] border border-white/[0.08] bg-white/[0.03]" />
