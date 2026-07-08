@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { OFFICES } from "@/lib/site";
 
-// Map uses browser-only geo libs — load client-side after paint.
+// Map uses browser-only geo libs: load client-side after paint.
 const GlobalPresenceMap = dynamic(
   () => import("./GlobalPresenceMap").then((m) => ({ default: m.GlobalPresenceMap })),
   {
@@ -44,7 +44,7 @@ export function GlobalPresence() {
               Local <span className="font-playfair font-light text-[color:var(--blue-400)]">Impact</span>.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-body-lg text-[color:var(--color-text-on-dark-muted)]">
-              Four hubs across the Americas, the Gulf, India and Africa — close to the markets and
+              Four hubs across the Americas, the Gulf, India and Africa, close to the markets and
               operators we serve.
             </p>
           </Reveal>

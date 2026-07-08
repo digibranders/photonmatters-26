@@ -181,13 +181,17 @@ export interface Stat {
   label: string;
 }
 
-/** Homepage stats band (verbatim). */
+/**
+ * Homepage hero stats. Order matters for the mobile 2·2·1 rail: the final entry
+ * spans the full-width centred row, so the longest label ("Requests at peak
+ * scale") is placed last to give its two-line text room to breathe.
+ */
 export const PLATFORM_STATS: Stat[] = [
   { value: "9", label: "AI-native products" },
-  { value: "250k+/hr", label: "Requests at peak scale" },
   { value: "8 wks", label: "From kickoff to go-live" },
   { value: "3", label: "Regions: Africa · India · ME" },
   { value: "99.9%", label: "Platform availability" },
+  { value: "250k+/hr", label: "Requests at peak scale" },
 ];
 
 export interface Testimonial {

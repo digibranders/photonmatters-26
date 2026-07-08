@@ -1,5 +1,5 @@
 /* ============================================================================
-   Solution detail page content  verbatim from Repo A.
+   Solution detail page content, verbatim from Repo A.
    Drives /solutions/[slug] via one shared template.
    ========================================================================== */
 
@@ -16,6 +16,8 @@ export interface Step {
   n: string;
   title: string;
   body: string;
+  /** Lucide icon name (see lib/icons.ts) rendered inside the rail node. */
+  icon: string;
 }
 
 export interface OutcomeStat {
@@ -85,13 +87,13 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "loan-origination",
     metaTitle: "Loan Origination",
     metaDescription:
-      "Digital loan origination with eKYC, OCR document capture, a configurable product builder and a decision engine that pulls bureau and alternative data — from application to disbursement in minutes.",
+      "Digital loan origination with eKYC, OCR document capture, a configurable product builder and a decision engine that pulls bureau and alternative data: from application to disbursement in minutes.",
     hero: {
       eyebrow: "Solutions · Origination",
       title: "Loan",
       titleAccent: "Origination",
       subtitle:
-        "Take a borrower from application to disbursement in minutes — digital onboarding, eKYC, OCR capture and a rules engine that pulls bureau and alternative data to decide in real time.",
+        "Take a borrower from application to disbursement in minutes: digital onboarding, eKYC, OCR capture and a rules engine that pulls bureau and alternative data to decide in real time.",
       image:
         "/solutions/loan-origination-hero.webp",
     },
@@ -99,8 +101,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Overview",
       heading: "One front door for every lending product.",
       paragraphs: [
-        "PhotonMatters origination handles the full intake journey across every channel a borrower might use — a web form, a mobile app, a USSD session on a feature phone, or an agent in a kiosk. The same configurable flow captures the application, verifies identity, scores the borrower and produces an offer.",
-        "Because the product builder, rules and data pulls are all configurable, you launch a new loan product or enter a new market without re-coding the pipeline — and approve thin-file borrowers the old system would reject.",
+        "PhotonMatters origination handles the full intake journey across every channel a borrower might use: a web form, a mobile app, a USSD session on a feature phone, or an agent in a kiosk. The same configurable flow captures the application, verifies identity, scores the borrower and produces an offer.",
+        "Because the product builder, rules and data pulls are all configurable, you launch a new loan product or enter a new market without re-coding the pipeline, and approve thin-file borrowers the old system would reject.",
       ],
       checklist: [
         { lead: "Web, mobile, USSD & agent channels" },
@@ -120,7 +122,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           icon: "Smartphone",
           title: "Digital onboarding",
-          body: "A single application flow across web, mobile, USSD and agent channels — built for low-bandwidth markets.",
+          body: "A single application flow across web, mobile, USSD and agent channels, built for low-bandwidth markets.",
         },
         {
           icon: "ShieldCheck",
@@ -156,21 +158,25 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Apply",
+          icon: "Smartphone",
           body: "The borrower starts on web, mobile, USSD or with an agent and submits the application.",
         },
         {
           n: "02",
           title: "Verify",
+          icon: "ShieldCheck",
           body: "eKYC, AML screening and OCR document capture confirm identity and extract the data.",
         },
         {
           n: "03",
           title: "Decide",
+          icon: "Scale",
           body: "The rules engine pulls bureau and alternative data and returns an approve, decline or refer.",
         },
         {
           n: "04",
           title: "Disburse",
+          icon: "Banknote",
           body: "The borrower e-signs the offer and funds release to bank, wallet or mobile money.",
         },
       ],
@@ -208,13 +214,13 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "loan-management",
     metaTitle: "Loan Management",
     metaDescription:
-      "Full-lifecycle loan servicing  disbursement, repayment schedules and restructuring, interest and fee accruals, delinquency bucketing, multi-currency GL postings and borrower notifications.",
+      "Full-lifecycle loan servicing: disbursement, repayment schedules and restructuring, interest and fee accruals, delinquency bucketing, multi-currency GL postings and borrower notifications.",
     hero: {
       eyebrow: "Solutions · Servicing",
       title: "Loan",
       titleAccent: "Management",
       subtitle:
-        "Run every loan from disbursement to closure  schedules, restructures, accruals, delinquency buckets and multi-currency GL postings  on an engine that keeps your books accurate and your ops lean.",
+        "Run every loan from disbursement to closure: schedules, restructures, accruals, delinquency buckets and multi-currency GL postings, on an engine that keeps your books accurate and your ops lean.",
       image:
         "/solutions/loan-management-hero.webp",
     },
@@ -222,7 +228,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Overview",
       heading: "The system of record for the whole loan life.",
       paragraphs: [
-        "Once a loan is booked, PhotonMatters loan management owns its entire lifecycle. It disburses funds, builds and maintains the repayment schedule, accrues interest and fees, applies repayments, buckets delinquency, and posts every movement to the general ledger  across multiple currencies and books.",
+        "Once a loan is booked, PhotonMatters loan management owns its entire lifecycle. It disburses funds, builds and maintains the repayment schedule, accrues interest and fees, applies repayments, buckets delinquency, and posts every movement to the general ledger, across multiple currencies and books.",
         "Restructures, reschedules and write-offs are handled inside the same ledger, so the books stay accurate and auditable while your team spends far less time on manual reconciliation and spreadsheet corrections.",
       ],
       checklist: [
@@ -279,21 +285,25 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Disburse",
+          icon: "Banknote",
           body: "Funds release and the loan books with its opening schedule and ledger entries.",
         },
         {
           n: "02",
           title: "Service",
+          icon: "CalendarClock",
           body: "Accruals run, repayments apply, and restructures and top-ups keep the schedule current.",
         },
         {
           n: "03",
           title: "Collect",
+          icon: "HandCoins",
           body: "Past-due loans bucket and feed notifications and collections workflows automatically.",
         },
         {
           n: "04",
           title: "Close",
+          icon: "FileCheck",
           body: "On full repayment or write-off the loan settles and the ledger closes out cleanly.",
         },
       ],
@@ -342,7 +352,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       title: "Score the borrowers",
       titleAccent: "the old models can’t see.",
       subtitle:
-        "Explainable AI scoring that combines bureau, telco, cashflow and behavioural data to extend fair credit to thin-file and unbanked borrowers  with reason codes regulators can audit.",
+        "Explainable AI scoring that combines bureau, telco, cashflow and behavioural data to extend fair credit to thin-file and unbanked borrowers, with reason codes regulators can audit.",
       image:
         "/solutions/credit-scoring-hero.webp",
     },
@@ -350,8 +360,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "The Overview",
       heading: "A risk model for people with no file.",
       paragraphs: [
-        "Traditional scorecards need years of bureau history, payslips and collateral  exactly what a first-time borrower in an emerging market doesn’t have. PhotonMatters Credit Scoring reads the signals the legacy system ignores: airtime top-ups, mobile-money flows, repayment behaviour and device patterns, alongside any bureau data that exists.",
-        "Every score ships with reason codes and feature contributions, so risk teams and regulators see exactly why a decision was made. Champion/challenger lets you test new models safely against live traffic  no black boxes, no surprises.",
+        "Traditional scorecards need years of bureau history, payslips and collateral: exactly what a first-time borrower in an emerging market doesn’t have. PhotonMatters Credit Scoring reads the signals the legacy system ignores: airtime top-ups, mobile-money flows, repayment behaviour and device patterns, alongside any bureau data that exists.",
+        "Every score ships with reason codes and feature contributions, so risk teams and regulators see exactly why a decision was made. Champion/challenger lets you test new models safely against live traffic: no black boxes, no surprises.",
       ],
       checklist: [
         { lead: "Thin-file ready", text: "score borrowers with little or no bureau history." },
@@ -368,7 +378,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Capabilities",
       heading: "Everything you need to score with confidence.",
       subtitle:
-        "From raw data ingestion to a live scoring endpoint  the full pipeline, explainable end to end.",
+        "From raw data ingestion to a live scoring endpoint: the full pipeline, explainable end to end.",
       cards: [
         {
           icon: "Database",
@@ -398,7 +408,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           icon: "Zap",
           title: "Real-time scoring API (sub-second)",
-          body: "A single REST endpoint returns a score, band and reason codes in under a second  built for 250k+ requests/hour.",
+          body: "A single REST endpoint returns a score, band and reason codes in under a second, built for 250k+ requests/hour.",
         },
       ],
     },
@@ -409,22 +419,26 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Ingest data",
+          icon: "Database",
           body: "Pull bureau, telco, cashflow and application data through connectors into a unified, deduplicated record.",
         },
         {
           n: "02",
           title: "Engineer features",
-          body: "Transform raw signals into hundreds of stable, monitored features  from repayment ratios to recharge cadence.",
+          icon: "FlaskConical",
+          body: "Transform raw signals into hundreds of stable, monitored features: from repayment ratios to recharge cadence.",
         },
         {
           n: "03",
           title: "Score & explain",
+          icon: "Gauge",
           body: "Models return a score, risk band and ranked reason codes in sub-second time, every call fully traceable.",
         },
         {
           n: "04",
           title: "Decide",
-          body: "Feed the score into origination policy  approve, price or refer  with a full audit trail for every outcome.",
+          icon: "Scale",
+          body: "Feed the score into origination policy: approve, price or refer, with a full audit trail for every outcome.",
         },
       ],
     },
@@ -432,9 +446,9 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Outcomes",
       heading: "Score more people, faster, and prove it.",
       stats: [
-        { value: "1 phone", label: "Score the unbanked from alternative data alone  no bureau file or payslip required." },
+        { value: "1 phone", label: "Score the unbanked from alternative data alone, no bureau file or payslip required." },
         { value: "250k+/hr", label: "Sub-second scoring at peak load, so decisioning never becomes the bottleneck." },
-        { value: "100%", label: "Audit-ready and compliant  every score carries reason codes for regulators and risk teams." },
+        { value: "100%", label: "Audit-ready and compliant, every score carries reason codes for regulators and risk teams." },
       ],
     },
     cta: {
@@ -467,7 +481,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       title: "Recover more,",
       titleAccent: "at a lower cost to collect.",
       subtitle:
-        "AI-driven collections that segment every account by propensity to pay, choose the right strategy, and engage borrowers across SMS, WhatsApp, voice and agents  so the right action reaches the right account at the right time.",
+        "AI-driven collections that segment every account by propensity to pay, choose the right strategy, and engage borrowers across SMS, WhatsApp, voice and agents, so the right action reaches the right account at the right time.",
       image:
         "/solutions/debt-collection-hero.webp",
     },
@@ -475,8 +489,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "The Overview",
       heading: "Stop treating every delinquent account the same.",
       paragraphs: [
-        "Blanket call lists and one-size-fits-all reminders burn agent hours on accounts that would have self-cured, while genuinely at-risk borrowers slip into deeper arrears. PhotonMatters Debt Collection scores each account on propensity to pay, then routes it to the strategy and channel most likely to recover  automatically.",
-        "Low-effort accounts get a gentle digital nudge; high-risk ones get prioritised agent and field action. Promise-to-pay is tracked end to end, settlements are managed in-platform, and every interaction feeds dashboards that show exactly what is working  by segment, channel and team.",
+        "Blanket call lists and one-size-fits-all reminders burn agent hours on accounts that would have self-cured, while genuinely at-risk borrowers slip into deeper arrears. PhotonMatters Debt Collection scores each account on propensity to pay, then routes it to the strategy and channel most likely to recover, automatically.",
+        "Low-effort accounts get a gentle digital nudge; high-risk ones get prioritised agent and field action. Promise-to-pay is tracked end to end, settlements are managed in-platform, and every interaction feeds dashboards that show exactly what is working, by segment, channel and team.",
       ],
       checklist: [
         { lead: "Propensity-driven", text: "focus effort where recovery is most likely." },
@@ -493,7 +507,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Capabilities",
       heading: "A full recovery engine, end to end.",
       subtitle:
-        "From segmentation to settlement  every stage of the collections journey in one platform.",
+        "From segmentation to settlement: every stage of the collections journey in one platform.",
       cards: [
         {
           icon: "Users",
@@ -508,7 +522,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           icon: "MessagesSquare",
           title: "Omnichannel outreach",
-          body: "Reach borrowers on SMS, WhatsApp, voice and live agents from a single orchestration layer  with channel chosen by propensity.",
+          body: "Reach borrowers on SMS, WhatsApp, voice and live agents from a single orchestration layer, with channel chosen by propensity.",
         },
         {
           icon: "CalendarCheck",
@@ -534,21 +548,25 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Segment",
+          icon: "Layers",
           body: "Score and cluster delinquent accounts by propensity to pay, balance, bucket and behaviour.",
         },
         {
           n: "02",
           title: "Prioritise",
+          icon: "Target",
           body: "The strategy engine ranks accounts and assigns the right treatment, channel and timing to each.",
         },
         {
           n: "03",
           title: "Engage",
+          icon: "MessagesSquare",
           body: "Reach borrowers across SMS, WhatsApp, voice and agents, capturing promises to pay as you go.",
         },
         {
           n: "04",
           title: "Recover",
+          icon: "HandCoins",
           body: "Book payments and settlements, then feed outcomes back to sharpen the next cycle’s strategy.",
         },
       ],
@@ -557,9 +575,9 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Outcomes",
       heading: "Better recovery economics, book after book.",
       stats: [
-        { value: "Higher", label: "Cure rates  propensity targeting puts the right treatment on accounts most likely to recover." },
-        { value: "Lower", label: "Cost-to-collect  digital channels handle self-curing accounts and free agents for the hard cases." },
-        { value: "Fewer", label: "Roll-forwards  early, well-targeted action keeps accounts from sliding into deeper buckets." },
+        { value: "Higher", label: "Cure rates: propensity targeting puts the right treatment on accounts most likely to recover." },
+        { value: "Lower", label: "Cost-to-collect: digital channels handle self-curing accounts and free agents for the hard cases." },
+        { value: "Fewer", label: "Roll-forwards: early, well-targeted action keeps accounts from sliding into deeper buckets." },
       ],
     },
     cta: {
@@ -592,7 +610,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       title: "Books that",
       titleAccent: "balance themselves.",
       subtitle:
-        "AI auto-reconciliation that matches payments, ledgers and gateway settlements at scale  flagging breaks before they age and turning month-end into a non-event.",
+        "AI auto-reconciliation that matches payments, ledgers and gateway settlements at scale, flagging breaks before they age and turning month-end into a non-event.",
       image:
         "/solutions/reconciliation-ai-hero.webp",
     },
@@ -600,8 +618,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Overview",
       heading: "Every rupee, naira and dirham accounted for.",
       paragraphs: [
-        "Lenders in emerging markets receive money through a tangle of channels  bank transfers, PSP gateways, mobile-money wallets and cash agents  each with its own file format, cut-off time and fee logic. Reconciliation AI ingests them all, matches each inflow to the right loan, instalment and ledger entry, and surfaces only the genuine exceptions.",
-        "What used to take a team of analysts days of spreadsheet work now runs continuously in the background. Breaks are detected the moment they appear, aged automatically, and routed to the right resolution workflow  so leakage is caught early and the close happens on time.",
+        "Lenders in emerging markets receive money through a tangle of channels: bank transfers, PSP gateways, mobile-money wallets and cash agents, each with its own file format, cut-off time and fee logic. Reconciliation AI ingests them all, matches each inflow to the right loan, instalment and ledger entry, and surfaces only the genuine exceptions.",
+        "What used to take a team of analysts days of spreadsheet work now runs continuously in the background. Breaks are detected the moment they appear, aged automatically, and routed to the right resolution workflow, so leakage is caught early and the close happens on time.",
       ],
       checklist: [
         { lead: "Near-zero manual matching", text: "AI handles the long tail of partial, batched and out-of-order payments." },
@@ -617,17 +635,17 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Capabilities",
       heading: "Everything you need to reconcile at scale.",
       subtitle:
-        "From raw multi-source ingestion to a board-ready audit trail  one engine for the whole reconciliation lifecycle.",
+        "From raw multi-source ingestion to a board-ready audit trail: one engine for the whole reconciliation lifecycle.",
       cards: [
         {
           icon: "Database",
           title: "Multi-source ingestion",
-          body: "Bank statements, core-ledger entries and PSP / mobile-money settlement files  any format, any cadence, normalised on the way in.",
+          body: "Bank statements, core-ledger entries and PSP / mobile-money settlement files: any format, any cadence, normalised on the way in.",
         },
         {
           icon: "GitCompareArrows",
           title: "AI auto-matching",
-          body: "Models match one-to-one, one-to-many and many-to-many  handling fees, FX, partial and batched payments without rigid rules.",
+          body: "Models match one-to-one, one-to-many and many-to-many, handling fees, FX, partial and batched payments without rigid rules.",
         },
         {
           icon: "TriangleAlert",
@@ -647,7 +665,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           icon: "FileCheck",
           title: "Audit trail & reporting",
-          body: "Immutable, time-stamped history of every match and adjustment  with reconciliation dashboards built for finance and auditors.",
+          body: "Immutable, time-stamped history of every match and adjustment, with reconciliation dashboards built for finance and auditors.",
         },
       ],
     },
@@ -658,22 +676,26 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Ingest",
+          icon: "FolderInput",
           body: "Pull in bank statements, ledger entries and PSP / mobile-money settlements; normalise formats and currencies.",
         },
         {
           n: "02",
           title: "Match",
+          icon: "GitCompareArrows",
           body: "AI auto-matches inflows to loans, instalments and ledger lines across complex many-to-many relationships.",
         },
         {
           n: "03",
           title: "Flag exceptions",
+          icon: "TriangleAlert",
           body: "Unmatched and discrepant items are isolated, aged and routed to the right owner with an SLA clock.",
         },
         {
           n: "04",
           title: "Resolve",
-          body: "Workflows clear breaks, post adjustments and update the ledger  leaving a complete, auditable trail.",
+          icon: "FileCheck",
+          body: "Workflows clear breaks, post adjustments and update the ledger, leaving a complete, auditable trail.",
         },
       ],
     },
@@ -681,9 +703,9 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Outcomes",
       heading: "Less time reconciling. Less money lost.",
       stats: [
-        { value: "~0", label: "Near-zero manual matching  analysts focus only on genuine exceptions instead of spreadsheets." },
-        { value: "Days → hrs", label: "Faster month-end close  continuous reconciliation replaces the end-of-period scramble." },
-        { value: "Fewer", label: "Fewer leakages  breaks are caught and aged early, before they become write-offs." },
+        { value: "~0", label: "Near-zero manual matching: analysts focus only on genuine exceptions instead of spreadsheets." },
+        { value: "Days → hrs", label: "Faster month-end close: continuous reconciliation replaces the end-of-period scramble." },
+        { value: "Fewer", label: "Fewer leakages: breaks are caught and aged early, before they become write-offs." },
       ],
     },
     cta: {
@@ -710,22 +732,22 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "collection-marketing-ai",
     metaTitle: "Collection Marketing AI",
     metaDescription:
-      "Behaviour-driven nudges that turn reminders into repayments  personalised self-cure journeys that lift recovery and cut collection cost.",
+      "Behaviour-driven nudges that turn reminders into repayments: personalised self-cure journeys that lift recovery and cut collection cost.",
     hero: {
       eyebrow: "Collection Marketing AI",
       title: "Turn reminders into",
       titleAccent: "repayments.",
       subtitle:
-        "Behaviour-driven nudges that reach the right borrower, on the right channel, at the right moment  so more of them self-cure before an agent ever has to call.",
+        "Behaviour-driven nudges that reach the right borrower, on the right channel, at the right moment, so more of them self-cure before an agent ever has to call.",
       image:
         "/solutions/collection-marketing-ai-hero.webp",
     },
     overview: {
       eyebrow: "Overview",
-      heading: "Most overdue borrowers want to pay  they just need the right nudge.",
+      heading: "Most overdue borrowers want to pay, they just need the right nudge.",
       paragraphs: [
-        "Treating every missed instalment the same way wastes money and annoys good customers. Collection Marketing AI reads repayment behaviour and intent, then crafts a message  tone, offer, channel and timing  tuned to each individual. The result is a quiet, respectful nudge that gets paid, not an aggressive dunning call.",
-        "By moving recovery upstream into self-cure, you keep expensive human agents and legal action for the small minority who truly need them  while everyone else clears their balance from the comfort of their own phone.",
+        "Treating every missed instalment the same way wastes money and annoys good customers. Collection Marketing AI reads repayment behaviour and intent, then crafts a message (tone, offer, channel and timing) tuned to each individual. The result is a quiet, respectful nudge that gets paid, not an aggressive dunning call.",
+        "By moving recovery upstream into self-cure, you keep expensive human agents and legal action for the small minority who truly need them, while everyone else clears their balance from the comfort of their own phone.",
       ],
       checklist: [
         { lead: "More self-cure", text: "borrowers repay on their own before manual collections kick in." },
@@ -741,32 +763,32 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Capabilities",
       heading: "A marketing engine pointed at recovery.",
       subtitle:
-        "Segmentation, personalisation and measurement  the full performance-marketing toolkit, purpose-built for collections.",
+        "Segmentation, personalisation and measurement: the full performance-marketing toolkit, purpose-built for collections.",
       cards: [
         {
           icon: "Users",
           title: "Behavioural segmentation",
-          body: "Group borrowers by repayment history, channel response and intent signals  not just by days-past-due buckets.",
+          body: "Group borrowers by repayment history, channel response and intent signals, not just by days-past-due buckets.",
         },
         {
           icon: "Target",
           title: "Next-best-action engine",
-          body: "For every account, the model picks the action most likely to drive payment  a reminder, an offer, a plan, or a pause.",
+          body: "For every account, the model picks the action most likely to drive payment: a reminder, an offer, a plan, or a pause.",
         },
         {
           icon: "Clock",
           title: "Channel & send-time optimisation",
-          body: "Reach each borrower on the channel they respond to  SMS, WhatsApp, voice or missed call  at the hour they’re most likely to act.",
+          body: "Reach each borrower on the channel they respond to: SMS, WhatsApp, voice or missed call, at the hour they’re most likely to act.",
         },
         {
           icon: "Wand2",
           title: "Tone & offer personalisation",
-          body: "Adapt language, empathy and incentives  a gentle nudge here, a settlement or part-payment offer there  to each segment.",
+          body: "Adapt language, empathy and incentives (a gentle nudge here, a settlement or part-payment offer there) to each segment.",
         },
         {
           icon: "TrendingUp",
           title: "A/B testing & uplift measurement",
-          body: "Test messages, offers and timing against holdouts to prove genuine incremental recovery  not just activity.",
+          body: "Test messages, offers and timing against holdouts to prove genuine incremental recovery, not just activity.",
         },
         {
           icon: "Route",
@@ -782,21 +804,25 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Understand",
+          icon: "Activity",
           body: "Read repayment behaviour, intent and channel response to segment overdue accounts by likelihood to cure.",
         },
         {
           n: "02",
           title: "Personalise",
+          icon: "Wand2",
           body: "Choose the next-best action, then tailor tone, offer, channel and send-time to each borrower.",
         },
         {
           n: "03",
           title: "Nudge",
+          icon: "BellRing",
           body: "Deliver the message with a payment link or plan option, and run multi-step self-cure journeys automatically.",
         },
         {
           n: "04",
           title: "Convert",
+          icon: "TrendingUp",
           body: "Measure uplift against holdouts, learn what works, and re-target only the accounts that still need a human touch.",
         },
       ],
@@ -805,16 +831,16 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Outcomes",
       heading: "More cures, earlier, for less.",
       stats: [
-        { value: "More", label: "Self-cure rate  borrowers clear balances on their own, before manual collections begin." },
-        { value: "Fewer", label: "DPD roll-forwards  accounts cure early instead of sliding into deeper delinquency." },
-        { value: "Lower", label: "Cost to collect  automated nudges replace a large share of agent calls and field visits." },
+        { value: "More", label: "Self-cure rate: borrowers clear balances on their own, before manual collections begin." },
+        { value: "Fewer", label: "DPD roll-forwards: accounts cure early instead of sliding into deeper delinquency." },
+        { value: "Lower", label: "Cost to collect: automated nudges replace a large share of agent calls and field visits." },
       ],
     },
     cta: {
       eyebrow: "See the uplift",
       heading: "Run a self-cure pilot on your book.",
       headingAccent: "on your book.",
-      body: "We’ll set up a behaviour-driven journey against a holdout group and measure the incremental recovery  so the uplift is proven, not assumed.",
+      body: "We’ll set up a behaviour-driven journey against a holdout group and measure the incremental recovery, so the uplift is proven, not assumed.",
       crossLinks: [
         {
           slug: "debt-collection",
@@ -834,13 +860,13 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "campaign-management",
     metaTitle: "Campaign Management",
     metaDescription:
-      "Design, target and automate lending campaigns across SMS, WhatsApp, email, voice and missed call  with consent, throttling and real-time attribution.",
+      "Design, target and automate lending campaigns across SMS, WhatsApp, email, voice and missed call, with consent, throttling and real-time attribution.",
     hero: {
       eyebrow: "Campaign Management",
       title: "Design, target and automate",
       titleAccent: "every lending campaign.",
       subtitle:
-        "One console to build audiences, orchestrate journeys across SMS, WhatsApp, email, voice and missed call  and prove the ROI of every send.",
+        "One console to build audiences, orchestrate journeys across SMS, WhatsApp, email, voice and missed call, and prove the ROI of every send.",
       image:
         "/solutions/campaign-management-hero.webp",
     },
@@ -848,8 +874,8 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Overview",
       heading: "From acquisition to lifecycle, all in one place.",
       paragraphs: [
-        "Acquiring and retaining borrowers in emerging markets means meeting them where they already are  SMS, WhatsApp, voice and missed call. Campaign Management lets growth and lifecycle teams build precise audiences, design multi-step journeys, and launch across every channel without stitching together separate point tools.",
-        "Consent, throttling and compliance are built in from the start, and real-time analytics tie every message back to applications, disbursals and repayments  so you can see which campaigns actually move the book, not just open rates.",
+        "Acquiring and retaining borrowers in emerging markets means meeting them where they already are: SMS, WhatsApp, voice and missed call. Campaign Management lets growth and lifecycle teams build precise audiences, design multi-step journeys, and launch across every channel without stitching together separate point tools.",
+        "Consent, throttling and compliance are built in from the start, and real-time analytics tie every message back to applications, disbursals and repayments, so you can see which campaigns actually move the book, not just open rates.",
       ],
       checklist: [
         { lead: "Targeted acquisition", text: "reach the right segments with the right offer across every channel." },
@@ -865,7 +891,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       eyebrow: "Capabilities",
       heading: "Everything a lending marketer needs.",
       subtitle:
-        "Audience building, multi-channel orchestration, compliance and analytics  in a single, lending-aware platform.",
+        "Audience building, multi-channel orchestration, compliance and analytics, in a single, lending-aware platform.",
       cards: [
         {
           icon: "Users",
@@ -875,7 +901,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           icon: "Send",
           title: "Multi-channel delivery",
-          body: "Reach borrowers over SMS, WhatsApp, email, voice and missed call  from one campaign, with channel fallback logic.",
+          body: "Reach borrowers over SMS, WhatsApp, email, voice and missed call, from one campaign, with channel fallback logic.",
         },
         {
           icon: "Workflow",
@@ -906,39 +932,43 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         {
           n: "01",
           title: "Build audience",
+          icon: "Users",
           body: "Define your target segment from demographic, behavioural and credit attributes with the visual builder.",
         },
         {
           n: "02",
           title: "Design journey",
+          icon: "Route",
           body: "Lay out the multi-step, multi-channel flow with triggers, branches, wait steps and channel fallbacks.",
         },
         {
           n: "03",
           title: "Launch",
+          icon: "Send",
           body: "Go live with consent checks, throttling and quiet-hours controls enforced automatically.",
         },
         {
           n: "04",
           title: "Measure",
+          icon: "BarChart3",
           body: "Track delivery, response and conversion in real time, attribute ROI, and iterate on what works.",
         },
       ],
     },
     outcomes: {
       eyebrow: "Outcomes",
-      heading: "Campaigns that grow the book  provably.",
+      heading: "Campaigns that grow the book, provably.",
       stats: [
-        { value: "Targeted", label: "Acquisition  the right offer reaches the right segment on the channel they use." },
-        { value: "Automated", label: "Lifecycle comms  onboarding, renewal and win-back journeys run without manual sends." },
-        { value: "Measurable", label: "ROI  every campaign is attributed to applications, disbursals and repayments." },
+        { value: "Targeted", label: "Acquisition: the right offer reaches the right segment on the channel they use." },
+        { value: "Automated", label: "Lifecycle comms: onboarding, renewal and win-back journeys run without manual sends." },
+        { value: "Measurable", label: "ROI: every campaign is attributed to applications, disbursals and repayments." },
       ],
     },
     cta: {
       eyebrow: "Get started",
       heading: "Plan your first multi-channel campaign with us.",
       headingAccent: "with us.",
-      body: "Tell us a segment and an offer. We’ll design the audience, the journey and the attribution model  and walk you through what to expect at launch.",
+      body: "Tell us a segment and an offer. We’ll design the audience, the journey and the attribution model, and walk you through what to expect at launch.",
       crossLinks: [
         {
           slug: "collection-marketing-ai",
@@ -960,25 +990,25 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
           icon: "Target",
           visual: "radar",
           title: "Lifecycle-Based Targeting",
-          body: "Segment borrowers by behavior, credit score, tenure, and repayment patterns — and speak to them when it matters most.",
+          body: "Segment borrowers by behavior, credit score, tenure, and repayment patterns, and speak to them when it matters most.",
         },
         {
           icon: "Send",
           visual: "channels",
           title: "Multi-Channel Automation",
-          body: "Run campaigns across email, SMS, WhatsApp, push notifications, and in-app — all from one place.",
+          body: "Run campaigns across email, SMS, WhatsApp, push notifications, and in-app, all from one place.",
         },
         {
           icon: "Wand2",
           visual: "offers",
           title: "Personalized Offers That Convert",
-          body: "Deliver top-ups, pre-approved credit, EMI holidays, or rate drops — dynamically tailored to borrower profiles.",
+          body: "Deliver top-ups, pre-approved credit, EMI holidays, or rate drops, dynamically tailored to borrower profiles.",
         },
         {
           icon: "FlaskConical",
           visual: "ab",
           title: "A/B Testing & Real-Time Optimization",
-          body: "Test messages, creatives, and channels — and optimize on the fly for higher ROI.",
+          body: "Test messages, creatives, and channels, and optimize on the fly for higher ROI.",
         },
         {
           icon: "BarChart3",

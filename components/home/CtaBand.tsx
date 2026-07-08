@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
 /**
- * Pre-footer conversion band — dark full-width, one focused message, two CTAs.
+ * Pre-footer conversion band: dark full-width, one focused message, two CTAs.
  * Pattern: Enterprise Gateway (ui-ux-pro-max) + Stripe/Linear/Vercel reference.
  * Placed between the last content section and <Footer> on every page that needs it.
  */
@@ -11,7 +11,7 @@ export function CtaBand() {
     <section data-nav-theme="dark" className="bg-ink">
       <div className="container-site section">
         <Reveal>
-          {/* Gradient CTA card — eterna signature (purple → deep purple) */}
+          {/* Gradient CTA card: eterna signature (purple → deep purple) */}
           <div
             className="relative overflow-hidden rounded-[2.5rem] px-8 py-16 text-center shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-16 md:py-20"
             style={{
@@ -36,7 +36,7 @@ export function CtaBand() {
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
                 Most lending platforms take 12–18 months to deploy. PhotonMatters goes live in 8
-                weeks — with your products, your rules, your market.
+                weeks, with your products, your rules, your market.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

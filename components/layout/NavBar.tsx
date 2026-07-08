@@ -273,7 +273,7 @@ export function NavBar() {
         </div>
       </div>
 
-      {/* Mobile nav — solid panel matching the active theme */}
+      {/* Mobile nav: solid panel matching the active theme */}
       {mobileOpen && (
         <div
           id="mobile-nav"

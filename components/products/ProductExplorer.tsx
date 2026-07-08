@@ -24,7 +24,7 @@ const HEADING_CLIP =
   "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
 
 /**
- * Interactive product menu — a tab list of lending sub-products paired with an
+ * Interactive product menu: a tab list of lending sub-products paired with an
  * animated "spec sheet" panel. Auto-cycles, pausing for reduced motion.
  */
 export function ProductExplorer({ eyebrow, heading, items }: ProductExplorerProps) {

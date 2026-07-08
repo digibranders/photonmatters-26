@@ -20,8 +20,8 @@ const CARD_BENTO =
 
 const VALUES = [
   { title: "Built to Disrupt", body: "We challenge the assumptions baked into legacy credit. AI-native from the first line of code, we replace paperwork and gut-feel with explainable, data-driven decisions." },
-  { title: "Engineered for Scale", body: "From a $50 micro-loan to enterprise portfolios — 250k+ requests an hour, 99.9% availability, and an 8-week path from kickoff to go-live in any market." },
-  { title: "Designed to Empower", body: "Every product is built to put credit in the hands of the people and institutions the system overlooked — human-centered, transparent and fair by design." },
+  { title: "Engineered for Scale", body: "From a $50 micro-loan to enterprise portfolios: 250k+ requests an hour, 99.9% availability, and an 8-week path from kickoff to go-live in any market." },
+  { title: "Designed to Empower", body: "Every product is built to put credit in the hands of the people and institutions the system overlooked: human-centered, transparent and fair by design." },
 ];
 
 const LEADERS = [
@@ -56,7 +56,7 @@ export default function AboutPage() {
         eyebrow="Our story"
         title="We’re banking the people the"
         titleAccent="system forgot."
-        subtitle="PhotonMatters is building AI-native lending technology for the institutions that move credit — banks, NBFCs and telecom operators — across Africa, India and the Middle East."
+        subtitle="PhotonMatters is building AI-native lending technology for the institutions that move credit: banks, NBFCs and telecom operators, across Africa, India and the Middle East."
         image="/about/hero.webp"
         imageAlt="Banking the people the system forgot"
         primary={{ label: "Book a demo", href: "/contact" }}
@@ -75,12 +75,12 @@ export default function AboutPage() {
             <p className="mt-5 text-body text-secondary">
               We exist to unleash a global revolution in how credit is built and delivered. Legacy
               systems were designed for paperwork, payslips and the people the formal economy already
-              serves — leaving billions unseen. We’re replacing that with an AI-native platform that
+              serves, leaving billions unseen. We’re replacing that with an AI-native platform that
               reads the signals the old models ignore.
             </p>
             <p className="mt-4 text-body text-secondary">
               Our purpose is to empower financial institutions to scale, innovate and deliver
-              human-centered credit — a first fair loan to a market vendor, a working-capital line to
+              human-centered credit: a first fair loan to a market vendor, a working-capital line to
               a small business, a transparent decision to a regulator. Technology that reaches the
               last mile, on terms people can trust.
             </p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values — bento */}
+      {/* Values: bento */}
       <section className="section bg-sunken">
         <div className="container-site">
           <SectionHeader
@@ -127,7 +127,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership — founder cards with portraits */}
+      {/* Leadership: founder cards with portraits */}
       <section className="section">
         <div className="container-site">
           <SectionHeader eyebrow="Leadership" title="Founders who’ve spent decades building this." />
@@ -172,7 +172,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Markets — premium cards */}
+      {/* Markets: premium cards */}
       <section className="section bg-sunken">
         <div className="container-site">
           <SectionHeader
@@ -203,7 +203,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global presence — dark band with blooms + glass office cards */}
+      {/* Global presence: dark band with blooms + glass office cards */}
       <section
         data-nav-theme="dark"
         className="section-lg relative overflow-hidden bg-ink text-white"

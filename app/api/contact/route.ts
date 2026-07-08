@@ -7,7 +7,7 @@ interface ContactPayload {
   company?: string;
   country?: string;
   message?: string;
-  /** Honeypot — must stay empty for real users. */
+  /** Honeypot: must stay empty for real users. */
   botcheck?: string;
 }
 
@@ -21,7 +21,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     return NextResponse.json({ ok: false, error: "Invalid request." }, { status: 400 });
   }
 
-  // Bot caught by honeypot — accept silently so the bot sees success.
+  // Bot caught by honeypot: accept silently so the bot sees success.
   if (data.botcheck) {
     return NextResponse.json({ ok: true });
   }
@@ -48,7 +48,7 @@ export async function POST(req: Request): Promise<NextResponse> {
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
-    `Company: ${data.company?.trim() || "—"}`,
+    `Company: ${data.company?.trim() || "N/A"}`,
     `Country/region: ${country}`,
     "",
     message,
@@ -66,7 +66,7 @@ export async function POST(req: Request): Promise<NextResponse> {
           from: process.env.CONTACT_FROM ?? "PhotonMatters <onboarding@resend.dev>",
           to: [process.env.CONTACT_TO ?? SITE.email],
           reply_to: email,
-          subject: `New enquiry — ${name}`,
+          subject: `New enquiry: ${name}`,
           text,
         }),
       });
@@ -80,7 +80,7 @@ export async function POST(req: Request): Promise<NextResponse> {
       );
     }
   } else {
-    // No email provider configured yet — log so the submission isn't lost in dev.
+    // No email provider configured yet: log so the submission isn't lost in dev.
     console.info("[contact] received (no email provider configured):", {
       name,
       email,

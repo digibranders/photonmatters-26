@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ArrowRight, MapPin } from "lucide-react";
 import { SolutionHero } from "@/components/solutions/SolutionHero";
 import { FeatureShowcase } from "@/components/solutions/FeatureShowcase";
+import { HowFlow } from "@/components/solutions/HowFlow";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -12,7 +13,7 @@ import { getIcon } from "@/lib/icons";
 import { SOLUTION_PAGES } from "@/lib/solutions-data";
 import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 
-/** Light gradient-clipped heading — eterna signature (ink → ink/60). */
+/** Light gradient-clipped heading: eterna signature (ink → ink/60). */
 const HEADING_CLIP =
   "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
 
@@ -22,7 +23,7 @@ const SOLUTION_ICON: Record<string, string> = {
   gsm: GSM.icon,
 };
 
-/** Fine film grain — adds premium texture on gradient surfaces. */
+/** Fine film grain: adds premium texture on gradient surfaces. */
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
@@ -62,7 +63,7 @@ export default async function SolutionDetailPage({
         imageAlt={hero.title}
       />
 
-      {/* Overview — glass spotlight: cinematic image stage with a frosted content card */}
+      {/* Overview: glass spotlight: cinematic image stage with a frosted content card */}
       <section className="section">
         <div className="container-site">
           <Reveal>
@@ -104,7 +105,7 @@ export default async function SolutionDetailPage({
                     </p>
                   ))}
 
-                  {/* Feature list — bullets with the brand arrow motif */}
+                  {/* Feature list: bullets with the brand arrow motif */}
                   <div className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
                     {overview.checklist.map((item) => (
                       <div key={item.lead} className="flex items-start gap-2.5">
@@ -136,7 +137,7 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* Capabilities — bento cards */}
+      {/* Capabilities: bento cards */}
       <section id="capabilities" className="section bg-sunken scroll-mt-24">
         <div className="container-site">
           <SectionHeader
@@ -150,7 +151,7 @@ export default async function SolutionDetailPage({
               return (
                 <Reveal key={card.title} index={i % 3}>
                   <div className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]">
-                    {/* Corner bloom — eterna bento accent */}
+                    {/* Corner bloom: eterna bento accent */}
                     <div
                       aria-hidden
                       className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover/card:scale-110"
@@ -178,53 +179,10 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* How it works — flow pipeline of connected step cards */}
-      <section className="section">
-        <div className="container-site">
-          <SectionHeader title={how.eyebrow} />
-          <div className="mt-14 grid items-stretch gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-            {how.steps.map((step, i) => (
-              <Reveal key={step.n} index={i} className="relative">
-                <div
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
-                  style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
-                >
-                  {/* Ghost numeral */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-1 -top-6 select-none text-[6rem] font-extrabold leading-none tabular-nums text-[color:var(--blue-100)] opacity-70"
-                  >
-                    {step.n}
-                  </span>
-                  {/* Corner bloom */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -bottom-14 -right-14 h-40 w-40 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
-                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
-                  />
-                  <h3 className="relative z-10 mt-10 text-h3 font-bold text-ink">{step.title}</h3>
-                  <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">
-                    {step.body}
-                  </p>
-                </div>
+      {/* How it works: journey rail: steps connected on one gradient line */}
+      <HowFlow title={how.eyebrow} steps={how.steps} />
 
-                {/* Gradient connector arrow to the next step (lg only) */}
-                {i < how.steps.length - 1 ? (
-                  <span
-                    aria-hidden
-                    className="absolute right-0 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-line bg-surface text-white shadow-[var(--shadow-overlay)] lg:flex"
-                    style={{ background: "linear-gradient(135deg, var(--blue-500), var(--blue-400))" }}
-                  >
-                    <ArrowRight size={16} strokeWidth={2.75} />
-                  </span>
-                ) : null}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What you can do — interactive feature explorer (per-solution, optional) */}
+      {/* What you can do: interactive feature explorer (per-solution, optional) */}
       {featureShowcase ? (
         <FeatureShowcase
           eyebrow={featureShowcase.eyebrow}
@@ -241,7 +199,7 @@ export default async function SolutionDetailPage({
         />
       ) : null}
 
-      {/* Outcomes — dark band with ambient light + glass stat cards */}
+      {/* Outcomes: dark band with ambient light + glass stat cards */}
       <section
         data-nav-theme="dark"
         className="section relative overflow-hidden bg-ink text-white"
@@ -285,7 +243,7 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* CTA finale (v3, premium) — gradient card with a connected lifecycle pipeline */}
+      {/* CTA finale (v3, premium): gradient card with a connected lifecycle pipeline */}
       <section className="section">
         <div className="container-site">
           <Reveal>

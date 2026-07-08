@@ -1,21 +1,21 @@
-# PhotonMatters — Image Generation Prompts
+# PhotonMatters: Image Generation Prompts
 
 > **Purpose:** Replace every placeholder image on the site with professional, on-brand, highly-relevant art.
 > **For:** ChatGPT (GPT Image), Google Gemini "Nano Banana", or any modern image model.
-> **One prompt per image slot.** Each is self-contained — copy the fenced block straight into the tool.
+> **One prompt per image slot.** Each is self-contained: copy the fenced block straight into the tool.
 
 ---
 
 ## 0. How to use
 
-1. Every fenced block is a complete, ready-to-paste prompt — brand look, palette, composition, size and the
+1. Every fenced block is a complete, ready-to-paste prompt: brand look, palette, composition, size and the
    "do NOT include" guardrails are all baked in.
 2. Each entry lists **where it goes** (file path / data key + aspect ratio + export size), a one-line
    **concept**, the **PROMPT**, and suggested **Alt** text.
 3. Generate at the stated **export size**; if the tool only outputs squares, generate large and crop to the
    aspect ratio, keeping the subject where the prompt says.
 4. Save local files (`public/…`) as `.webp`; swap the remote URLs in the data files for the new local paths.
-5. **Generate 3–4 of each and pick** — results vary run to run.
+5. **Generate 3–4 of each and pick**: results vary run to run.
 
 ---
 
@@ -26,25 +26,25 @@ telecom operators** across **Africa, India and the Middle East / GCC** (HQ Dubai
 **8 weeks**, **250k+ requests/hour**, scoring the borrowers legacy models can't see. Tagline: *Built to
 Disrupt · Engineered for Scale · Designed to Empower.*
 
-**The brand idea — light.** *Photons = light.* The logo is a **starburst**. The signature motif across the
-set is a small **four-point violet-and-gold starburst glint — the "photon mark"** — at the **moment of
-value** (a loan approved, a decision made, credit reaching someone). Keep it **small and intentional** — it
+**The brand idea: light.** *Photons = light.* The logo is a **starburst**. The signature motif across the
+set is a small **four-point violet-and-gold starburst glint: the "photon mark"**: at the **moment of
+value** (a loan approved, a decision made, credit reaching someone). Keep it **small and intentional**: it
 is NOT a cosmic explosion.
 
 **Palette (use these hexes in every prompt).**
 
 - Primary violet **`#7E49F2`** · warm gold accent **`#F2CB07`** · soft lilac **`#E9A2F2`**
 - Deep plum (dark base) **`#1A1426`** · cool navy (hero base) **`#07101F`**
-- Slightly desaturated, premium — one or two brand hues glowing in the light, never rainbow.
+- Slightly desaturated, premium: one or two brand hues glowing in the light, never rainbow.
 
-**The image mix (this is deliberate — the site is human-led, not a wall of dashboards).**
+**The image mix (this is deliberate: the site is human-led, not a wall of dashboards).**
 
-- **PHOTO — people & editorial** *(the majority)*: the human, emotional, real-world moments — borrowers,
-  lenders, teams, customers — shot editorially, candid, never stocky.
-- **PHOTO — architecture**: institutional weight (banks, financial districts).
-- **PRODUCT-UI** *(accent — ~10 slots only)*: clean dark-mode app screens, to show the real platform where it
+- **PHOTO: people & editorial** *(the majority)*: the human, emotional, real-world moments: borrowers,
+  lenders, teams, customers: shot editorially, candid, never stocky.
+- **PHOTO: architecture**: institutional weight (banks, financial districts).
+- **PRODUCT-UI** *(accent: ~10 slots only)*: clean dark-mode app screens, to show the real platform where it
   adds proof. **Never more than one per page.** Lead the prompt with *"UI screenshot / product mockup."*
-- **DATAVIZ** *(rare — 2 slots)*: flat maps / flow diagrams, only for genuine "reach" or "multi-party flow".
+- **DATAVIZ** *(rare: 2 slots)*: flat maps / flow diagrams, only for genuine "reach" or "multi-party flow".
 
 **Composition.** Heroes (16:9, 2400×1350): headline on the **LEFT** → keep the left third darker/empty,
 subject **center-right**. Overview banners (2:1, 2400×1200): a glass card covers the **left half** → put the
@@ -60,12 +60,12 @@ market stalls or clutter; no distorted hands or faces; no oversaturation, HDR or
 
 ---
 
-## 2. HOME — `app/page.tsx` + `components/home/Hero.tsx`
+## 2. HOME: `app/page.tsx` + `components/home/Hero.tsx`
 
 > The hero carousel is **three distinct concepts**: **① the human last mile · ② the AI platform · ③ reach
 > across 3 regions.** Cohesive only through the violet + gold palette.
 
-### 2.1 Hero slide 1 — ① The human last mile · PHOTO
+### 2.1 Hero slide 1: ① The human last mile · PHOTO
 
 - **File:** `public/hero/slide-market.webp` · 16:9 · 2400×1350 · text-left
 
@@ -73,8 +73,8 @@ market stalls or clutter; no distorted hands or faces; no oversaturation, HDR or
 Professional editorial photograph for a fintech lending hero, on-brand for "PhotonMatters" (photons = light),
 16:9, 2400x1350. A dignified young entrepreneur or worker in an emerging market (Africa / India), in warm
 cinematic light, looking down at a smartphone the moment a loan is approved. On the phone screen a small,
-elegant four-point violet-and-gold STARBURST glint — the PhotonMatters photon mark, violet (#7E49F2) core,
-warm gold (#F2CB07) edge — flares softly and casts a gentle glow up onto their hopeful face. Candid,
+elegant four-point violet-and-gold STARBURST glint: the PhotonMatters photon mark, violet (#7E49F2) core,
+warm gold (#F2CB07) edge: flares softly and casts a gentle glow up onto their hopeful face. Candid,
 three-quarter angle, natural, never posing at the camera. Clean, softly blurred real-world background.
 Cinematic grade on the brand's violet + gold palette. LEFT THIRD darker for headline text; subject
 center-right. Aspirational, human, premium. Photorealistic, ultra-detailed, 8k.
@@ -83,9 +83,9 @@ phone); cheesy stock posing or smiling at the camera; shop signage, market stall
 on-screen text, logos or watermarks; distorted hands or faces; oversaturation or blur.
 ```
 
-- **Alt:** `A first fair loan approved on a phone — light reaching the last mile`
+- **Alt:** `A first fair loan approved on a phone: light reaching the last mile`
 
-### 2.2 Hero slide 2 — ② The AI platform · PRODUCT-UI
+### 2.2 Hero slide 2: ② The AI platform · PRODUCT-UI
 
 - **File:** `public/hero/slide-kiosk.webp` · 16:9 · 2400×1350 · text-left
 
@@ -103,14 +103,14 @@ people or hands; gibberish or dense text, logos or watermarks; oversaturation, H
 
 - **Alt:** `The AI-powered PhotonMatters lending platform`
 
-### 2.3 Hero slide 3 — ③ Reach across 3 regions · DATAVIZ
+### 2.3 Hero slide 3: ③ Reach across 3 regions · DATAVIZ
 
 - **File:** `public/hero/slide-shop-credit.webp` · 16:9 · 2400×1350 · text-left
 
 ```
-Flat stylized fintech data-visualization for a lending hero — SCALE & REACH, 16:9, 2400x1350. A clean, dark
-infographic-style MAP (not a 3D globe, not space) of the platform's three regions — Africa, India and the
-Middle East — with softly glowing city nodes and thin arcing connection lines suggesting credit flowing at
+Flat stylized fintech data-visualization for a lending hero: SCALE & REACH, 16:9, 2400x1350. A clean, dark
+infographic-style MAP (not a 3D globe, not space) of the platform's three regions: Africa, India and the
+Middle East: with softly glowing city nodes and thin arcing connection lines suggesting credit flowing at
 scale, and a few small violet-and-gold starburst node accents (the photon mark). Deep plum (#1A1426)-to-navy
 (#07101F) background, violet (#7E49F2) network lines, warm gold (#F2CB07) node highlights. Modern, premium,
 restrained fintech-infrastructure aesthetic. LEFT THIRD darker for headline text; map weighted center-right.
@@ -122,13 +122,13 @@ oversaturation or blur.
 
 - **Alt:** `AI lending at scale across Africa, India and the Middle East`
 
-### 2.4 Industries card — Banks · PHOTO (architecture)
+### 2.4 Industries card: Banks · PHOTO (architecture)
 
 - **File:** `app/page.tsx → INDUSTRIES[0].image` · 16:10 · 1600×1000
 
 ```
 Premium architectural photograph, 16:10, 1600x1000. A modern bank / financial headquarters exterior at blue
-hour — clean glass-and-stone facade, strong geometric lines, a warm gold-lit lobby glowing behind the glass.
+hour: clean glass-and-stone facade, strong geometric lines, a warm gold-lit lobby glowing behind the glass.
 Wide 24mm lens, level verticals, generous sky. No brand names, no signage, no people. Cool navy tones with a
 subtle violet (#7E49F2) reflection in the glass and a warm gold (#F2CB07) interior glow. Understated
 corporate-prestige mood, photorealistic, ultra-detailed, 8k.
@@ -136,15 +136,15 @@ Do NOT include: outer space or cosmic scenes; brand names, signage, logos or wat
 oversaturation, HDR or blur.
 ```
 
-- **Alt:** `Modern bank headquarters — digital-first credit`
+- **Alt:** `Modern bank headquarters: digital-first credit`
 
-### 2.5 Industries card — NBFCs & Lenders · PHOTO (people)
+### 2.5 Industries card: NBFCs & Lenders · PHOTO (people)
 
 - **File:** `app/page.tsx → INDUSTRIES[1].image` · 16:10 · 1600×1000
 
 ```
 Professional editorial photograph, 16:10, 1600x1000. A modern lending / fintech team collaborating in a
-bright, minimal office — two professionals focused on a laptop showing a simple lending view, calm and
+bright, minimal office: two professionals focused on a laptop showing a simple lending view, calm and
 competent, candid (not posing at the camera). 35mm at f/2.2, shallow depth of field, clean out-of-focus
 contemporary office, no signage, no clutter. Neutral palette with a soft violet (#7E49F2) screen accent and
 warm natural window light. Confident, premium, human, photorealistic, ultra-detailed, 8k.
@@ -154,13 +154,13 @@ clutter; gibberish on-screen text, logos or watermarks; distorted hands or faces
 
 - **Alt:** `A lending team scaling alternative credit`
 
-### 2.6 Industries card — Telecom Operators · PHOTO (infrastructure)
+### 2.6 Industries card: Telecom Operators · PHOTO (infrastructure)
 
 - **File:** `app/page.tsx → INDUSTRIES[2].image` · 16:10 · 1600×1000
 
 ```
 Premium editorial photograph, 16:10, 1600x1000. A sleek modern telecom cell tower / network mast against a
-clean blue-hour sky, shot from a low heroic angle with atmospheric depth — connectivity as infrastructure. No
+clean blue-hour sky, shot from a low heroic angle with atmospheric depth: connectivity as infrastructure. No
 signage, no people, no clutter. Cool navy tones with a subtle violet (#7E49F2) glow on the antennas and a
 small warm gold (#F2CB07) accent light. Minimal, premium, tech-infrastructure mood. Photorealistic,
 ultra-detailed, 8k.
@@ -176,10 +176,10 @@ clutter; oversaturation, HDR or blur.
 
 ```
 Emotive editorial photograph, 4:3, 1600x1200. A dignified small entrepreneur or worker in an emerging market,
-softly lit, looking at a smartphone with quiet hope as a first loan is approved — a small violet-and-gold
+softly lit, looking at a smartphone with quiet hope as a first loan is approved: a small violet-and-gold
 starburst glint (photon mark) on the screen lighting their face from below. Tight, respectful framing; the
 background pure soft warm bokeh, no stalls, no signage, no clutter. 85mm at f/1.8, warm honest skin, gentle
-violet (#7E49F2) rim light, soft gold (#F2CB07) glow. Human, hopeful, premium documentary style — never
+violet (#7E49F2) rim light, soft gold (#F2CB07) glow. Human, hopeful, premium documentary style: never
 stocky. Photorealistic, ultra-detailed, 8k.
 Do NOT include: outer space or cosmic scenes; giant cosmic starbursts (keep the glint small and on the
 phone); cheesy stock posing or smiling at the camera; shop signage, market stalls or clutter; distorted
@@ -190,9 +190,9 @@ hands or faces; gibberish on-screen text, logos or watermarks; oversaturation or
 
 ---
 
-## 3. ABOUT — `app/about/page.tsx`
+## 3. ABOUT: `app/about/page.tsx`
 
-### 3.1 Hero — "banking the people the system forgot" · PHOTO
+### 3.1 Hero: "banking the people the system forgot" · PHOTO
 
 - **File:** `app/about HeroDark image` · 16:9 · 2400×1350 · text-left
 
@@ -200,7 +200,7 @@ hands or faces; gibberish on-screen text, logos or watermarks; oversaturation or
 Cinematic editorial photograph for an "About" hero themed "banking the people the system forgot", on-brand
 for PhotonMatters (photons = light), 16:9, 2400x1350. Center-right: a person in an emerging market steps out
 of soft shadow into a warm shaft of light, holding a phone whose screen shows a small violet-and-gold
-starburst glint (photon mark) that lights their hopeful face — the unseen, finally seen. Deeply cinematic,
+starburst glint (photon mark) that lights their hopeful face: the unseen, finally seen. Deeply cinematic,
 softly blurred clean background, no clutter. Cool navy (#07101F)-to-plum (#1A1426) grade, violet (#7E49F2)
 rim light, faint gold (#F2CB07) accent. LEFT THIRD dark and empty for headline text. Mission-driven, human,
 premium. Photorealistic, ultra-detailed, 8k.
@@ -211,13 +211,13 @@ faces; gibberish text, logos or watermarks; oversaturation or blur.
 
 - **Alt:** `Banking the people the system forgot`
 
-### 3.2 Mission figure — "human-centered credit, built together" · PHOTO
+### 3.2 Mission figure: "human-centered credit, built together" · PHOTO
 
 - **File:** `app/about mission Image` · 4:3 · 1600×1200
 
 ```
 Warm editorial photograph representing "human-centered credit, built together", 4:3, 1600x1200. A genuine
-moment of trust between a lender / advisor and a customer in a bright, modern, minimal space — a handshake or
+moment of trust between a lender / advisor and a customer in a bright, modern, minimal space: a handshake or
 a shared look at a tablet showing a simple approval with a small violet-and-gold starburst success glint. 35mm
 at f/2, clean out-of-focus background, no clutter, no signage. Natural light with a subtle violet (#7E49F2)
 accent and warm gold (#F2CB07) highlight. Optimistic, premium, human, candid (never posing at the camera),
@@ -229,15 +229,15 @@ oversaturation or blur.
 
 - **Alt:** `Building human-centered credit, together`
 
-### 3.3 & 3.4 Founder portraits — Tahseen Jamal & Rohit Ahuja · EDIT real photos
+### 3.3 & 3.4 Founder portraits: Tahseen Jamal & Rohit Ahuja · EDIT real photos
 
 - **Files:** `public/team/tahseen-jamal.png`, `public/team/rohit-ahuja.png` · 1:1 · 1000×1000
 
-> ⚠️ **Real, named founders — do NOT generate fabricated faces.** Use their **actual headshots** and Nano
+> ⚠️ **Real, named founders: do NOT generate fabricated faces.** Use their **actual headshots** and Nano
 > Banana's **image-edit** mode. Paste on each uploaded photo:
 
 ```
-EDIT this uploaded headshot. Keep the person's face, identity, age and likeness 100% unchanged — do not alter
+EDIT this uploaded headshot. Keep the person's face, identity, age and likeness 100% unchanged: do not alter
 their features. Replace only the background with a clean, seamless studio backdrop in deep plum-to-charcoal
 (#1A1426) with a soft violet (#7E49F2) radial glow behind one shoulder and a whisper of gold (#F2CB07) rim
 light on the opposite edge, like a premium executive portrait. Relight subtly with a soft key light and a
@@ -247,20 +247,20 @@ Do NOT include: any change to facial features, identity or age; text, logos or w
 clutter; cosmic backgrounds; oversaturation, HDR, plastic skin or low resolution.
 ```
 
-- **Alt (Tahseen):** `Tahseen Jamal — Co-Founder & CEO` · **Alt (Rohit):** `Rohit Ahuja — Co-Founder & CCO`
+- **Alt (Tahseen):** `Tahseen Jamal: Co-Founder & CEO` · **Alt (Rohit):** `Rohit Ahuja: Co-Founder & CCO`
 
 ---
 
-## 4. GSM — `app/gsm/page.tsx`
+## 4. GSM: `app/gsm/page.tsx`
 
-### 4.1 Hero — Missed Call & Collect Call · PHOTO
+### 4.1 Hero: Missed Call & Collect Call · PHOTO
 
 - **File:** `app/gsm HeroDark image` · 16:9 · 2400×1350 · text-left
 
 ```
 Cinematic editorial photograph for a telecom "Missed Call & Collect Call" product hero, 16:9, 2400x1350.
 Center-right: a clean close-up of a hand holding a simple older feature phone (2G handset with a physical
-keypad) mid-call, and a small controlled ring of violet-and-gold light — the photon "flash" — radiating just
+keypad) mid-call, and a small controlled ring of violet-and-gold light: the photon "flash": radiating just
 from the earpiece to suggest a free missed call connecting. Everything else deep smooth bokeh, no signage, no
 clutter. Cool navy (#07101F)-to-plum (#1A1426) grade, violet (#7E49F2) glow, small gold (#F2CB07) accent.
 LEFT THIRD dark and empty for headline text. Premium, minimal, telecom-tech, photorealistic, ultra-detailed,
@@ -272,27 +272,27 @@ gibberish text, logos or watermarks; oversaturation or blur.
 
 - **Alt:** `Zero-cost missed-call engagement on any 2G phone`
 
-### 4.2 "Why it matters" figure — the cheapest channel wins · PHOTO
+### 4.2 "Why it matters" figure: the cheapest channel wins · PHOTO
 
 - **File:** `app/gsm why Image` · 4:3 · 1600×1200
 
 ```
 Respectful editorial macro photograph, 4:3, 1600x1200. Weathered hands pressing a single key on a basic
-feature phone; at the keypress a tiny controlled violet-and-gold starburst glint lifts off the button — the
-free "flash." Warm low-key light, subtle violet (#7E49F2) rim, background pure soft plum bokeh — no place, no
+feature phone; at the keypress a tiny controlled violet-and-gold starburst glint lifts off the button: the
+free "flash." Warm low-key light, subtle violet (#7E49F2) rim, background pure soft plum bokeh: no place, no
 clutter. 85mm, tactile, human, premium. Photorealistic, ultra-detailed, 8k.
 Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; cheesy stock posing; shop signage,
 stalls or clutter; distorted hands or extra fingers; gibberish text, logos or watermarks; oversaturation or
 blur.
 ```
 
-- **Alt:** `A free flash — the cheapest channel for prepaid markets`
+- **Alt:** `A free flash: the cheapest channel for prepaid markets`
 
 ---
 
-## 5. INDUSTRIES — `app/industries/page.tsx`
+## 5. INDUSTRIES: `app/industries/page.tsx`
 
-### 5.1 Hero — institutions that move credit · PHOTO (architecture)
+### 5.1 Hero: institutions that move credit · PHOTO (architecture)
 
 - **File:** `app/industries HeroDark image` · 16:9 · 2400×1350 · text-left
 
@@ -309,12 +309,12 @@ signage, logos or watermarks; people; clutter; oversaturation, HDR or blur.
 
 - **Alt:** `The institutions that move credit`
 
-### 5.2 Feature block — Banks · PHOTO (architecture)
+### 5.2 Feature block: Banks · PHOTO (architecture)
 
 - **File:** `industries BLOCKS[0].image` · 4:3 · 1600×1200
 
 ```
-Premium architectural photograph, 4:3, 1600x1200. A modern bank interior reduced to clean geometry — a sweep
+Premium architectural photograph, 4:3, 1600x1200. A modern bank interior reduced to clean geometry: a sweep
 of pale stone, a rhythm of glass fins, a shaft of daylight through soft haze, no people, no signage, no
 clutter. 35mm, level verticals. Cool neutral palette with a subtle violet (#7E49F2) accent light and a warm
 gold (#F2CB07) glow. Digital-first, contemporary, prestigious, photorealistic, ultra-detailed, 8k.
@@ -324,13 +324,13 @@ watermarks; people; clutter; oversaturation, HDR or blur.
 
 - **Alt:** `Digital-first credit, free of legacy core constraints`
 
-### 5.3 Feature block — NBFCs & Lenders · PHOTO (people)
+### 5.3 Feature block: NBFCs & Lenders · PHOTO (people)
 
 - **File:** `industries BLOCKS[1].image` · 4:3 · 1600×1200
 
 ```
 Professional editorial photograph, 4:3, 1600x1200. A focused lender / analyst at work in a bright modern
-office, reviewing a simple lending view on a laptop, calm and competent — candid, three-quarter angle, never
+office, reviewing a simple lending view on a laptop, calm and competent: candid, three-quarter angle, never
 posing at the camera. 35mm at f/2.2, clean out-of-focus office, no clutter, no signage. Neutral palette with
 a soft violet (#7E49F2) screen glow and warm window light. Confident, premium, human, photorealistic,
 ultra-detailed, 8k.
@@ -340,13 +340,13 @@ clutter; gibberish on-screen text, logos or watermarks; distorted hands or faces
 
 - **Alt:** `Scaling alternative lending on configurable rails`
 
-### 5.4 Feature block — Telecom Operators · PHOTO (mobile money)
+### 5.4 Feature block: Telecom Operators · PHOTO (mobile money)
 
 - **File:** `industries BLOCKS[2].image` · 4:3 · 1600×1200
 
 ```
 Professional editorial photograph, 4:3, 1600x1200. A close, clean shot of a person using mobile money on a
-simple phone in a bright modern setting — a small violet-and-gold starburst glint on the screen as a transfer
+simple phone in a bright modern setting: a small violet-and-gold starburst glint on the screen as a transfer
 or airtime-to-credit action completes. Candid framing on the hands and phone; softly blurred clean
 background, no stalls, no signage, no clutter. 50mm at f/1.8. Warm skin tones with a subtle violet (#7E49F2)
 accent and gold (#F2CB07) glow. Human, premium, uncluttered. Photorealistic, ultra-detailed, 8k.
@@ -359,16 +359,16 @@ gibberish on-screen text, logos or watermarks; oversaturation or blur.
 
 ---
 
-## 6. PRODUCTS — hub + 4 detail heroes
+## 6. PRODUCTS: hub + 4 detail heroes
 
-### 6.1 Products hub hero — lending for every market · PRODUCT-UI
+### 6.1 Products hub hero: lending for every market · PRODUCT-UI
 
 - **File:** `app/products HeroDark image` · 16:9 · 2400×1350 · text-left
 
 ```
 UI screenshot / product mockup of a modular fintech lending platform, dark mode, 16:9, 2400x1350. On the
-RIGHT, a neat composition of a few floating dark-mode app screens overlapping in gentle perspective — a
-micro-loan card, a consumer-credit checkout, and a business-loan summary — one showing a small violet-and-gold
+RIGHT, a neat composition of a few floating dark-mode app screens overlapping in gentle perspective: a
+micro-loan card, a consumer-credit checkout, and a business-loan summary: one showing a small violet-and-gold
 starburst success glint. Dark plum (#1A1426) background fading to near-black on the LEFT for headline text.
 Violet (#7E49F2) accents, gold (#F2CB07) highlights, rounded cards, soft shadows, crisp sans-serif, short
 labels only. Sharp, premium product shot. NO people.
@@ -378,13 +378,13 @@ text, logos or watermarks; oversaturation, HDR or blur.
 
 - **Alt:** `Lending reimagined for every market and every need`
 
-### 6.2 Micro Lending — hero · PHOTO (people)
+### 6.2 Micro Lending: hero · PHOTO (people)
 
 - **File:** `lib/products-data.ts → micro-lending.hero.image` · 16:9 · 2400×1350 · text-left
 
 ```
-Professional editorial photograph for a micro-lending hero, 16:9, 2400x1350. A micro-entrepreneur — a market
-vendor, small-shop owner or artisan (Africa / India) — in warm light, checking an approved micro-loan on a
+Professional editorial photograph for a micro-lending hero, 16:9, 2400x1350. A micro-entrepreneur: a market
+vendor, small-shop owner or artisan (Africa / India): in warm light, checking an approved micro-loan on a
 phone with a hopeful, capable expression, a small violet-and-gold starburst glint on the screen. Candid,
 three-quarter angle, never posing at the camera; clean, softly blurred background, no stalls, no signage, no
 clutter. Warm grade with violet (#7E49F2) rim light and gold (#F2CB07) glow. LEFT THIRD darker for headline
@@ -394,16 +394,16 @@ phone); cheesy stock posing or smiling at the camera; shop signage, market stall
 or faces; gibberish on-screen text, logos or watermarks; oversaturation or blur.
 ```
 
-- **Alt:** `Micro Lending — instant credit for small entrepreneurs`
+- **Alt:** `Micro Lending: instant credit for small entrepreneurs`
 
-### 6.3 Consumer & Retail Lending — hero · PHOTO (people)
+### 6.3 Consumer & Retail Lending: hero · PHOTO (people)
 
 - **File:** `lib/products-data.ts → consumer-retail-lending.hero.image` · 16:9 · 2400×1350 · text-left
 
 ```
 Professional editorial photograph for a consumer / retail lending hero, 16:9, 2400x1350. A modern everyday
-consumer completing an effortless purchase — paying or accepting instant credit on a phone at a sleek retail
-counter or at home — a soft "approved" moment with a small violet-and-gold starburst glint on the screen.
+consumer completing an effortless purchase: paying or accepting instant credit on a phone at a sleek retail
+counter or at home: a soft "approved" moment with a small violet-and-gold starburst glint on the screen.
 Candid, warm, aspirational; softly blurred minimal setting, no signage, no clutter. 35mm at f/2, violet
 (#7E49F2) and gold (#F2CB07) accents. LEFT THIRD darker for headline text; subject center-right. Premium,
 effortless modern retail finance. Photorealistic, ultra-detailed, 8k.
@@ -412,15 +412,15 @@ phone); cheesy stock posing or smiling at the camera; shop signage, market stall
 or faces; gibberish on-screen text, logos or watermarks; oversaturation or blur.
 ```
 
-- **Alt:** `Consumer & Retail Lending — real-time, embedded credit`
+- **Alt:** `Consumer & Retail Lending: real-time, embedded credit`
 
-### 6.4 Core Commercial Lending — hero · PHOTO (people)
+### 6.4 Core Commercial Lending: hero · PHOTO (people)
 
 - **File:** `lib/products-data.ts → core-commercial-lending.hero.image` · 16:9 · 2400×1350 · text-left
 
 ```
 Professional editorial photograph for a commercial / business lending hero, 16:9, 2400x1350. A confident SME
-business owner in their own setting — a modern workshop, small factory floor or business office — reviewing
+business owner in their own setting: a modern workshop, small factory floor or business office: reviewing
 financing on a tablet, composed and credible (or two business partners mid-decision). Candid, never posing at
 the camera; clean, softly blurred background, no clutter, no signage. Cool premium grade with violet (#7E49F2)
 and warm gold (#F2CB07) accents. LEFT THIRD darker for headline text; subject center-right. Structured,
@@ -430,15 +430,15 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt:** `Core Commercial Lending — structured credit for business`
+- **Alt:** `Core Commercial Lending: structured credit for business`
 
-### 6.5 Supply Chain Finance — hero · DATAVIZ
+### 6.5 Supply Chain Finance: hero · DATAVIZ
 
 - **File:** `lib/products-data.ts → supply-chain-finance.hero.image` · 16:9 · 2400×1350 · text-left
 
 ```
 Flat stylized fintech flow diagram for supply-chain finance, dark mode, 16:9, 2400x1350. On the RIGHT, an
-elegant infographic of a connected supply chain — clean icon nodes for Anchor, Supplier and Distributor
+elegant infographic of a connected supply chain: clean icon nodes for Anchor, Supplier and Distributor
 linked by a flowing violet-to-gold "working capital" light line, with a small violet-and-gold starburst
 accent at each financing hand-off, plus small stylised invoice / cargo glyphs. Dark plum (#1A1426)-to-navy
 background, violet (#7E49F2) lines, gold (#F2CB07) node highlights. LEFT THIRD dark for headline text.
@@ -447,20 +447,20 @@ Do NOT include: outer space, galaxy or nebula; a realistic 3D globe; giant cosmi
 fields; people or hands; gibberish text, logos or watermarks; oversaturation or blur.
 ```
 
-- **Alt:** `Supply Chain Finance — working capital that moves with the chain`
+- **Alt:** `Supply Chain Finance: working capital that moves with the chain`
 
 ---
 
-## 7. SOLUTIONS — hub
+## 7. SOLUTIONS: hub
 
-### 7.1 Solutions hub hero — the complete stack · PRODUCT-UI
+### 7.1 Solutions hub hero: the complete stack · PRODUCT-UI
 
 - **File:** `app/solutions HeroDark image` · 16:9 · 2400×1350 · text-left
 
 ```
 UI screenshot / product mockup of a modular fintech platform, dark mode, 16:9, 2400x1350. On the RIGHT, a
-tidy stack of a few overlapping dark-mode module screens in gentle perspective — origination, scoring and
-collections — connected by thin violet API lines, one panel showing a small violet-and-gold starburst success
+tidy stack of a few overlapping dark-mode module screens in gentle perspective: origination, scoring and
+collections: connected by thin violet API lines, one panel showing a small violet-and-gold starburst success
 glint. Dark plum (#1A1426) background fading to near-black on the LEFT for headline text. Violet (#7E49F2)
 accents, gold (#F2CB07) highlights, glassy panels, soft shadows, crisp sans-serif, short labels only. Sharp,
 premium product shot. NO people.
@@ -472,20 +472,20 @@ text, logos or watermarks; oversaturation, HDR or blur.
 
 ---
 
-## 8. SOLUTION DETAIL PAGES — `lib/solutions-data.ts`
+## 8. SOLUTION DETAIL PAGES: `lib/solutions-data.ts`
 
 > Each page = **one product screen + one human moment** (never two dashboards). The **hero** shows the module
 > UI (PRODUCT-UI, 16:9, text-left); the **overview banner** is a real person in context (PHOTO, 2:1,
 > **subject on the RIGHT**, left half calm for the glass overlay card). The code's city captions
-> (`lib/solutions-data.ts`) fit again — no caption change needed.
+> (`lib/solutions-data.ts`) fit again: no caption change needed.
 
 ### 8.1 Loan Origination
 
-**Hero · PRODUCT-UI** — `loan-origination.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `loan-origination.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of a loan-origination flow in a fintech app, dark mode, 16:9, 2400x1350. On
-the RIGHT: a clean multi-step onboarding view — application → eKYC verification → decision — with a
+the RIGHT: a clean multi-step onboarding view: application → eKYC verification → decision: with a
 verification card marked done and a small violet-and-gold starburst success glint on the "Approved" step.
 Dark plum (#1A1426) background fading to near-black on the LEFT for headline text. Violet (#7E49F2) accents,
 gold (#F2CB07) highlights, rounded cards, crisp sans-serif, short labels only. Frictionless, premium product
@@ -494,7 +494,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `loan-origination.overview.image.src` · 2:1 · subject RIGHT · caption "Onboarding session · Lagos, Nigeria"
+**Overview · PHOTO**: `loan-origination.overview.image.src` · 2:1 · subject RIGHT · caption "Onboarding session · Lagos, Nigeria"
 
 ```
 Warm editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: an agent or loan officer in Lagos
@@ -508,11 +508,11 @@ camera; shop signage, stalls or clutter; distorted hands or faces; gibberish on-
 watermarks; oversaturation or blur.
 ```
 
-- **Alt (hero):** `Loan Origination — application to disbursement in minutes`
+- **Alt (hero):** `Loan Origination: application to disbursement in minutes`
 
 ### 8.2 Loan Management
 
-**Hero · PRODUCT-UI** — `loan-management.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `loan-management.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of a loan-servicing / management screen in a fintech app, dark mode, 16:9,
@@ -525,7 +525,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `loan-management.overview.image.src` · 2:1 · subject RIGHT · caption "Servicing team at work"
+**Overview · PHOTO**: `loan-management.overview.image.src` · 2:1 · subject RIGHT · caption "Servicing team at work"
 
 ```
 Editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: a focused loan-servicing / operations
@@ -538,11 +538,11 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt (hero):** `Loan Management — the system of record for the whole loan life`
+- **Alt (hero):** `Loan Management: the system of record for the whole loan life`
 
 ### 8.3 Credit Scoring
 
-**Hero · PRODUCT-UI** — `credit-scoring.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `credit-scoring.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of an explainable AI credit-scoring screen in a fintech app, dark mode, 16:9,
@@ -555,7 +555,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `credit-scoring.overview.image.src` · 2:1 · subject RIGHT · caption "Risk analytics in production"
+**Overview · PHOTO**: `credit-scoring.overview.image.src` · 2:1 · subject RIGHT · caption "Risk analytics in production"
 
 ```
 Editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: a risk / data analyst studying a scoring
@@ -568,15 +568,15 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt (hero):** `Credit Scoring — score the borrowers the old models can't see`
+- **Alt (hero):** `Credit Scoring: score the borrowers the old models can't see`
 
 ### 8.4 Debt Collection
 
-**Hero · PRODUCT-UI** — `debt-collection.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `debt-collection.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of an AI debt-collections screen in a fintech app, dark mode, 16:9, 2400x1350.
-On the RIGHT: a prioritised collections queue — account rows grouped by propensity-to-pay, small channel
+On the RIGHT: a prioritised collections queue: account rows grouped by propensity-to-pay, small channel
 icons (message, voice, agent), a strategy panel, and a small violet-and-gold starburst accent on a "promise
 to pay" captured. Dark plum (#1A1426) background fading to near-black on the LEFT for headline text. Violet
 (#7E49F2) accents, gold (#F2CB07) highlights, rounded cards, crisp sans-serif, short labels only. Smart,
@@ -585,7 +585,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `debt-collection.overview.image.src` · 2:1 · subject RIGHT · caption "Collections agent at work"
+**Overview · PHOTO**: `debt-collection.overview.image.src` · 2:1 · subject RIGHT · caption "Collections agent at work"
 
 ```
 Editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: an empathetic contact-centre / collections
@@ -598,15 +598,15 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt (hero):** `Debt Collection — recover more, at a lower cost to collect`
+- **Alt (hero):** `Debt Collection: recover more, at a lower cost to collect`
 
 ### 8.5 Reconciliation AI
 
-**Hero · PRODUCT-UI** — `reconciliation-ai.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `reconciliation-ai.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of an AI reconciliation screen in a fintech app, dark mode, 16:9, 2400x1350.
-On the RIGHT: an auto-matching view — two columns of items (payments and ledger entries) linked into matched
+On the RIGHT: an auto-matching view: two columns of items (payments and ledger entries) linked into matched
 pairs, a few flagged "breaks" highlighted in gold, and a small violet-and-gold starburst accent on a cleared
 match. Dark plum (#1A1426) background fading to near-black on the LEFT for headline text. Violet (#7E49F2)
 accents, gold (#F2CB07) highlights, rounded cards, crisp sans-serif, short labels only. "Books that balance
@@ -615,7 +615,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `reconciliation-ai.overview.image.src` · 2:1 · subject RIGHT · caption "Continuous, AI-driven reconciliation"
+**Overview · PHOTO**: `reconciliation-ai.overview.image.src` · 2:1 · subject RIGHT · caption "Continuous, AI-driven reconciliation"
 
 ```
 Editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: a finance-operations professional at a clean
@@ -628,16 +628,16 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt (hero):** `Reconciliation AI — books that balance themselves`
+- **Alt (hero):** `Reconciliation AI: books that balance themselves`
 
 ### 8.6 Collection Marketing AI
 
-**Hero · PRODUCT-UI** — `collection-marketing-ai.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `collection-marketing-ai.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of a self-cure / collection-marketing screen in a fintech app, dark mode, 16:9,
-2400x1350. On the RIGHT: a friendly self-cure journey builder — a gentle reminder step, a payment-link step,
-and a small violet-and-gold starburst accent on a "balance cleared" state — plus a small uplift chart. Dark
+2400x1350. On the RIGHT: a friendly self-cure journey builder: a gentle reminder step, a payment-link step,
+and a small violet-and-gold starburst accent on a "balance cleared" state: plus a small uplift chart. Dark
 plum (#1A1426) background fading to near-black on the LEFT for headline text. Violet (#7E49F2) accents, gold
 (#F2CB07) highlights, rounded cards, crisp sans-serif, short labels only. Gentle, respectful, premium product
 shot. NO people.
@@ -645,7 +645,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `collection-marketing-ai.overview.image.src` · 2:1 · subject RIGHT · caption "Self-cure, one nudge at a time · Kano"
+**Overview · PHOTO**: `collection-marketing-ai.overview.image.src` · 2:1 · subject RIGHT · caption "Self-cure, one nudge at a time · Kano"
 
 ```
 Warm editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: a relaxed person at home in Kano
@@ -659,15 +659,15 @@ phone); cheesy stock posing or smiling at the camera; shop signage, stalls or cl
 faces; gibberish on-screen text, logos or watermarks; oversaturation or blur.
 ```
 
-- **Alt (hero):** `Collection Marketing AI — turn reminders into repayments`
+- **Alt (hero):** `Collection Marketing AI: turn reminders into repayments`
 
 ### 8.7 Campaign Management
 
-**Hero · PRODUCT-UI** — `campaign-management.hero.image` · 16:9
+**Hero · PRODUCT-UI**: `campaign-management.hero.image` · 16:9
 
 ```
 UI screenshot / product mockup of a multi-channel campaign builder in a fintech app, dark mode, 16:9,
-2400x1350. On the RIGHT: a visual journey canvas — a start node branching to channel nodes (SMS, WhatsApp,
+2400x1350. On the RIGHT: a visual journey canvas: a start node branching to channel nodes (SMS, WhatsApp,
 email, voice, missed call) with connecting lines, an audience panel, and a small violet-and-gold starburst
 accent at a conversion node. Dark plum (#1A1426) background fading to near-black on the LEFT for headline
 text. Violet (#7E49F2) accents, gold (#F2CB07) highlights, rounded nodes, crisp sans-serif, short labels
@@ -676,7 +676,7 @@ Do NOT include: outer space or cosmic scenes; giant cosmic starbursts; people or
 text, logos or watermarks; oversaturation, HDR or blur.
 ```
 
-**Overview · PHOTO** — `campaign-management.overview.image.src` · 2:1 · subject RIGHT · caption "Campaign planning · Lagos"
+**Overview · PHOTO**: `campaign-management.overview.image.src` · 2:1 · subject RIGHT · caption "Campaign planning · Lagos"
 
 ```
 Editorial photograph, wide banner, 2:1, 2400x1200. On the RIGHT: a growth / lifecycle marketer in Lagos
@@ -689,11 +689,11 @@ camera; shop signage or clutter; distorted hands or faces; gibberish on-screen t
 oversaturation or blur.
 ```
 
-- **Alt (hero):** `Campaign Management — design, target and automate every campaign`
+- **Alt (hero):** `Campaign Management: design, target and automate every campaign`
 
 ---
 
-## 9. Summary table — every slot at a glance
+## 9. Summary table: every slot at a glance
 
 | #  | Page       | Section                   | File / data key                                | Aspect | Export     | Register        |
 | -- | ---------- | ------------------------- | ---------------------------------------------- | ------ | ---------- | --------------- |
@@ -741,8 +741,8 @@ glint tying all 37 together.
 
 **Tips**
 
-- Product-UI text will garble — keep labels short; the headline scrim covers it. For crisp real labels, a
+- Product-UI text will garble: keep labels short; the headline scrim covers it. For crisp real labels, a
   quick Figma mock beats AI.
 - If a model drifts to space on slides 3 / 22, add `flat infographic, no 3D, no background artwork`.
-- Art-direct people to be **candid, three-quarter, never smiling at the camera** — that's what avoids the
+- Art-direct people to be **candid, three-quarter, never smiling at the camera**: that's what avoids the
   stock-photo look. Generate 3–4 per slot and pick.

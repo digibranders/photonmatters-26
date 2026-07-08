@@ -18,14 +18,14 @@ interface HeroDarkProps {
   secondary?: CtaDef;
 }
 
-/* Navy scrim + grain — matched to the home hero (#07101f). */
+/* Navy scrim + grain: matched to the home hero (#07101f). */
 const SCRIM =
   "linear-gradient(95deg, rgba(7,16,31,0.94) 0%, rgba(7,16,31,0.80) 35%, rgba(7,16,31,0.34) 66%, rgba(7,16,31,0.62) 100%), linear-gradient(180deg, rgba(7,16,31,0.55) 0%, rgba(7,16,31,0.12) 32%, rgba(7,16,31,0.92) 100%)";
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 /**
- * Shared dark, cinematic page hero — full-bleed photo, navy scrim, grain and an
+ * Shared dark, cinematic page hero: full-bleed photo, navy scrim, grain and an
  * eterna purple/orchid glow. Used by the content secondary pages.
  */
 export function HeroDark({

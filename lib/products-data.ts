@@ -1,5 +1,5 @@
 /* ============================================================================
-   Product detail page content — sourced from the live photonmatters.com
+   Product detail page content, sourced from the live photonmatters.com
    Products pages. Drives /products/[slug] via one shared template.
    ========================================================================== */
 
@@ -82,11 +82,11 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
   "micro-lending": {
     slug: "micro-lending",
     name: "Micro Lending",
-    blurb: "High-volume, low-value lending — micro personal, nano, enterprise, group and top-up loans, fully automated.",
+    blurb: "High-volume, low-value lending: micro personal, nano, enterprise, group and top-up loans, fully automated.",
     icon: "HandCoins",
     metaTitle: "Micro Lending",
     metaDescription:
-      "A microfinance engine built for speed and scale — micro personal, nano/mobile-money, enterprise, top-up and group loans with simplified e-KYC and real-time decisioning.",
+      "A microfinance engine built for speed and scale: micro personal, nano/mobile-money, enterprise, top-up and group loans with simplified e-KYC and real-time decisioning.",
     hero: {
       eyebrow: "Products · Micro",
       title: "Micro",
@@ -116,7 +116,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
           icon: "Smartphone",
           title: "Mobile Money (Nano / PAYG)",
           description:
-            "Ultralight credit (as low as $5–$100) embedded in digital ecosystems — wallets, telcos and gig platforms.",
+            "Ultralight credit (as low as $5–$100) embedded in digital ecosystems: wallets, telcos and gig platforms.",
           specs: [
             { label: "Repayment", value: "Daily / weekly via mobile" },
             { label: "Use cases", value: "Airtime, transport, food, mobile data" },
@@ -150,7 +150,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
           icon: "Users",
           title: "Group Loans (JLG / SHG)",
           description:
-            "Loans for self-help groups or joint-liability groups — promoting inclusion among women, rural communities and informal economies.",
+            "Loans for self-help groups or joint-liability groups, promoting inclusion among women, rural communities and informal economies.",
           specs: [
             { label: "Model", value: "Peer-guaranteed" },
             { label: "Monitoring", value: "Group repayment analytics" },
@@ -172,7 +172,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       eyebrow: "Get started",
       heading: "Launch micro-credit at scale.",
       headingAccent: "at scale.",
-      body: "Design, launch and manage your micro-lending programs your way — API-first, AI-native and live in weeks.",
+      body: "Design, launch and manage your micro-lending programs your way, API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "consumer-retail-lending", name: "Consumer & Retail Lending", blurb: "Personal, BNPL, line of credit and durable financing." },
         { slug: "supply-chain-finance", name: "Supply Chain Finance", blurb: "Anchor-led financing across the supply chain." },
@@ -187,13 +187,13 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "CreditCard",
     metaTitle: "Consumer & Retail Lending",
     metaDescription:
-      "An agile consumer lending suite — personal loans, BNPL, lines of credit, consumer-durable and medical financing with real-time approvals, embedded delivery and intelligent decisioning.",
+      "An agile consumer lending suite: personal loans, BNPL, lines of credit, consumer-durable and medical financing with real-time approvals, embedded delivery and intelligent decisioning.",
     hero: {
       eyebrow: "Products · Consumer",
       title: "Consumer & Retail",
       titleAccent: "Lending.",
       subtitle:
-        "Power every use case — from daily needs to life's big moments — with PhotonMatters' agile lending suite, built for real-time approvals, embedded delivery and intelligent decisioning.",
+        "Power every use case, from daily needs to life's big moments, with PhotonMatters' agile lending suite, built for real-time approvals, embedded delivery and intelligent decisioning.",
       image:
         "/products/consumer.webp",
     },
@@ -205,7 +205,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
           icon: "Wallet",
           title: "Personal Loans",
           description:
-            "Unsecured credit up to $50,000 — approved in minutes. Perfect for education, travel, home upgrades or emergencies.",
+            "Unsecured credit up to $50,000, approved in minutes. Perfect for education, travel, home upgrades or emergencies.",
           specs: [
             { label: "Tenure", value: "6–60 months" },
             { label: "Approval", value: "AI-driven, instant disbursal" },
@@ -215,7 +215,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
           icon: "CreditCard",
           title: "Buy Now, Pay Later (BNPL)",
           description:
-            "Flexible, zero-hassle financing at checkout — online or in-store, fully embedded.",
+            "Flexible, zero-hassle financing at checkout: online or in-store, fully embedded.",
           specs: [
             { label: "Ticket size", value: "$50–$5,000" },
             { label: "Tenure", value: "3–12 months" },
@@ -270,7 +270,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       eyebrow: "Get started",
       heading: "Embed lending into every journey.",
       headingAccent: "into every journey.",
-      body: "Design, launch and manage your consumer-credit products your way — API-first, AI-native and live in weeks.",
+      body: "Design, launch and manage your consumer-credit products your way, API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "micro-lending", name: "Micro Lending", blurb: "High-volume, low-value lending, fully automated." },
         { slug: "core-commercial-lending", name: "Core Commercial Lending", blurb: "Term loans, working capital and asset finance." },
@@ -285,13 +285,13 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "Landmark",
     metaTitle: "Core Commercial Lending",
     metaDescription:
-      "Structured commercial credit — term loans, working capital, overdrafts, invoice financing, equipment and real-estate loans — with AI/ML scoring, embedded compliance and real-time monitoring.",
+      "Structured commercial credit: term loans, working capital, overdrafts, invoice financing, equipment and real-estate loans, with AI/ML scoring, embedded compliance and real-time monitoring.",
     hero: {
       eyebrow: "Products · Commercial",
       title: "Core Commercial",
       titleAccent: "Lending.",
       subtitle:
-        "Structured credit for businesses — term loans, working capital, overdrafts, invoice and asset finance — with AI/ML scoring, embedded compliance and real-time monitoring.",
+        "Structured credit for businesses: term loans, working capital, overdrafts, invoice and asset finance, with AI/ML scoring, embedded compliance and real-time monitoring.",
       image:
         "/products/commercial.webp",
     },
@@ -379,7 +379,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
       eyebrow: "Get started",
       heading: "Power commercial credit end to end.",
       headingAccent: "end to end.",
-      body: "Design, launch and manage your commercial-lending programs your way — API-first, AI-native and live in weeks.",
+      body: "Design, launch and manage your commercial-lending programs your way, API-first, AI-native and live in weeks.",
       crossLinks: [
         { slug: "supply-chain-finance", name: "Supply Chain Finance", blurb: "Anchor-led financing across the supply chain." },
         { slug: "consumer-retail-lending", name: "Consumer & Retail Lending", blurb: "Real-time, embedded consumer credit." },
@@ -390,17 +390,17 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
   "supply-chain-finance": {
     slug: "supply-chain-finance",
     name: "Supply Chain Finance",
-    blurb: "Anchor-led, ecosystem-integrated financing — invoice discounting, PO, vendor and distributor finance.",
+    blurb: "Anchor-led, ecosystem-integrated financing: invoice discounting, PO, vendor and distributor finance.",
     icon: "Handshake",
     metaTitle: "Supply Chain Finance",
     metaDescription:
-      "Structured, anchor-led and ecosystem-integrated supply-chain financing — invoice discounting, PO, vendor (reverse-factoring), distributor and inventory finance — with real-time decisioning and document intelligence.",
+      "Structured, anchor-led and ecosystem-integrated supply-chain financing: invoice discounting, PO, vendor (reverse-factoring), distributor and inventory finance, with real-time decisioning and document intelligence.",
     hero: {
       eyebrow: "Products · SCF",
       title: "Supply Chain",
       titleAccent: "Finance.",
       subtitle:
-        "Working capital that moves with the supply chain. PhotonMatters enables structured, anchor-led and ecosystem-integrated financing across the entire supply chain — with real-time decisioning, document intelligence and repayment automation.",
+        "Working capital that moves with the supply chain. PhotonMatters enables structured, anchor-led and ecosystem-integrated financing across the entire supply chain, with real-time decisioning, document intelligence and repayment automation.",
       image:
         "https://images.pexels.com/photos/12478756/pexels-photo-12478756.jpeg?auto=compress&cs=tinysrgb&w=1920",
     },
@@ -483,14 +483,14 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
         { icon: "ScanLine", text: "Document intelligence for invoices, POs & delivery notes" },
         { icon: "Repeat", text: "Automated repayments via wallets or escrows" },
         { icon: "Database", text: "Fully API-ready for ERP, GST & supply-chain integrations" },
-        { icon: "Zap", text: "Fast go-live — deploy new programs in 6–8 weeks" },
+        { icon: "Zap", text: "Fast go-live: deploy new programs in 6–8 weeks" },
       ],
     },
     cta: {
       eyebrow: "Get started",
       heading: "Digitize your supply-chain financing.",
       headingAccent: "your supply-chain financing.",
-      body: "Design, launch and manage anchor-led programs your way — API-first, AI-native and live in 6–8 weeks.",
+      body: "Design, launch and manage anchor-led programs your way, API-first, AI-native and live in 6–8 weeks.",
       crossLinks: [
         { slug: "core-commercial-lending", name: "Core Commercial Lending", blurb: "Term loans, working capital and asset finance." },
         { slug: "micro-lending", name: "Micro Lending", blurb: "High-volume, low-value lending, fully automated." },
