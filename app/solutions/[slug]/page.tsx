@@ -145,11 +145,13 @@ export default async function SolutionDetailPage({
             title={capabilities.heading}
             subtitle={capabilities.subtitle}
           />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Mobile: horizontal snap-scroll carousel so six capability cards
+              read as a swipe, not a six-screen scroll. Tablet/desktop: grid. */}
+          <div className="mt-14 -mx-[var(--gutter)] flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:snap-none sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
             {capabilities.cards.map((card, i) => {
               const Icon = getIcon(card.icon);
               return (
-                <Reveal key={card.title} index={i % 3}>
+                <Reveal key={card.title} index={i % 3} className="w-[80%] shrink-0 snap-start sm:w-auto sm:shrink">
                   <div className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]">
                     {/* Corner bloom: eterna bento accent */}
                     <div
@@ -176,6 +178,9 @@ export default async function SolutionDetailPage({
               );
             })}
           </div>
+          <p className="mt-3 text-caption text-secondary/70 sm:hidden" aria-hidden>
+            Swipe for more →
+          </p>
         </div>
       </section>
 

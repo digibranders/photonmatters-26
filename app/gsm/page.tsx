@@ -85,9 +85,12 @@ function ProductBlock({
         <h2 className={HEADING_CLIP}>{heading}</h2>
       </div>
       <p className="measure mt-5 text-body-lg text-secondary">{subtitle}</p>
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Mobile: horizontal snap-scroll carousel (next card peeks at the edge)
+          so six cards read as a swipe, not a six-screen scroll. Tablet/desktop:
+          unchanged grid. */}
+      <div className="mt-12 -mx-[var(--gutter)] flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:snap-none sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
         {cards.map((c) => (
-          <Reveal key={c.title}>
+          <Reveal key={c.title} className="w-[80%] shrink-0 snap-start sm:w-auto sm:shrink">
             <div
               className="group relative h-full overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
               style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
@@ -103,6 +106,9 @@ function ProductBlock({
           </Reveal>
         ))}
       </div>
+      <p className="mt-3 text-caption text-secondary/70 sm:hidden" aria-hidden>
+        Swipe for more →
+      </p>
     </div>
   );
 }
