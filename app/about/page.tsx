@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 const CARD_BENTO =
   "group relative h-full overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-8";

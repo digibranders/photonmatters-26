@@ -21,7 +21,7 @@ interface ProductExplorerProps {
 }
 
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 /**
  * Interactive product menu: a tab list of lending sub-products paired with an

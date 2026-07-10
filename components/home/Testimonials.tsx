@@ -68,7 +68,7 @@ export function Testimonials() {
         {/* ── Left rail: heading + controls ─────────────────────────────── */}
         <div>
           <span className="eyebrow mb-4 !text-[color:var(--blue-400)]">Client voices</span>
-          <h2 className="text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-white to-white/45">
+          <h2 className="text-h2 font-bold text-balance pb-[0.18em] text-white">
             Trusted by the teams{" "}
             <span className="font-playfair font-light text-[color:var(--blue-400)]">moving credit</span>{" "}
             forward.

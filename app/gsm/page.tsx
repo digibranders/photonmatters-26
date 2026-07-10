@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 const WHY_CHECKLIST = [
   "Reaches the data-light prepaid majority",
@@ -211,12 +211,26 @@ export default function GsmPage() {
         data-nav-theme="dark"
         className="section relative overflow-hidden bg-ink text-white"
       >
+        {/* Eterna ambient blooms */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-[8%] -top-[25%] h-[520px] w-[520px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.18)" }} />
-          <div className="absolute -bottom-[28%] -right-[8%] h-[460px] w-[460px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
+          <div
+            className="absolute -left-[10%] -top-[20%] h-[600px] w-[600px] rounded-full blur-[100px]"
+            style={{ background: "rgba(126,73,242,0.20)" }}
+          />
+          <div
+            className="absolute -bottom-[20%] -right-[10%] h-[500px] w-[500px] rounded-full blur-[80px]"
+            style={{ background: "rgba(233,162,242,0.10)" }}
+          />
         </div>
         <div className="container-site relative">
-          <SectionHeader tone="dark" eyebrow="Why operators care" title="The lowest-friction channel you already own." />
+          <SectionHeader
+            tone="dark"
+            title={
+              <span className="font-playfair text-[color:var(--blue-400)]">
+                Why operators care
+              </span>
+            }
+          />
           <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {OPERATOR_STATS.map((s, i) => (
               <Reveal key={s.value} index={i} className="relative">
@@ -230,10 +244,12 @@ export default function GsmPage() {
                     }}
                   />
                 ) : null}
-                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-transparent">
+                <p className="pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-white">
                   {s.value}
                 </p>
-                <p className="mt-2 text-body text-[color:var(--color-text-on-dark-muted)]">{s.label}</p>
+                <p className="mt-3 max-w-xs text-body leading-relaxed text-[color:var(--color-text-on-dark-muted)]">
+                  {s.label}
+                </p>
               </Reveal>
             ))}
           </div>
@@ -256,7 +272,7 @@ export default function GsmPage() {
               <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div>
                   <p className="eyebrow !text-white/70">Connect the channels</p>
-                  <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
                     Pair GSM rails{" "}
                     <span className="font-playfair font-light text-[color:var(--amber-500)]">
                       with your lending campaigns.

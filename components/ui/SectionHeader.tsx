@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 interface SectionHeaderProps {
   /** Use sparingly: only when it categorises, never above every section. */
   eyebrow?: string;
-  title: React.ReactNode;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   align?: "left" | "center";
   tone?: "light" | "dark";
@@ -37,18 +37,18 @@ export function SectionHeader({
       ) : null}
       {/* Gradient-clipped heading: eterna signature (ink→ink/60 on light,
           white→white/40 on dark). Accent <span>s keep their own colour. */}
-      <h2
-        className={cn(
-          // pb-[0.18em] gives glyph descenders room below the clip box so they
-          // aren't cut off (and don't land in the faded end of the gradient).
-          "text-h2 font-bold text-balance bg-clip-text pb-[0.18em]",
-          tone === "dark"
-            ? "text-transparent bg-gradient-to-b from-white to-white/45"
-            : "text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]",
-        )}
-      >
-        {title}
-      </h2>
+      {title ? (
+        <h2
+          className={cn(
+            // pb-[0.18em] gives glyph descenders room below the clip box so they
+            // aren't cut off (and don't land in the faded end of the gradient).
+            "text-h2 font-bold text-balance pb-[0.18em]",
+            tone === "dark" ? "text-white" : "text-ink",
+          )}
+        >
+          {title}
+        </h2>
+      ) : null}
       {subtitle ? (
         <p
           className={cn(

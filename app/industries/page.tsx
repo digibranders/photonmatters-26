@@ -135,7 +135,7 @@ export default function IndustriesPage() {
                     }}
                   />
                 ) : null}
-                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.875rem,1.4rem+1.6vw,2.625rem)] font-bold leading-tight tracking-tight text-transparent">
+                <p className="pb-[0.1em] text-[clamp(1.875rem,1.4rem+1.6vw,2.625rem)] font-bold leading-tight tracking-tight text-white">
                   {s.value}
                 </p>
                 <p className="mt-2 text-body text-[color:var(--color-text-on-dark-muted)]">{s.label}</p>

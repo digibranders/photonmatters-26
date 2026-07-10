@@ -15,7 +15,7 @@ import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 
 /** Light gradient-clipped heading: eterna signature (ink → ink/60). */
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 /** Resolve a cross-link's lucide icon name by slug. */
 const SOLUTION_ICON: Record<string, string> = {
@@ -221,7 +221,14 @@ export default async function SolutionDetailPage({
           />
         </div>
         <div className="container-site relative">
-          <SectionHeader tone="dark" eyebrow={outcomes.eyebrow} title={outcomes.heading} />
+          <SectionHeader
+            tone="dark"
+            title={
+              <span className="font-playfair text-[color:var(--blue-400)]">
+                Outcomes
+              </span>
+            }
+          />
           <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {outcomes.stats.map((s, i) => (
               <Reveal key={s.label} index={i} className="relative">
@@ -236,7 +243,7 @@ export default async function SolutionDetailPage({
                     }}
                   />
                 ) : null}
-                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-transparent">
+                <p className="pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-white">
                   {s.value}
                 </p>
                 <p className="mt-3 max-w-xs text-body leading-relaxed text-[color:var(--color-text-on-dark-muted)]">
@@ -282,7 +289,7 @@ export default async function SolutionDetailPage({
               <div className="relative z-10 grid gap-12 lg:grid-cols-2 lg:items-center">
                 <div>
                   <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
-                  <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}

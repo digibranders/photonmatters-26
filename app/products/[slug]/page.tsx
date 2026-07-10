@@ -139,7 +139,7 @@ export default async function ProductDetailPage({
               <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div>
                   <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
-                  <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}

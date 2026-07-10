@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { geoNaturalEarth1, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
-import type { Feature, Geometry } from "geojson";
+import type { Feature, FeatureCollection, Geometry } from "geojson";
 import worldTopo from "@/lib/world-110m.json";
+import indiaOfficial from "@/lib/india-official.json";
 import type { Office } from "@/lib/site";
 
 // ─── Geometry ────────────────────────────────────────────────────────────────
@@ -32,7 +33,7 @@ type WorldFeature = Feature<Geometry, { name: string }>;
 export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
   const [hover, setHover] = useState<Office | null>(null);
 
-  const { features, project, path } = useMemo(() => {
+  const { features, indiaFeatures, project, path } = useMemo(() => {
     const topo = worldTopo as unknown as { objects: { countries: unknown } };
     const toFeatures = feature as unknown as (
       t: unknown,
@@ -65,7 +66,13 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
       FOCUS,
     );
 
-    return { features: fc.features, project, path: geoPath(project) };
+    // India, drawn per the official Survey-of-India boundary (full Jammu &
+    // Kashmir and Ladakh). Overlaid on top of the base Natural Earth topology,
+    // which truncates India at the Line of Control.
+    const indiaFeatures = (indiaOfficial as FeatureCollection<Geometry, { name: string }>)
+      .features;
+
+    return { features: fc.features, indiaFeatures, project, path: geoPath(project) };
   }, []);
 
   return (
@@ -100,6 +107,25 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
                 fill={hl ? LAND_HL : LAND}
                 stroke={hl ? LAND_HL_STROKE : LAND_STROKE}
                 strokeWidth={hl ? 0.7 : 0.4}
+              />
+            );
+          })}
+        </g>
+
+        {/* Corrected India — official Survey-of-India boundary, drawn on top of
+            the base topology so the northern territories (J&K, Ladakh) that
+            Natural Earth truncates at the Line of Control read accurately. */}
+        <g>
+          {indiaFeatures.map((geo, i) => {
+            const d = path(geo);
+            if (!d) return null;
+            return (
+              <path
+                key={`india-${i}`}
+                d={d}
+                fill={LAND_HL}
+                stroke={LAND_HL_STROKE}
+                strokeWidth={0.7}
               />
             );
           })}

@@ -56,7 +56,7 @@ export default function ContactPage() {
 
                 <div className="relative">
                   <p className="eyebrow mb-4 !text-[color:var(--blue-400)]">Get in touch</p>
-                  <h1 className="text-balance bg-gradient-to-b from-white to-white/45 bg-clip-text pb-[0.18em] text-h1 font-bold text-transparent">
+                  <h1 className="text-balance pb-[0.18em] text-h1 font-bold text-white">
                     Let&apos;s build your next{" "}
                     <span className="font-playfair font-light text-[color:var(--blue-400)]">
                       lending product

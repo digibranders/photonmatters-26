@@ -62,8 +62,8 @@ export interface SolutionPage {
     steps: Step[];
   };
   outcomes: {
-    eyebrow: string;
-    heading: string;
+    eyebrow?: string;
+    heading?: string;
     stats: OutcomeStat[];
   };
   cta: {
@@ -182,12 +182,11 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Faster decisions, fewer drop-offs, more approvals.",
+      heading: "Outcomes",
       stats: [
-        { value: "Minutes", label: "from application to a credit decision, not days" },
-        { value: "More approvals", label: "of thin-file borrowers using alternative data" },
-        { value: "Lower drop-off", label: "with a short, channel-native onboarding flow" },
+        { value: "Faster decisions", label: "Move from application to a credit decision in minutes, not days." },
+        { value: "Fewer drop-offs", label: "Reduce customer abandonment with a short, channel-native onboarding flow." },
+        { value: "More approvals", label: "Approve more thin-file borrowers using alternative data." },
       ],
     },
     cta: {
@@ -309,8 +308,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Automated lifecycle, accurate books, leaner ops.",
+      heading: "Outcomes",
       stats: [
         { value: "Full lifecycle", label: "automated from disbursement to closure" },
         { value: "Accurate books", label: "real-time GL postings, audit-ready" },
@@ -443,8 +441,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Score more people, faster, and prove it.",
+      heading: "Outcomes",
       stats: [
         { value: "1 phone", label: "Score the unbanked from alternative data alone, no bureau file or payslip required." },
         { value: "250k+/hr", label: "Sub-second scoring at peak load, so decisioning never becomes the bottleneck." },
@@ -572,12 +569,11 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Better recovery economics, book after book.",
+      heading: "Outcomes",
       stats: [
-        { value: "Higher", label: "Cure rates: propensity targeting puts the right treatment on accounts most likely to recover." },
-        { value: "Lower", label: "Cost-to-collect: digital channels handle self-curing accounts and free agents for the hard cases." },
-        { value: "Fewer", label: "Roll-forwards: early, well-targeted action keeps accounts from sliding into deeper buckets." },
+        { value: "Higher Cure rates", label: "propensity targeting puts the right treatment on accounts most likely to recover." },
+        { value: "Lower Cost-to-collect", label: "digital channels handle self-curing accounts and free agents for the hard cases." },
+        { value: "Fewer Roll-forwards", label: "early, well-targeted action keeps accounts from sliding into deeper buckets." },
       ],
     },
     cta: {
@@ -700,12 +696,11 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Less time reconciling. Less money lost.",
+      heading: "Outcomes",
       stats: [
-        { value: "~0", label: "Near-zero manual matching: analysts focus only on genuine exceptions instead of spreadsheets." },
-        { value: "Days → hrs", label: "Faster month-end close: continuous reconciliation replaces the end-of-period scramble." },
-        { value: "Fewer", label: "Fewer leakages: breaks are caught and aged early, before they become write-offs." },
+        { value: "Near-zero manual matching", label: "analysts focus only on genuine exceptions instead of spreadsheets." },
+        { value: "Faster month-end close", label: "continuous reconciliation replaces the end-of-period scramble." },
+        { value: "Fewer leakages", label: "breaks are caught and aged early, before they become write-offs." },
       ],
     },
     cta: {
@@ -828,12 +823,11 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "More cures, earlier, for less.",
+      heading: "Outcomes",
       stats: [
-        { value: "More", label: "Self-cure rate: borrowers clear balances on their own, before manual collections begin." },
-        { value: "Fewer", label: "DPD roll-forwards: accounts cure early instead of sliding into deeper delinquency." },
-        { value: "Lower", label: "Cost to collect: automated nudges replace a large share of agent calls and field visits." },
+        { value: "More Self-cure Rate", label: "borrowers clear balances on their own, before manual collections begin." },
+        { value: "Fewer DPD roll-forwards", label: "accounts cure early instead of sliding into deeper delinquency." },
+        { value: "Lower Cost to collect", label: "automated nudges replace a large share of agent calls and field visits." },
       ],
     },
     cta: {
@@ -956,12 +950,11 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
       ],
     },
     outcomes: {
-      eyebrow: "Outcomes",
-      heading: "Campaigns that grow the book, provably.",
+      heading: "Outcomes",
       stats: [
-        { value: "Targeted", label: "Acquisition: the right offer reaches the right segment on the channel they use." },
-        { value: "Automated", label: "Lifecycle comms: onboarding, renewal and win-back journeys run without manual sends." },
-        { value: "Measurable", label: "ROI: every campaign is attributed to applications, disbursals and repayments." },
+        { value: "Targeted Acquisition", label: "the right offer reaches the right segment on the channel they use." },
+        { value: "Automated Lifecycle comms", label: "onboarding, renewal and win-back journeys run without manual sends." },
+        { value: "Measurable ROI", label: "every campaign is attributed to applications, disbursals and repayments." },
       ],
     },
     cta: {
