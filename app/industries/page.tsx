@@ -22,7 +22,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "Regulatory reporting & full audit trails" },
     ],
     image:
-      "/industries/banks.webp",
+      "/industries/industry1.webp",
     alt: "Modern banking headquarters",
   },
   {
@@ -35,7 +35,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "AI collections to protect the book" },
     ],
     image:
-      "/industries/nbfcs.webp",
+      "/industries/industry2.webp",
     alt: "Lending team at work",
   },
   {
@@ -48,7 +48,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "Missed Call & Collect Call engagement", href: "/gsm" },
     ],
     image:
-      "/industries/telecom.webp",
+      "/industries/industry3.webp",
     alt: "Mobile-money vendor",
   },
 ];

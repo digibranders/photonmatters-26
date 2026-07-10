@@ -36,19 +36,19 @@ const INDUSTRIES = [
     name: "Banks",
     body: "Launch digital-first credit without legacy core constraints.",
     image:
-      "/home/ind-banks.webp",
+      "/industries/industry1.webp",
   },
   {
     name: "NBFCs & Lenders",
     body: "Scale alternative lending with configurable, compliant rails.",
     image:
-      "/home/ind-nbfcs.webp",
+      "/industries/industry2.webp",
   },
   {
     name: "Telecom Operators",
     body: "Turn subscribers into a financial-services base. Airtime to credit.",
     image:
-      "/home/ind-telecom.webp",
+      "/industries/industry3.webp",
   },
 ];
 

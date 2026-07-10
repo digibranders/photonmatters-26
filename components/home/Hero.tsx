@@ -10,9 +10,9 @@ import { PLATFORM_STATS } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
 const SLIDES = [
-  { src: "/hero/slide-last-mile.webp", alt: "A first fair loan approved on a phone, light reaching the last mile" },
-  { src: "/hero/slide-platform.webp", alt: "The AI-powered PhotonMatters lending dashboard" },
-  { src: "/hero/slide-reach.webp", alt: "AI lending at scale across Africa, India and the Middle East" },
+  { src: "/hero/hero3.webp", alt: "A first fair loan approved on a phone, light reaching the last mile", fit: "cover" as const },
+  { src: "/hero/hero2.webp", alt: "The AI-powered PhotonMatters lending dashboard", fit: "cover" as const },
+  { src: "/hero/hero1.webp", alt: "AI lending at scale across Africa, India and the Middle East", fit: "contain" as const },
 ];
 
 /* Navy scrim + grain: matched to the photonmatters reference hero (#07101f). */
@@ -39,7 +39,9 @@ function Slides({ active }: { active: number }) {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="object-cover"
+            quality={95}
+            unoptimized
+            className={slide.fit === "contain" ? "object-contain" : "object-cover"}
           />
         </div>
       ))}
@@ -104,7 +106,7 @@ export function Hero() {
         {/* Film grain */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-soft-light"
+          className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-soft-light"
           style={{ backgroundImage: GRAIN }}
         />
       </div>

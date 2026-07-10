@@ -57,7 +57,7 @@ export default function AboutPage() {
         title="We’re banking the people the"
         titleAccent="system forgot."
         subtitle="PhotonMatters is building AI-native lending technology for the institutions that move credit: banks, NBFCs and telecom operators, across Africa, India and the Middle East."
-        image="/about/hero.webp"
+        image="/about/img2.webp"
         imageAlt="Banking the people the system forgot"
         primary={{ label: "Book a demo", href: "/contact" }}
         secondary={{ label: "Our solutions", href: "/solutions" }}
@@ -94,7 +94,7 @@ export default function AboutPage() {
               />
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
                 <Image
-                  src="/about/mission.webp"
+                  src="/about/img1.webp"
                   alt="Building human-centered credit, together"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

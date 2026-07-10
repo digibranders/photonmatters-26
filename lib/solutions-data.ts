@@ -755,7 +755,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
         { lead: "Lower collection cost", text: "automated nudges cost a fraction of agent calls and field visits." },
       ],
       image: {
-        src: "/solutions/collection-marketing-ai-overview.webp",
+        src: "/solutions/new.webp",
         caption: "Self-cure, one nudge at a time · Kano",
       },
     },
