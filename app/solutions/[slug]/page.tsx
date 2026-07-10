@@ -75,6 +75,8 @@ export default async function SolutionDetailPage({
                   alt=""
                   fill
                   sizes="100vw"
+                  quality={95}
+                  unoptimized
                   className="object-cover"
                 />
                 <div
