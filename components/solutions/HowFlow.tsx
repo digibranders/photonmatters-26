@@ -112,14 +112,14 @@ export function HowFlow({ eyebrow, title, subtitle, steps, className }: HowFlowP
 
                   {/* Node + its glow / ripple */}
                   <div className="relative shrink-0" style={{ width: NODE, height: NODE }}>
-                    {/* Ambient bloom — brightens for the active node */}
+                    {/* Ambient bloom: brightens for the active node */}
                     <span
                       aria-hidden
                       className="pointer-events-none absolute -inset-3 rounded-full opacity-30 blur-xl transition-opacity duration-500 group-data-[active=true]:opacity-90"
                       style={{ background: "radial-gradient(circle, rgba(126,73,242,0.55), transparent 70%)" }}
                     />
 
-                    {/* Entrance ripple — fires once as the node lands */}
+                    {/* Entrance ripple: fires once as the node lands */}
                     {!reduce ? (
                       <motion.span
                         aria-hidden

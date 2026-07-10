@@ -39,7 +39,7 @@ export function GlobalPresence() {
         <div className="container-site text-center">
           <Reveal>
             <span className="eyebrow !text-[color:var(--blue-400)]">Global Presence</span>
-            <h2 className="mx-auto mt-4 max-w-3xl text-balance bg-gradient-to-b from-white to-white/45 bg-clip-text pb-[0.18em] text-h2 font-medium tracking-tighter text-transparent">
+            <h2 className="mx-auto mt-4 max-w-3xl text-balance pb-[0.18em] text-h2 font-medium tracking-tighter text-white">
               Global <span className="font-playfair font-light text-[color:var(--blue-400)]">Reach</span>.
               Local <span className="font-playfair font-light text-[color:var(--blue-400)]">Impact</span>.
             </h2>
@@ -59,13 +59,10 @@ export function GlobalPresence() {
 
         {/* Location ribbon */}
         <div className="container-site">
-          <ul className="mt-8 grid list-none grid-cols-2 gap-4 lg:grid-cols-4">
+          <ul className="mt-8 grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {OFFICES.map((o) => (
-              <li
-                key={o.city}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-colors duration-300 hover:border-[color:rgba(126,73,242,0.5)]"
-              >
-                <div className="flex items-center gap-2">
+              <li key={o.city}>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   <MapPin className="h-5 w-5 shrink-0 text-[color:var(--amber-500)]" aria-hidden />
                   <span className="text-h3 font-bold leading-none text-white">{o.city}</span>
                   {o.badge ? (

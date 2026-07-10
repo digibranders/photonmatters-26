@@ -28,7 +28,7 @@ export function CtaBand() {
 
             <div className="relative z-10">
               <p className="eyebrow !text-white/70">Ready to go live</p>
-              <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h1 font-medium tracking-tighter text-transparent">
+              <h2 className="mt-4 text-balance pb-[0.18em] text-h1 font-medium tracking-tighter text-white">
                 See it on{" "}
                 <span className="font-playfair font-light text-[color:var(--amber-500)]">
                   your data

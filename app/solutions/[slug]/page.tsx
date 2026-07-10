@@ -15,7 +15,7 @@ import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 
 /** Light gradient-clipped heading: eterna signature (ink → ink/60). */
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 /** Resolve a cross-link's lucide icon name by slug. */
 const SOLUTION_ICON: Record<string, string> = {
@@ -75,6 +75,8 @@ export default async function SolutionDetailPage({
                   alt=""
                   fill
                   sizes="100vw"
+                  quality={95}
+                  unoptimized
                   className="object-cover"
                 />
                 <div
@@ -145,11 +147,13 @@ export default async function SolutionDetailPage({
             title={capabilities.heading}
             subtitle={capabilities.subtitle}
           />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Mobile: horizontal snap-scroll carousel so six capability cards
+              read as a swipe, not a six-screen scroll. Tablet/desktop: grid. */}
+          <div className="mt-14 -mx-[var(--gutter)] flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:snap-none sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
             {capabilities.cards.map((card, i) => {
               const Icon = getIcon(card.icon);
               return (
-                <Reveal key={card.title} index={i % 3}>
+                <Reveal key={card.title} index={i % 3} className="w-[80%] shrink-0 snap-start sm:w-auto sm:shrink">
                   <div className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]">
                     {/* Corner bloom: eterna bento accent */}
                     <div
@@ -176,6 +180,9 @@ export default async function SolutionDetailPage({
               );
             })}
           </div>
+          <p className="mt-3 text-caption text-secondary/70 sm:hidden" aria-hidden>
+            Swipe for more →
+          </p>
         </div>
       </section>
 
@@ -216,7 +223,14 @@ export default async function SolutionDetailPage({
           />
         </div>
         <div className="container-site relative">
-          <SectionHeader tone="dark" eyebrow={outcomes.eyebrow} title={outcomes.heading} />
+          <SectionHeader
+            tone="dark"
+            title={
+              <span className="font-playfair text-[color:var(--blue-400)]">
+                Outcomes
+              </span>
+            }
+          />
           <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {outcomes.stats.map((s, i) => (
               <Reveal key={s.label} index={i} className="relative">
@@ -231,7 +245,7 @@ export default async function SolutionDetailPage({
                     }}
                   />
                 ) : null}
-                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-transparent">
+                <p className="pb-[0.1em] text-[clamp(1.5rem,1.2rem+1.3vw,2.125rem)] font-bold leading-tight tracking-tight text-white">
                   {s.value}
                 </p>
                 <p className="mt-3 max-w-xs text-body leading-relaxed text-[color:var(--color-text-on-dark-muted)]">
@@ -277,7 +291,7 @@ export default async function SolutionDetailPage({
               <div className="relative z-10 grid gap-12 lg:grid-cols-2 lg:items-center">
                 <div>
                   <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
-                  <h2 className="mt-4 text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h2 font-bold text-transparent">
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}

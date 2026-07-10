@@ -26,10 +26,12 @@ const DETAILS = [
   { icon: LinkedInGlyph, label: "LinkedIn", value: "/company/photonmatters", href: SITE.linkedin },
 ];
 
+// Longest value ("250k+/hr") placed last so it can take the full-width row
+// on mobile, matching the homepage stat rail's 2-then-1 pattern (lib/site.ts).
 const PROOF = [
   { value: "8 weeks", label: "Average go-live" },
-  { value: "250k+/hr", label: "Requests at peak" },
   { value: "99.9%", label: "Platform uptime" },
+  { value: "250k+/hr", label: "Requests at peak" },
 ];
 
 export default function ContactPage() {
@@ -54,7 +56,7 @@ export default function ContactPage() {
 
                 <div className="relative">
                   <p className="eyebrow mb-4 !text-[color:var(--blue-400)]">Get in touch</p>
-                  <h1 className="text-balance bg-gradient-to-b from-white to-white/45 bg-clip-text pb-[0.18em] text-h1 font-bold text-transparent">
+                  <h1 className="text-balance pb-[0.18em] text-h1 font-bold text-white">
                     Let&apos;s build your next{" "}
                     <span className="font-playfair font-light text-[color:var(--blue-400)]">
                       lending product
@@ -89,9 +91,12 @@ export default function ContactPage() {
                   </div>
 
                   {/* Proof strip */}
-                  <dl className="mt-9 grid grid-cols-3 gap-4 border-t border-line-on-dark pt-7">
-                    {PROOF.map((p) => (
-                      <div key={p.label}>
+                  <dl className="mt-9 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-line-on-dark pt-7 sm:grid-cols-3 sm:gap-y-0">
+                    {PROOF.map((p, i) => (
+                      <div
+                        key={p.label}
+                        className={i === PROOF.length - 1 ? "max-sm:col-span-2" : undefined}
+                      >
                         <dt className="text-h3 font-bold tabular-nums text-white">{p.value}</dt>
                         <dd className="mt-1 text-caption text-[color:var(--color-text-on-dark-muted)]">{p.label}</dd>
                       </div>

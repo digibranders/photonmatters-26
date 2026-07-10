@@ -1,11 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
 import { HeroDark } from "@/components/layout/HeroDark";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { IndustryTabs, type IndustryBlock } from "@/components/industries/IndustryTabs";
 import { MARKETS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,23 +11,7 @@ export const metadata: Metadata = {
     "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
 };
 
-const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
-
-interface ChecklistItem {
-  text: string;
-  href?: string;
-}
-interface Block {
-  eyebrow: string;
-  heading: string;
-  body: string;
-  checklist: ChecklistItem[];
-  image: string;
-  alt: string;
-}
-
-const BLOCKS: Block[] = [
+const BLOCKS: IndustryBlock[] = [
   {
     eyebrow: "Banks",
     heading: "Digital-first credit, free of legacy core constraints.",
@@ -41,7 +22,7 @@ const BLOCKS: Block[] = [
       { text: "Regulatory reporting & full audit trails" },
     ],
     image:
-      "/industries/banks.webp",
+      "/industries/industry1.webp",
     alt: "Modern banking headquarters",
   },
   {
@@ -54,7 +35,7 @@ const BLOCKS: Block[] = [
       { text: "AI collections to protect the book" },
     ],
     image:
-      "/industries/nbfcs.webp",
+      "/industries/industry2.webp",
     alt: "Lending team at work",
   },
   {
@@ -67,7 +48,7 @@ const BLOCKS: Block[] = [
       { text: "Missed Call & Collect Call engagement", href: "/gsm" },
     ],
     image:
-      "/industries/telecom.webp",
+      "/industries/industry3.webp",
     alt: "Mobile-money vendor",
   },
 ];
@@ -78,55 +59,6 @@ const INDUSTRY_STATS = [
   { value: "99.9%", label: "Platform availability" },
   { value: "3", label: "Regions: Africa · India · ME" },
 ];
-
-function FeatureBlock({ block, flip }: { block: Block; flip: boolean }) {
-  return (
-    <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
-      <Reveal className={flip ? "lg:order-2" : undefined}>
-        <figure className="relative">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
-            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
-          />
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
-            <Image
-              src={block.image}
-              alt={block.alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </figure>
-      </Reveal>
-      <Reveal delay={0.1} className={flip ? "lg:order-1" : undefined}>
-        <span className="eyebrow mb-4">{block.eyebrow}</span>
-        <h2 className={HEADING_CLIP}>{block.heading}</h2>
-        <p className="mt-5 text-body text-secondary">{block.body}</p>
-        <ul className="mt-7 space-y-3">
-          {block.checklist.map((item) => (
-            <li key={item.text} className="flex items-start gap-3">
-              <Check size={18} className="mt-0.5 shrink-0 text-primary" strokeWidth={2.5} aria-hidden />
-              {item.href ? (
-                <Link href={item.href} className="text-body text-primary-strong hover:underline">
-                  {item.text}
-                </Link>
-              ) : (
-                <span className="text-body text-secondary">{item.text}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8">
-          <Button href="/solutions" variant="link" withArrow>
-            Explore solutions
-          </Button>
-        </div>
-      </Reveal>
-    </div>
-  );
-}
 
 export default function IndustriesPage() {
   return (
@@ -143,10 +75,8 @@ export default function IndustriesPage() {
       />
 
       <section className="section">
-        <div className="container-site flex flex-col gap-20 lg:gap-28">
-          {BLOCKS.map((block, i) => (
-            <FeatureBlock key={block.eyebrow} block={block} flip={i % 2 === 1} />
-          ))}
+        <div className="container-site">
+          <IndustryTabs blocks={BLOCKS} />
         </div>
       </section>
 
@@ -205,7 +135,7 @@ export default function IndustriesPage() {
                     }}
                   />
                 ) : null}
-                <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.1em] text-[clamp(1.875rem,1.4rem+1.6vw,2.625rem)] font-bold leading-tight tracking-tight text-transparent">
+                <p className="pb-[0.1em] text-[clamp(1.875rem,1.4rem+1.6vw,2.625rem)] font-bold leading-tight tracking-tight text-white">
                   {s.value}
                 </p>
                 <p className="mt-2 text-body text-[color:var(--color-text-on-dark-muted)]">{s.label}</p>

@@ -13,11 +13,16 @@ interface RevealProps {
 }
 
 /**
- * Entrance fade-up: 24px Y offset, 400ms ease-out, staggered 80ms per index.
+ * Entrance fade-up: 24px Y offset, 400ms ease-out, staggered 80ms per index
+ * (30ms below the `sm` breakpoint: an 80ms stagger tuned for a desktop grid
+ * revealing a row at a time makes a single-column mobile list of 6+ items
+ * trickle in noticeably slower during a fast scroll).
  * Respects prefers-reduced-motion (renders static when reduced).
  */
 export function Reveal({ index = 0, delay = 0, className, style, children }: RevealProps) {
   const reduce = useReducedMotion();
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const stagger = isMobile ? 0.03 : 0.08;
 
   if (reduce) {
     return (
@@ -37,7 +42,7 @@ export function Reveal({ index = 0, delay = 0, className, style, children }: Rev
       transition={{
         duration: 0.4,
         ease: [0.16, 1, 0.3, 1],
-        delay: index * 0.08 + delay,
+        delay: index * stagger + delay,
       }}
     >
       {children}

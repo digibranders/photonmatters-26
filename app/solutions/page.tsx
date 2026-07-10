@@ -168,7 +168,7 @@ export default function SolutionsHubPage() {
               />
               <div className="relative z-10">
                 <p className="eyebrow !text-white/70">Ready when you are</p>
-                <h2 className="mx-auto mt-4 max-w-2xl text-balance bg-gradient-to-b from-white to-white/55 bg-clip-text pb-[0.18em] text-h1 font-bold text-transparent">
+                <h2 className="mx-auto mt-4 max-w-2xl text-balance pb-[0.18em] text-h1 font-bold text-white">
                   See the stack on{" "}
                   <span className="font-playfair font-light text-[color:var(--amber-500)]">your data</span>.
                 </h2>

@@ -21,7 +21,7 @@ interface ProductExplorerProps {
 }
 
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 /**
  * Interactive product menu: a tab list of lending sub-products paired with an
@@ -46,8 +46,13 @@ export function ProductExplorer({ eyebrow, heading, items }: ProductExplorerProp
         <h2 className={HEADING_CLIP}>{heading}</h2>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-12">
-          {/* Tab list */}
-          <div role="tablist" aria-label={heading} className="flex flex-col gap-2">
+          {/* Tab list: horizontal scrollable chip row on mobile (each tab reads as
+              tappable navigation even before it's active), vertical list on desktop. */}
+          <div
+            role="tablist"
+            aria-label={heading}
+            className="-mx-[var(--gutter)] flex gap-2 overflow-x-auto px-[var(--gutter)] pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-col sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+          >
             {items.map((it, i) => {
               const isActive = i === active;
               return (
@@ -58,10 +63,10 @@ export function ProductExplorer({ eyebrow, heading, items }: ProductExplorerProp
                   aria-selected={isActive}
                   onClick={() => setActive(i)}
                   className={cn(
-                    "group/tab cursor-pointer rounded-2xl border px-5 py-4 text-left text-body-lg font-semibold tracking-tight transition-all duration-200",
+                    "group/tab shrink-0 cursor-pointer whitespace-nowrap rounded-2xl border px-5 py-4 text-left text-body-lg font-semibold tracking-tight transition-all duration-200 sm:whitespace-normal",
                     isActive
                       ? "border-line-strong bg-surface text-ink shadow-[var(--shadow-overlay)]"
-                      : "border-transparent text-secondary hover:bg-white/60 hover:text-ink",
+                      : "border-line text-secondary hover:border-line-strong hover:bg-white/60 hover:text-ink",
                   )}
                 >
                   {it.title}

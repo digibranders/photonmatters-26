@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const HEADING_CLIP =
-  "text-h2 font-bold text-balance bg-clip-text pb-[0.18em] text-transparent bg-gradient-to-b from-ink to-[color:rgba(26,20,38,0.6)]";
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 const CARD_BENTO =
   "group relative h-full overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-8";
@@ -57,7 +57,7 @@ export default function AboutPage() {
         title="We’re banking the people the"
         titleAccent="system forgot."
         subtitle="PhotonMatters is building AI-native lending technology for the institutions that move credit: banks, NBFCs and telecom operators, across Africa, India and the Middle East."
-        image="/about/hero.webp"
+        image="/about/img2.webp"
         imageAlt="Banking the people the system forgot"
         primary={{ label: "Book a demo", href: "/contact" }}
         secondary={{ label: "Our solutions", href: "/solutions" }}
@@ -94,7 +94,7 @@ export default function AboutPage() {
               />
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
                 <Image
-                  src="/about/mission.webp"
+                  src="/about/img1.webp"
                   alt="Building human-centered credit, together"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
