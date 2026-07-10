@@ -612,7 +612,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     },
     overview: {
       eyebrow: "Overview",
-      heading: "Every rupee, naira and dirham accounted for.",
+      heading: "Every rupee, dollar, naira, rand, kwacha and dirham accounted for",
       paragraphs: [
         "Lenders in emerging markets receive money through a tangle of channels: bank transfers, PSP gateways, mobile-money wallets and cash agents, each with its own file format, cut-off time and fee logic. Reconciliation AI ingests them all, matches each inflow to the right loan, instalment and ledger entry, and surfaces only the genuine exceptions.",
         "What used to take a team of analysts days of spreadsheet work now runs continuously in the background. Breaks are detected the moment they appear, aged automatically, and routed to the right resolution workflow, so leakage is caught early and the close happens on time.",
