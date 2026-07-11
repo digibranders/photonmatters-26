@@ -110,7 +110,9 @@ export const NAV: NavItem[] = [
   { label: "Products", href: "/products" },
   { label: "Industries", href: "/industries" },
   { label: "GSM", href: "/gsm" },
-  { label: "Newsroom", href: "/newsroom" },
+  // Dropdown parent: NavBar renders the child links (Resource Centre + Newsroom)
+  // from the DROPDOWNS["Resources"] config.
+  { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -334,6 +336,7 @@ export const FOOTER_COLUMNS = {
     { label: "About", href: "/about" },
     { label: "Industries", href: "/industries" },
     { label: "GSM", href: "/gsm" },
+    { label: "Resource Centre", href: "/resources" },
     { label: "Newsroom", href: "/newsroom" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: `mailto:${SITE.careersEmail}` },
