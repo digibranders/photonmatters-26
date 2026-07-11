@@ -5,7 +5,8 @@
    or in the page needs to change.
    ========================================================================== */
 
-/** Document taxonomy, used for the badge and (later) the type filter. */
+/** Document taxonomy, used for the badge and the future filter sidebar
+ *  (see TODO(resource-filters) in app/resources/page.tsx). */
 export type ResourceType = "Brochure" | "Datasheet" | "Whitepaper" | "Case study";
 
 export interface ResourceDoc {

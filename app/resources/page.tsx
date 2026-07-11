@@ -41,6 +41,15 @@ export default function ResourcesPage() {
 
       <section className="section">
         <div className="container-site">
+          {/* TODO(resource-filters): add a left filter sidebar once the library
+              grows and spans multiple ResourceTypes. Plan:
+              - Wrap the content below in `lg:grid-cols-[240px_1fr]`.
+              - Sticky sidebar: filter by type (Brochure, Datasheet, Whitepaper,
+                Case study) with live counts derived from RESOURCES; optional search.
+              - Make it a client component (mirror components/newsroom/NewsFilter)
+                that renders the doc rows as its filtered output; collapse to a
+                chip row on mobile.
+              Skipped for now: only one document (the brochure) exists. */}
           <div className="flex items-end justify-between gap-6">
             <SectionHeader
               eyebrow="Downloads"
