@@ -55,6 +55,11 @@ import {
   Handshake,
   Boxes,
   Briefcase,
+  // Newsroom + Resource Centre icons
+  Newspaper,
+  Library,
+  Download,
+  FileDown,
   type LucideIcon,
 } from "lucide-react";
 
@@ -114,6 +119,10 @@ const ICONS: Record<string, LucideIcon> = {
   Handshake,
   Boxes,
   Briefcase,
+  Newspaper,
+  Library,
+  Download,
+  FileDown,
 };
 
 /** Resolve a Lucide icon by name, falling back to Sparkles if unknown. */

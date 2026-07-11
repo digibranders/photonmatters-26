@@ -20,8 +20,9 @@ interface DropdownItem {
 }
 interface DropdownConfig {
   items: DropdownItem[];
-  allHref: string;
-  allLabel: string;
+  /** Optional "view all" footer link; omitted for grouping-only menus. */
+  allHref?: string;
+  allLabel?: string;
 }
 
 const DROPDOWNS: Record<string, DropdownConfig> = {
@@ -38,11 +39,22 @@ const DROPDOWNS: Record<string, DropdownConfig> = {
     allHref: "/products",
     allLabel: "All products",
   },
+  Resources: {
+    items: [
+      { href: "/resources", name: "Resource Centre", icon: "Library" },
+      { href: "/newsroom", name: "Newsroom", icon: "Newspaper" },
+    ],
+  },
 };
 
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
+}
+
+/** A dropdown parent is active when the route matches any of its child links. */
+function isMenuActive(pathname: string, menu: DropdownConfig, href: string): boolean {
+  return isActive(pathname, href) || menu.items.some((it) => isActive(pathname, it.href));
 }
 
 export function NavBar() {
@@ -186,7 +198,7 @@ export function NavBar() {
                   aria-haspopup="true"
                   aria-expanded={open}
                   className={cn(
-                    linkClass(isActive(pathname, item.href)),
+                    linkClass(isMenuActive(pathname, menu, item.href)),
                     "inline-flex cursor-pointer items-center gap-1",
                   )}
                 >
@@ -229,18 +241,22 @@ export function NavBar() {
                         </Link>
                       );
                     })}
-                    <div className={cn("my-1.5 h-px", isDark ? "bg-white/10" : "bg-line")} role="separator" />
-                    <Link
-                      href={menu.allHref}
-                      role="menuitem"
-                      className={cn(
-                        "flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2.5 text-caption font-semibold transition-colors",
-                        isDark ? "text-[#7E49F2] hover:bg-white/[0.08]" : "text-primary-strong hover:bg-sunken",
-                      )}
-                      onClick={() => setOpenMenu(null)}
-                    >
-                      {menu.allLabel} <ArrowRight size={14} aria-hidden />
-                    </Link>
+                    {menu.allHref && menu.allLabel ? (
+                      <>
+                        <div className={cn("my-1.5 h-px", isDark ? "bg-white/10" : "bg-line")} role="separator" />
+                        <Link
+                          href={menu.allHref}
+                          role="menuitem"
+                          className={cn(
+                            "flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2.5 text-caption font-semibold transition-colors",
+                            isDark ? "text-[#7E49F2] hover:bg-white/[0.08]" : "text-primary-strong hover:bg-sunken",
+                          )}
+                          onClick={() => setOpenMenu(null)}
+                        >
+                          {menu.allLabel} <ArrowRight size={14} aria-hidden />
+                        </Link>
+                      </>
+                    ) : null}
                   </div>
                 )}
               </div>
@@ -315,7 +331,7 @@ export function NavBar() {
                       isDark
                         ? "text-white/85 hover:bg-white/10 hover:text-white"
                         : "text-ink/80 hover:bg-ink/[0.06] hover:text-ink",
-                      isActive(pathname, item.href) && (isDark ? "text-white" : "text-ink"),
+                      isMenuActive(pathname, menu, item.href) && (isDark ? "text-white" : "text-ink"),
                     )}
                   >
                     {item.label}
@@ -355,16 +371,18 @@ export function NavBar() {
                           </Link>
                         );
                       })}
-                      <Link
-                        href={menu.allHref}
-                        onClick={() => setMobileOpen(false)}
-                        className={cn(
-                          "rounded-md px-2 py-2.5 text-caption font-semibold",
-                          isDark ? "text-[#7E49F2]" : "text-primary-strong",
-                        )}
-                      >
-                        {menu.allLabel} →
-                      </Link>
+                      {menu.allHref && menu.allLabel ? (
+                        <Link
+                          href={menu.allHref}
+                          onClick={() => setMobileOpen(false)}
+                          className={cn(
+                            "rounded-md px-2 py-2.5 text-caption font-semibold",
+                            isDark ? "text-[#7E49F2]" : "text-primary-strong",
+                          )}
+                        >
+                          {menu.allLabel} →
+                        </Link>
+                      ) : null}
                     </div>
                   )}
                 </div>
