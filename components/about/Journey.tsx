@@ -145,7 +145,7 @@ function FocusReveal() {
       ref={wrapRef}
       id="journey"
       aria-label="Our journey"
-      className="relative scroll-mt-24"
+      className="relative mt-12 scroll-mt-24 lg:-mt-24"
       style={{ height: `${runwayVh}vh`, background: SECTION_BG }}
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
