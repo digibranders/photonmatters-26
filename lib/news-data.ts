@@ -62,6 +62,9 @@ export interface NewsItem {
   icon: string;
   /** 0-based index into MILESTONES (lib/site.ts) for the About-journey link. */
   milestoneIndex: number;
+  /** Optional index into `facts` to elevate as an inline stat callout, used to
+   *  break the reading rhythm of releases that carry no pull-quote. */
+  featuredFactIndex?: number;
   /** Estimated read time label, e.g. "3 min read". */
   readTime: string;
   /** Marks the lead announcement for the hub's featured slot. */
@@ -127,6 +130,7 @@ export const NEWS: NewsItem[] = [
     ],
     icon: "CreditCard",
     milestoneIndex: 4,
+    featuredFactIndex: 1,
     readTime: "2 min read",
   },
   {
@@ -155,6 +159,7 @@ export const NEWS: NewsItem[] = [
     ],
     icon: "Boxes",
     milestoneIndex: 3,
+    featuredFactIndex: 1,
     readTime: "2 min read",
   },
   {

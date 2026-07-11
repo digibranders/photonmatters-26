@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { NewsFilter } from "@/components/newsroom/NewsFilter";
 import { getIcon } from "@/lib/icons";
 import { FEATURED_NEWS, NEWS_REST } from "@/lib/news-data";
+import { MILESTONES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Newsroom",
@@ -23,6 +24,9 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export default function NewsroomPage() {
+  const milestoneNo = String(FEATURED_NEWS.milestoneIndex + 1).padStart(2, "0");
+  const milestoneTotal = String(MILESTONES.length).padStart(2, "0");
+
   return (
     <>
       <HeroDark
@@ -42,7 +46,8 @@ export default function NewsroomPage() {
               href={`/newsroom/${FEATURED_NEWS.slug}`}
               className="group grid overflow-hidden rounded-[2rem] border border-line bg-surface shadow-[0_1px_2px_rgba(26,20,38,0.04),0_28px_60px_-30px_rgba(126,73,242,0.35)] transition-all duration-300 hover:border-line-strong hover:shadow-[0_2px_4px_rgba(26,20,38,0.05),0_36px_72px_-32px_rgba(126,73,242,0.45)] lg:grid-cols-[1.05fr_0.95fr]"
             >
-              {/* Media stage: dark gradient + orchid bloom + milestone glyph */}
+              {/* Media stage: the milestone rendered as a rising beam of light
+                  (echoing the About journey) that terminates at a glowing node. */}
               <div
                 aria-hidden
                 className="relative min-h-[240px] overflow-hidden lg:min-h-[380px]"
@@ -55,15 +60,61 @@ export default function NewsroomPage() {
                   className="pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-soft-light"
                   style={{ backgroundImage: GRAIN }}
                 />
+
+                {/* Rising trajectory beam */}
+                <svg
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  className="absolute inset-0 h-full w-full"
+                >
+                  <defs>
+                    <linearGradient id="leadBeam" x1="0" y1="1" x2="1" y2="0">
+                      <stop offset="0" stopColor="var(--color-primary)" stopOpacity="0" />
+                      <stop offset="0.52" stopColor="var(--blue-400)" stopOpacity="0.85" />
+                      <stop offset="1" stopColor="var(--amber-500)" />
+                    </linearGradient>
+                  </defs>
+                  <line
+                    x1="0"
+                    y1="86"
+                    x2="100"
+                    y2="14"
+                    stroke="url(#leadBeam)"
+                    strokeWidth="1.5"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+
+                {/* Ghost milestone index */}
+                <span className="pointer-events-none absolute -bottom-4 right-4 select-none font-playfair text-[8.5rem] leading-none text-white/[0.06]">
+                  {milestoneNo}
+                </span>
+
                 <span className="absolute left-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-[color:var(--amber-500)] px-3 py-1 text-label font-bold uppercase tracking-[0.1em] text-ink">
                   Latest
                 </span>
-                <span className="absolute inset-0 grid place-items-center text-white/90 transition-transform duration-700 group-hover:scale-105">
-                  {createElement(getIcon(FEATURED_NEWS.icon), {
-                    size: 104,
-                    strokeWidth: 1,
-                    "aria-hidden": true,
-                  })}
+                <span className="absolute bottom-6 left-6 text-label font-semibold uppercase tracking-[0.14em] text-white/55">
+                  Milestone {milestoneNo} / {milestoneTotal}
+                </span>
+
+                {/* Glowing node on the beam */}
+                <span className="absolute inset-0 grid place-items-center">
+                  <span className="relative grid h-24 w-24 place-items-center text-white transition-transform duration-700 group-hover:scale-105">
+                    <span
+                      className="absolute inset-0 rounded-full blur-2xl"
+                      style={{
+                        background:
+                          "radial-gradient(circle, rgba(233,162,242,0.45), transparent 70%)",
+                      }}
+                    />
+                    <span className="absolute inset-2 rounded-full border border-white/15" />
+                    {createElement(getIcon(FEATURED_NEWS.icon), {
+                      size: 52,
+                      strokeWidth: 1.25,
+                      className: "relative",
+                      "aria-hidden": true,
+                    })}
+                  </span>
                 </span>
               </div>
 

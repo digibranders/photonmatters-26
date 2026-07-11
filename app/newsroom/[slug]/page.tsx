@@ -5,11 +5,13 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { ArticleShare } from "@/components/newsroom/ArticleShare";
-import { NewsCard } from "@/components/newsroom/NewsCard";
+import { ReadingProgress } from "@/components/newsroom/ReadingProgress";
 import {
   NEWS,
   getNewsBySlug,
-  getRelatedNews,
+  getNewsNeighbours,
+  type NewsFact,
+  type NewsItem,
   type NewsQuote,
 } from "@/lib/news-data";
 import { SITE, MILESTONES } from "@/lib/site";
@@ -57,6 +59,57 @@ function QuoteText({ quote }: { quote: NewsQuote }) {
   );
 }
 
+/** An existing fact elevated as an inline stat, to break the reading rhythm of
+ *  releases that carry no pull-quote. */
+function StatCallout({ fact }: { fact: NewsFact }) {
+  return (
+    <figure className="my-10 flex items-center gap-6 rounded-2xl border border-line bg-sunken p-7">
+      <div className="text-[clamp(2.4rem,1.9rem+2vw,3.4rem)] font-bold leading-none tracking-tight text-primary">
+        {fact.value}
+        {fact.unit ? (
+          <span className="text-[color:var(--amber-600)]"> {fact.unit}</span>
+        ) : null}
+      </div>
+      <figcaption className="text-body font-semibold text-ink">{fact.label}</figcaption>
+    </figure>
+  );
+}
+
+/** Chronological prev/next tile for the "Continue the story" rail. */
+function NeighbourTile({
+  item,
+  direction,
+}: {
+  item: NewsItem;
+  direction: "prev" | "next";
+}) {
+  const isNext = direction === "next";
+  return (
+    <Link
+      href={`/newsroom/${item.slug}`}
+      className="group flex h-full flex-col gap-3 rounded-3xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-7"
+    >
+      <span className="inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-[0.14em] text-muted">
+        {isNext ? null : <ArrowLeft size={13} aria-hidden />}
+        {isNext ? "Next in the story" : "Earlier in the story"}
+        {isNext ? <ArrowRight size={13} aria-hidden /> : null}
+      </span>
+      <div className="flex items-center gap-2.5">
+        <Badge tone="brand">{item.category}</Badge>
+        <time
+          dateTime={item.dateISO}
+          className="text-label font-semibold uppercase tracking-[0.1em] text-muted tabular-nums"
+        >
+          {item.date}
+        </time>
+      </div>
+      <h3 className="text-h3 font-bold leading-snug tracking-tight text-ink transition-colors duration-200 group-hover:text-primary">
+        {item.title} {item.titleAccent}
+      </h3>
+    </Link>
+  );
+}
+
 export default async function NewsArticlePage({
   params,
 }: {
@@ -66,11 +119,16 @@ export default async function NewsArticlePage({
   const item = getNewsBySlug(slug);
   if (!item) notFound();
 
-  const related = getRelatedNews(slug, 2);
+  const { newer, older } = getNewsNeighbours(slug);
   const headline = `${item.title} ${item.titleAccent ?? ""}`.trim();
   const absoluteUrl = `${SITE.url}/newsroom/${item.slug}`;
   const milestone = MILESTONES[item.milestoneIndex];
   const milestoneNumber = item.milestoneIndex + 1;
+  // A stat callout only appears on releases that carry no pull-quote.
+  const statFact =
+    !item.quote && item.featuredFactIndex != null
+      ? item.facts[item.featuredFactIndex]
+      : undefined;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -96,6 +154,7 @@ export default async function NewsArticlePage({
 
   return (
     <>
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -192,6 +251,7 @@ export default async function NewsArticlePage({
                         </figcaption>
                       </figure>
                     ) : null}
+                    {statFact && i === 1 ? <StatCallout fact={statFact} /> : null}
                   </div>
                 ))}
                 {item.quote && item.body.length <= 1 ? (
@@ -211,6 +271,7 @@ export default async function NewsArticlePage({
                     </figcaption>
                   </figure>
                 ) : null}
+                {statFact && item.body.length <= 1 ? <StatCallout fact={statFact} /> : null}
               </div>
 
               {/* Boilerplate + media contact */}
@@ -301,19 +362,24 @@ export default async function NewsArticlePage({
         </div>
       </section>
 
-      {/* More from the newsroom */}
-      {related.length ? (
+      {/* Continue the story: chronological prev/next through the arc */}
+      {newer || older ? (
         <section className="section bg-sunken">
           <div className="container-site">
             <h2 className="text-label font-semibold uppercase tracking-[0.14em] text-muted">
-              More from the newsroom
+              Continue the story
             </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              {related.map((r, i) => (
-                <Reveal key={r.slug} index={i}>
-                  <NewsCard item={r} />
+              {older ? (
+                <Reveal index={0}>
+                  <NeighbourTile item={older} direction="prev" />
                 </Reveal>
-              ))}
+              ) : null}
+              {newer ? (
+                <Reveal index={older ? 1 : 0}>
+                  <NeighbourTile item={newer} direction="next" />
+                </Reveal>
+              ) : null}
             </div>
           </div>
         </section>
