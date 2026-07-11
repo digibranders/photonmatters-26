@@ -110,6 +110,7 @@ export const NAV: NavItem[] = [
   { label: "Products", href: "/products" },
   { label: "Industries", href: "/industries" },
   { label: "GSM", href: "/gsm" },
+  { label: "Newsroom", href: "/newsroom" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -230,6 +231,99 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+/** A single milestone on the "Our Journey" timeline (About page). */
+export interface Milestone {
+  /** Short display date, e.g. "Jul 2024". */
+  date: string;
+  /** Headline for the milestone (kept punchy for the node). */
+  title: string;
+  /** One-sentence expansion shown in the milestone card. */
+  body: string;
+  /** Lucide icon name (see lib/icons.ts). */
+  icon: string;
+  /** Optional metric surfaced as a count-up stat, e.g. { value: "6", label: "products live" }. */
+  metric?: { value: string; label: string };
+  /** Marks the closing milestone so the timeline can ignite gold at the crescendo. */
+  climax?: boolean;
+}
+
+/**
+ * The PhotonMatters story, Jul 2024 → Jun 2026. Ordered oldest-first; the
+ * cadence deliberately tightens toward the present, which the Journey
+ * timeline section on the About page presents as a spine that draws in.
+ */
+export const MILESTONES: Milestone[] = [
+  {
+    date: "Jul 2024",
+    title: "Incorporated in Dubai",
+    body: "Our journey began with the incorporation of the company in Dubai, UAE, establishing a strong foundation for innovation in digital financial services.",
+    icon: "Building2",
+  },
+  {
+    date: "Sep 2024",
+    title: "First lending platform live",
+    body: "Within months we launched our first lending platform, marking our entry into the fintech ecosystem.",
+    icon: "Wallet",
+  },
+  {
+    date: "Nov 2024",
+    title: "First client in Africa",
+    body: "We secured our first client in Africa, validating our vision and laying the groundwork for regional expansion.",
+    icon: "Handshake",
+  },
+  {
+    date: "Mar 2025",
+    title: "Six products live in Zambia",
+    body: "Momentum accelerated as six products went live in Zambia, demonstrating our ability to deliver at scale.",
+    icon: "Boxes",
+    metric: { value: "6", label: "products live" },
+  },
+  {
+    date: "Jul 2025",
+    title: "BNPL for two NBFIs",
+    body: "We empowered two NBFIs with Buy Now, Pay Later capabilities, expanding our portfolio of innovative lending solutions.",
+    icon: "CreditCard",
+  },
+  {
+    date: "Jul 2025",
+    title: "Dubai office fully operational",
+    body: "Our Dubai office became fully operational, strengthening our global presence and operational capabilities.",
+    icon: "Landmark",
+  },
+  {
+    date: "Oct 2025",
+    title: "First Mobile Money client",
+    body: "We signed our first Mobile Money client, marking our strategic expansion into the digital payments ecosystem.",
+    icon: "Smartphone",
+  },
+  {
+    date: "Jan 2026",
+    title: "New GSM business vertical",
+    body: "We launched a new GSM business vertical, broadening our technology offerings and unlocking new growth opportunities.",
+    icon: "RadioTower",
+  },
+  {
+    date: "Feb 2026",
+    title: "Mobile Money platform live",
+    body: "Our Mobile Money platform went live, delivering secure, scalable and seamless digital payment capabilities.",
+    icon: "Zap",
+  },
+  {
+    date: "Mar 2026",
+    title: "Team of 50 strong",
+    body: "Our team grew to 50 talented professionals, reflecting the rapid pace of our business growth and execution.",
+    icon: "Users",
+    metric: { value: "50", label: "people" },
+  },
+  {
+    date: "Jun 2026",
+    title: "Next-generation platform",
+    body: "We unveiled our best-in-class next-generation platform, bringing together cutting-edge technology, scalability and innovation to power the future of digital financial services.",
+    icon: "Sparkles",
+    climax: true,
+  },
+];
+
 /** Footer link columns. */
 export const FOOTER_COLUMNS = {
   solutions: [
@@ -240,6 +334,7 @@ export const FOOTER_COLUMNS = {
     { label: "About", href: "/about" },
     { label: "Industries", href: "/industries" },
     { label: "GSM", href: "/gsm" },
+    { label: "Newsroom", href: "/newsroom" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: `mailto:${SITE.careersEmail}` },
     { label: "LinkedIn", href: SITE.linkedin },

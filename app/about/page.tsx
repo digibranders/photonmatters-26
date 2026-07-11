@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { HeroDark } from "@/components/layout/HeroDark";
+import { Journey } from "@/components/about/Journey";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
@@ -105,6 +106,9 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Our Journey: refined vertical timeline */}
+      <Journey />
 
       {/* Values: bento */}
       <section className="section bg-sunken">
