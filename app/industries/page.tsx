@@ -1,8 +1,11 @@
+import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 import { HeroDark } from "@/components/layout/HeroDark";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { IndustryTabs, type IndustryBlock } from "@/components/industries/IndustryTabs";
 import { MARKETS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,6 +13,23 @@ export const metadata: Metadata = {
   description:
     "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
 };
+
+/** Solid ink heading (matches the site-wide "Solid heading colors" direction). */
+const HEADING =
+  "text-h2 font-bold text-balance pb-[0.18em] text-ink";
+
+interface ChecklistItem {
+  text: string;
+  href?: string;
+}
+interface IndustryBlock {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  checklist: ChecklistItem[];
+  image: string;
+  alt: string;
+}
 
 const BLOCKS: IndustryBlock[] = [
   {
@@ -21,8 +41,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "8-week go-live from kickoff to production" },
       { text: "Regulatory reporting & full audit trails" },
     ],
-    image:
-      "/industries/industry1.webp",
+    image: "/industries/industry1.webp",
     alt: "Modern banking headquarters",
   },
   {
@@ -34,8 +53,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "Alt-data scoring for thin-file borrowers" },
       { text: "AI collections to protect the book" },
     ],
-    image:
-      "/industries/industry2.webp",
+    image: "/industries/industry2.webp",
     alt: "Lending team at work",
   },
   {
@@ -47,8 +65,7 @@ const BLOCKS: IndustryBlock[] = [
       { text: "Microloans delivered entirely via mobile" },
       { text: "Missed Call & Collect Call engagement", href: "/gsm" },
     ],
-    image:
-      "/industries/industry3.webp",
+    image: "/industries/industry3.webp",
     alt: "Mobile-money vendor",
   },
 ];
@@ -59,6 +76,56 @@ const INDUSTRY_STATS = [
   { value: "99.9%", label: "Platform availability" },
   { value: "3", label: "Regions: Africa · India · ME" },
 ];
+
+/** One vertical industry block: image and copy, alternating sides down the page. */
+function FeatureBlock({ block, flip }: { block: IndustryBlock; flip: boolean }) {
+  return (
+    <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
+      <Reveal className={flip ? "lg:order-2" : undefined}>
+        <figure className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
+            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
+          />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
+            <Image
+              src={block.image}
+              alt={block.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </figure>
+      </Reveal>
+      <Reveal delay={0.1} className={flip ? "lg:order-1" : undefined}>
+        <span className="eyebrow mb-4">{block.eyebrow}</span>
+        <h2 className={HEADING}>{block.heading}</h2>
+        <p className="mt-5 text-body text-secondary">{block.body}</p>
+        <ul className="mt-7 space-y-3">
+          {block.checklist.map((item) => (
+            <li key={item.text} className="flex items-start gap-3">
+              <Check size={18} className="mt-0.5 shrink-0 text-primary" strokeWidth={2.5} aria-hidden />
+              {item.href ? (
+                <Link href={item.href} className="text-body text-primary-strong hover:underline">
+                  {item.text}
+                </Link>
+              ) : (
+                <span className="text-body text-secondary">{item.text}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8">
+          <Button href="/solutions" variant="link" withArrow>
+            Explore solutions
+          </Button>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
 
 export default function IndustriesPage() {
   return (
@@ -74,9 +141,12 @@ export default function IndustriesPage() {
         secondary={{ label: "Explore solutions", href: "/solutions" }}
       />
 
+      {/* Industries: vertical alternating blocks (one mini-page per industry) */}
       <section className="section">
-        <div className="container-site">
-          <IndustryTabs blocks={BLOCKS} />
+        <div className="container-site flex flex-col gap-20 lg:gap-28">
+          {BLOCKS.map((block, i) => (
+            <FeatureBlock key={block.eyebrow} block={block} flip={i % 2 === 1} />
+          ))}
         </div>
       </section>
 
