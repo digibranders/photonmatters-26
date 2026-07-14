@@ -131,7 +131,7 @@ export default function ContactPage() {
       </section>
 
       {/* Offices: premium cards */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader eyebrow="Offices" title="Find us across three regions." />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

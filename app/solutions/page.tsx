@@ -50,7 +50,7 @@ export default function SolutionsHubPage() {
       />
 
       {/* Solutions grid: bento */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="Solutions"

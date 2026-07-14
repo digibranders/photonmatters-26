@@ -161,7 +161,7 @@ export default async function NewsArticlePage({
       />
 
       {/* Back to hub: pt clears the fixed NavBar (content pages get this from HeroDark). */}
-      <div className="border-b border-line bg-sunken">
+      <div className="border-b border-line bg-canvas">
         <div className="container-site pb-5 pt-28">
           <Link
             href="/newsroom"
@@ -364,7 +364,7 @@ export default async function NewsArticlePage({
 
       {/* Continue the story: chronological prev/next through the arc */}
       {newer || older ? (
-        <section className="section bg-sunken">
+        <section className="section bg-canvas">
           <div className="container-site">
             <h2 className="text-label font-semibold uppercase tracking-[0.14em] text-muted">
               Continue the story

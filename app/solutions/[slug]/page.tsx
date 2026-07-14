@@ -140,7 +140,7 @@ export default async function SolutionDetailPage({
       </section>
 
       {/* Capabilities: bento cards */}
-      <section id="capabilities" className="section bg-sunken scroll-mt-24">
+      <section id="capabilities" className="section bg-canvas scroll-mt-24">
         <div className="container-site">
           <SectionHeader
             eyebrow={capabilities.eyebrow}

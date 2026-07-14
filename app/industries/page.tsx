@@ -151,7 +151,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Markets: premium cards */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             align="center"

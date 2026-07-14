@@ -42,7 +42,7 @@ export function FeatureShowcase({ eyebrow, heading, items }: FeatureShowcaseProp
   const item = items[active];
 
   return (
-    <section className="section bg-sunken">
+    <section className="section bg-canvas">
       <div className="container-site">
         {eyebrow ? <p className="eyebrow mb-4">{eyebrow}</p> : null}
         <h2 className={HEADING_CLIP}>{heading}</h2>
