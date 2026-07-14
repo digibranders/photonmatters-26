@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Industries",
   description:
     "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
+  alternates: { canonical: "/industries" },
 };
 
 /** Solid ink heading (matches the site-wide "Solid heading colors" direction). */

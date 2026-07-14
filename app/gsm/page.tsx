@@ -12,7 +12,8 @@ import { getIcon } from "@/lib/icons";
 export const metadata: Metadata = {
   title: "GSM: Missed Call & Collect Call",
   description:
-    "Zero-cost, no-data Missed Call and Collect Call engagement rails for telecom operators. Verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
+    "Zero-cost Missed Call & Collect Call engagement rails for telecom operators: verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
+  alternates: { canonical: "/gsm" },
 };
 
 const HEADING_CLIP =

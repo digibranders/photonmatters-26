@@ -15,6 +15,8 @@ import {
   type NewsQuote,
 } from "@/lib/news-data";
 import { SITE, MILESTONES } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbList } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return NEWS.map((n) => ({ slug: n.slug }));
@@ -158,6 +160,12 @@ export default async function NewsArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Newsroom", path: "/newsroom" },
+          { name: headline, path: `/newsroom/${item.slug}` },
+        ])}
       />
 
       {/* Back to hub: pt clears the fixed NavBar (content pages get this from HeroDark). */}

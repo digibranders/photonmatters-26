@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "PhotonMatters is building AI-native lending technology to bank the people legacy systems forgot, across Africa, India and the Middle East.",
+  alternates: { canonical: "/about" },
 };
 
 const HEADING_CLIP =

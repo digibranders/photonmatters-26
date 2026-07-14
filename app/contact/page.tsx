@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Talk to PhotonMatters about building your next AI-native lending product across Africa, India and the Middle East.",
+  alternates: { canonical: "/contact" },
 };
 
 function LinkedInGlyph({ size = 18, ...rest }: { size?: number } & React.SVGProps<SVGSVGElement>) {

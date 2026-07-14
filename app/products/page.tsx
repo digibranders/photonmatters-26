@@ -11,7 +11,8 @@ import { PRODUCT_LIST } from "@/lib/products-data";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Lending reimagined for every market and every need: design, launch and manage micro, consumer, commercial and supply-chain lending products on one AI-native platform.",
+    "Design, launch and manage micro, consumer, commercial and supply-chain lending products on one AI-native platform, built for every market and every need.",
+  alternates: { canonical: "/products" },
 };
 
 export default function ProductsHubPage() {

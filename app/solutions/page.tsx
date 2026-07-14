@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Solutions",
   description:
     "The complete lending and collections stack. Modular, API-first, AI-native modules for banks, NBFCs and telecom operators.",
+  alternates: { canonical: "/solutions" },
 };
 
 const HUB_BLURBS: Record<string, string> = {

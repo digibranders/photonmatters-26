@@ -209,9 +209,10 @@ export const NEWS: NewsItem[] = [
     quote: {
       text: "Our vision has always been to build a lending platform that enables financial institutions to innovate faster while remaining compliant across diverse markets. This milestone marks the beginning of that journey.",
       accent: "compliant across diverse markets",
-      // TODO: confirm speaker before publishing (quote provided without attribution).
+      // Institutional launch statement. Replace with a named executive quote
+      // (e.g. Tahseen Jamal, Co-Founder & CEO) once attribution is confirmed.
       attribution: "PhotonMatters",
-      role: "Founding team",
+      role: "Official company statement",
     },
     facts: [
       { label: "Announced", value: "July 2024" },

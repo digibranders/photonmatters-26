@@ -112,7 +112,7 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
           })}
         </g>
 
-        {/* Corrected India — official Survey-of-India boundary, drawn on top of
+        {/* Corrected India: official Survey-of-India boundary, drawn on top of
             the base topology so the northern territories (J&K, Ladakh) that
             Natural Earth truncates at the Line of Control read accurately. */}
         <g>

@@ -10,6 +10,8 @@ import { ProductExplorer } from "@/components/products/ProductExplorer";
 import { getIcon } from "@/lib/icons";
 import { PRODUCT_PAGES } from "@/lib/products-data";
 import type { ProductSlug } from "@/lib/products-data";
+import { JsonLd } from "@/components/JsonLd";
+import { serviceSchema, breadcrumbList } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return Object.keys(PRODUCT_PAGES).map((slug) => ({ slug }));
@@ -23,7 +25,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const page = PRODUCT_PAGES[slug as ProductSlug];
   if (!page) return {};
-  return { title: page.metaTitle, description: page.metaDescription };
+  const canonical = `/products/${slug}`;
+  return {
+    title: page.metaTitle,
+    description: page.metaDescription,
+    alternates: { canonical },
+    openGraph: {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      url: canonical,
+      type: "website",
+    },
+  };
 }
 
 export default async function ProductDetailPage({
@@ -36,9 +49,23 @@ export default async function ProductDetailPage({
   if (!page) notFound();
 
   const { hero, explorer, extras, why, cta } = page;
+  const path = `/products/${slug}`;
 
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          name: page.metaTitle,
+          description: page.metaDescription,
+          path,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Products", path: "/products" },
+          { name: page.metaTitle, path },
+        ])}
+      />
       <HeroDark
         eyebrow={hero.eyebrow}
         title={hero.title}

@@ -35,12 +35,11 @@ function Slides({ active }: { active: number }) {
         >
           <Image
             src={slide.src}
-            alt={i === 0 ? slide.alt : ""}
+            alt={slide.alt}
             fill
             priority={i === 0}
             sizes="100vw"
-            quality={95}
-            unoptimized
+            quality={80}
             className={slide.fit === "contain" ? "object-contain" : "object-cover"}
           />
         </div>
@@ -84,11 +83,13 @@ export function Hero() {
     return () => clearInterval(t);
   }, [reduce]);
 
+  // Animate position only, never opacity: the H1 is the LCP element and must
+  // be painted (and crawlable) immediately, even before hydration.
   const intro = reduce
     ? {}
     : {
-        initial: { opacity: 0, y: 16 },
-        animate: { opacity: 1, y: 0 },
+        initial: { y: 16 },
+        animate: { y: 0 },
         transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const },
       };
 
@@ -124,7 +125,7 @@ export function Hero() {
       <div className="container-site relative z-10 w-full">
         <motion.div {...intro} className="max-w-[40rem] py-10 lg:py-0">
           <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
-            AI Powered Lending{" "}
+            AI-Powered Lending{" "}
             <span className="font-playfair font-light text-[color:var(--blue-400)]">reaching the last mile</span>
           </h1>
           <p className="mt-7 max-w-[32rem] text-body-lg text-[color:var(--color-text-on-dark-muted)] [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">

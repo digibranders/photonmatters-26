@@ -1,0 +1,30 @@
+# PhotonMatters
+
+> PhotonMatters is an AI-native lending and collections platform for banks, NBFCs, fintechs and telecom operators across Africa, India and the Middle East. Headquartered in Dubai, it helps institutions launch credit products faster, score thin-file borrowers with alternative data, automate collections, and reconcile payments, on-premises or in the cloud.
+
+## About
+- [About PhotonMatters](https://www.photonmatters.io/about): Company mission, founders (Tahseen Jamal, Co-Founder & CEO; Rohit Ahuja, Co-Founder & CCO) and the Jul 2024–2026 journey.
+- [Contact](https://www.photonmatters.io/contact): Offices in Dubai (HQ), Ahmedabad, Johannesburg and New York; hello@photonmatters.io.
+
+## Solutions (modular, API-first, AI-native)
+- [Loan Origination](https://www.photonmatters.io/solutions/loan-origination): Digital onboarding, KYC/AML, configurable workflows and AI-assisted approvals.
+- [Loan Management](https://www.photonmatters.io/solutions/loan-management): Full lifecycle from disbursement to closure, schedules, accruals, restructures and payoffs.
+- [Credit Scoring](https://www.photonmatters.io/solutions/credit-scoring): Explainable AI scores from bureau, telco, cashflow and alternative data for thin-file borrowers.
+- [Debt Collection](https://www.photonmatters.io/solutions/debt-collection): AI-driven recovery that segments, prioritises and automates outreach to lift cure rates.
+- [Reconciliation AI](https://www.photonmatters.io/solutions/reconciliation-ai): Auto-matches payments, ledgers and gateway settlements and flags breaks before they age.
+- [Collection Marketing AI](https://www.photonmatters.io/solutions/collection-marketing-ai): Behaviour-driven nudges and offers that turn reminders into repayments.
+- [Campaign Management](https://www.photonmatters.io/solutions/campaign-management): Design, target and automate lending campaigns across SMS, WhatsApp, email and voice.
+
+## Products
+- [Micro Lending](https://www.photonmatters.io/products/micro-lending): High-volume, low-value automated lending.
+- [Consumer & Retail Lending](https://www.photonmatters.io/products/consumer-retail-lending): Personal, BNPL, line of credit and durable financing.
+- [Core Commercial Lending](https://www.photonmatters.io/products/core-commercial-lending): Term loans, working capital and asset finance.
+- [Supply Chain Finance](https://www.photonmatters.io/products/supply-chain-finance): Anchor-led financing across the supply chain.
+
+## Industries & platform
+- [Industries](https://www.photonmatters.io/industries): Built for banks, NBFCs and telecom operators.
+- [GSM: Missed Call & Collect Call](https://www.photonmatters.io/gsm): Zero-cost engagement rails for telecom operators, verification, opt-in and reminders on any 2G phone.
+
+## Resources
+- [Resource Centre](https://www.photonmatters.io/resources): Brochures and datasheets on the platform.
+- [Newsroom](https://www.photonmatters.io/newsroom): Product launches, market expansions and go-lives.

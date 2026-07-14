@@ -87,7 +87,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "loan-origination",
     metaTitle: "Loan Origination",
     metaDescription:
-      "Digital loan origination with eKYC, OCR document capture, a configurable product builder and a decision engine that pulls bureau and alternative data: from application to disbursement in minutes.",
+      "Digital loan origination: eKYC, OCR capture, a configurable product builder and a decision engine on bureau and alternative data, application to disbursement.",
     hero: {
       eyebrow: "Solutions · Origination",
       title: "Loan",
@@ -213,7 +213,7 @@ export const SOLUTION_PAGES: Record<SolutionSlug, SolutionPage> = {
     slug: "loan-management",
     metaTitle: "Loan Management",
     metaDescription:
-      "Full-lifecycle loan servicing: disbursement, repayment schedules and restructuring, interest and fee accruals, delinquency bucketing, multi-currency GL postings and borrower notifications.",
+      "Full-lifecycle loan servicing: disbursement, schedules, restructuring, interest and fee accruals, delinquency bucketing, multi-currency GL and borrower alerts.",
     hero: {
       eyebrow: "Solutions · Servicing",
       title: "Loan",

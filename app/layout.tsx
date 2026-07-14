@@ -47,6 +47,10 @@ const organizationSchema = {
   telephone: "+971526977485",
   foundingLocation: { "@type": "Place", name: "Dubai, UAE" },
   areaServed: ["Africa", "India", "Middle East", "GCC"],
+  founder: [
+    { "@type": "Person", name: "Tahseen Jamal", jobTitle: "Co-Founder & CEO" },
+    { "@type": "Person", name: "Rohit Ahuja", jobTitle: "Co-Founder & CCO" },
+  ],
   sameAs: ["https://www.linkedin.com/company/photonmatters"],
   address: {
     "@type": "PostalAddress",

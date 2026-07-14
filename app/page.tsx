@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Zap, Database, ShieldCheck } from "lucide-react";
@@ -12,6 +13,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stat } from "@/components/ui/Stat";
 import { getIcon } from "@/lib/icons";
 import { SOLUTIONS, GSM, MARKETS } from "@/lib/site";
+
+// Title & description are inherited from the root layout; only the canonical
+// is set here so the homepage self-references https://www.photonmatters.io/.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const GsmIcon = getIcon(GSM.icon);
 
