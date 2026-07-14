@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   animate,
   motion,
@@ -10,6 +10,7 @@ import {
   useSpring,
   type Variants,
 } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 import { getIcon } from "@/lib/icons";
 import { MILESTONES } from "@/lib/site";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -136,6 +137,46 @@ function FocusReveal() {
     window.scrollTo({ top: el.offsetTop + ((i + 0.5) / count) * runway, behavior: "smooth" });
   };
 
+  // Escape hatch out of the pinned timeline: glide to the section's bottom
+  // edge, which lands the viewport at the start of the next section. The
+  // runway spans several screens and the page uses CSS `scroll-behavior:
+  // smooth`, so a native smooth scroll would crawl across the whole distance.
+  // Instead run a fixed, short eased animation (CSS smooth is disabled for its
+  // duration so the two don't fight) for an immediate-feeling skip.
+  const skip = useCallback(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const html = document.documentElement;
+    const prevBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = "auto";
+    animate(window.scrollY, el.offsetTop + el.offsetHeight, {
+      duration: 0.7,
+      ease: EASE,
+      onUpdate: (v) => window.scrollTo(0, v),
+      onComplete: () => {
+        html.style.scrollBehavior = prevBehavior;
+      },
+    });
+  }, []);
+
+  // Esc skips the timeline, but only while the pinned zone actually owns the
+  // viewport, so the key stays harmless everywhere else on the page.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      const el = wrapRef.current;
+      if (!el) return;
+      const start = el.offsetTop;
+      const end = start + el.offsetHeight - window.innerHeight;
+      if (window.scrollY >= start && window.scrollY <= end) {
+        e.preventDefault();
+        skip();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [skip]);
+
   // Scroll runway. Larger multiplier = more scroll distance per milestone (less
   // sensitive). ~42vh/step means it takes a few wheel ticks to advance one step.
   const runwayVh = Math.round(count * 42 + 130);
@@ -149,6 +190,26 @@ function FocusReveal() {
       style={{ height: `${runwayVh}vh`, background: SECTION_BG }}
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        {/* Escape hatch: lets a reader leave the pinned timeline without
+            scrolling through every milestone. Kept low-emphasis so it never
+            competes with the content. */}
+        <button
+          type="button"
+          onClick={skip}
+          aria-label="Skip the timeline and continue to the next section"
+          className="group absolute bottom-8 right-8 z-20 inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-4 py-2 text-caption font-medium text-secondary shadow-sm backdrop-blur transition-all duration-200 hover:border-line-strong hover:text-ink focus-visible:border-line-strong focus-visible:text-ink"
+        >
+          Skip timeline
+          <ArrowDown
+            size={15}
+            aria-hidden
+            className="transition-transform duration-200 group-hover:translate-y-0.5"
+          />
+          <kbd className="ml-1 hidden rounded border border-line px-1.5 font-sans text-[10px] font-semibold leading-[1.4] text-muted sm:inline">
+            Esc
+          </kbd>
+        </button>
+
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div
             className="absolute right-[8%] top-1/2 h-96 w-96 -translate-y-1/2 rounded-full opacity-70 blur-[120px]"
