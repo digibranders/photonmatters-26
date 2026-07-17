@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Solutions",
   description:
     "The complete lending and collections stack. Modular, API-first, AI-native modules for banks, NBFCs and telecom operators.",
+  alternates: { canonical: "/solutions" },
 };
 
 const HUB_BLURBS: Record<string, string> = {
@@ -50,7 +51,7 @@ export default function SolutionsHubPage() {
       />
 
       {/* Solutions grid: bento */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="Solutions"

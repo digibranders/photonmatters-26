@@ -40,7 +40,7 @@ export function ProductExplorer({ eyebrow, heading, items }: ProductExplorerProp
   const item = items[active];
 
   return (
-    <section id="products" className="section bg-sunken scroll-mt-24">
+    <section id="products" className="section bg-canvas scroll-mt-24">
       <div className="container-site">
         {eyebrow ? <p className="eyebrow mb-4">{eyebrow}</p> : null}
         <h2 className={HEADING_CLIP}>{heading}</h2>

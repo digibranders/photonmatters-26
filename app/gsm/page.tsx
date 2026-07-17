@@ -12,7 +12,8 @@ import { getIcon } from "@/lib/icons";
 export const metadata: Metadata = {
   title: "GSM: Missed Call & Collect Call",
   description:
-    "Zero-cost, no-data Missed Call and Collect Call engagement rails for telecom operators. Verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
+    "Zero-cost Missed Call & Collect Call engagement rails for telecom operators: verification, opt-in, reminders and reverse-charge connectivity on any 2G phone.",
+  alternates: { canonical: "/gsm" },
 };
 
 const HEADING_CLIP =
@@ -174,7 +175,7 @@ export default function GsmPage() {
         </div>
       </section>
 
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <ProductBlock
             icon={PhoneMissed}
@@ -200,7 +201,7 @@ export default function GsmPage() {
 
       {/* How it works: journey rail: steps connected on one gradient line */}
       <HowFlow
-        className="bg-sunken"
+        className="bg-canvas"
         eyebrow="How it works"
         title="From a single dial to a fired action."
         steps={STEPS}

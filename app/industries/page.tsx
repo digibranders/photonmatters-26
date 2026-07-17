@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Industries",
   description:
     "Built for the institutions that move credit: banks, NBFCs and telecom operators across Africa, India and the Middle East.",
+  alternates: { canonical: "/industries" },
 };
 
 /** Solid ink heading (matches the site-wide "Solid heading colors" direction). */
@@ -151,7 +152,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Markets: premium cards */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             align="center"

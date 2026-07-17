@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Zap, Database, ShieldCheck } from "lucide-react";
@@ -12,6 +13,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stat } from "@/components/ui/Stat";
 import { getIcon } from "@/lib/icons";
 import { SOLUTIONS, GSM, MARKETS } from "@/lib/site";
+
+// Title & description are inherited from the root layout; only the canonical
+// is set here so the homepage self-references https://www.photonmatters.io/.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const GsmIcon = getIcon(GSM.icon);
 
@@ -58,7 +65,7 @@ export default function HomePage() {
       <Hero />
 
       {/* ── Solutions ──────────────────────────────────────────────────────── */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="Solutions"
@@ -167,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Industries ─────────────────────────────────────────────────────── */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="Industries"
@@ -242,7 +249,7 @@ export default function HomePage() {
       <Testimonials />
 
       {/* ── Human impact ───────────────────────────────────────────────────── */}
-      <section className="section-lg bg-sunken">
+      <section className="section-lg bg-canvas">
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-line">

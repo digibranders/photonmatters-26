@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Talk to PhotonMatters about building your next AI-native lending product across Africa, India and the Middle East.",
+  alternates: { canonical: "/contact" },
 };
 
 function LinkedInGlyph({ size = 18, ...rest }: { size?: number } & React.SVGProps<SVGSVGElement>) {
@@ -131,7 +132,7 @@ export default function ContactPage() {
       </section>
 
       {/* Offices: premium cards */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader eyebrow="Offices" title="Find us across three regions." />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -4,7 +4,9 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
-const EM_DASH = "—";
+// Defined by code point (not a literal glyph) so this guard file does not flag
+// itself when it scans the tracked source tree.
+const EM_DASH = String.fromCharCode(0x2014);
 
 function trackedFiles() {
   const out = execFileSync("git", ["ls-files"], { encoding: "utf8" });
@@ -33,7 +35,7 @@ for (const file of trackedFiles()) {
 }
 
 if (offenders.length > 0) {
-  console.error(`\nFound ${offenders.length} em-dash (—) occurrence(s). Replace with a comma, colon, period, or parentheses:\n`);
+  console.error(`\nFound ${offenders.length} em-dash (U+2014) occurrence(s). Replace with a comma, colon, period, or parentheses:\n`);
   for (const line of offenders) console.error(`  ${line}`);
   console.error("");
   process.exit(1);

@@ -86,7 +86,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "HandCoins",
     metaTitle: "Micro Lending",
     metaDescription:
-      "A microfinance engine built for speed and scale: micro personal, nano/mobile-money, enterprise, top-up and group loans with simplified e-KYC and real-time decisioning.",
+      "A microfinance engine built for speed and scale: micro, nano/mobile-money, enterprise, top-up and group loans with simplified e-KYC and real-time decisioning.",
     hero: {
       eyebrow: "Products · Micro",
       title: "Micro",
@@ -187,7 +187,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "CreditCard",
     metaTitle: "Consumer & Retail Lending",
     metaDescription:
-      "An agile consumer lending suite: personal loans, BNPL, lines of credit, consumer-durable and medical financing with real-time approvals, embedded delivery and intelligent decisioning.",
+      "An agile consumer lending suite: personal loans, BNPL, credit lines, consumer-durable and medical financing with real-time approvals and smart decisioning.",
     hero: {
       eyebrow: "Products · Consumer",
       title: "Consumer & Retail",
@@ -285,7 +285,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "Landmark",
     metaTitle: "Core Commercial Lending",
     metaDescription:
-      "Structured commercial credit: term loans, working capital, overdrafts, invoice financing, equipment and real-estate loans, with AI/ML scoring, embedded compliance and real-time monitoring.",
+      "Structured commercial credit: term loans, working capital, overdrafts, invoice, equipment and real-estate financing, with AI scoring and embedded compliance.",
     hero: {
       eyebrow: "Products · Commercial",
       title: "Core Commercial",
@@ -394,7 +394,7 @@ export const PRODUCT_PAGES: Record<ProductSlug, ProductPage> = {
     icon: "Handshake",
     metaTitle: "Supply Chain Finance",
     metaDescription:
-      "Structured, anchor-led and ecosystem-integrated supply-chain financing: invoice discounting, PO, vendor (reverse-factoring), distributor and inventory finance, with real-time decisioning and document intelligence.",
+      "Anchor-led, ecosystem-integrated supply-chain finance: invoice discounting, PO, vendor, distributor and inventory finance, with real-time decisioning.",
     hero: {
       eyebrow: "Products · SCF",
       title: "Supply Chain",

@@ -151,7 +151,7 @@ export default function NewsroomPage() {
       </section>
 
       {/* All announcements: filterable grid */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="All announcements"

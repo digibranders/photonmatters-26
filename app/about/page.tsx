@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "PhotonMatters is building AI-native lending technology to bank the people legacy systems forgot, across Africa, India and the Middle East.",
+  alternates: { canonical: "/about" },
 };
 
 const HEADING_CLIP =
@@ -111,7 +112,7 @@ export default function AboutPage() {
       <Journey />
 
       {/* Values: bento */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             eyebrow="What drives us"
@@ -177,7 +178,7 @@ export default function AboutPage() {
       </section>
 
       {/* Markets: premium cards */}
-      <section className="section bg-sunken">
+      <section className="section bg-canvas">
         <div className="container-site">
           <SectionHeader
             align="center"

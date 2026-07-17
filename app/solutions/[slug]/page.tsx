@@ -12,6 +12,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { getIcon } from "@/lib/icons";
 import { SOLUTION_PAGES } from "@/lib/solutions-data";
 import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { serviceSchema, breadcrumbList } from "@/lib/structured-data";
 
 /** Light gradient-clipped heading: eterna signature (ink → ink/60). */
 const HEADING_CLIP =
@@ -39,7 +41,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const page = SOLUTION_PAGES[slug as SolutionSlug];
   if (!page) return {};
-  return { title: page.metaTitle, description: page.metaDescription };
+  const canonical = `/solutions/${slug}`;
+  return {
+    title: page.metaTitle,
+    description: page.metaDescription,
+    alternates: { canonical },
+    openGraph: {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      url: canonical,
+      type: "website",
+    },
+  };
 }
 
 export default async function SolutionDetailPage({
@@ -52,9 +65,23 @@ export default async function SolutionDetailPage({
   if (!page) notFound();
 
   const { hero, overview, capabilities, how, outcomes, cta, featureShowcase } = page;
+  const path = `/solutions/${slug}`;
 
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          name: page.metaTitle,
+          description: page.metaDescription,
+          path,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Solutions", path: "/solutions" },
+          { name: page.metaTitle, path },
+        ])}
+      />
       <SolutionHero
         title={hero.title}
         titleAccent={hero.titleAccent}
@@ -75,8 +102,7 @@ export default async function SolutionDetailPage({
                   alt=""
                   fill
                   sizes="100vw"
-                  quality={95}
-                  unoptimized
+                  quality={80}
                   className="object-cover"
                 />
                 <div
@@ -140,7 +166,7 @@ export default async function SolutionDetailPage({
       </section>
 
       {/* Capabilities: bento cards */}
-      <section id="capabilities" className="section bg-sunken scroll-mt-24">
+      <section id="capabilities" className="section bg-canvas scroll-mt-24">
         <div className="container-site">
           <SectionHeader
             eyebrow={capabilities.eyebrow}
