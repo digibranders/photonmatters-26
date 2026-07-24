@@ -162,7 +162,7 @@ export function NavBar() {
     >
       <div className="container-site flex h-[76px] items-center justify-between lg:h-[84px]">
         <Link href="/" aria-label="PhotonMatters home" className="shrink-0">
-          <Logo tone={isDark ? "onDark" : "onLight"} />
+          <Logo tone={isDark ? "onDark" : "onLight"} className="h-12 lg:h-14" />
         </Link>
 
         {/* Desktop nav */}
