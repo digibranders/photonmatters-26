@@ -19,11 +19,30 @@ import { BRAND, CLS, TEXT_STYLES, renderEmailShell } from "./shell";
 const FONT_STACK =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
+/**
+ * Maps a region choice to the team that covers it.
+ *
+ * The copy cannot interpolate the raw form value: the region select offers
+ * "Other" alongside the three regions, which would produce "our Other team".
+ * Anything unmapped falls back to the generic phrasing, so this also stays
+ * correct if `COUNTRIES` in the contact form gains an option.
+ */
+const REGION_TEAMS: Readonly<Record<string, string>> = {
+  Africa: "our Africa team",
+  India: "our India team",
+  "Middle East": "our Middle East team",
+};
+
+function teamFor(country: string): string {
+  return REGION_TEAMS[country] ?? "our team";
+}
+
 /** Builds the subject, HTML and plain-text parts of the visitor auto-reply. */
 export function renderUserConfirmation(submission: ContactSubmission): RenderedEmail {
   const { name, country, message, submittedAt } = submission;
   const firstName = name.split(/\s+/)[0] || name;
   const timestamp = formatTimestamp(submittedAt);
+  const team = teamFor(country);
 
   const messageHtml =
     toParagraphs(
@@ -35,8 +54,8 @@ export function renderUserConfirmation(submission: ContactSubmission): RenderedE
   const body = `
     <p class="${CLS.text}" style="${TEXT_STYLES.paragraph}">Hi ${escapeHtml(firstName)},</p>
     <p class="${CLS.text}" style="${TEXT_STYLES.paragraph}">
-      Thanks for getting in touch. Someone who knows the ${escapeHtml(country)} market
-      will reply within one business day.
+      Your enquiry is with ${escapeHtml(team)} and you will have a reply within
+      one business day.
     </p>
 
     <p class="${CLS.muted}" style="${TEXT_STYLES.sectionTitle}margin-top:28px;">Your message</p>
@@ -70,8 +89,7 @@ export function renderUserConfirmation(submission: ContactSubmission): RenderedE
   const text = [
     `Hi ${firstName},`,
     ``,
-    `Thanks for getting in touch. Someone who knows the ${country} market will reply`,
-    `within one business day.`,
+    `Your enquiry is with ${team} and you will have a reply within one business day.`,
     ``,
     `YOUR MESSAGE (sent ${timestamp})`,
     ``,
