@@ -10,6 +10,7 @@
     "check:em-dash": "node scripts/check-no-em-dash.mjs"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.68.0",
     "d3-geo": "^3.1.1",
     "framer-motion": "^12.42.0",
     "lucide-react": "^1.21.0",

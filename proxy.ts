@@ -32,6 +32,12 @@ export const config = {
   /**
    * Run on document routes only; skip Next.js internals and common static
    * assets so the optimizer and static pipeline stay untouched.
+   *
+   * `monitoring` is Sentry's tunnel route (see `tunnelRoute` in next.config.mjs).
+   * It carries event payloads, not documents, so tagging it with robots headers
+   * is meaningless and it has no business passing through this proxy.
    */
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|webp|svg|ico|pdf)$).*)"],
+  matcher: [
+    "/((?!monitoring|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|webp|svg|ico|pdf)$).*)",
+  ],
 };
