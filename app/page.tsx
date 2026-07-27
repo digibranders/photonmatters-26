@@ -15,7 +15,7 @@ import { getIcon } from "@/lib/icons";
 import { SOLUTIONS, GSM, MARKETS } from "@/lib/site";
 
 // Title & description are inherited from the root layout; only the canonical
-// is set here so the homepage self-references https://www.photonmatters.io/.
+// is set here so the homepage self-references https://www.photonmatters.com/.
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };

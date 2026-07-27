@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
+import { SITE } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.photonmatters.io"),
+  metadataBase: new URL(SITE.url),
   title: {
     default: "PhotonMatters: AI-Native Lending & Collections Platform",
     template: "%s | PhotonMatters",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "PhotonMatters",
     type: "website",
-    url: "https://www.photonmatters.io/",
+    url: `${SITE.url}/`,
   },
   twitter: { card: "summary_large_image" },
 };
@@ -39,11 +40,11 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "PhotonMatters",
-  url: "https://www.photonmatters.io",
-  logo: "https://www.photonmatters.io/photonmatters-logo.svg",
+  url: SITE.url,
+  logo: `${SITE.url}/photonmatters-logo.svg`,
   description:
     "PhotonMatters is the AI-native lending and collections technology powering banks, NBFCs and telecom operators across Africa, India and the Middle East.",
-  email: "hello@photonmatters.io",
+  email: "hello@photonmatters.com",
   telephone: "+971526977485",
   foundingLocation: { "@type": "Place", name: "Dubai, UAE" },
   areaServed: ["Africa", "India", "Middle East", "GCC"],

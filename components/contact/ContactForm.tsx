@@ -13,6 +13,9 @@ type FieldErrors = Partial<Record<FieldName, string>>;
 const COUNTRIES = ["Africa", "India", "Middle East", "Other"];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** Mirrors the server-side caps in `app/api/contact/route.ts`. */
+const MAX_LENGTH = { name: 120, email: 254, company: 160, message: 5000 } as const;
+
 const fieldClass =
   "w-full rounded-xl border border-line bg-sunken px-4 py-3.5 text-body text-ink placeholder:text-muted outline-none transition-all duration-200 focus:border-[color:rgba(126,73,242,0.5)] focus:bg-surface focus:shadow-[0_0_0_4px_rgba(126,73,242,0.12)]";
 const invalidClass =
@@ -87,6 +90,10 @@ export function ContactForm() {
         <p className="text-body-lg text-ink">
           Thanks, we’ve got your message and will reply within one business day.
         </p>
+        <p className="text-caption text-secondary">
+          A confirmation is on its way to your inbox. If it isn’t there in a few minutes,
+          check your spam folder.
+        </p>
       </div>
     );
   }
@@ -101,6 +108,7 @@ export function ContactForm() {
           id="name"
           name="name"
           autoComplete="name"
+          maxLength={MAX_LENGTH.name}
           className={cn(fieldClass, errors.name && invalidClass)}
           placeholder="Your name"
           aria-invalid={errors.name ? true : undefined}
@@ -116,6 +124,7 @@ export function ContactForm() {
           name="email"
           type="email"
           autoComplete="email"
+          maxLength={MAX_LENGTH.email}
           className={cn(fieldClass, errors.email && invalidClass)}
           placeholder="you@company.com"
           aria-invalid={errors.email ? true : undefined}
@@ -126,7 +135,14 @@ export function ContactForm() {
       </div>
       <div>
         <label htmlFor="company" className={labelClass}>Company</label>
-        <input id="company" name="company" autoComplete="organization" className={fieldClass} placeholder="Bank, NBFC or operator" />
+        <input
+          id="company"
+          name="company"
+          autoComplete="organization"
+          maxLength={MAX_LENGTH.company}
+          className={fieldClass}
+          placeholder="Bank, NBFC or operator"
+        />
       </div>
       <div>
         <label id="country-label" htmlFor="country" className={labelClass}>Country / region</label>
@@ -150,6 +166,7 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={5}
+          maxLength={MAX_LENGTH.message}
           className={cn(fieldClass, "resize-y", errors.message && invalidClass)}
           placeholder="Tell us about the lending journey you want to build."
           aria-invalid={errors.message ? true : undefined}

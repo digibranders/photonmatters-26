@@ -5,10 +5,11 @@
 
 export const SITE = {
   name: "PhotonMatters",
-  domain: "photonmatters.io",
-  url: "https://www.photonmatters.io",
-  email: "hello@photonmatters.io",
-  careersEmail: "careers@photonmatters.io",
+  domain: "photonmatters.com",
+  /** Canonical origin. The apex 308-redirects here, so www is the real host. */
+  url: "https://www.photonmatters.com",
+  email: "hello@photonmatters.com",
+  careersEmail: "careers@photonmatters.com",
   phone: "+971 526977485",
   phoneHref: "tel:+971526977485",
   linkedin: "https://www.linkedin.com/company/photonmatters",

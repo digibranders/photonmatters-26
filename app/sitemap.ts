@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { SOLUTIONS } from "@/lib/site";
+import { SITE, SOLUTIONS } from "@/lib/site";
 import { PRODUCT_LIST } from "@/lib/products-data";
 import { NEWS } from "@/lib/news-data";
 
-const BASE = "https://www.photonmatters.io";
+const BASE = SITE.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

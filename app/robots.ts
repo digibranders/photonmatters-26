@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { SITE } from "@/lib/site";
 
-const BASE = "https://www.photonmatters.io";
+const BASE = SITE.url;
 
 /**
  * Only the production deployment on the canonical domain may be indexed.

@@ -6,4 +6,9 @@
 next-env.d.ts
 .DS_Store
 .env*.local
+# Next's default only covers *.local, which leaves a plain `.env` committable.
+# Secrets live in .env.local; .env.example is the tracked, value-free template.
+.env
+.env.*
+!.env.example
 .vercel
