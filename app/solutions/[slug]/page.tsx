@@ -115,7 +115,7 @@ export default async function SolutionDetailPage({
               </div>
 
               {/* Frosted glass content card */}
-              <div className="relative px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
+              <div className="relative px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <div
                   className="max-w-xl rounded-3xl border border-white/60 p-8 backdrop-blur-2xl sm:p-10"
                   style={{
@@ -288,7 +288,7 @@ export default async function SolutionDetailPage({
         <div className="container-site">
           <Reveal>
             <div
-              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 md:px-14 md:py-16"
+              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 md:px-12 md:py-12"
               style={{
                 background:
                   "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 48%, #8a55f5 100%)",

@@ -24,7 +24,7 @@ export function PageHero({ eyebrow, title, subtitle, image, imageAlt = "" }: Pag
       />
       <div
         className={cn(
-          "container-site pt-32 pb-[var(--section-y)] lg:pt-40",
+          "container-site pt-24 pb-8 lg:pt-28 lg:pb-10",
           image && "grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center",
         )}
       >

@@ -160,9 +160,20 @@ export function NavBar() {
         headerClass,
       )}
     >
-      <div className="container-site flex h-[76px] items-center justify-between lg:h-[84px]">
+      <div
+        className={cn(
+          "container-site flex items-center justify-between transition-all duration-300 ease-out",
+          atTop ? "h-[92px] lg:h-[104px]" : "h-[76px] lg:h-[84px]"
+        )}
+      >
         <Link href="/" aria-label="PhotonMatters home" className="shrink-0">
-          <Logo tone={isDark ? "onDark" : "onLight"} />
+          <Logo
+            tone={isDark ? "onDark" : "onLight"}
+            className={cn(
+              "transition-all duration-300 ease-out",
+              atTop ? "h-14 sm:h-16 lg:h-[68px]" : "h-12 lg:h-14"
+            )}
+          />
         </Link>
 
         {/* Desktop nav */}

@@ -96,7 +96,7 @@ export function Hero() {
   return (
     <section
       data-nav-theme="dark"
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-20 lg:justify-center lg:pb-44 text-white"
+      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-20 lg:justify-center lg:pb-8 text-white"
       style={{ backgroundColor: "#07101f" }}
     >
       {/* Full-bleed image carousel */}
@@ -164,7 +164,7 @@ export function Hero() {
           {/* Mobile/tablet: 2·2·1 grid, the fifth stat spans full width and
               centers beneath the 2×2 block. Desktop: a single 5-up row with
               vertical dividers. */}
-          <div className="container-site grid grid-cols-2 gap-x-6 gap-y-8 py-7 [text-shadow:0_1px_16px_rgba(7,16,31,0.55)] lg:grid-cols-5 lg:gap-y-0 lg:gap-x-0">
+          <div className="container-site grid grid-cols-2 gap-x-6 gap-y-8 py-3 [text-shadow:0_1px_16px_rgba(7,16,31,0.55)] lg:grid-cols-5 lg:gap-y-0 lg:gap-x-0">
             {PLATFORM_STATS.map((s, i) => (
               <Reveal
                 key={s.label}

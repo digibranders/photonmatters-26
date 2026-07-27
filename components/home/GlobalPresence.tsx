@@ -23,7 +23,7 @@ const GlobalPresenceMap = dynamic(
 
 export function GlobalPresence() {
   return (
-    <section data-nav-theme="dark" className="relative overflow-hidden bg-ink py-16 text-white md:py-20">
+    <section data-nav-theme="dark" className="section relative overflow-hidden bg-ink text-white">
       {/* Vertical plum→violet→plum wash, mirrored from the revamp */}
       <div
         aria-hidden

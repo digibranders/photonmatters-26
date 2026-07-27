@@ -94,7 +94,7 @@ export default async function ProductDetailPage({
 
       {/* Specialized extras: bento (optional) */}
       {extras ? (
-        <section className="pb-12 pt-[var(--section-y)] sm:pb-16">
+        <section className="pb-8 pt-[var(--section-y)] sm:pb-10">
           <div className="container-site">
             <SectionHeader eyebrow={extras.eyebrow} title={extras.heading} />
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -155,7 +155,7 @@ export default async function ProductDetailPage({
         <div className="container-site">
           <Reveal>
             <div
-              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-16"
+              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-12 md:py-12"
               style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
             >
               <div

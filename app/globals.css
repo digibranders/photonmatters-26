@@ -170,16 +170,7 @@
   .section-lg {
     padding-block: var(--section-y-lg);
   }
-  /* Two consecutive light sections used to be split by a coloured band, so the
-     stacked bottom+top padding read as one intentional gap. With the bands now
-     white, that doubled padding looks like an oversized void, so collapse the
-     following section's top padding into a single band of space. Dark sections
-     carry `text-white`, so they are excluded on both sides to keep full
-     breathing room wherever a light section meets a dark one. */
-  :where(.section, .section-lg):not(.text-white)
-    + :where(.section, .section-lg):not(.text-white) {
-    padding-top: 0;
-  }
+
 
   /* Serif italic accent: apply to 1–2 words inside a heading only.
      - weight 500 (not 400) so it holds visual mass next to Jakarta 700–800.

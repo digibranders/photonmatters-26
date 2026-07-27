@@ -39,7 +39,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Premium contact card: dark info panel + form */}
-      <section className="relative overflow-hidden pb-[var(--section-y)] pt-32 lg:pt-36">
+      <section className="relative overflow-hidden pb-[var(--section-y)] pt-24 lg:pt-28">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10"
