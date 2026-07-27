@@ -262,7 +262,7 @@ export default function GsmPage() {
         <div className="container-site">
           <Reveal>
             <div
-              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-16"
+              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-12 md:py-12"
               style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
             >
               <div

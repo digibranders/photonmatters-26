@@ -13,7 +13,7 @@ export function CtaBand() {
         <Reveal>
           {/* Gradient CTA card: eterna signature (purple → deep purple) */}
           <div
-            className="relative overflow-hidden rounded-[2.5rem] px-8 py-16 text-center shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-16 md:py-20"
+            className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 text-center shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-14"
             style={{
               background:
                 "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)",

@@ -145,13 +145,9 @@
   --space-12: 7.5rem;  /* 120 */
   --space-13: 10rem;   /* 160 */
 
-  /* Fluid section padding (48 → 120 standard; 56 → 160 generous).
-     Lower floor/base than the previous 64/80 so two stacked sections on a
-     390px viewport don't compound into a ~140px dead-space band; the upper
-     bound (desktop) is unchanged, both formulas still saturate at the same
-     ceiling on wide viewports. */
-  --section-y: clamp(3rem, 1.5rem + 8vw, 7.5rem);
-  --section-y-lg: clamp(3.5rem, 1.75rem + 13vw, 10rem);
+  /* Fluid section padding: compact and symmetrical section spacing (28px → 48px standard; 36px → 60px generous). */
+  --section-y: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  --section-y-lg: clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem);
 
   /* ---------------------------------------------------------------------------
      5. LAYOUT: container + fluid gutters

@@ -66,7 +66,7 @@ export function HeroDark({
       />
 
       <div className="container-site relative z-10 w-full">
-        <div className="max-w-[44rem] py-16 lg:py-20">
+        <div className="max-w-[44rem] py-12 lg:py-14">
           {eyebrow ? (
             <p className="mb-5 text-label font-semibold uppercase tracking-[0.14em] text-[color:var(--blue-400)]">
               {eyebrow}

@@ -148,7 +148,7 @@ export default function ResourcesPage() {
         <div className="container-site">
           <Reveal>
             <div
-              className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 md:px-14 md:py-16"
+              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 md:px-12 md:py-12"
               style={{
                 background:
                   "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 52%, #8a55f5 100%)",

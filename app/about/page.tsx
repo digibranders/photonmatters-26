@@ -135,7 +135,15 @@ export default function AboutPage() {
       {/* Leadership: founder cards with portraits */}
       <section className="section">
         <div className="container-site">
-          <SectionHeader eyebrow="Leadership" title="Founders who’ve spent decades building this." />
+          <SectionHeader
+            eyebrow="Leadership"
+            title={
+              <>
+                Where Vision Meets{" "}
+                <span className="font-playfair text-primary-strong">Experience</span>.
+              </>
+            }
+          />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {LEADERS.map((l, i) => (
               <Reveal key={l.name} index={i}>
