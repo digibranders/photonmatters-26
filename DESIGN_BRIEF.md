@@ -38,14 +38,14 @@ PhotonMatters is an **AI-native lending & collections platform** for banks, NBFC
 
 ## 2. Content inventory: Repo A (source of truth)
 
-**13 pages.** Brand consistently spelled **PhotonMatters**; domain `photonmatters.io`; email `hello@photonmatters.io`; phone `+971 526977485`; LinkedIn `/company/photonmatters`.
+**13 pages.** Brand consistently spelled **PhotonMatters**; domain `photonmatters.com`; email `hello@photonmatters.com`; phone `+971 526977485`; LinkedIn `/company/photonmatters`.
 
 ### Global navigation (from `assets/site.js`)
 `Home` · `About` · **`Solutions`** (dropdown → Loan Origination, Loan Management, Credit Scoring, Debt Collection, Reconciliation AI, Collection Marketing AI, Campaign Management, divider, **GSM · Missed Call & Collect Call**, All solutions →) · `Industries` · `GSM` · `Contact` · button **`Book a demo`** (mailto).
 Header is dark/glassy fixed bar; logo = blue starburst + small gold starburst, wordmark **Photon**(white) **Matters**(gold).
 
 ### Global footer (from `assets/site.js`)
-4 columns: **Brand blurb** ("AI-native lending & collections technology for banks, NBFCs and telecom operators across Africa, India and the Middle East." + tagline "Built to Disrupt. Engineered for Scale. Designed to Empower.") · **Solutions** (8 links incl. "GSM Solutions") · **Company** (About, Industries, GSM, Contact, Careers→`mailto:careers@photonmatters.io`, LinkedIn) · **Offices** (Dubai · HQ, Ahmedabad, Johannesburg, New York). Legal bar: "© 2026 PhotonMatters. All rights reserved." · "Africa · India · Middle East & GCC".
+4 columns: **Brand blurb** ("AI-native lending & collections technology for banks, NBFCs and telecom operators across Africa, India and the Middle East." + tagline "Built to Disrupt. Engineered for Scale. Designed to Empower.") · **Solutions** (8 links incl. "GSM Solutions") · **Company** (About, Industries, GSM, Contact, Careers→`mailto:careers@photonmatters.com`, LinkedIn) · **Offices** (Dubai · HQ, Ahmedabad, Johannesburg, New York). Legal bar: "© 2026 PhotonMatters. All rights reserved." · "Africa · India · Middle East & GCC".
 
 ### Page-by-page (headline → key blocks)
 
@@ -121,7 +121,7 @@ Blue/gold: `ink #0A1B33`, `brand #1E5EFF`, `gold #F59E0B`, `paper #F7F9FC`, `mut
 |---|---|---|---|---|
 | A1 | **Palette** | Blue `#1E5EFF` + Gold `#F59E0B` | Purple `#7E49F2` + Yellow `#F2CB07` |: |
 | A2 | **Brand name** | "PhotonMatters" | Footer: "Photon Matters" (2 words) | "photonmaters" (1 t) |
-| A3 | **Email** | `hello@photonmatters.io` | `business@photonmatters.com` |: |
+| A3 | **Email** | `hello@photonmatters.com` | `business@photonmatters.com` |: |
 | A4 | **Domain** | `.io` | `.com` |: |
 | A5 | **Copyright** | © 2026 | © 2025 |: |
 | A6 | **Fonts** | Schibsted + Hanken Grotesk | Plus Jakarta Sans + Playfair Display |: |

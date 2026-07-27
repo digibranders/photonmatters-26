@@ -24,7 +24,7 @@ function LinkedInGlyph({ size = 18, ...rest }: { size?: number } & React.SVGProp
 const DETAILS = [
   { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
   { icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
-  { icon: LinkedInGlyph, label: "LinkedIn", value: "/company/photonmatters", href: SITE.linkedin },
+  { icon: LinkedInGlyph, label: "LinkedIn", value: "PhotonMatters", href: SITE.linkedin },
 ];
 
 // Longest value ("250k+/hr") placed last so it can take the full-width row

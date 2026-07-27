@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 /** The single canonical, indexable host. Everything else must not be indexed. */
-const CANONICAL_HOST = "www.photonmatters.io";
+const CANONICAL_HOST = "www.photonmatters.com";
 
 /**
  * Keep every non-canonical host out of search indexes.
  *
  * This covers all `*.vercel.app` preview and production-alias URLs, the apex
- * `photonmatters.io` domain, and localhost, as well as any deployment whose
+ * `photonmatters.com` domain, and localhost, as well as any deployment whose
  * environment is not "production". Search engines honour `X-Robots-Tag` even
  * when a page is reachable and crawlable, so this holds regardless of what
  * robots.txt says for a given host.
