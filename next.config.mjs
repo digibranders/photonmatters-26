@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 
 /**
@@ -37,4 +39,30 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  org: "fynix-digital",
+  project: "photonmatters",
+
+  /**
+   * Uploads source maps on production builds so real-user stack traces show
+   * this source rather than minified output. Without the token the build still
+   * succeeds, it just skips the upload, so CI is never blocked on it.
+   */
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  widenClientFileUpload: true,
+
+  /**
+   * Routes events through the app's own origin so ad blockers, which commonly
+   * block requests to ingest.sentry.io, cannot silently drop client errors.
+   * `proxy.ts` excludes this path from its matcher.
+   */
+  tunnelRoute: "/monitoring",
+
+  // Keep local builds quiet; keep the upload log in CI where it is diagnostic.
+  silent: !process.env.CI,
+
+  // The build plugin reports its own usage back to Sentry. Off by choice, not
+  // for quota (it is billed to Sentry, not to this org), simply because nothing
+  // here needs it.
+  telemetry: false,
+});
