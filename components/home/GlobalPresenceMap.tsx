@@ -9,9 +9,32 @@ import indiaOfficial from "@/lib/india-official.json";
 import type { Office } from "@/lib/site";
 
 // ─── Geometry ────────────────────────────────────────────────────────────────
-// viewBox space: the SVG scales fluidly to its container width.
+// viewBox space: the SVG scales fluidly to its container width. Only the width
+// is fixed; the height is derived from FOCUS below so the box always hugs the
+// drawn band instead of padding it with dead ocean.
 const W = 1000;
-const H = 560;
+const PAD_X = 28;
+const PAD_Y = 18;
+
+// The slice of the globe the offices live in: Americas → Atlantic → Africa →
+// India. The empty Pacific, East Asia and the polar caps are cropped away.
+//
+// The latitude band is deliberately tight. The section gives the map a fixed
+// single-screen height budget, so drawn width is height x aspect: the flatter
+// this band, the larger the map renders. 55°N / 38°S is as flat as it goes
+// before a continent reads as amputated rather than cropped. It keeps the
+// United States, the whole of Africa and every office latitude well inside the
+// frame, and trims only the Arctic, most of Canada and Patagonia.
+// Markers stay correct: same projection.
+const FOCUS = {
+  type: "MultiPoint",
+  coordinates: [
+    [-168, -38],
+    [-168, 55],
+    [95, -38],
+    [95, 55],
+  ],
+};
 
 // Countries that host an office: rendered with a brighter purple fill.
 const OFFICE_COUNTRIES = new Set([
@@ -33,7 +56,7 @@ type WorldFeature = Feature<Geometry, { name: string }>;
 export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
   const [hover, setHover] = useState<Office | null>(null);
 
-  const { features, indiaFeatures, project, path } = useMemo(() => {
+  const { features, indiaFeatures, project, path, H } = useMemo(() => {
     const topo = worldTopo as unknown as { objects: { countries: unknown } };
     const toFeatures = feature as unknown as (
       t: unknown,
@@ -42,26 +65,26 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
     const fc = toFeatures(topo, topo.objects.countries);
 
     const project = geoNaturalEarth1();
-    // Zoom to the band that holds every office (Americas → Atlantic → Africa →
-    // India), cropping the empty Pacific, East Asia and polar caps for a
-    // cleaner, tighter map. Markers stay correct: same projection.
-    const FOCUS = {
-      type: "MultiPoint",
-      coordinates: [
-        [-168, -42],
-        [-168, 72],
-        [95, -42],
-        [95, 72],
-      ],
-    };
+
+    // Scale to the box width first, then read back how tall FOCUS actually
+    // draws: that becomes the viewBox height, so the band fills the box edge to
+    // edge with no leftover vertical slack to waste on-screen.
+    const fitWidth = project.fitWidth as unknown as (width: number, object: unknown) => void;
+    fitWidth(W - PAD_X * 2, FOCUS);
+    const bounds = (geoPath(project).bounds as unknown as (
+      object: unknown,
+    ) => [[number, number], [number, number]])(FOCUS);
+    const H = Math.round(bounds[1][1] - bounds[0][1] + PAD_Y * 2);
+
+    // Re-fit into the now-known box so the band is centred inside the padding.
     const fit = project.fitExtent as unknown as (
       extent: [[number, number], [number, number]],
       object: unknown,
     ) => void;
     fit(
       [
-        [28, 18],
-        [W - 28, H - 18],
+        [PAD_X, PAD_Y],
+        [W - PAD_X, H - PAD_Y],
       ],
       FOCUS,
     );
@@ -72,11 +95,25 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
     const indiaFeatures = (indiaOfficial as FeatureCollection<Geometry, { name: string }>)
       .features;
 
-    return { features: fc.features, indiaFeatures, project, path: geoPath(project) };
+    return { features: fc.features, indiaFeatures, project, path: geoPath(project), H };
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div
+      className="relative mx-auto w-full"
+      // Keep the section heading and the whole map on one screen. The SVG is
+      // fluid, so its height is width x (H/W): capping the width is what caps
+      // the height. Capping the wrapper (rather than letterboxing the SVG
+      // inside a wider box) keeps the drawing flush to these edges, which the
+      // percentage-positioned tooltip below depends on.
+      // --gp-viewport-reserve is the chrome above the map (fixed header,
+      // section padding, heading block, gap); the section that hosts the map
+      // sets it, and the fallback is deliberately generous for any caller that
+      // does not. The max() floor keeps the map usable on very short viewports.
+      style={{
+        maxWidth: `calc(max(320px, 100svh - var(--gp-viewport-reserve, 400px)) * ${W} / ${H})`,
+      }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="h-auto w-full"

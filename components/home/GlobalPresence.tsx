@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { CSSProperties } from "react";
 import { MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { OFFICES } from "@/lib/site";
@@ -23,7 +24,14 @@ const GlobalPresenceMap = dynamic(
 
 export function GlobalPresence() {
   return (
-    <section data-nav-theme="dark" className="section relative overflow-hidden bg-ink text-white">
+    <section
+      data-nav-theme="dark"
+      className="section relative overflow-hidden bg-ink text-white"
+      // Vertical space the map has to give up so it and the heading share one
+      // screen: 104px fixed header + 48px section padding-top + ~183px heading
+      // block + 24px gap, plus ~20px of breathing room under the map.
+      style={{ "--gp-viewport-reserve": "380px" } as CSSProperties}
+    >
       {/* Vertical plum→violet→plum wash, mirrored from the revamp */}
       <div
         aria-hidden
@@ -52,7 +60,7 @@ export function GlobalPresence() {
 
         {/* Full-width map */}
         <Reveal>
-          <div className="container-site mt-10">
+          <div className="container-site mt-6">
             <GlobalPresenceMap offices={OFFICES} />
           </div>
         </Reveal>
