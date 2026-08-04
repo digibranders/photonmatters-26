@@ -96,8 +96,8 @@
   --font-serif-accent: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
 
   /* Fluid sizes */
-  --text-display: clamp(2.5rem, 1.7rem + 3.5vw, 4rem);     /* 40 → 64 */
-  --text-h1: clamp(2.25rem, 1.55rem + 3.5vw, 3.5rem);      /* 36 → 56 */
+  --text-display: clamp(2.25rem, 1.55rem + 3.5vw, 3.5rem); /* 36 → 56 */
+  --text-h1: clamp(2rem, 1.44rem + 2.8vw, 3rem);           /* 32 → 48 */
   --text-h2: clamp(1.75rem, 1.3rem + 2.25vw, 2.625rem);    /* 28 → 42 */
   --text-h3: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);      /* 20 → 24 */
   --text-body-lg: clamp(1.125rem, 1.05rem + 0.38vw, 1.3125rem); /* 18 → 21 */

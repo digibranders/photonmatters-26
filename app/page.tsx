@@ -6,6 +6,7 @@ import { Hero } from "@/components/home/Hero";
 import { SolutionCard } from "@/components/home/SolutionCard";
 import { Testimonials } from "@/components/home/Testimonials";
 import { GlobalPresence } from "@/components/home/GlobalPresence";
+import { LastMileDiagram } from "@/components/home/LastMileDiagram";
 import { CtaBand } from "@/components/home/CtaBand";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -252,15 +253,7 @@ export default function HomePage() {
       <section className="section-lg bg-canvas">
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-line">
-              <Image
-                src="/hero/section-last-mile.webp"
-                alt="A first mobile-money loan approved on a phone at a bustling African market"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+            <LastMileDiagram />
           </Reveal>
           <Reveal delay={0.1}>
             <p className="eyebrow">The last mile</p>

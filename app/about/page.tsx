@@ -31,7 +31,7 @@ const LEADERS = [
     image: "/team/tahseen-jamal.png",
     name: "Tahseen Jamal",
     role: "Co-Founder & CEO",
-    bio: "23+ years in fintech and digital platforms. B.Tech, ISB MBA.",
+    bio: "26+ years in fintech and digital platforms. B.Tech, ISB MBA.",
   },
   {
     image: "/team/rohit-ahuja.png",

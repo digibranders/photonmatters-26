@@ -9,10 +9,35 @@ import { Reveal } from "@/components/ui/Reveal";
 import { PLATFORM_STATS } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
-const SLIDES = [
-  { src: "/hero/hero3.webp", alt: "A first fair loan approved on a phone, light reaching the last mile", fit: "cover" as const },
-  { src: "/hero/hero2.webp", alt: "The AI-powered PhotonMatters lending dashboard", fit: "cover" as const },
-  { src: "/hero/hero1.webp", alt: "AI lending at scale across Africa, India and the Middle East", fit: "contain" as const },
+type Slide = {
+  src: string;
+  alt: string;
+  /* Optional object-position class biasing which band of the frame survives the
+     crop. Omit to crop from the centre. */
+  crop?: string;
+};
+
+/* Auto-crossfading background slides. Purely decorative: the headline, copy and
+   CTAs are static, so the rotation never moves content the reader is using.
+   The bespoke brand illustration leads because it is the LCP frame and the only
+   asset authored at full resolution.
+   Every slide is a fixed-aspect frame and the hero is not, so they all have to
+   cover: the hero runs wider than any of them on a short viewport and taller on
+   a phone, and object-contain would leave the difference as dead navy, pillar
+   boxed beside the copy on desktop and banded above and below on mobile. */
+const SLIDES: Slide[] = [
+  {
+    src: "/hero/hero1.webp",
+    alt: "AI lending at scale across Africa, India and the Middle East",
+    // Cropped from near the top rather than dead centre. The labelled callouts
+    // sit between 15% and 76% of this frame's height, and a centred crop lifts
+    // the topmost one into the fixed header; holding the crop window high keeps
+    // the whole band in shot and clear of the nav, and spends the loss on the
+    // foreground at the bottom, which the stats baseboard covers anyway.
+    crop: "object-[50%_20%]",
+  },
+  { src: "/hero/hero2.webp", alt: "A bank at dusk, lit for the people it serves" },
+  { src: "/hero/hero3.webp", alt: "Live lending performance data over a bank workspace" },
 ];
 
 /* Navy scrim + grain: matched to the photonmatters reference hero (#07101f). */
@@ -37,39 +62,18 @@ function Slides({ active }: { active: number }) {
             src={slide.src}
             alt={slide.alt}
             fill
+            // First slide is the LCP frame. The rest load eagerly rather than
+            // lazily so they are decoded well before their turn: a lazy slide
+            // can still be in flight at the 5.2s crossfade and fade in blank.
             priority={i === 0}
+            loading={i === 0 ? undefined : "eager"}
             sizes="100vw"
             quality={80}
-            className={slide.fit === "contain" ? "object-contain" : "object-cover"}
+            className={cn("object-cover", slide.crop)}
           />
         </div>
       ))}
     </>
-  );
-}
-
-function Progress({ active, onSelect }: { active: number; onSelect: (i: number) => void }) {
-  return (
-    <div className="flex items-center gap-2">
-      {SLIDES.map((slide, i) => (
-        <button
-          key={slide.src}
-          type="button"
-          aria-label={`Show slide ${i + 1}`}
-          aria-current={i === active}
-          onClick={() => onSelect(i)}
-          className="group/dot flex items-center py-2.5"
-        >
-          {/* Thin visual bar inside a ≥24px hit area for comfortable tapping. */}
-          <span
-            className={cn(
-              "block h-1 rounded-full transition-all duration-300",
-              i === active ? "w-10 bg-white" : "w-5 bg-white/35 group-hover/dot:bg-white/60",
-            )}
-          />
-        </button>
-      ))}
-    </div>
   );
 }
 
@@ -96,7 +100,7 @@ export function Hero() {
   return (
     <section
       data-nav-theme="dark"
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-20 lg:justify-center lg:pb-8 text-white"
+      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-20 text-white"
       style={{ backgroundColor: "#07101f" }}
     >
       {/* Full-bleed image carousel */}
@@ -122,7 +126,10 @@ export function Hero() {
         }}
       />
 
-      <div className="container-site relative z-10 w-full">
+      {/* lg:my-auto centres the copy in whatever space the baseboard leaves,
+          rather than centring it in the whole section and letting the two
+          collide once the viewport gets short. */}
+      <div className="container-site relative z-10 w-full lg:my-auto">
         <motion.div {...intro} className="max-w-[40rem] py-10 lg:py-0">
           <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
             AI-Powered Lending{" "}
@@ -151,36 +158,30 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Hero baseboard: slide progress sits above the platform stats, which
-          read directly on the hero background (no panel). Pinned on desktop;
-          flows below the content on mobile so the stacked stats never crowd a
-          full-height phone hero. A soft text-shadow keeps them legible where
-          the carousel image shows through. */}
-      <div className="z-10 mt-10 lg:mt-0 lg:absolute lg:inset-x-0 lg:bottom-0">
-        <div className="container-site pb-6">
-          <Progress active={active} onSelect={setActive} />
-        </div>
-        <div>
-          {/* Mobile/tablet: 2·2·1 grid, the fifth stat spans full width and
-              centers beneath the 2×2 block. Desktop: a single 5-up row with
-              vertical dividers. */}
-          <div className="container-site grid grid-cols-2 gap-x-6 gap-y-8 py-3 [text-shadow:0_1px_16px_rgba(7,16,31,0.55)] lg:grid-cols-5 lg:gap-y-0 lg:gap-x-0">
-            {PLATFORM_STATS.map((s, i) => (
-              <Reveal
-                key={s.label}
-                index={i}
-                className={cn(
-                  "lg:px-6",
-                  i === 0 ? "lg:pl-0" : "lg:border-l lg:border-white/15",
-                  // Fifth stat: full-width centered row on mobile, seated with a hairline rule.
-                  i === 4 &&
-                    "max-lg:col-span-2 max-lg:border-t max-lg:border-white/15 max-lg:pt-7",
-                )}
-              >
-                <Stat value={s.value} label={s.label} tone="dark" size="sm" />
-              </Reveal>
-            ))}
-          </div>
+      {/* Hero baseboard: the platform stats read directly on the hero background
+          (no panel). Kept in normal flow at every breakpoint, so a short viewport
+          grows the hero instead of letting the stats ride up over the CTA row.
+          A soft text-shadow keeps them legible where the image shows through. */}
+      <div className="z-10 mt-10 lg:mt-0">
+        {/* Mobile/tablet: 2·2·1 grid, the fifth stat spans full width and
+            centers beneath the 2×2 block. Desktop: a single 5-up row with
+            vertical dividers. */}
+        <div className="container-site grid grid-cols-2 gap-x-6 gap-y-8 py-3 [text-shadow:0_1px_16px_rgba(7,16,31,0.55)] lg:grid-cols-5 lg:gap-y-0 lg:gap-x-0">
+          {PLATFORM_STATS.map((s, i) => (
+            <Reveal
+              key={s.label}
+              index={i}
+              className={cn(
+                "lg:px-6",
+                i === 0 ? "lg:pl-0" : "lg:border-l lg:border-white/15",
+                // Fifth stat: full-width centered row on mobile, seated with a hairline rule.
+                i === 4 &&
+                  "max-lg:col-span-2 max-lg:border-t max-lg:border-white/15 max-lg:pt-7",
+              )}
+            >
+              <Stat value={s.value} label={s.label} tone="dark" size="sm" />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
