@@ -7,12 +7,8 @@
  * into 4 live alternative data signals (Mobile usage, Airtime, Cashflow, Repayment behaviour),
  * converging into a real-time credit decision gauge and mobile phone approval on the right.
  *
- * High-craft SVG + HTML hybrid:
- *   - HTML text badges remain crisp, selectable, and fully responsive across all viewports.
- *   - Live animated signal data packets flow along vector path curves using Framer Motion.
- *   - Interactive hover states highlight individual signal streams.
- *   - Clean brand color palette (Obsidian, Electric Violet #7E49F2, Orchid #E9A2F2, Spark Gold #F2CB07).
- *   - Precision vector path alignment: symmetric curves, node anchors, and centered captions.
+ * Upgraded with premium 3D layout, drop shadows, refined vector lanes,
+ * perfectly aligned HTML badges, and seamless "comet" data packet animations.
  */
 
 import React, { useState } from "react";
@@ -69,16 +65,13 @@ function RepaymentIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-/** Signal lane definitions */
+/** Signal lane definitions, mapped to paper rule lines */
 const SIGNALS = [
-  { id: "mobile", label: "Mobile usage", y: 130, icon: MobileSignalIcon, delay: 0 },
-  { id: "airtime", label: "Airtime", y: 200, icon: AirtimeIcon, delay: 0.6 },
-  { id: "cashflow", label: "Cashflow", y: 270, icon: CashflowIcon, delay: 1.2 },
-  { id: "repayment", label: "Repayment behaviour", y: 340, icon: RepaymentIcon, delay: 1.8 },
+  { id: "mobile", label: "Mobile usage", y: 130, startY: 195, icon: MobileSignalIcon, delay: 0 },
+  { id: "airtime", label: "Airtime", y: 200, startY: 213, icon: AirtimeIcon, delay: 0.6 },
+  { id: "cashflow", label: "Cashflow", y: 270, startY: 231, icon: CashflowIcon, delay: 1.2 },
+  { id: "repayment", label: "Repayment behaviour", y: 340, startY: 249, icon: RepaymentIcon, delay: 1.8 },
 ] as const;
-
-/** Origin point on the right edge of top paper document */
-const ORIGIN = { x: 138, y: 235 } as const;
 
 /** Convergence point at the decision dial input */
 const CONVERGE = { x: 452, y: 235 } as const;
@@ -87,123 +80,130 @@ const CONVERGE = { x: 452, y: 235 } as const;
 const LANE_START_X = 216;
 const LANE_END_X = 388;
 
-/** Smooth bezier curve for each signal lane: origin -> flat lane -> dial convergence */
-const lanePath = (y: number) =>
-  `M ${ORIGIN.x} ${ORIGIN.y} C 176 ${ORIGIN.y}, 176 ${y}, ${LANE_START_X} ${y} L ${LANE_END_X} ${y} C 424 ${y}, 424 ${CONVERGE.y}, ${CONVERGE.x} ${CONVERGE.y}`;
+/** Smooth bezier curve for each signal lane fanning out from the stack */
+const lanePath = (s: typeof SIGNALS[number]) =>
+  `M 134 ${s.startY} C 170 ${s.startY}, 170 ${s.y}, ${LANE_START_X} ${s.y} L ${LANE_END_X} ${s.y} C 420 ${s.y}, 420 235, 452 235`;
 
 const DIAL = { cx: 518, cy: 235, r: 66 } as const;
 
-/** Baseline for the two small captions. */
-const CAPTION_Y = 332;
-
-/** Radial gauge ticks for the decision meter */
-const GAUGE_TICKS = Array.from({ length: 32 }).map((_, i) => {
-  const deg = (i * 360) / 32;
-  const rad = (deg * Math.PI) / 180;
-  const isActive = deg >= 140 && deg <= 350;
-  return { deg, rad, isActive, index: i };
-});
-
-/** Tactical paper document stack representing legacy credit files */
+/** Tactical paper document stack representing legacy credit files (3D Enhanced) */
 function LegacyPaperStack() {
   return (
     <g className="transition-transform duration-300">
-      {/* Soft floor ambient drop shadow */}
-      <ellipse cx="88" cy="315" rx="54" ry="10" fill="#000000" opacity="0.5" />
+      {/* 3D Drop shadow definitions */}
+      <defs>
+        <filter id="paper-shadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="2" dy="6" stdDeviation="6" floodColor="#000" floodOpacity="0.5" />
+        </filter>
+        <linearGradient id="paper-grad-1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#2e2442" />
+          <stop offset="100%" stopColor="#1a1329" />
+        </linearGradient>
+        <linearGradient id="paper-grad-2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#251c36" />
+          <stop offset="100%" stopColor="#161024" />
+        </linearGradient>
+      </defs>
+
+      {/* Ambient floor shadow */}
+      <ellipse cx="88" cy="310" rx="60" ry="12" fill="#000000" opacity="0.6" filter="blur(6px)" />
 
       {/* Sheet 3 (backmost card) */}
       <rect
-        x="34"
-        y="143"
+        x="30"
+        y="141"
         width="88"
         height="144"
         rx="6"
         fill="#161024"
         stroke="rgba(255, 255, 255, 0.08)"
         strokeWidth="1"
+        filter="url(#paper-shadow)"
       />
 
       {/* Sheet 2 (middle card) */}
       <rect
-        x="42"
-        y="151"
+        x="38"
+        y="149"
         width="88"
         height="144"
         rx="6"
-        fill="#1e1630"
-        stroke="rgba(255, 255, 255, 0.14)"
+        fill="url(#paper-grad-2)"
+        stroke="rgba(255, 255, 255, 0.12)"
         strokeWidth="1"
+        filter="url(#paper-shadow)"
       />
 
       {/* Sheet 1 (front top document with dog-eared corner) */}
       <path
-        d="M 50 165 C 50 161.7 52.7 159 56 159 L 122 159 L 138 175 L 138 295 C 138 298.3 135.3 301 132 301 L 56 301 C 52.7 301 50 298.3 50 295 Z"
-        fill="#271e3b"
-        stroke="rgba(255, 255, 255, 0.22)"
+        d="M 46 163 C 46 159.7 48.7 157 52 157 L 118 157 L 134 173 L 134 293 C 134 296.3 131.3 299 128 299 L 52 299 C 48.7 299 46 296.3 46 293 Z"
+        fill="url(#paper-grad-1)"
+        stroke="rgba(255, 255, 255, 0.2)"
         strokeWidth="1"
+        filter="url(#paper-shadow)"
       />
 
       {/* Dog-eared folded corner */}
       <path
-        d="M 122 159 L 122 175 L 138 175 Z"
+        d="M 118 157 L 118 173 L 134 173 Z"
         fill="#1a1329"
-        stroke="rgba(255, 255, 255, 0.25)"
+        stroke="rgba(255, 255, 255, 0.3)"
         strokeWidth="1"
       />
-      <path d="M 122 175 L 138 175" stroke="rgba(0, 0, 0, 0.4)" strokeWidth="1.5" />
+      <path d="M 118 173 L 134 173" stroke="rgba(0, 0, 0, 0.5)" strokeWidth="1.5" />
 
       {/* Top Header Block / File Badge */}
       <rect
-        x="62"
-        y="173"
+        x="58"
+        y="171"
         width="34"
         height="10"
         rx="2"
         fill="rgba(255, 255, 255, 0.07)"
-        stroke="rgba(255, 255, 255, 0.14)"
+        stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="0.75"
       />
-      <line x1="102" y1="178" x2="122" y2="178" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="2" strokeLinecap="round" />
+      <line x1="98" y1="176" x2="118" y2="176" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="2" strokeLinecap="round" />
 
       {/* Binder / Paperclip accent */}
       <path
-        d="M 64 153 L 64 167 C 64 171 70 171 70 167 L 70 157"
+        d="M 60 151 L 60 165 C 60 169 66 169 66 165 L 66 155"
         fill="none"
-        stroke="rgba(255, 255, 255, 0.35)"
+        stroke="rgba(255, 255, 255, 0.4)"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
 
-      {/* Ruled paperwork lines */}
-      {[197, 215, 233, 251, 269].map((y, i) => (
+      {/* Ruled paperwork lines matching the 4 signal origins */}
+      {[195, 213, 231, 249, 267].map((y, i) => (
         <g key={y}>
           <rect
-            x="62"
+            x="58"
             y={y - 3}
             width="6"
             height="6"
             rx="1.5"
             fill="none"
-            stroke="rgba(255, 255, 255, 0.18)"
+            stroke="rgba(255, 255, 255, 0.15)"
             strokeWidth="0.8"
           />
           <line
-            x1="74"
+            x1="70"
             y1={y}
-            x2={i === 4 ? 104 : i === 2 ? 116 : 124}
+            x2={i === 4 ? 100 : i === 2 ? 112 : 120}
             y2={y}
-            stroke="rgba(255, 255, 255, 0.22)"
+            stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth="2.5"
             strokeLinecap="round"
           />
         </g>
       ))}
 
-      {/* Watermark padlock badge indicating static/locked legacy files */}
-      <g opacity="0.65">
+      {/* Watermark padlock badge */}
+      <g opacity="0.6">
         <rect
-          x="112"
-          y="261"
+          x="108"
+          y="259"
           width="14"
           height="11"
           rx="2"
@@ -212,7 +212,7 @@ function LegacyPaperStack() {
           strokeWidth="1"
         />
         <path
-          d="M 115 261 V 258 C 115 255.8 116.8 254 119 254 C 121.2 254 123 255.8 123 258 V 261"
+          d="M 111 259 V 256 C 111 253.8 112.8 252 115 252 C 117.2 252 119 253.8 119 256 V 259"
           fill="none"
           stroke="rgba(255, 255, 255, 0.25)"
           strokeWidth="1"
@@ -226,11 +226,6 @@ export function LastMileDiagram() {
   const { cx, cy, r } = DIAL;
   const [activeSignal, setActiveSignal] = useState<string | null>(null);
 
-  // Every animated component on this site gates on this hook (Reveal, Hero,
-  // Testimonials, Journey and six others). These loops run forever and sit
-  // directly above the already-pulsing Global Presence map, so honouring the
-  // preference matters more here than most. Dropping `animate` leaves each
-  // element parked on its `initial` state, which is a complete static drawing.
   const reduce = useReducedMotion();
   const still = <T,>(value: T) => (reduce ? undefined : value);
 
@@ -240,14 +235,16 @@ export function LastMileDiagram() {
     return `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
   };
 
-  // End point of decision arc (350deg)
-  const endRad = (350 * Math.PI) / 180;
-  const endX = (cx + r * Math.cos(endRad)).toFixed(1);
-  const endY = (cy + r * Math.sin(endRad)).toFixed(1);
+  /** Radial gauge ticks for the decision meter */
+  const GAUGE_TICKS = Array.from({ length: 32 }).map((_, i) => {
+    const deg = (i * 360) / 32;
+    const rad = (deg * Math.PI) / 180;
+    const isActive = deg >= 140 && deg <= 350;
+    return { deg, rad, isActive, index: i };
+  });
 
   return (
     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#0d0917] ring-1 ring-white/10 shadow-2xl">
-      {/* SVG Canvas for precision graphic render */}
       <svg
         viewBox={`0 0 ${VB.w} ${VB.h}`}
         className="absolute inset-0 h-full w-full select-none"
@@ -255,61 +252,43 @@ export function LastMileDiagram() {
         aria-label="Illustration showing legacy credit files transforming into 4 live alternative signals powering a phone credit decision"
       >
         <defs>
-          {/* Lane color gradient: desaturated silver -> electric violet -> orchid -> spark gold */}
           <linearGradient id="lm-lane-grad" x1="142" y1="0" x2="452" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.2" />
-            <stop offset="25%" stopColor="#e9a2f2" stopOpacity="0.8" />
-            <stop offset="65%" stopColor="#7e49f2" stopOpacity="1" />
-            <stop offset="90%" stopColor="#e9a2f2" stopOpacity="1" />
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.15" />
+            <stop offset="25%" stopColor="#e9a2f2" stopOpacity="0.75" />
+            <stop offset="65%" stopColor="#7e49f2" stopOpacity="0.9" />
+            <stop offset="90%" stopColor="#e9a2f2" stopOpacity="0.9" />
             <stop offset="100%" stopColor="#f2cb07" stopOpacity="1" />
           </linearGradient>
 
-          {/* Active bright core lane gradient */}
-          <linearGradient id="lm-lane-active" x1="142" y1="0" x2="452" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
-            <stop offset="40%" stopColor="#e9a2f2" />
-            <stop offset="80%" stopColor="#7e49f2" />
-            <stop offset="100%" stopColor="#f2cb07" />
-          </linearGradient>
-
-          {/* Decision dial gradient arc */}
           <linearGradient id="lm-dial-grad" x1="452" y1="301" x2="584" y2="169" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#7e49f2" />
             <stop offset="50%" stopColor="#e9a2f2" />
             <stop offset="100%" stopColor="#f2cb07" />
           </linearGradient>
 
-          {/* Canvas Radial Background */}
           <radialGradient id="lm-bg-radial" cx="50%" cy="50%" r="70%">
             <stop offset="0%" stopColor="#211833" />
             <stop offset="60%" stopColor="#120c21" />
             <stop offset="100%" stopColor="#0a0614" />
           </radialGradient>
 
-          {/* Subtle Technical Micro-Grid Pattern */}
-          <pattern id="lm-tech-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.025)" strokeWidth="0.75" />
-            <circle cx="24" cy="24" r="0.75" fill="rgba(255, 255, 255, 0.04)" />
+          <radialGradient id="grid-mask-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="20%" stopColor="white" stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+          <mask id="grid-mask">
+            <rect width={VB.w} height={VB.h} fill="url(#grid-mask-grad)" />
+          </mask>
+
+          <pattern id="lm-tech-grid" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="translate(0, 16)">
+            <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="1" />
+            <circle cx="32" cy="32" r="1" fill="rgba(255, 255, 255, 0.06)" />
           </pattern>
         </defs>
 
-        {/* Canvas Background */}
+        {/* Canvas Background with Faded 3D Grid */}
         <rect width={VB.w} height={VB.h} fill="url(#lm-bg-radial)" />
-        <rect width={VB.w} height={VB.h} fill="url(#lm-tech-grid)" />
-
-        {/* Faint guide lines */}
-        {SIGNALS.map((s) => (
-          <line
-            key={`guide-${s.id}`}
-            x1={LANE_START_X}
-            y1={s.y}
-            x2={LANE_END_X}
-            y2={s.y}
-            stroke="rgba(255, 255, 255, 0.03)"
-            strokeDasharray="2 6"
-            strokeWidth="1"
-          />
-        ))}
+        <rect width={VB.w} height={VB.h} fill="url(#lm-tech-grid)" mask="url(#grid-mask)" />
 
         {/* Legacy Paper File Stack */}
         <LegacyPaperStack />
@@ -322,89 +301,102 @@ export function LastMileDiagram() {
             return (
               <path
                 key={`track-${s.id}`}
-                d={lanePath(s.y)}
+                d={lanePath(s)}
                 stroke="url(#lm-lane-grad)"
-                strokeWidth={isHovered ? 3.5 : 2}
-                opacity={isDimmed ? 0.25 : isHovered ? 1 : 0.75}
+                strokeWidth={isHovered ? 4 : 2}
+                opacity={isDimmed ? 0.15 : isHovered ? 1 : 0.6}
                 className="transition-all duration-300"
               />
             );
           })}
         </g>
 
-        {/* Signal Node Anchor Dots (where line meets label) */}
+        {/* Signal Node Anchor Dots (at both ends of the straight lane) */}
         {SIGNALS.map((s) => {
           const isHovered = activeSignal === s.id;
           const isDimmed = activeSignal !== null && !isHovered;
           return (
-            <g key={`node-${s.id}`} className="transition-opacity duration-300" opacity={isDimmed ? 0.3 : 1}>
-              <circle cx={LANE_START_X} cy={s.y} r={isHovered ? 5 : 3.5} fill="#160f26" stroke="#e9a2f2" strokeWidth="1.5" />
-              <circle cx={LANE_START_X} cy={s.y} r={1.5} fill="#ffffff" />
+            <g key={`node-${s.id}`} className="transition-opacity duration-300" opacity={isDimmed ? 0.2 : 1}>
+              {/* Left Anchor */}
+              <circle cx={LANE_START_X} cy={s.y} r={isHovered ? 4.5 : 3.5} fill="#160f26" stroke={isHovered ? "#e9a2f2" : "rgba(255,255,255,0.3)"} strokeWidth="1.5" className="transition-all duration-300" />
+              <circle cx={LANE_START_X} cy={s.y} r={1.5} fill={isHovered ? "#ffffff" : "rgba(255,255,255,0.6)"} className="transition-all duration-300" />
+              
+              {/* Right Anchor */}
+              <circle cx={LANE_END_X} cy={s.y} r={isHovered ? 4.5 : 3.5} fill="#160f26" stroke={isHovered ? "#7e49f2" : "rgba(255,255,255,0.3)"} strokeWidth="1.5" className="transition-all duration-300" />
+              <circle cx={LANE_END_X} cy={s.y} r={1.5} fill={isHovered ? "#ffffff" : "rgba(255,255,255,0.6)"} className="transition-all duration-300" />
             </g>
           );
         })}
 
-        {/* Data Lanes Layer 2: Live animated signal packets (flowing data particles) */}
+        {/* Data Lanes Layer 2: Live animated signal packets ("Comets") */}
         <g fill="none" strokeLinecap="round">
           {SIGNALS.map((s) => {
             const isHovered = activeSignal === s.id;
             const isDimmed = activeSignal !== null && !isHovered;
             return (
               <React.Fragment key={`pulses-${s.id}`}>
-                {/* Flowing animated dash stroke along the path */}
+                {/* Primary Data Packet */}
                 <motion.path
-                  d={lanePath(s.y)}
-                  stroke="url(#lm-lane-active)"
+                  d={lanePath(s)}
+                  stroke={isHovered ? "#ffffff" : "url(#lm-lane-grad)"}
                   strokeWidth={isHovered ? 3 : 2}
-                  strokeDasharray="6 24"
-                  opacity={isDimmed ? 0.2 : 0.9}
-                  initial={{ strokeDashoffset: 0 }}
-                  animate={still({ strokeDashoffset: -60 })}
+                  strokeDasharray="40 800"
+                  initial={{ strokeDashoffset: 40 }}
+                  animate={still({ strokeDashoffset: -420 })}
                   transition={still({
                     repeat: Infinity,
-                    duration: isHovered ? 1.2 : 2.2,
+                    duration: isHovered ? 1.5 : 3.5,
                     ease: "linear",
                     delay: s.delay,
                   })}
+                  opacity={isDimmed ? 0.1 : 1}
                 />
 
-                {/* Second staggered packet layer */}
+                {/* Secondary Staggered Data Packet */}
                 <motion.path
-                  d={lanePath(s.y)}
+                  d={lanePath(s)}
                   stroke="#ffffff"
                   strokeWidth={1.5}
-                  strokeDasharray="3 45"
-                  opacity={isDimmed ? 0.15 : 0.85}
-                  initial={{ strokeDashoffset: 0 }}
-                  animate={still({ strokeDashoffset: -90 })}
+                  strokeDasharray="20 800"
+                  initial={{ strokeDashoffset: 20 }}
+                  animate={still({ strokeDashoffset: -420 })}
                   transition={still({
                     repeat: Infinity,
-                    duration: isHovered ? 1.5 : 2.8,
+                    duration: isHovered ? 2 : 4,
                     ease: "linear",
-                    delay: s.delay + 0.4,
+                    delay: s.delay + 0.8,
                   })}
+                  opacity={isDimmed ? 0.05 : 0.6}
                 />
               </React.Fragment>
             );
           })}
         </g>
 
-        {/* Convergence Node Pulse Effect */}
+        {/* Convergence Node Port */}
         <motion.circle
           cx={CONVERGE.x}
           cy={CONVERGE.y}
-          r={6}
+          r={8}
           fill="none"
-          stroke="#f2cb07"
-          strokeWidth="1.5"
-          animate={still({ scale: [1, 1.8, 1], opacity: [0.3, 0.8, 0.3] })}
+          stroke="#7e49f2"
+          strokeWidth="1"
+          animate={still({ scale: [0.8, 1.4, 0.8], opacity: [0.4, 0.8, 0.4] })}
           transition={still({ repeat: Infinity, duration: 2, ease: "easeInOut" })}
         />
-        <circle cx={CONVERGE.x} cy={CONVERGE.y} r={3} fill="#f2cb07" />
+        <circle cx={CONVERGE.x} cy={CONVERGE.y} r={4} fill="#120c1f" stroke="#e9a2f2" strokeWidth="1.5" />
+        <circle cx={CONVERGE.x} cy={CONVERGE.y} r={1.5} fill="#ffffff" />
 
         {/* Decision Dial Gauge: Radial Ticks */}
         <g fill="none">
-          <circle cx={cx} cy={cy} r={82} stroke="rgba(255, 255, 255, 0.05)" strokeDasharray="3 6" strokeWidth="1" />
+          {/* Inner bezel track */}
+          <path
+            d={`M${dialPt(138)} A${r+4} ${r+4} 0 1 1 ${dialPt(42)}`}
+            stroke="rgba(255,255,255,0.03)"
+            strokeWidth={14}
+            strokeLinecap="round"
+          />
+          
           {GAUGE_TICKS.map((t) => {
             const x1 = cx + 72 * Math.cos(t.rad);
             const y1 = cy + 72 * Math.sin(t.rad);
@@ -419,92 +411,120 @@ export function LastMileDiagram() {
                 y2={y2.toFixed(1)}
                 stroke={t.isActive ? "url(#lm-dial-grad)" : "rgba(255, 255, 255, 0.1)"}
                 strokeWidth={t.isActive ? 1.5 : 1}
-                opacity={t.isActive ? 0.85 : 0.3}
+                opacity={t.isActive ? 0.9 : 0.3}
+                strokeLinecap="round"
               />
             );
           })}
         </g>
 
-        {/* Decision Dial Arcs (Clean, crisp verdict meter without cluttered inner rails) */}
+        {/* Decision Dial Arcs */}
         <g fill="none" strokeLinecap="round">
-          {/* Dark background track */}
+          {/* Dark Background Track */}
           <path
             d={`M${dialPt(140)} A${r} ${r} 0 1 1 ${dialPt(40)}`}
-            stroke="rgba(255, 255, 255, 0.08)"
+            stroke="#0a0614"
             strokeWidth={8}
+          />
+          <path
+            d={`M${dialPt(140)} A${r} ${r} 0 1 1 ${dialPt(40)}`}
+            stroke="rgba(255,255,255,0.05)"
+            strokeWidth={1}
           />
 
           {/* Main decision verdict arc with smooth Framer Motion entrance */}
           <motion.path
             d={`M${dialPt(140)} A${r} ${r} 0 1 1 ${dialPt(350)}`}
             stroke="url(#lm-dial-grad)"
-            strokeWidth={8}
+            strokeWidth={6}
             initial={{ pathLength: 0.8 }}
             animate={still({ pathLength: [0.8, 1, 0.8] })}
             transition={still({ repeat: Infinity, duration: 4, ease: "easeInOut" })}
           />
 
-          {/* Spark indicator dot at dial tip */}
-          <circle cx={endX} cy={endY} r={4.5} fill="#f2cb07" />
-          <circle cx={endX} cy={endY} r={2} fill="#ffffff" />
+          {/* Spark indicator dot aligned perfectly with the arc tip (Rotate 308 to 350) */}
+          <motion.g
+            initial={{ rotate: 308 }}
+            animate={still({ rotate: [308, 350, 308] })}
+            transition={still({ repeat: Infinity, duration: 4, ease: "easeInOut" })}
+            style={{ transformOrigin: `${cx}px ${cy}px` }}
+          >
+            <circle cx={cx + r} cy={cy} r={4.5} fill="#f2cb07" />
+            <circle cx={cx + r} cy={cy} r={2} fill="#ffffff" />
+          </motion.g>
         </g>
 
-        {/* Smartphone Illustration & Approved Verdict Badge */}
+        {/* Smartphone Illustration (Premium 3D Extrusion) */}
         <g>
-          {/* Phone Outer Chassis */}
+          {/* Phone Drop Shadow */}
+          <rect x={cx - 20} y={cy - 24} width={40} height={64} rx={10} fill="#000" opacity="0.4" filter="blur(12px)" />
+
+          {/* 3D Bezel Layer */}
           <rect
-            x={cx - 17}
-            y={cy - 30}
+            x={cx - 16}
+            y={cy - 29}
             width={34}
             height={60}
             rx={8}
-            fill="#150f24"
+            fill="#3a2b54"
+          />
+
+          {/* Phone Outer Chassis (Front Face) */}
+          <rect
+            x={cx - 18}
+            y={cy - 31}
+            width={34}
+            height={60}
+            rx={8}
+            fill="#120c1f"
             stroke="rgba(255, 255, 255, 0.25)"
-            strokeWidth="1.2"
+            strokeWidth="1"
           />
 
           {/* Screen Glass */}
           <rect
-            x={cx - 15}
+            x={cx - 16}
             y={cy - 28}
             width={30}
             height={56}
             rx={6}
-            fill="#0a0614"
+            fill="#05030a"
             stroke="url(#lm-dial-grad)"
-            strokeWidth="0.8"
-            strokeOpacity="0.4"
+            strokeWidth="0.5"
+            strokeOpacity="0.5"
           />
 
-          {/* Speaker / Dynamic Island */}
+          {/* Dynamic Island */}
           <rect
-            x={cx - 5}
+            x={cx - 6}
             y={cy - 24}
             width={10}
-            height={2.5}
-            rx={1.25}
-            fill="rgba(255, 255, 255, 0.3)"
+            height={3}
+            rx={1.5}
+            fill="#221936"
           />
+          <circle cx={cx - 3} cy={cy - 22.5} r={0.75} fill="rgba(255, 255, 255, 0.3)" />
 
           {/* Approved Checkmark Badge with live subtle breathing */}
           <motion.g
-            animate={still({ scale: [1, 1.06, 1] })}
+            animate={still({ scale: [1, 1.08, 1] })}
             transition={still({ repeat: Infinity, duration: 3, ease: "easeInOut" })}
-            style={{ transformOrigin: `${cx}px ${cy}px` }}
+            style={{ transformOrigin: `${cx - 1}px ${cy}px` }}
           >
             <circle
-              cx={cx}
-              cy={cy + 1}
-              r={9}
-              fill="rgba(126, 73, 242, 0.25)"
+              cx={cx - 1}
+              cy={cy}
+              r={10}
+              fill="url(#lm-dial-grad)"
+              fillOpacity="0.2"
               stroke="#f2cb07"
-              strokeWidth="1.4"
+              strokeWidth="1.2"
             />
             <path
-              d={`M ${cx - 3.5} ${cy + 1} L ${cx - 1} ${cy + 3.5} L ${cx + 4} ${cy - 2}`}
+              d={`M ${cx - 4.5} ${cy} L ${cx - 1.5} ${cy + 3} L ${cx + 3.5} ${cy - 2}`}
               fill="none"
               stroke="#f2cb07"
-              strokeWidth="1.8"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -512,19 +532,19 @@ export function LastMileDiagram() {
 
           {/* Home Bar Indicator */}
           <rect
-            x={cx - 5}
+            x={cx - 6}
             y={cy + 22}
             width={10}
             height={1.5}
             rx={0.75}
-            fill="rgba(255, 255, 255, 0.25)"
+            fill="rgba(255, 255, 255, 0.3)"
           />
         </g>
       </svg>
 
-      {/* HTML Overlay: Interactive & Accessible Label Badges aligned precisely with SVG nodes */}
+      {/* HTML Overlay: Interactive & Accessible Label Badges */}
       <div className="pointer-events-auto absolute inset-0">
-        {/* Signal Labels positioned above node anchor dots at LANE_START_X (216) */}
+        {/* Signal Labels positioned centered perfectly over the horizontal lane segment */}
         {SIGNALS.map((s) => {
           const isHovered = activeSignal === s.id;
           const isDimmed = activeSignal !== null && !isHovered;
@@ -532,25 +552,25 @@ export function LastMileDiagram() {
           return (
             <div
               key={s.id}
-              className="absolute -translate-y-[135%] transition-all duration-200"
+              className="absolute -translate-x-1/2 -translate-y-[160%] transition-all duration-300"
               style={{
-                left: `${(LANE_START_X / VB.w) * 100}%`,
+                left: `${(302 / VB.w) * 100}%`,
                 top: `${(s.y / VB.h) * 100}%`,
               }}
               onMouseEnter={() => setActiveSignal(s.id)}
               onMouseLeave={() => setActiveSignal(null)}
             >
               <div
-                className={`group flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-wide shadow-md transition-all duration-200 sm:text-xs ${
+                className={`group flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-lg border px-3 py-1.5 text-[11px] font-semibold tracking-wide shadow-xl transition-all duration-300 sm:text-xs ${
                   isHovered
-                    ? "scale-105 border-purple-400/60 bg-[#251a3d] text-white shadow-purple-500/20"
+                    ? "scale-105 border-[#e9a2f2]/50 bg-gradient-to-b from-[#2a1c42] to-[#1a112e] text-white shadow-[#e9a2f2]/10"
                     : isDimmed
-                    ? "border-white/5 bg-[#140d24]/60 text-white/50"
-                    : "border-white/12 bg-[#160f26]/80 text-white/90 hover:border-purple-400/40 hover:bg-[#1d1433]"
+                    ? "border-white/5 bg-[#140d24]/80 text-white/40"
+                    : "border-white/10 bg-gradient-to-b from-[#1c1330] to-[#120c21] text-white/80 hover:border-white/20 hover:text-white"
                 }`}
               >
                 <span
-                  className={`flex h-4 w-4 shrink-0 items-center justify-center transition-colors duration-200 ${
+                  className={`flex h-4 w-4 shrink-0 items-center justify-center transition-colors duration-300 ${
                     isHovered ? "text-[#e9a2f2]" : "text-[#7e49f2]"
                   }`}
                 >
@@ -562,23 +582,18 @@ export function LastMileDiagram() {
           );
         })}
 
-        {/* Legacy File Caption: Centered directly below the paper stack (x = 90) */}
-        {/* Anchored to the left edge of the file, NOT centred under it. The
-            caption is wider than the drawing it labels, so centring pushes it
-            off the card once the column narrows. */}
+        {/* Legacy File Caption: Centered directly below the paper stack */}
         <div
-          className="absolute whitespace-nowrap text-[9px] font-semibold uppercase tracking-[0.14em] text-white/50 sm:text-[10px]"
-          style={{ left: `${(34 / VB.w) * 100}%`, top: `${(CAPTION_Y / VB.h) * 100}%` }}
+          className="absolute -translate-x-1/2 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 sm:text-[10px]"
+          style={{ left: `${(88 / VB.w) * 100}%`, top: `${(390 / VB.h) * 100}%` }}
         >
           Legacy credit file
         </div>
 
-        {/* Decision Dial Caption: Centered directly below the smartphone dial (cx = 518) */}
-        {/* Right-anchored for the same reason: centring on the dial put its
-            right edge past the card at narrow widths. */}
+        {/* Decision Dial Caption: Centered directly below the smartphone dial */}
         <div
-          className="absolute right-[4%] whitespace-nowrap text-right text-[9px] font-semibold uppercase tracking-[0.14em] text-white/50 sm:text-[10px]"
-          style={{ top: `${(CAPTION_Y / VB.h) * 100}%` }}
+          className="absolute -translate-x-1/2 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 sm:text-[10px]"
+          style={{ left: `${(DIAL.cx / VB.w) * 100}%`, top: `${(390 / VB.h) * 100}%` }}
         >
           A first fair loan
         </div>
