@@ -9,15 +9,35 @@ import { Reveal } from "@/components/ui/Reveal";
 import { PLATFORM_STATS } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
+type Slide = {
+  src: string;
+  alt: string;
+  /* Optional object-position class biasing which band of the frame survives the
+     crop. Omit to crop from the centre. */
+  crop?: string;
+};
+
 /* Auto-crossfading background slides. Purely decorative: the headline, copy and
    CTAs are static, so the rotation never moves content the reader is using.
    The bespoke brand illustration leads because it is the LCP frame and the only
-   asset authored at full resolution; object-contain preserves its labelled
-   composition instead of cropping into it. */
-const SLIDES = [
-  { src: "/hero/hero1.webp", alt: "AI lending at scale across Africa, India and the Middle East", fit: "contain" as const },
-  { src: "/hero/hero2.webp", alt: "A bank at dusk, lit for the people it serves", fit: "cover" as const },
-  { src: "/hero/hero3.webp", alt: "Live lending performance data over a bank workspace", fit: "cover" as const },
+   asset authored at full resolution.
+   Every slide is a fixed-aspect frame and the hero is not, so they all have to
+   cover: the hero runs wider than any of them on a short viewport and taller on
+   a phone, and object-contain would leave the difference as dead navy, pillar
+   boxed beside the copy on desktop and banded above and below on mobile. */
+const SLIDES: Slide[] = [
+  {
+    src: "/hero/hero1.webp",
+    alt: "AI lending at scale across Africa, India and the Middle East",
+    // Cropped from near the top rather than dead centre. The labelled callouts
+    // sit between 15% and 76% of this frame's height, and a centred crop lifts
+    // the topmost one into the fixed header; holding the crop window high keeps
+    // the whole band in shot and clear of the nav, and spends the loss on the
+    // foreground at the bottom, which the stats baseboard covers anyway.
+    crop: "object-[50%_20%]",
+  },
+  { src: "/hero/hero2.webp", alt: "A bank at dusk, lit for the people it serves" },
+  { src: "/hero/hero3.webp", alt: "Live lending performance data over a bank workspace" },
 ];
 
 /* Navy scrim + grain: matched to the photonmatters reference hero (#07101f). */
@@ -49,7 +69,7 @@ function Slides({ active }: { active: number }) {
             loading={i === 0 ? undefined : "eager"}
             sizes="100vw"
             quality={80}
-            className={slide.fit === "contain" ? "object-contain" : "object-cover"}
+            className={cn("object-cover", slide.crop)}
           />
         </div>
       ))}
