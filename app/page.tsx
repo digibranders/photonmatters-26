@@ -98,7 +98,7 @@ export default function HomePage() {
             {/* Dark CTA card: pinned as the grid's final item */}
             <Reveal index={2}>
               <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-ink p-8 text-white">
-                {/* Ambient purple bloom with a vermilion ember, matching the hero */}
+                {/* Ambient purple blooms: vermilion stays on the accent words only, mixed glows go muddy */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-[20%] -top-[30%] h-72 w-72 rounded-full blur-[80px]"
@@ -107,7 +107,7 @@ export default function HomePage() {
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -bottom-[25%] -left-[15%] h-60 w-60 rounded-full blur-[70px]"
-                  style={{ background: "rgba(235,84,53,0.22)" }}
+                  style={{ background: "rgba(126,73,242,0.16)" }}
                 />
                 <h3 className="relative z-10 text-h3 font-medium leading-snug tracking-tight">
                   One platform.
@@ -186,7 +186,7 @@ export default function HomePage() {
               <Reveal key={ind.name} index={i}>
                 <Link
                   href="/industries"
-                  className="group/card block overflow-hidden rounded-3xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] cursor-pointer"
+                  className="group/card block overflow-hidden rounded-3xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)] cursor-pointer"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -226,15 +226,9 @@ export default function HomePage() {
               <Reveal key={m.name} index={i}>
                 <Link
                   href="/industries"
-                  className="group/card relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] cursor-pointer"
+                  className="group/card relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)] cursor-pointer"
                 >
-                  {/* Corner bloom: eterna bento accent */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full opacity-60 blur-2xl transition-transform duration-700 group-hover/card:scale-110"
-                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.14), transparent 70%)" }}
-                  />
-                  <h3 className="relative z-10 text-h3 font-bold text-primary-strong">{m.name}</h3>
+                  <h3 className="relative z-10 text-h3 font-bold text-ink">{m.name}</h3>
                   <p className="relative z-10 mt-3 flex-grow text-body text-secondary">{m.description}</p>
                   <span className="relative z-10 mt-5 text-caption font-semibold text-primary-strong opacity-0 transition-opacity duration-200 group-hover/card:opacity-100">
                     Learn more →

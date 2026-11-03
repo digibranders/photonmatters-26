@@ -18,7 +18,7 @@ const HEADING_CLIP =
   "text-h2 font-bold text-balance pb-[0.18em] text-ink";
 
 const CARD_BENTO =
-  "group relative h-full overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-8";
+  "group relative h-full overflow-hidden rounded-3xl border border-line p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)] sm:p-8";
 
 const VALUES = [
   { title: "Built to Disrupt", body: "We challenge the assumptions baked into legacy credit. AI-native from the first line of code, we replace paperwork and gut-feel with explainable, data-driven decisions." },
@@ -46,7 +46,7 @@ function Bloom() {
     <div
       aria-hidden
       className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
-      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
     />
   );
 }
@@ -92,7 +92,7 @@ export default function AboutPage() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
-                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
               />
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
                 <Image
@@ -205,7 +205,7 @@ export default function AboutPage() {
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full opacity-60 blur-2xl"
-                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.14), transparent 70%)" }}
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                   />
                   <h3 className="relative z-10 text-h3 font-bold text-primary-strong">{m.name}</h3>
                   <p className="relative z-10 mt-3 text-body text-secondary">{m.description}</p>

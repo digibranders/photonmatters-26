@@ -21,7 +21,7 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 const DOWNLOAD_BTN =
-  "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-[1.0625rem] font-semibold text-white shadow-lg shadow-[rgba(126,73,242,0.22)] transition-colors duration-150 hover:bg-accent hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2";
+  "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-[1.0625rem] font-semibold text-white transition-colors duration-150 hover:bg-accent hover:text-ink active:bg-primary-press active:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2";
 const PREVIEW_BTN =
   "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-line-strong px-6 py-2.5 text-caption font-semibold text-ink transition-colors duration-150 hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2";
 
@@ -64,7 +64,7 @@ export default function ResourcesPage() {
           <div className="mt-12 flex flex-col gap-5">
             {RESOURCES.map((doc, i) => (
               <Reveal key={doc.slug} index={i}>
-                <article className="group grid gap-6 rounded-3xl border border-line bg-surface p-5 transition-all duration-300 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)] sm:p-6 md:grid-cols-[220px_1fr_auto] md:items-center">
+                <article className="group grid gap-6 rounded-3xl border border-line bg-surface p-5 transition-all duration-300 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)] sm:p-6 md:grid-cols-[220px_1fr_auto] md:items-center">
                   {/* Cover: branded document panel (no cover image needed) */}
                   <div
                     aria-hidden
@@ -147,19 +147,11 @@ export default function ResourcesPage() {
       <section className="section pt-0">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 md:px-12 md:py-12"
-              style={{
-                background:
-                  "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 52%, #8a55f5 100%)",
-                boxShadow:
-                  "inset 0 1px 0 rgba(255,255,255,0.22), 0 30px 80px -28px rgba(126,73,242,0.6)",
-              }}
-            >
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[8%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(235,84,53,0.28)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div
                 aria-hidden
@@ -168,14 +160,14 @@ export default function ResourcesPage() {
               />
               <div className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
                 <div className="max-w-xl">
-                  <p className="eyebrow !text-white/70">Need more detail?</p>
-                  <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-white">
+                  <p className="eyebrow !text-ink">Need more detail?</p>
+                  <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-ink">
                     Looking for something{" "}
-                    <span className="font-playfair font-light">
+                    <span className="font-playfair font-light text-white">
                       specific?
                     </span>
                   </h2>
-                  <p className="mt-4 text-body-lg text-white/80">
+                  <p className="mt-4 text-body-lg text-ink">
                     Tell us your use case and we will send the right datasheets, a tailored walkthrough
                     or a working demo of the platform.
                   </p>
@@ -184,7 +176,7 @@ export default function ResourcesPage() {
                   href="/contact"
                   size="lg"
                   withArrow
-                  className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                  className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                 >
                   Talk to us
                 </Button>

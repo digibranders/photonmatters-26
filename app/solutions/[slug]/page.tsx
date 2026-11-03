@@ -180,12 +180,12 @@ export default async function SolutionDetailPage({
               const Icon = getIcon(card.icon);
               return (
                 <Reveal key={card.title} index={i % 3} className="w-[80%] shrink-0 snap-start sm:w-auto sm:shrink">
-                  <div className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]">
+                  <div className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)]">
                     {/* Corner bloom: eterna bento accent */}
                     <div
                       aria-hidden
                       className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover/card:scale-110"
-                      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                     />
                     <div className="relative z-10 flex items-center justify-between">
                       <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">
@@ -283,24 +283,16 @@ export default async function SolutionDetailPage({
         </div>
       </section>
 
-      {/* CTA finale (v3, premium): gradient card with a connected lifecycle pipeline */}
+      {/* CTA finale (v3, premium): vermilion card with a connected lifecycle pipeline */}
       <section className="section">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 md:px-12 md:py-12"
-              style={{
-                background:
-                  "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 48%, #8a55f5 100%)",
-                boxShadow:
-                  "inset 0 1px 0 rgba(255,255,255,0.22), 0 30px 80px -28px rgba(126,73,242,0.6)",
-              }}
-            >
-              {/* Soft orchid bloom + highlight bloom for depth */}
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
+              {/* Light blooms for depth */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(233,162,242,0.32)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div
                 aria-hidden
@@ -316,12 +308,12 @@ export default async function SolutionDetailPage({
 
               <div className="relative z-10 grid gap-12 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
-                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
+                  <p className="eyebrow !text-ink">{cta.eyebrow}</p>
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-ink">
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}
-                        <span className="font-playfair font-light">
+                        <span className="font-playfair font-light text-white">
                           {cta.headingAccent}
                         </span>
                       </>
@@ -329,13 +321,13 @@ export default async function SolutionDetailPage({
                       cta.heading
                     )}
                   </h2>
-                  <p className="measure mt-5 text-body-lg text-white/80">{cta.body}</p>
+                  <p className="measure mt-5 text-body-lg text-ink">{cta.body}</p>
                   <div className="mt-8">
                     <Button
                       href="/contact"
                       size="lg"
                       withArrow
-                      className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                      className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                     >
                       Book a demo
                     </Button>
@@ -351,7 +343,7 @@ export default async function SolutionDetailPage({
                       <Link
                         key={link.slug}
                         href={link.slug === "gsm" ? "/gsm" : `/solutions/${link.slug}`}
-                        className="group/node relative flex gap-4 rounded-2xl p-3 transition-colors duration-300 hover:bg-white/[0.07]"
+                        className="group/node relative flex gap-4 rounded-2xl p-3 transition-colors duration-300 hover:bg-white/[0.14]"
                       >
                         {/* Vertical gradient connector to the next node */}
                         {!last ? (
@@ -360,7 +352,7 @@ export default async function SolutionDetailPage({
                             className="absolute left-[2.25rem] top-[3.75rem] -bottom-1 w-px"
                             style={{
                               background:
-                                "linear-gradient(to bottom, rgba(233,162,242,0.7), rgba(255,255,255,0.12))",
+                                "linear-gradient(to bottom, rgba(26,20,38,0.45), rgba(26,20,38,0.08))",
                             }}
                           />
                         ) : null}
@@ -368,28 +360,26 @@ export default async function SolutionDetailPage({
                         <span
                           className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover/node:scale-105"
                           style={{
-                            background:
-                              "linear-gradient(150deg, rgba(255,255,255,0.32), rgba(255,255,255,0.06))",
-                            boxShadow:
-                              "inset 0 1px 0 rgba(255,255,255,0.55), 0 10px 26px -8px rgba(233,162,242,0.55)",
+                            background: "var(--navy-900)",
+                            boxShadow: "0 10px 26px -10px rgba(26,20,38,0.45)",
                           }}
                         >
                           <span
                             aria-hidden
-                            className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/25"
+                            className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10"
                           />
                           <Icon size={19} aria-hidden />
                         </span>
                         <div className="min-w-0 flex-1 pt-1.5">
                           <span className="inline-flex items-center gap-1.5">
-                            <span className="text-body font-semibold text-white">{link.name}</span>
+                            <span className="text-body font-semibold text-ink">{link.name}</span>
                             <ArrowRight
                               size={15}
-                              className="text-white/60 transition-all duration-200 group-hover/node:translate-x-1 group-hover/node:text-white"
+                              className="text-ink/60 transition-all duration-200 group-hover/node:translate-x-1 group-hover/node:text-ink"
                               aria-hidden
                             />
                           </span>
-                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                          <p className="mt-0.5 text-caption text-ink">{link.blurb}</p>
                         </div>
                       </Link>
                     );

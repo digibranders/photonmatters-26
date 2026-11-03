@@ -44,12 +44,12 @@ export default function ProductsHubPage() {
                 <Reveal key={p.slug} index={i % 2}>
                   <Link
                     href={`/products/${p.slug}`}
-                    className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+                    className="group/card relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)]"
                   >
                     <div
                       aria-hidden
                       className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover/card:scale-110"
-                      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                      style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                     />
                     <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">
                       <Icon size={22} aria-hidden />
@@ -68,26 +68,23 @@ export default function ProductsHubPage() {
         </div>
       </section>
 
-      {/* Closing: gradient CTA finale */}
+      {/* Closing: vermilion CTA finale */}
       <section className="section">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 text-center shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-14 md:py-14"
-              style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
-            >
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 text-center md:px-14 md:py-14">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(233,162,242,0.30)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div className="relative z-10">
-                <p className="eyebrow !text-white/70">One platform</p>
-                <h2 className="mx-auto mt-4 max-w-2xl text-balance pb-[0.18em] text-h1 font-bold text-white">
+                <p className="eyebrow !text-ink">One platform</p>
+                <h2 className="mx-auto mt-4 max-w-2xl text-balance pb-[0.18em] text-h1 font-bold text-ink">
                   Infinite{" "}
-                  <span className="font-playfair font-light">possibilities</span>.
+                  <span className="font-playfair font-light text-white">possibilities</span>.
                 </h2>
-                <p className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
+                <p className="mx-auto mt-5 max-w-xl text-body-lg text-ink">
                   Because no matter the borrower, every loan begins with belief, and ends in
                   progress.
                 </p>
@@ -96,7 +93,7 @@ export default function ProductsHubPage() {
                     href="/contact"
                     size="lg"
                     withArrow
-                    className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                    className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                   >
                     Book a demo
                   </Button>
@@ -104,8 +101,7 @@ export default function ProductsHubPage() {
                     href="/solutions"
                     size="lg"
                     variant="secondary"
-                    tone="dark"
-                    className="!border-white/30 hover:!bg-white/10"
+                    className="!border-ink/30 hover:!bg-ink/[0.08]"
                   >
                     Explore solutions
                   </Button>

@@ -224,7 +224,7 @@ export function Select({
             animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-64 overflow-auto rounded-xl border border-line bg-surface p-1.5 shadow-[0_1px_2px_rgba(26,20,38,0.04),0_20px_44px_-16px_rgba(126,73,242,0.32)]"
+            className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-64 overflow-auto rounded-xl border border-line bg-surface p-1.5 shadow-[0_1px_2px_rgba(26,20,38,0.04),0_20px_44px_-16px_rgba(26,20,38,0.18)]"
           >
             {items.map((opt, i) => {
               const isSelected = opt.value === value;

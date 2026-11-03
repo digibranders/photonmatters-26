@@ -93,13 +93,13 @@ function ProductBlock({
         {cards.map((c) => (
           <Reveal key={c.title} className="w-[80%] shrink-0 snap-start sm:w-auto sm:shrink">
             <div
-              className="group relative h-full overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]"
+              className="group relative h-full overflow-hidden rounded-3xl border border-line p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)]"
               style={{ background: "linear-gradient(160deg, #ffffff 0%, var(--navy-50) 100%)" }}
             >
               <div
                 aria-hidden
                 className="pointer-events-none absolute -bottom-14 -right-14 h-44 w-44 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
-                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
               />
               <h3 className="relative z-10 text-h3 font-bold text-ink">{c.title}</h3>
               <p className="relative z-10 mt-2 text-caption leading-relaxed text-secondary">{c.body}</p>
@@ -159,7 +159,7 @@ export default function GsmPage() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute -bottom-8 -right-8 -z-10 h-56 w-56 rounded-full opacity-70 blur-3xl"
-                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.16), transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
               />
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl ring-1 ring-line">
                 <Image
@@ -257,29 +257,26 @@ export default function GsmPage() {
         </div>
       </section>
 
-      {/* CTA + cross-links: gradient finale with glass cards */}
+      {/* CTA + cross-links: vermilion finale with cross-link tiles */}
       <section className="section">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-12 md:py-12"
-              style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
-            >
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(233,162,242,0.30)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="eyebrow !text-white/70">Connect the channels</p>
-                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
+                  <p className="eyebrow !text-ink">Connect the channels</p>
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-ink">
                     Pair GSM rails{" "}
-                    <span className="font-playfair font-light">
+                    <span className="font-playfair font-light text-white">
                       with your lending campaigns.
                     </span>
                   </h2>
-                  <p className="measure mt-5 text-body-lg text-white/80">
+                  <p className="measure mt-5 text-body-lg text-ink">
                     Combine missed-call opt-in and collect-call outreach with PhotonMatters campaign
                     and collections intelligence to drive response and recovery, without spending a
                     cent of subscriber data.
@@ -289,7 +286,7 @@ export default function GsmPage() {
                       href="/contact"
                       size="lg"
                       withArrow
-                      className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                      className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                     >
                       Book a demo
                     </Button>
@@ -302,18 +299,18 @@ export default function GsmPage() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="group/card flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[0.14]"
+                        className="group/card flex items-center gap-4 rounded-2xl border border-ink/15 bg-white/[0.14] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30 hover:bg-white/25"
                       >
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-white">
                           <Icon size={19} aria-hidden />
                         </span>
                         <div className="min-w-0 flex-1">
-                          <h3 className="text-body font-semibold text-white">{link.name}</h3>
-                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                          <h3 className="text-body font-semibold text-ink">{link.name}</h3>
+                          <p className="mt-0.5 text-caption text-ink">{link.blurb}</p>
                         </div>
                         <ArrowRight
                           size={18}
-                          className="shrink-0 text-white/80 transition-transform duration-200 group-hover/card:translate-x-1"
+                          className="shrink-0 text-ink transition-transform duration-200 group-hover/card:translate-x-1"
                           aria-hidden
                         />
                       </Link>

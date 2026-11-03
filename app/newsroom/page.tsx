@@ -168,19 +168,11 @@ export default function NewsroomPage() {
       <section className="section">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 md:px-12 md:py-12"
-              style={{
-                background:
-                  "linear-gradient(125deg, var(--blue-600) 0%, var(--color-primary) 52%, #8a55f5 100%)",
-                boxShadow:
-                  "inset 0 1px 0 rgba(255,255,255,0.22), 0 30px 80px -28px rgba(126,73,242,0.6)",
-              }}
-            >
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[8%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(235,84,53,0.28)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div
                 aria-hidden
@@ -189,14 +181,14 @@ export default function NewsroomPage() {
               />
               <div className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
                 <div className="max-w-xl">
-                  <p className="eyebrow !text-white/70">Media relations</p>
-                  <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-white">
+                  <p className="eyebrow !text-ink">Media relations</p>
+                  <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-ink">
                     Writing about PhotonMatters?{" "}
-                    <span className="font-playfair font-light">
+                    <span className="font-playfair font-light text-white">
                       Let&apos;s talk.
                     </span>
                   </h2>
-                  <p className="mt-4 text-body-lg text-white/80">
+                  <p className="mt-4 text-body-lg text-ink">
                     Press enquiries, executive interviews and product briefings for journalists and
                     analysts. We reply within one business day.
                   </p>
@@ -205,7 +197,7 @@ export default function NewsroomPage() {
                   href="/contact"
                   size="lg"
                   withArrow
-                  className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                  className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                 >
                   Contact media relations
                 </Button>

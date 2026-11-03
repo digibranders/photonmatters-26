@@ -5,11 +5,14 @@
    (#1A1426), ONE electric-purple accent (#7E49F2), orchid (#E9A2F2) on dark,
    and logo vermilion (#EB5435) used rarely as the brand spark.
 
-   Colour roles (2026-11 logo refresh):
-   • Purple is the system: buttons, links, icons, hairlines, ambient light.
-   • Vermilion comes from the logo: accent words on dark, live/new badges,
-     map pins, the primary-button hover and the pre-footer CTA card. Never
-     body text, never a second button colour.
+   Colour roles (2026-11 logo refresh), roughly 80 / 15 / 5:
+   • Neutral canvas: white, near-neutral greys, plum ink. Hairlines, section
+     bands and icon chips carry no purple tint.
+   • Purple is for action and AI: buttons, links, icons, focus, accent words
+     on light, and the ambient light inside dark sections.
+   • Vermilion comes from the logo and stays rare: the logo, accent words on
+     dark, badges, map pins, the last-mile spark, the primary-button hover
+     and the pre-footer CTA card. Never body text, never a resting button.
    • On light surfaces vermilion text uses --amber-600 (AA); #EB5435 itself
      is 3.6:1 on white, so it is for large type and fills only.
 
@@ -36,8 +39,8 @@
   --navy-400: #968f9e;
   --navy-300: #c5bfce;
   --navy-200: #e0daea;
-  --navy-100: #efeaf7;
-  --navy-50:  #f6f3ff;   /* sunken / alt section (faint lavender) */
+  --navy-100: #eeedf2;
+  --navy-50:  #f6f6f8;   /* sunken / alt section (near-neutral) */
   --paper:    #ffffff;   /* canvas */
   --white:    #ffffff;
 
@@ -47,7 +50,7 @@
   --blue-500: #7e49f2;   /* primary accent (eterna-2) */
   --blue-400: #e9a2f2;   /* orchid: accent text on dark (eterna-1) */
   --blue-100: #e4d5ff;
-  --blue-50:  #f3f0ff;
+  --blue-50:  #f4f3f8;   /* icon chips / tint fills: a whisper of violet */
 
   /* Vermilion: rare spark accent only, from the logo. Ramp keeps its old
      "amber" name so every existing reference flips with it. */
@@ -80,10 +83,10 @@
   --color-surface-sunken: var(--navy-50); /* alt section bands */
   --color-surface-inverse: var(--navy-900);
 
-  /* Hairlines: tinted with the purple accent (eterna border) */
-  --color-line: rgba(126, 73, 242, 0.15);
-  --color-line-subtle: rgba(126, 73, 242, 0.08);
-  --color-line-strong: rgba(126, 73, 242, 0.26);
+  /* Hairlines: neutral ink, so the canvas stays quiet around the accents */
+  --color-line: rgba(26, 20, 38, 0.10);
+  --color-line-subtle: rgba(26, 20, 38, 0.06);
+  --color-line-strong: rgba(26, 20, 38, 0.18);
   --color-line-on-dark: rgba(255, 255, 255, 0.12);
   --color-line-on-dark-subtle: rgba(255, 255, 255, 0.07);
 
@@ -188,7 +191,7 @@
      ------------------------------------------------------------------------- */
   --ambient-blue: radial-gradient(
     60% 60% at 75% 0%,
-    rgba(126, 73, 242, 0.16),
+    rgba(126, 73, 242, 0.08),
     rgba(126, 73, 242, 0) 70%
   );
 

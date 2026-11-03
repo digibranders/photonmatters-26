@@ -213,7 +213,7 @@ function FocusReveal() {
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div
             className="absolute right-[8%] top-1/2 h-96 w-96 -translate-y-1/2 rounded-full opacity-70 blur-[120px]"
-            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)" }}
+            style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
           />
         </div>
 
@@ -353,7 +353,7 @@ function FocusReveal() {
                       style={{
                         background: gold
                           ? "radial-gradient(circle, rgba(235,84,53,0.14), transparent 70%)"
-                          : "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)",
+                          : "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)",
                       }}
                     />
 
@@ -420,7 +420,7 @@ function CompactList() {
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div
           className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full opacity-70 blur-[110px]"
-          style={{ background: "radial-gradient(circle, rgba(126,73,242,0.10), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
         />
       </div>
 

@@ -102,11 +102,11 @@ export default async function ProductDetailPage({
                 const Icon = getIcon(it.icon);
                 return (
                   <Reveal key={it.title} index={i % 3}>
-                    <div className="group relative h-full overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(126,73,242,0.28)]">
+                    <div className="group relative h-full overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(26,20,38,0.04),0_18px_40px_-18px_rgba(26,20,38,0.16)]">
                       <div
                         aria-hidden
                         className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full opacity-70 blur-2xl transition-transform duration-700 group-hover:scale-110"
-                        style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                        style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                       />
                       <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">
                         <Icon size={22} aria-hidden />
@@ -150,27 +150,24 @@ export default async function ProductDetailPage({
         </section>
       ) : null}
 
-      {/* CTA finale: gradient card with glass cross-links */}
+      {/* CTA finale: vermilion card with glass cross-links */}
       <section className="pb-[var(--section-y)] pt-10">
         <div className="container-site">
           <Reveal>
-            <div
-              className="relative overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-2xl shadow-[rgba(126,73,242,0.25)] md:px-12 md:py-12"
-              style={{ background: "linear-gradient(110deg, var(--color-primary) 0%, var(--blue-600) 100%)" }}
-            >
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(233,162,242,0.30)" }}
+                style={{ background: "rgba(255,255,255,0.22)" }}
               />
               <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="eyebrow !text-white/70">{cta.eyebrow}</p>
-                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
+                  <p className="eyebrow !text-ink">{cta.eyebrow}</p>
+                  <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-ink">
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}
-                        <span className="font-playfair font-light">
+                        <span className="font-playfair font-light text-white">
                           {cta.headingAccent}
                         </span>
                       </>
@@ -178,13 +175,13 @@ export default async function ProductDetailPage({
                       cta.heading
                     )}
                   </h2>
-                  <p className="measure mt-5 text-body-lg text-white/80">{cta.body}</p>
+                  <p className="measure mt-5 text-body-lg text-ink">{cta.body}</p>
                   <div className="mt-8">
                     <Button
                       href="/contact"
                       size="lg"
                       withArrow
-                      className="!bg-white !text-ink !shadow-none hover:!bg-accent hover:!text-ink"
+                      className="!bg-ink !text-white !shadow-none hover:!bg-white hover:!text-ink"
                     >
                       Book a demo
                     </Button>
@@ -197,18 +194,18 @@ export default async function ProductDetailPage({
                       <Link
                         key={link.slug}
                         href={`/products/${link.slug}`}
-                        className="group/card flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[0.14]"
+                        className="group/card flex items-center gap-4 rounded-2xl border border-ink/15 bg-white/[0.14] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30 hover:bg-white/25"
                       >
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-white">
                           <Icon size={19} aria-hidden />
                         </span>
                         <div className="min-w-0 flex-1">
-                          <h3 className="text-body font-semibold text-white">{link.name}</h3>
-                          <p className="mt-0.5 text-caption text-white/70">{link.blurb}</p>
+                          <h3 className="text-body font-semibold text-ink">{link.name}</h3>
+                          <p className="mt-0.5 text-caption text-ink">{link.blurb}</p>
                         </div>
                         <ArrowRight
                           size={18}
-                          className="shrink-0 text-white/80 transition-transform duration-200 group-hover/card:translate-x-1"
+                          className="shrink-0 text-ink transition-transform duration-200 group-hover/card:translate-x-1"
                           aria-hidden
                         />
                       </Link>

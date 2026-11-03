@@ -89,7 +89,7 @@ export function ProductExplorer({ eyebrow, heading, items }: ProductExplorerProp
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-70 blur-2xl"
-                  style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                  style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                 />
                 <div className="relative flex items-center gap-4">
                   <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[color:var(--blue-50)] text-primary">

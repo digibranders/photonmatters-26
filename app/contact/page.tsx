@@ -142,7 +142,7 @@ export default function ContactPage() {
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -bottom-12 -right-12 h-44 w-44 rounded-full opacity-60 blur-2xl"
-                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.13), transparent 70%)" }}
+                    style={{ background: "radial-gradient(circle, rgba(126,73,242,0.05), transparent 70%)" }}
                   />
                   <div className="relative z-10 flex items-center gap-2">
                     <h3 className="text-h3 font-bold text-ink">{o.country}</h3>
