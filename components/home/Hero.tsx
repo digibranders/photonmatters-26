@@ -19,25 +19,22 @@ type Slide = {
 
 /* Auto-crossfading background slides. Purely decorative: the headline, copy and
    CTAs are static, so the rotation never moves content the reader is using.
-   The bespoke brand illustration leads because it is the LCP frame and the only
-   asset authored at full resolution.
+   The glass-layers render leads because it is the LCP frame and states the
+   headline: one signal passing through the model's layers to a decision.
    Every slide is a fixed-aspect frame and the hero is not, so they all have to
    cover: the hero runs wider than any of them on a short viewport and taller on
    a phone, and object-contain would leave the difference as dead navy, pillar
    boxed beside the copy on desktop and banded above and below on mobile. */
 const SLIDES: Slide[] = [
   {
-    src: "/hero/hero1.webp",
-    alt: "AI lending at scale across Africa, India and the Middle East",
-    // Cropped from near the top rather than dead centre. The labelled callouts
-    // sit between 15% and 76% of this frame's height, and a centred crop lifts
-    // the topmost one into the fixed header; holding the crop window high keeps
-    // the whole band in shot and clear of the nav, and spends the loss on the
-    // foreground at the bottom, which the stats baseboard covers anyway.
-    crop: "object-[50%_20%]",
+    src: "/hero/hero-ai-layers.webp",
+    alt: "A beam of light passing through layered glass panels, resolving into a single point",
   },
   { src: "/hero/hero2.webp", alt: "A bank at dusk, lit for the people it serves" },
-  { src: "/hero/hero3.webp", alt: "Live lending performance data over a bank workspace" },
+  {
+    src: "/hero/hero-telecom.webp",
+    alt: "A telecom tower above a hillside town at blue hour",
+  },
 ];
 
 /* Navy scrim + grain: matched to the photonmatters reference hero (#07101f). */
