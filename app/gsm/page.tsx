@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { getIcon } from "@/lib/icons";
+import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 export const metadata: Metadata = {
   title: "GSM: Missed Call & Collect Call",
@@ -262,6 +263,7 @@ export default function GsmPage() {
         <div className="container-site">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
+              <LogoWatermark className="-bottom-[18%] -right-[4%] h-[135%] opacity-[0.10] max-md:opacity-[0.06]" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[10%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"

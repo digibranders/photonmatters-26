@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { MARKETS, OFFICES } from "@/lib/site";
+import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 export const metadata: Metadata = {
   title: "About",
@@ -225,6 +226,7 @@ export default function AboutPage() {
           <div className="absolute -left-[8%] -top-[20%] h-[560px] w-[560px] rounded-full blur-[100px]" style={{ background: "rgba(126,73,242,0.18)" }} />
           <div className="absolute -bottom-[24%] -right-[8%] h-[460px] w-[460px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.10)" }} />
         </div>
+        <LogoWatermark className="-bottom-[20%] -right-[2%] h-[125%] opacity-[0.05]" />
         <div className="container-site relative">
           <SectionHeader tone="dark" eyebrow="Global presence" title="Four offices. Three regions. One platform." />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { SITE, OFFICES } from "@/lib/site";
+import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -54,6 +55,7 @@ export default function ContactPage() {
                   <div className="absolute -left-[15%] -top-[15%] h-[420px] w-[420px] rounded-full blur-[90px]" style={{ background: "rgba(126,73,242,0.30)" }} />
                   <div className="absolute -bottom-[20%] right-[5%] h-[320px] w-[320px] rounded-full blur-[80px]" style={{ background: "rgba(233,162,242,0.16)" }} />
                 </div>
+                <LogoWatermark className="-bottom-[12%] -right-[14%] h-[75%] opacity-[0.06]" />
 
                 <div className="relative">
                   <p className="eyebrow mb-4 !text-[color:var(--blue-400)]">Get in touch</p>

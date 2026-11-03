@@ -14,6 +14,7 @@ import { SOLUTION_PAGES } from "@/lib/solutions-data";
 import { SOLUTIONS, GSM, type SolutionSlug } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { serviceSchema, breadcrumbList } from "@/lib/structured-data";
+import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 /** Light gradient-clipped heading: eterna signature (ink → ink/60). */
 const HEADING_CLIP =
@@ -288,6 +289,7 @@ export default async function SolutionDetailPage({
         <div className="container-site">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-accent text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] px-6 py-10 md:px-12 md:py-12">
+              <LogoWatermark className="-bottom-[18%] -right-[4%] h-[135%] opacity-[0.10] max-md:opacity-[0.06]" />
               {/* Light blooms for depth */}
               <div
                 aria-hidden

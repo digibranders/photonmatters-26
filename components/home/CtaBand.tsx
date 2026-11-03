@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { LogoWatermark } from "@/components/ui/LogoWatermark";
 
 /**
  * Pre-footer conversion band: dark full-width, one focused message, two CTAs.
@@ -15,14 +15,7 @@ export function CtaBand() {
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-accent px-6 py-10 text-center text-ink shadow-2xl shadow-[rgba(235,84,53,0.22)] md:px-14 md:py-14">
             {/* Logomark supergraphic: tone-on-tone, cropped by the card edge */}
-            <Image
-              src="/logomark-white.svg"
-              alt=""
-              aria-hidden
-              width={240}
-              height={440}
-              className="pointer-events-none absolute -bottom-[18%] -right-[4%] h-[135%] w-auto opacity-[0.14] max-md:opacity-[0.08]"
-            />
+            <LogoWatermark className="-bottom-[18%] -right-[4%] h-[135%] opacity-[0.14] max-md:opacity-[0.08]" />
             {/* Soft light bloom for depth */}
             <div
               aria-hidden
