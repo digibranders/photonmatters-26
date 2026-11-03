@@ -257,13 +257,13 @@ export function LastMileDiagram() {
             <stop offset="25%" stopColor="#e9a2f2" stopOpacity="0.75" />
             <stop offset="65%" stopColor="#7e49f2" stopOpacity="0.9" />
             <stop offset="90%" stopColor="#e9a2f2" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#f2cb07" stopOpacity="1" />
+            <stop offset="100%" stopColor="#eb5435" stopOpacity="1" />
           </linearGradient>
 
           <linearGradient id="lm-dial-grad" x1="452" y1="301" x2="584" y2="169" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#7e49f2" />
             <stop offset="50%" stopColor="#e9a2f2" />
-            <stop offset="100%" stopColor="#f2cb07" />
+            <stop offset="100%" stopColor="#eb5435" />
           </linearGradient>
 
           <radialGradient id="lm-bg-radial" cx="50%" cy="50%" r="70%">
@@ -449,7 +449,7 @@ export function LastMileDiagram() {
             transition={still({ repeat: Infinity, duration: 4, ease: "easeInOut" })}
             style={{ transformOrigin: `${cx}px ${cy}px` }}
           >
-            <circle cx={cx + r} cy={cy} r={4.5} fill="#f2cb07" />
+            <circle cx={cx + r} cy={cy} r={4.5} fill="#eb5435" />
             <circle cx={cx + r} cy={cy} r={2} fill="#ffffff" />
           </motion.g>
         </g>
@@ -517,13 +517,13 @@ export function LastMileDiagram() {
               r={10}
               fill="url(#lm-dial-grad)"
               fillOpacity="0.2"
-              stroke="#f2cb07"
+              stroke="#eb5435"
               strokeWidth="1.2"
             />
             <path
               d={`M ${cx - 4.5} ${cy} L ${cx - 1.5} ${cy + 3} L ${cx + 3.5} ${cy - 2}`}
               fill="none"
-              stroke="#f2cb07"
+              stroke="#eb5435"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"

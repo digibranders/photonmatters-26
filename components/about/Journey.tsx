@@ -340,7 +340,7 @@ function FocusReveal() {
                       className="font-playfair pointer-events-none absolute -top-20 right-0 select-none italic leading-none"
                       style={{
                         fontSize: "clamp(7rem, 13vw, 12.5rem)",
-                        color: gold ? "rgba(242,203,7,0.12)" : "rgba(126,73,242,0.08)",
+                        color: gold ? "rgba(235,84,53,0.12)" : "rgba(126,73,242,0.08)",
                         transformOrigin: "right center",
                       }}
                     >
@@ -352,7 +352,7 @@ function FocusReveal() {
                       className="pointer-events-none absolute -left-12 top-2 h-64 w-64 rounded-full blur-[90px]"
                       style={{
                         background: gold
-                          ? "radial-gradient(circle, rgba(242,203,7,0.14), transparent 70%)"
+                          ? "radial-gradient(circle, rgba(235,84,53,0.14), transparent 70%)"
                           : "radial-gradient(circle, rgba(126,73,242,0.12), transparent 70%)",
                       }}
                     />
@@ -441,7 +441,7 @@ function CompactList() {
                       ? "linear-gradient(150deg, var(--blue-500), var(--amber-500))"
                       : "linear-gradient(150deg, #8b5cf6, #6a34e0)",
                     boxShadow: gold
-                      ? "0 10px 22px -12px rgba(242,203,7,0.5)"
+                      ? "0 10px 22px -12px rgba(235,84,53,0.5)"
                       : "0 10px 22px -14px rgba(126,73,242,0.5)",
                   }}
                 >

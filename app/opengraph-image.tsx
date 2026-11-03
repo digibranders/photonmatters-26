@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { SITE } from "@/lib/site";
 
@@ -10,7 +12,10 @@ export const contentType = "image/png";
  * Default social-share / AI-preview card. Rendered at build time by next/og,
  * so it ships as a static asset with zero external font or network dependency.
  */
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const mark = await readFile(join(process.cwd(), "public/logomark.svg"));
+  const markSrc = `data:image/svg+xml;base64,${mark.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -42,15 +47,7 @@ export default function OpengraphImage() {
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 16,
-              background: "linear-gradient(135deg, #7e49f2, #e9a2f2)",
-              display: "flex",
-            }}
-          />
+          <img src={markSrc} width={36} height={66} alt="" />
           <div style={{ color: "#ffffff", fontSize: 40, fontWeight: 700 }}>
             {SITE.name}
           </div>
@@ -84,7 +81,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ color: "#e9a2f2", fontSize: 26, fontWeight: 600 }}>
+          <div style={{ color: "#eb5435", fontSize: 26, fontWeight: 600 }}>
             {SITE.domain}
           </div>
           <div style={{ color: "#6b5a8f", fontSize: 26 }}>·</div>

@@ -3,8 +3,15 @@
    ----------------------------------------------------------------------------
    Direction: ported from the brand revamp. White canvas, deep plum ink
    (#1A1426), ONE electric-purple accent (#7E49F2), orchid (#E9A2F2) on dark,
-   and gold (#F2CB07) used rarely as a spark. The colourful original logo
-   remains the page's richest pop of colour.
+   and logo vermilion (#EB5435) used rarely as the brand spark.
+
+   Colour roles (2026-11 logo refresh):
+   • Purple is the system: buttons, links, icons, hairlines, ambient light.
+   • Vermilion comes from the logo: accent words on dark, live/new badges,
+     map pins, the primary-button hover and the pre-footer CTA card. Never
+     body text, never a second button colour.
+   • On light surfaces vermilion text uses --amber-600 (AA); #EB5435 itself
+     is 3.6:1 on white, so it is for large type and fills only.
 
    Notes:
    • Raw ramp names are retained (navy-* / blue-* / amber-*) but repointed to
@@ -42,10 +49,11 @@
   --blue-100: #e4d5ff;
   --blue-50:  #f3f0ff;
 
-  /* Gold: rare spark accent only (eterna-5) */
-  --amber-600: #b8970a;
-  --amber-500: #f2cb07;
-  --amber-100: #fcefb8;
+  /* Vermilion: rare spark accent only, from the logo. Ramp keeps its old
+     "amber" name so every existing reference flips with it. */
+  --amber-600: #b8361b;   /* text on light: 5.9:1 on white, 4.8:1 on amber-100 */
+  --amber-500: #eb5435;   /* logo vermilion */
+  --amber-100: #fce3dc;
 
   /* ---------------------------------------------------------------------------
      2. SEMANTIC TOKENS  (use THESE)

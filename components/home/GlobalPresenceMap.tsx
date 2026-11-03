@@ -49,7 +49,7 @@ const LAND = "#2c2440";
 const LAND_STROKE = "#473b60";
 const LAND_HL = "#492f8f"; // office countries
 const LAND_HL_STROKE = "#7e49f2";
-const GOLD = "#f2cb07";
+const SPARK = "#eb5435"; // logo vermilion: office pins
 
 type WorldFeature = Feature<Geometry, { name: string }>;
 
@@ -186,7 +186,7 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
               <circle
                 r={20}
                 fill="none"
-                stroke={GOLD}
+                stroke={SPARK}
                 strokeWidth={0.7}
                 className="gp-svg-pulse"
                 style={{ animationDelay: `${i * 0.6}s` }}
@@ -194,16 +194,16 @@ export function GlobalPresenceMap({ offices }: { offices: Office[] }) {
               <circle
                 r={12}
                 fill="none"
-                stroke={GOLD}
+                stroke={SPARK}
                 strokeWidth={0.9}
                 className="gp-svg-pulse"
                 style={{ animationDelay: `${i * 0.6 + 0.5}s`, animationDuration: "2.1s" }}
               />
               {/* Static halo + core dot */}
-              <circle r={8} fill={`${GOLD}22`} stroke={GOLD} strokeWidth={0.7} opacity={0.85} />
+              <circle r={8} fill={`${SPARK}22`} stroke={SPARK} strokeWidth={0.7} opacity={0.85} />
               <circle
                 r={active ? 5.5 : 4}
-                fill={GOLD}
+                fill={SPARK}
                 filter="url(#pm-pin-glow)"
                 style={{ transition: "r 0.15s ease" }}
               />

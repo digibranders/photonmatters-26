@@ -98,7 +98,7 @@ export default function HomePage() {
             {/* Dark CTA card: pinned as the grid's final item */}
             <Reveal index={2}>
               <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-ink p-8 text-white">
-                {/* Ambient purple/orchid blooms */}
+                {/* Ambient purple bloom with a vermilion ember, matching the hero */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-[20%] -top-[30%] h-72 w-72 rounded-full blur-[80px]"
@@ -107,12 +107,12 @@ export default function HomePage() {
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -bottom-[25%] -left-[15%] h-60 w-60 rounded-full blur-[70px]"
-                  style={{ background: "rgba(233,162,242,0.18)" }}
+                  style={{ background: "rgba(235,84,53,0.22)" }}
                 />
                 <h3 className="relative z-10 text-h3 font-medium leading-snug tracking-tight">
                   One platform.
                   <br />
-                  Every <span className="font-playfair font-light text-[color:var(--blue-400)]">credit journey</span>.
+                  Every <span className="font-playfair font-light text-accent">credit journey</span>.
                 </h3>
                 <p className="relative z-10 mt-3 text-caption text-[color:var(--color-text-on-dark-muted)]">
                   Mix and match modules, or run the full stack. API-first and configurable to

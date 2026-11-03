@@ -171,7 +171,7 @@ export function NavBar() {
             tone={isDark ? "onDark" : "onLight"}
             className={cn(
               "transition-all duration-300 ease-out",
-              atTop ? "h-14 sm:h-16 lg:h-[68px]" : "h-12 lg:h-14"
+              atTop ? "h-9 sm:h-10 lg:h-11" : "h-8 lg:h-9"
             )}
           />
         </Link>

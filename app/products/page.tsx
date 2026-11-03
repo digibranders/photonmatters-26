@@ -85,7 +85,7 @@ export default function ProductsHubPage() {
                 <p className="eyebrow !text-white/70">One platform</p>
                 <h2 className="mx-auto mt-4 max-w-2xl text-balance pb-[0.18em] text-h1 font-bold text-white">
                   Infinite{" "}
-                  <span className="font-playfair font-light text-[color:var(--amber-500)]">possibilities</span>.
+                  <span className="font-playfair font-light">possibilities</span>.
                 </h2>
                 <p className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
                   Because no matter the borrower, every loan begins with belief, and ends in

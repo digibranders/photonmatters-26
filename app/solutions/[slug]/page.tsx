@@ -321,7 +321,7 @@ export default async function SolutionDetailPage({
                     {cta.headingAccent && cta.heading.endsWith(cta.headingAccent) ? (
                       <>
                         {cta.heading.slice(0, cta.heading.length - cta.headingAccent.length)}
-                        <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                        <span className="font-playfair font-light">
                           {cta.headingAccent}
                         </span>
                       </>

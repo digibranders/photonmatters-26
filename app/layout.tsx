@@ -41,7 +41,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "PhotonMatters",
   url: SITE.url,
-  logo: `${SITE.url}/photonmatters-logo.svg`,
+  logo: `${SITE.url}/photonmatters-logo-dark.svg`,
   description:
     "PhotonMatters is the AI-native lending and collections technology powering banks, NBFCs and telecom operators across Africa, India and the Middle East.",
   email: "hello@photonmatters.com",

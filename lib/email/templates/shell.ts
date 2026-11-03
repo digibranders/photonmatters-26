@@ -83,7 +83,7 @@ const FONT_STACK =
 /** Logo lockup: colourful mark plus gradient wordmark, no tagline. */
 const LOGO_URL = `${SITE.url}/email/photonmatters-logo.png`;
 const LOGO_WIDTH = 190;
-const LOGO_HEIGHT = 53;
+const LOGO_HEIGHT = 38;
 
 /* ---------------------------------------------------------------------------
    Footer content, derived from `lib/site.ts` so it cannot drift from the site.

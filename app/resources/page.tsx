@@ -159,7 +159,7 @@ export default function ResourcesPage() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[8%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(242,203,7,0.28)" }}
+                style={{ background: "rgba(235,84,53,0.28)" }}
               />
               <div
                 aria-hidden
@@ -171,7 +171,7 @@ export default function ResourcesPage() {
                   <p className="eyebrow !text-white/70">Need more detail?</p>
                   <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-white">
                     Looking for something{" "}
-                    <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                    <span className="font-playfair font-light">
                       specific?
                     </span>
                   </h2>

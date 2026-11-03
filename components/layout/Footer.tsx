@@ -64,7 +64,7 @@ export function Footer() {
       <div className="container-site relative z-10 py-10 lg:py-12">
         <div className="grid grid-cols-2 gap-10 border-b border-line-on-dark pb-12 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
-            <Logo className="h-14 sm:h-16 lg:h-20" />
+            <Logo className="h-10 sm:h-11 lg:h-12" />
             <p className="mt-5 max-w-[320px] text-caption text-[color:var(--color-text-on-dark-muted)]">
               {SITE.blurb}
             </p>

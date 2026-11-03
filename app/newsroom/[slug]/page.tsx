@@ -149,7 +149,7 @@ export default async function NewsArticlePage({
       name: SITE.name,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE.url}/photonmatters-logo.svg`,
+        url: `${SITE.url}/photonmatters-logo-dark.svg`,
       },
     },
   };

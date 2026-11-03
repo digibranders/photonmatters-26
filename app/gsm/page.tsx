@@ -275,7 +275,7 @@ export default function GsmPage() {
                   <p className="eyebrow !text-white/70">Connect the channels</p>
                   <h2 className="mt-4 text-balance pb-[0.18em] text-h2 font-bold text-white">
                     Pair GSM rails{" "}
-                    <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                    <span className="font-playfair font-light">
                       with your lending campaigns.
                     </span>
                   </h2>

@@ -171,7 +171,7 @@ export default function SolutionsHubPage() {
                 <p className="eyebrow !text-white/70">Ready when you are</p>
                 <h2 className="mx-auto mt-4 max-w-2xl text-balance pb-[0.18em] text-h1 font-bold text-white">
                   See the stack on{" "}
-                  <span className="font-playfair font-light text-[color:var(--amber-500)]">your data</span>.
+                  <span className="font-playfair font-light">your data</span>.
                 </h2>
                 <p className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
                   Tell us which modules matter most and we&apos;ll show you a working setup tailored to

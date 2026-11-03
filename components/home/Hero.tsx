@@ -116,13 +116,13 @@ export function Hero() {
         />
       </div>
 
-      {/* Ambient brand glow: subtle eterna purple/orchid over the navy */}
+      {/* Ambient brand glow: purple light top-right, a low vermilion ember under the copy */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(50% 45% at 82% 14%, rgba(126,73,242,0.22), transparent 60%), radial-gradient(40% 45% at 0% 100%, rgba(233,162,242,0.10), transparent 60%)",
+            "radial-gradient(50% 45% at 82% 14%, rgba(126,73,242,0.22), transparent 60%), radial-gradient(40% 45% at 0% 100%, rgba(235,84,53,0.14), transparent 60%)",
         }}
       />
 
@@ -133,7 +133,7 @@ export function Hero() {
         <motion.div {...intro} className="max-w-[40rem] py-10 lg:py-0">
           <h1 className="text-display font-medium tracking-tighter leading-[1.05] text-balance text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.4)]">
             AI-Powered Lending{" "}
-            <span className="font-playfair font-light text-[color:var(--blue-400)]">reaching the last mile</span>
+            <span className="font-playfair font-light text-accent">reaching the last mile</span>
           </h1>
           <p className="mt-7 max-w-[32rem] text-body-lg text-[color:var(--color-text-on-dark-muted)] [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
             The only AI-native platform that takes a bank, NBFC or telecom operator from zero

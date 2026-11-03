@@ -180,7 +180,7 @@ export default function NewsroomPage() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-[8%] -top-[30%] h-[420px] w-[420px] rounded-full blur-[90px]"
-                style={{ background: "rgba(242,203,7,0.28)" }}
+                style={{ background: "rgba(235,84,53,0.28)" }}
               />
               <div
                 aria-hidden
@@ -192,7 +192,7 @@ export default function NewsroomPage() {
                   <p className="eyebrow !text-white/70">Media relations</p>
                   <h2 className="mt-4 text-balance pb-[0.06em] text-h2 font-bold text-white">
                     Writing about PhotonMatters?{" "}
-                    <span className="font-playfair font-light text-[color:var(--amber-500)]">
+                    <span className="font-playfair font-light">
                       Let&apos;s talk.
                     </span>
                   </h2>

@@ -19,8 +19,8 @@ const sizes: Record<Size, string> = {
 function variantClasses(variant: Variant, tone: Tone): string {
   switch (variant) {
     case "primary":
-      // Eterna tell: purple → gold on hover, with plum ink text on the gold.
-      return "bg-primary text-white shadow-lg shadow-[rgba(126,73,242,0.22)] hover:bg-accent hover:text-ink hover:shadow-[rgba(242,203,7,0.28)] active:bg-primary-press active:text-white";
+      // Purple at rest, logo vermilion on hover, with plum ink text on the vermilion (5:1).
+      return "bg-primary text-white shadow-lg shadow-[rgba(126,73,242,0.22)] hover:bg-accent hover:text-ink hover:shadow-[rgba(235,84,53,0.28)] active:bg-primary-press active:text-white";
     case "secondary":
       return tone === "dark"
         ? "border border-line-on-dark text-white hover:bg-white/[0.08]"
