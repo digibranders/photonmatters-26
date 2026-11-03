@@ -70,7 +70,7 @@ export function Testimonials() {
           <span className="eyebrow mb-4 !text-[color:var(--blue-400)]">Client voices</span>
           <h2 className="text-h2 font-bold text-balance pb-[0.18em] text-white">
             Trusted by the teams{" "}
-            <span className="font-playfair font-light text-[color:var(--blue-400)]">moving credit</span>{" "}
+            <span className="font-playfair font-light text-accent">moving credit</span>{" "}
             forward.
           </h2>
           <p className="mt-5 max-w-md text-body-lg text-[color:var(--color-text-on-dark-muted)]">

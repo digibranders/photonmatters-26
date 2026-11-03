@@ -59,7 +59,7 @@ export default function ContactPage() {
                   <p className="eyebrow mb-4 !text-[color:var(--blue-400)]">Get in touch</p>
                   <h1 className="text-balance pb-[0.18em] text-h1 font-bold text-white">
                     Let&apos;s build your next{" "}
-                    <span className="font-playfair font-light text-[color:var(--blue-400)]">
+                    <span className="font-playfair font-light text-accent">
                       lending product
                     </span>
                     .

@@ -56,7 +56,7 @@ export function SolutionHero({ title, titleAccent, subtitle, image, imageAlt = "
             {titleAccent ? (
               <>
                 {" "}
-                <span className="font-playfair font-light text-[color:var(--blue-400)]">
+                <span className="font-playfair font-light text-accent">
                   {titleAccent}
                 </span>
               </>

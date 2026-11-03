@@ -91,7 +91,7 @@ export default function SolutionsHubPage() {
               title={
                 <>
                   Missed Call &{" "}
-                  <span className="font-playfair font-light text-[color:var(--blue-400)]">
+                  <span className="font-playfair font-light text-accent">
                     Collect Call.
                   </span>
                 </>

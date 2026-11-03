@@ -227,7 +227,7 @@ export default function GsmPage() {
           <SectionHeader
             tone="dark"
             title={
-              <span className="font-playfair text-[color:var(--blue-400)]">
+              <span className="font-playfair text-accent">
                 Why operators care
               </span>
             }

@@ -70,7 +70,7 @@ export function Footer() {
             </p>
             <p className="mt-5 max-w-[320px] text-h3 font-medium leading-snug text-white">
               Discover your{" "}
-              <span className="font-playfair text-[color:var(--blue-400)]">lending edge</span>.
+              <span className="font-playfair text-accent">lending edge</span>.
             </p>
           </div>
           <FooterColumn title="Solutions" links={FOOTER_COLUMNS.solutions} />

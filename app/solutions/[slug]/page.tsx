@@ -252,7 +252,7 @@ export default async function SolutionDetailPage({
           <SectionHeader
             tone="dark"
             title={
-              <span className="font-playfair text-[color:var(--blue-400)]">
+              <span className="font-playfair text-accent">
                 Outcomes
               </span>
             }

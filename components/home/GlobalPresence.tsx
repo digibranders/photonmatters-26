@@ -48,8 +48,8 @@ export function GlobalPresence() {
           <Reveal>
             <span className="eyebrow !text-[color:var(--blue-400)]">Global Presence</span>
             <h2 className="mx-auto mt-4 max-w-3xl text-balance pb-[0.18em] text-h2 font-medium tracking-tighter text-white">
-              Global <span className="font-playfair font-light text-[color:var(--blue-400)]">Reach</span>.
-              Local <span className="font-playfair font-light text-[color:var(--blue-400)]">Impact</span>.
+              Global <span className="font-playfair font-light text-accent">Reach</span>.
+              Local <span className="font-playfair font-light text-accent">Impact</span>.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-body-lg text-[color:var(--color-text-on-dark-muted)]">
               Four hubs across the Americas, the Gulf, India and Africa, close to the markets and
